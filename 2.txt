@@ -1,0 +1,16 @@
+https://kazupon.github.io/vue-i18n/
+
+https://www.youtube.com/watch?v=bx2lZX1sp0c
+
+https://vuetifyjs.com/en/features/internationalization/#rtl
+
+https://www.google.com/search?q=transition+on+scrolling+in+vue&oq=transition+on+scroling+in+&aqs=chrome.2.69i57j33i10i160l3.13290j0j4&sourceid=chrome&ie=UTF-8
+
+ax 
+https://fortemusicacademy.co.uk/
+
+https://dev.to/gayathri_r/how-to-add-a-typewriter-animation-in-vuejs-43kj
+
+https://motion.vueuse.org/
+
+https://motion.vueuse.org/getting-started/introduction/
