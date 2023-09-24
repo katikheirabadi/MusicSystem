@@ -1,22 +1,30 @@
 <template>
  <div style="position: relative;">
-
-
 <v-row class="h" style="z-index: -1;">
 </v-row>
 <v-row style="top: 0%;z-index: 1;position: absolute;width: 40%;">
-    <v-col cols="12" sm="6" md="3">
+    <v-col cols="12" sm="12" md="3">
         <v-btn color="white" variant="outlined" rounded="xl" size="x-large">{{ $t('message.academies') }}</v-btn>
     </v-col>
-    <v-col cols="12" sm="6" md="3">
+    <v-col cols="12" sm="12" md="3">
         <v-btn color="white" variant="outlined" rounded="xl" size="x-large">{{ $t('message.classes') }}</v-btn>
     </v-col>
-    <v-col cols="12" sm="6" md="3">
+    <v-col cols="12" sm="12" md="3">
         <v-btn color="white" variant="outlined" rounded="xl" size="x-large">{{ $t('message.contact') }}</v-btn>
     </v-col>
-    <v-col cols="12" sm="6" md="3">
-        <v-btn color="white" variant="outlined" rounded="xl" size="x-large">{{ $t('message.about') }}</v-btn>
+    <v-col cols="12" sm="12" md="3">
+        <v-btn color="white" variant="outlined" rounded="xl" size="x-large">
+            {{ $t('message.about') }}</v-btn>
     </v-col>
+   
+</v-row>
+<v-row style="top: 0%;z-index: 1;position: absolute;width: 100%;justify-content: end;">
+    <v-col style="display: flex;justify-content:end;">
+        <v-btn color="white" style="font-weight: bold;" rounded="xl" size="x-large">
+            <router-link  :to="{name:'welcome',params:{lang:this.$route.lang}}" style=" text-decoration: none;color: black;font-weight: bold;">{{ $t('message.sign') }}</router-link>
+        </v-btn>
+    </v-col>
+    
 </v-row>
 <div class="bg-text">
   <h1 style="font-size:50px">{{ $t('message.sitename') }}</h1>

@@ -208,7 +208,7 @@
             <v-sheet
               :rounded="'xl'"
               class="d-flex transition-fast-in-fast-out bg-grey-lighten-3 text-h2  mx-auto my-auto text-center v-card--reveal p-3"
-              style="height: 100%;padding-top: 25%;"
+              style="height: 100%;padding-top: 25%;font-family: 'IRANSANS';"
             >
             <h5>فارع التحصیلان </h5>
            </v-sheet>
@@ -304,9 +304,9 @@
             <v-sheet
               :rounded="'xl'"
               class="d-flex transition-fast-in-fast-out bg-grey-lighten-3 mx-auto my-auto text-center v-card--reveal"
-              style="height: 100%; padding-top: 25%;"
+              style="height: 100%; padding-top: 25%;font-family: 'IRANSANS';"
             >
-            <h5>آموزشگاه ها </h5>
+            <h5>{{ $t('message.site_report_1') }} </h5>
            </v-sheet>
           </v-fab-transition>
           <!-- <h2></h2> -->
@@ -319,22 +319,19 @@
     src="../assets/img/22.png"
     width="60%"
     class="mx-auto mt-9"
-    ></v-img>
+  ></v-img>
 
 <!-- footer -->
-
-<myfooter/>
 </template>
 
 <script>
   import { VSheet } from 'vuetify/lib/components/index.mjs'
   import banner from '../components/Banner.vue'
-  import myfooter from '../components/Footer.vue'
   import myheader from '../components/Header.vue'
   export default {
     props:['isHovering'],
     components:{
-    banner, myheader,myfooter,
+    banner, myheader,
     VSheet
 },
     data(){
@@ -342,7 +339,13 @@
         a:true
       }
     },
-    mounted(){
+    updated(){
+    var lang = this.$route.params.lang
+    this.$vuetify.locale.current = lang
+      this.$i18n.locale=lang
+      
+  },
+  mounted(){
     var lang = this.$route.params.lang
     this.$vuetify.locale.current = lang
       this.$i18n.locale=lang
@@ -362,7 +365,4 @@
 .mybtn{
   background-color: black !important;
 }
-/* .detail{
-  background-color: gray !important;
-} */
 </style>
