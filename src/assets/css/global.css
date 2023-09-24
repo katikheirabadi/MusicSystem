@@ -1,4 +1,9 @@
 @font-face {
     font-family: 'IRANSANS';
-    src: url(../fonts/farsi/IRANSansWeb_Bold.ttf);
+    src: url(../fonts/farsi/IRANSansWeb.ttf);
+   }
+
+   .center-class{
+    display: flex;
+    justify-content: center;
    }

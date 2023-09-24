@@ -2,37 +2,65 @@
   <v-sheet class="login mx-auto">
     <div class="mx-auto form" style="">
    
-  <article>
+  <article class="">
     <div class="container" :class="{'sign-up-active' : signUp}">
       <div class="overlay-container">
         <div class="overlay" >
             <div class="overlay-right" v-if="signUp">
-            <h2>Welcome Back!</h2>
-            <p>Please login with your personal info</p>
-            <button class="invert" id="signIn" @click="signUp = !signUp">Sign In</button>
+            <h2>{{ $t('message.login_signup_signinheader') }}</h2>
+            <p>{{ $t('message.login_signup_signinmessage') }}</p>
+            <button class="invert" id="signIn" @click="signUp = !signUp">{{ $t('message.login_login_loginbtn') }}</button>
           </div>
           <div class="overlay-left" v-else>
-            <h2>Hello, Friend!</h2>
-            <p>Please enter your personal details</p>
-            <button class="invert" id="signUp" @click="signUp = !signUp">Sign Up</button>
+            <h2>{{ $t('message.login_login_signupheader') }}</h2>
+            <p>{{ $t('message.login_login_signupmessage') }}</p>
+            <button class="invert" id="signUp" @click="signUp = !signUp">{{ $t('message.login_login_signupbtn') }}</button>
           </div>
         </div>
       </div>
-      <form class="sign-up" action="#">
-        <h2>Create login</h2>
-        <div>Use your email for registration</div>
-        <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button>Sign Up</button>
+      <form class="sign-up"  style="background: url('http://localhost:3000/src/assets/img/1.png') !important;">
+        <h2 style="color: aliceblue;">{{ $t('message.login_signup_header') }}</h2>
+        <v-row style="width: 100%;">
+          <v-col cols="6" sm="12" md="6" style="height: fit-content !important;">
+            <v-text-field :label="$t('message.login_signup_lastname') " required ></v-text-field>
+          </v-col>
+          <v-col cols="6" sm="12" md="6">
+            <v-text-field class="field" :label="$t('message.login_signup_name') " required ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row style="width: 100%;margin-top: -30%;">
+          <v-col sm="12" md="6">
+            <v-text-field class="field" :label="$t('message.login_signup_PhoneNumber') " required ></v-text-field>
+          </v-col>
+          <v-col sm="12" md="6">
+            <v-text-field class="field" :label="$t('message.login_signup_natinalcode') " required ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row style="width: 100%;margin-top: -30%;">
+          <v-col sm="12" md="6">
+            <v-text-field class="field" :label="$t('message.login_signup_Confirmpass') " required ></v-text-field>
+          </v-col>
+          <v-col sm="12" md="6">
+            <v-text-field class="field" :label="$t('message.login_signup_pass') " required ></v-text-field>
+          </v-col>
+          <v-col sm="12" md="12" class="center-class" cols="12">
+            <v-btn  @click="login" class="form-btn2" >{{ $t('message.login_login_signupbtn') }}</v-btn>
+          </v-col>
+        </v-row>
       </form>
-      <form class="sign-in" action="#">
-        <h2>Sign In</h2>
-        <div>Use your account</div>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <a href="#">Forgot your password?</a>
-        <button>Sign In</button>
+      <form class="sign-in" action="#" style="background: url('http://localhost:3000/src/assets/img/1.png') !important;">
+        <h2>{{ $t('message.login_login_header') }}</h2>
+        <v-row style="width: 50%;" class="center-class">
+          <v-col cols="12" class="my-auto" style="margin-top: 20% !important;height: fit-content;">
+            <v-text-field v-model="loginusername" :label="$t('message.login_login_username') " required block ></v-text-field>
+          </v-col>
+          <v-col cols="12" style="margin-top: -20% !important;height: fit-content;">
+            <v-text-field v-model="loginpass" :label="$t('message.login_login_pass') " required block ></v-text-field>
+          </v-col>
+          <v-col class="center-class" cols="12">
+            <v-btn @click="login" class="center-class form-btn">{{ $t('message.login_login_loginbtn') }}</v-btn>
+          </v-col>
+        </v-row>
       </form>
     </div>
   </article>
@@ -41,210 +69,39 @@
   </v-sheet>
 
 </template>
-
 <script>
+import '../../assets/css/login.css'
+import axios from 'axios'
 export default{
-data(){
+  data(){
     return {
-        signUp: false
+      signUp :false,
+      loginusername:'',
+      loginpass:''
     }
-}
+  },updated(){
+    var lang = this.$route.params.lang
+    this.$vuetify.locale.current = lang
+      this.$i18n.locale=lang
+      
+  },
+  mounted(){
+    var lang = this.$route.params.lang
+    this.$vuetify.locale.current = lang
+      this.$i18n.locale=lang
+
+    //axios.get('https://jsonplaceholder.typicode.com/posts').then(Response => console.log(Response))
+    axios.post('https://armanuser.armanonline.net/api/Users/Login',{
+  UserName: "2282961862",
+  Password: "0016139127"
+}).then(Response => console.log(Response))
+  },
+
+  methods:{
+    login(){
+     // axios.post('https://edutourism.mcth.ir/api/Organs/ByParent/1').then(reaponse => console.log(reaponse))
+     
+    }
+  }
 }
 </script>
-<style>
-.login{
-    width: 100%;
-    height: 100vh; 
-    background-color: rgb(0, 0, 0);
-    border-radius: 5px;
-    padding-left: 20%;
-    padding-top: 3%;
-    background: url(../../assets/wp2856288-hd-gif-wallpapers.gif);
-    background-size: cover;
-}
-.container {
-min-height: 600px;
-background-color: rgb(225, 224, 221);
-width: 70%;
-border-radius: 15px;
-border: solid 5px ;
-position: relative;
-overflow: hidden;
-box-shadow: 0 25px 30px rgba(0, 0, 0, .2),
-    0 20px 10px rgba(0, 0, 0, .2);
-background: linear-gradient(to bottom, #efefef, #ccc);
-
-  .overlay-container {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    transition: transform .5s ease-in-out;
-    z-index: 100;
-  }
-
-  .overlay {
-    position: relative;
-    height: 100%;
-    width: 200%;
-    background: url('../../assets/wp8588708-dark-4k-mobile-wallpapers - Copy.jpg');
-    color: #fff;
-    transform: translateX(0);
-    transition: transform .8s ease-in-out;
-  } 
-  
-  @mixin overlays($property) {
-    position: absolute;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    padding: 70px 40px;
-    width: calc(50% - 80px);
-    height: calc(100% - 140px);
-    text-align: center;
-    transform: translateX($property);
-    transition: transform .5s ease-in-out;
-  }
-
-  .overlay-left {
-    @include overlays(-30%);
-  }
-
-  .overlay-right {
-    @include overlays(0);
-    right: 0;
-  }
-}
-
-h2 {
-  margin: 0;
-  padding: 3% 5%;
-  padding-bottom: 1%;
-}
-
-p {
-  margin: 0;
-  padding: 1%;
-  padding-bottom: 2%;
-}
-
-a {
-  color: #222;
-  text-decoration: none;
-  margin: 15px 0;
-  font-size: 1rem;
-}
-
-button {
-  border-radius: 20px;
-  border: 1px solid #009345;
-  background-color: #009345;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 10px 40px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: transform .1s ease-in;
-
-  &:active {
-    transform: scale(.9);
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
-
-button.invert {
-  background-color: transparent;
-  border-color: #fff;
-  margin-left: 5%;
-}
-
-form {
-  position: absolute;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-  padding: 0px;
-  width: calc(50%);
-  height: calc(100%);
-  text-align: center;
-  background: linear-gradient(to bottom, #efefef, #ccc);
-  transition: all .5s ease-in-out;
-
-  div {
-    font-size: 1rem;
-  }
-
-  input {
-    background-color: #eee;
-    border: none;
-    padding: 8px 15px;
-    margin: 6px 0;
-    width: calc(100% - 30px);
-    border-radius: 15px;
-    border-bottom: 1px solid #ddd;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .4), 
-      0 -1px 1px #fff, 
-      0 1px 0 #fff;
-    overflow: hidden;
-
-    &:focus {
-      outline: none;
-      background-color: #fff;
-    }
-  }
-}
-
-.sign-in {
-  left: 0;
-  z-index: 2;
-}
-
-.sign-up {
-  left: 0;
-  z-index: 1;
-  opacity: 0;
-}
-
-.sign-up-active {
-  .sign-in {
-    transform: translateX(100%);
-  }
-
-  .sign-up {
-    transform: translateX(100%);
-    opacity: 1;
-    z-index: 5;
-    animation: show .5s;
-  }
-
-  .overlay-container {
-    transform: translateX(-100%);
-  }
-
-  .overlay {
-    transform: translateX(50%);
-  }
-  .overlay-left {
-    transform: translateX(0);
-  }
-
-  .overlay-right {
-    transform: translateX(-50%);
-    background: url('../../assets/wp11930591-music-black-and-white-wallpapers.jpg');
-    height: 100%;
-  }
-}
-
-
-</style>

@@ -185,7 +185,7 @@
   </v-container>
 
   <!-- system details -->
-  <v-row class="mx-auto" style="background-image: url('http://localhost:3000/src/assets/img/bg.webp');background-repeat: repeat;height: auto;padding-top:4.5%;padding-bottom: 4.5%;">
+  <v-row class="mx-auto" style="background-image: url('http://localhost:3000/src/assets/img/bg.webp');background-repeat: repeat;height: auto;padding-top:4.5%;padding-bottom: 4.5%;font-family: 'IRANSANS'">
    <v-col cols="3" md="3" sm="12" class="mx-auto my-auto">
     <v-hover v-slot="{ isHovering, props }">
     <v-sheet v-bind="props" 
@@ -265,14 +265,14 @@
            v-if="isHovering"
               :rounded="'xl'"
               class="d-flex transition-fast-in-fast-out bg-grey-lighten-3 text-h2  mx-auto my-auto text-center v-card--reveal p-3"
-              style="height: 100%; padding: 18%;padding-top: 25%;"
+              style="height: 100%; padding: 18%;padding-top: 25%; font-family: 'IRANSANS'"
             >
              <h2>+10</h2>
             </v-sheet>
             <v-sheet
               :rounded="'xl'"
               class="d-flex transition-fast-in-fast-out bg-grey-lighten-3 text-h2  mx-auto my-auto text-center v-card--reveal p-3"
-              style="height: 100%;padding-top: 25%;"
+              style="height: 100%;padding-top: 25%; font-family: 'IRANSANS'"
             >
             <h5>اساتید</h5>
            </v-sheet>
@@ -297,16 +297,16 @@
            v-if="isHovering"
               :rounded="'xl'"
               class="d-flex transition-fast-in-fast-out bg-grey-lighten-3 text-h2  mx-auto my-auto text-center v-card--reveal p-3"
-              style="height: 100%; padding: 18%;padding-top: 25%;"
+              style="height: 100%; padding: 18%;padding-top: 25%; font-family: 'IRANSANS'"
             >
              <h2>+15</h2>
             </v-sheet>
             <v-sheet
               :rounded="'xl'"
               class="d-flex transition-fast-in-fast-out bg-grey-lighten-3 mx-auto my-auto text-center v-card--reveal"
-              style="height: 100%; padding-top: 25%;font-family: 'IRANSANS';"
+              style="height: 100%; padding-top: 25%;font-family: 'IRANSANS'"
             >
-            <h5>{{ $t('message.site_report_1') }} </h5>
+            <h5 style="font-family: 'IRANSANS'">{{ $t('message.site_report_1') }} </h5>
            </v-sheet>
           </v-fab-transition>
           <!-- <h2></h2> -->
