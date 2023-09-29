@@ -4,8 +4,12 @@ const messages = {
     fa: {
       message: {
         sitename:'سامانه کاروساز',
-        header_sub:'سامانه کار و ساز با هدف جذب نیروهای توانمند و جویای کار در زمینه تدریس موسیقی و آموزش به علاقمندان این رشته راه اندازی شده است.',
+        header_sub:'سامانه کار و ساز با هدف جذب نیروهای توانمند و جویای کار در زمینه تدریس موسیقی و آموزش به علاقمندان این رشته راه اندازی شده است',
+        showallcourses:'نمایش کلاس ها',
         academies:'آموزشگاه ها',
+        gratuateds:'فارع التحصیلان',
+        teachers:'اساتید',
+        allusers:'کاربران',
         classes:'کلاس ها',
         about:'درباره ما',
         contact:'تماس با ما',
@@ -37,7 +41,11 @@ const messages = {
       message: {
         sitename:'KaroSaz System',
         header_sub:'The job system has been launched with the aim of attracting capable and job-seeking forces in the field of music teaching and education for those interested in this field.',
+        showallcourses:'All Courses',
         academies:'Academies',
+        gratuateds:'Graduates',
+        teachers:'All Teachers',
+        allusers:'All Users',
         classes:'Courses',
         about: 'About Us',
         contact:'Contact Us',

@@ -11,5 +11,6 @@
 
 .english{
 font-family: 'IRANSANS' !important;
+direction: rtl !important;
 }
 </style>

@@ -1,0 +1,31 @@
+.banner{
+    background-image: url('../img/123.jpg');
+    filter: brightness(50%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 70vh;
+}
+.banner-text {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 70%;
+  padding: 20px;
+  text-align: center;
+}
+.banner-text h1{
+    padding-bottom: 2%;
+}
+.bannerbtn{
+  background-color: #ff673d;
+  border-radius: 20px;
+  padding: 1%;
+  font-size: 18px;
+  color: white !important;
+  font-weight: bold;
+}

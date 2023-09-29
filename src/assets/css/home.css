@@ -1,0 +1,51 @@
+.s1img{
+    animation-duration: 3s;
+    animation-name: bouncerleft;
+    animation-direction: alternate;
+  }
+  .s1text{
+    animation-duration: 6s;
+    animation-name: bounceroghttoleft;
+    animation-direction: alternate;
+  }
+  .classcard{
+    box-shadow: 5px 10px 10px #564e4e;
+    border: solid 6px hsla(0, 0%, 8%, 0.934) !important; 
+    border-radius: 10% !important;
+    animation-duration: 3s;
+    animation-name: bounceIn;
+    animation-direction: alternate;
+  }
+  .classcard:hover{
+    box-shadow: 10px 15px 10px hsl(0, 6%, 16%);
+  }
+  .mybtn{
+    background-color: black !important;
+    padding: 3% !important;
+    color: aliceblue;
+    border-radius: 15px;
+  }
+  .detail{
+    height: 100%;
+    font-size: 30px;
+    padding-top: 5%;
+    padding-bottom: 6%;
+    font-weight: bold;
+    font-family: 'IRANSANS';
+    color:black;
+    box-shadow: 10px 15px 10px hsl(0, 6%, 16%);
+    /* background: linear-gradient(to bottom left, #f95e33 0%, #f7a576 60%); */
+    border: 5px solid #040404;
+    animation-duration: 5s;
+    animation-name: bounceIn;
+  }
+  
+  
+  
+  .detail p{
+      font-family: 'IRANSANS' !important;
+      font-weight: bold;
+      font-size: 20px !important;
+      color: rgba(0, 0, 0, 0.858);;
+  }
+  
