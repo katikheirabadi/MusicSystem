@@ -1,4 +1,5 @@
 <template>
+<v-row style="background: url('http://localhost:3000/src/assets/img/footer.jpg');min-height: 400px;background-size: cover;">
 
-<v-footer>assasa</v-footer>
+</v-row>
 </template>

@@ -4,39 +4,14 @@
 
    <v-container>
 
-    
-    <!-- System description  -->
-    <section>
-      <v-row>
-        <v-col lg="1" class="d-sm-none d-xs-none d-md-none d-lg-flex"></v-col>
-        <v-col sm="12" md="7" lg="7" class="text-center my-auto s1text">
-          <h1 style="font-size: 30px;">{{ $t('message.section1_header') }}</h1>
-          <p style="font-size: 18px;">{{ $t('message.section1_detail') }}</p>
-      
-        </v-col>
-        <v-col sm="12" md="5" lg="4" class="mx-auto">
-          <v-img class="s1img"
-          src="../assets/img/3.jpg"
-          >
-          </v-img>
-        </v-col>
-      </v-row>
-    </section>
-    <v-img 
-      src="../assets/img/devider.png"
-      width="100%"
-      height="3+200"
-      class="mx-auto mt-5"
-      ></v-img>
-
-
-    <!-- system details -->
-     <section>
-      <h1 class="text-center" style="font-size:30px;margin-bottom: 1%;">سوابق کاروساز...</h1>
-      <v-row>      
-      <v-col md="2" lg="2" sm="12" class="my-auto mx-auto">
+      <!-- system details -->
+      <section class="s1">
+      <h1 class="text-center sectionheader" style="">سوابق کاروساز...</h1>
+      <v-row class="text-center">   
+        <v-col cols="2" class="d-xs-none d-md-none d-lg-flex"></v-col>   
+      <v-col md="3" lg="2" sm="12" cols="12" class="my-auto ">
       <v-sheet 
-      class="my-auto" 
+      class="my-auto detailcol" 
       >
       <v-sheet
       :rounded="'xl'"
@@ -46,19 +21,19 @@
       </v-sheet>
       </v-sheet>
       </v-col>
-      <v-col  md="2" lg="2" sm="12" class="my-auto mx-auto">
+      <v-col  md="3" lg="2" sm="12" cols="12" class="my-auto ">
       <v-sheet 
       class="my-auto" 
       >
       <v-sheet
       :rounded="'xl'"
-      class="mx-auto my-auto text-center detail">
+      class="mx-auto mx-auto my-auto text-center detail">
             <h2>+450</h2>
             <p>{{ $t('message.allusers') }}</p>
       </v-sheet>
       </v-sheet>
       </v-col>
-      <v-col md="2" lg="2" sm="12" class="my-auto mx-auto">
+      <v-col md="3" lg="2" sm="12" cols="12" class="my-auto ">
       <v-sheet 
       class="my-auto" 
       >
@@ -70,7 +45,7 @@
       </v-sheet>
       </v-sheet>
       </v-col>
-     <v-col  md="2" lg="2" sm="12" class="my-auto mx-auto" >
+     <v-col  md="3" lg="2" sm="12" cols="12" class="my-auto " >
       <v-sheet 
       class="my-auto" 
       >
@@ -85,36 +60,35 @@
 
      </v-row>
 
-    </section>
+      </section>
  
+    </v-container>
 
-    <!-- <v-img
-    src="../assets/img/22.png"
-    width="60%"
-    class="mx-auto  mt-9"
-    ></v-img>
-     -->
-     <v-img 
-      src="../assets/img/devider.png"
-      width="100%"
-      height="3+200"
-      class="mx-auto mb-5 mt-15"
-      ></v-img>
+     <!-- System description  -->
+    <section class="s2">
+      <v-row>
+      <v-col sm="12" md="12" lg="12" class="my-auto s1text">
+        <h1 style="padding-inline-start: 3%;font-size: 28px;color: aliceblue;">{{ $t('message.section1_header') }}</h1>
+        <p style="font-size: 18px; color:aliceblue;">{{ $t('message.section1_detail') }}</p>
+
+      </v-col>
+      </v-row>
+    </section>
+
+    <v-container>
     <!-- Class Cards  -->
-   
-
-    <section >
-      <h1 class="text-center" style="font-size:30px;margin-bottom: 1%;">{{ $t('message.section2_title') }}</h1>
+    <section class="s3" >
+      <h1 class="text-center sectionheader" style="font-size:30px;">{{ $t('message.section2_title') }}</h1>
 
       <v-row 
        style="margin-bottom: 5%;">
-      <v-col v-for="myclass in classes" :key="myclass.id" sm="6" md="4" lg="4">
+      <v-col v-for="myclass in classes" :key="myclass.id" cols="6" sm="6" md="4" lg="4">
         <v-card 
-           class="mx-auto mt-10 classcard" 
+           class="mx-auto mt-5 classcard" 
             >
           <v-img
           cover=""
-          height="250"
+          height="200"
           :src="myclass.img"
           ></v-img>
 
@@ -143,32 +117,53 @@
       </v-col>
     </v-row>
     </section>
-
-    <v-img 
-      src="../assets/img/devider.png"
-      width="100%"
-      height="3+200"
-      class="mx-auto mb-5"
-      ></v-img>
-
-
   </v-container>
 
- 
+  <!-- options -->
+  <section class="s4 mx-auto my-auto">
+      <v-row>
+        <v-col class="mx-auto" cols="12" md="4" lg="4">
+          <v-sheet class="mx-auto text-center"
+         :height="200"
+         :width="300"
+         rounded='xl'
+         style="color: black;"
+        >
+        <v-icon style="font-size: 100px;" icon="	fa fa-motorcycle" />
+            </v-sheet>
+      </v-col>
 
-  <v-img
-    src="../assets/img/22.png"
-    width="60%"
-    class="mx-auto mt-9"
-  ></v-img>
+      <v-col class="mx-auto" cols="12" md="4" lg="4">
+        <v-sheet class="mx-auto"
+         :height="200"
+         :width="300"
+         rounded='xl'
+        ></v-sheet>
+      </v-col>
 
-<!-- footer -->
+      <v-col class="mx-auto" cols="12" md="4" lg="4">
+        <v-sheet class="mx-auto"
+         :height="200"
+         :width="300"
+        rounded='xl'
+        ></v-sheet>
+      </v-col>
+      </v-row>
+  </section>
+<br><br><br>
+
+
+
+  <!-- footer -->
+ <myfooter/>
+
 </template>
 
 <script>
   import { VSheet } from 'vuetify/lib/components/index.mjs'
   import banner from '../components/Banner.vue'
   import myheader from '../components/Header.vue'
+  import myfooter from '../components/Footer.vue'
   import '../assets/css/home.css'
   export default {
     data(){
@@ -199,7 +194,7 @@
       }
     },
     components:{
-    banner, myheader,
+    banner, myheader,myfooter,
     VSheet
 },
     updated(){
