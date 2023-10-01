@@ -59,9 +59,8 @@
     }
 
     .s4{
-      min-height: 40vh;
-      background-color: black;
-      /* background: url(../img/222222.jpg); */
+      min-height: 10vh;
+      background-color: #000000cd;
     }
     .s4 .v-row{
       padding: 3%;

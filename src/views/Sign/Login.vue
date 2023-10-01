@@ -90,11 +90,37 @@ export default{
     this.$vuetify.locale.current = lang
       this.$i18n.locale=lang
 
-    //axios.get('https://jsonplaceholder.typicode.com/posts').then(Response => console.log(Response))
-    axios.post('https://armanuser.armanonline.net/api/Users/Login',{
-  UserName: "2282961862",
-  Password: "0016139127"
-}).then(Response => console.log(Response))
+      //const axios = require('axios');
+let data = JSON.stringify({
+  "UserName": "2282961862",
+  "Password": "2282961862"
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'http://www.sina.local/api/Auth/Login',
+  headers: { 
+    'Content-Type': 'application/json', 
+  },
+  data : data,
+  withCredentials: true // Add this line
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+//     //axios.get('https://jsonplaceholder.typicode.com/posts').then(Response => console.log(Response))
+//     axios.post('http://www.sina.local/api/Auth/Login',{
+//   UserName: "2282961862",
+//   Password: "2282961862"
+// }).then(Response => console.log(Response))
   },
 
   methods:{

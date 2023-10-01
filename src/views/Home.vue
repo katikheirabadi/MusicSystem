@@ -82,7 +82,7 @@
 
       <v-row 
        style="margin-bottom: 5%;">
-      <v-col v-for="myclass in classes" :key="myclass.id" cols="6" sm="6" md="4" lg="4">
+      <v-col v-for="myclass in classes" :key="myclass.id" cols="12" sm="6" md="4" lg="4">
         <v-card 
            class="mx-auto mt-5 classcard" 
             >
@@ -120,23 +120,69 @@
   </v-container>
 
   <!-- options -->
-  <section class="s4 mx-auto my-auto">
+  <section class="s4 mx-auto">
       <v-row>
-        <v-col class="mx-auto" cols="12" md="4" lg="4">
+        <v-col class="mx-auto" cols="12" md="3" lg="3">
           <v-sheet class="mx-auto text-center"
-         :height="200"
-         :width="300"
+         :height="100"
+         :width="100"
+         :elevation="5"
          rounded='xl'
-         style="color: black;"
         >
-        <v-icon style="font-size: 100px;" icon="	fa fa-motorcycle" />
-            </v-sheet>
-      </v-col>
+        <v-img
+        src="../assets/img/icons8-department-100.png"
+        ></v-img>
+        </v-sheet>
+        <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
 
+      </v-col>
+      <v-col class="mx-auto" cols="12" md="3" lg="3">
+          <v-sheet class="mx-auto text-center"
+         :height="100"
+         :width="100"
+         :elevation="5"
+         rounded='xl'
+        >
+        <v-img
+        src="../assets/img/icons8-department-100.png"
+        ></v-img>
+        </v-sheet>
+        <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
+
+      </v-col>
+      <v-col class="mx-auto" cols="12" md="3" lg="3">
+          <v-sheet class="mx-auto text-center"
+         :height="100"
+         :width="100"
+         :elevation="5"
+         rounded='xl'
+        >
+        <v-img
+        src="../assets/img/icons8-department-100.png"
+        ></v-img>
+        </v-sheet>
+        <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
+
+      </v-col>
+      <v-col class="mx-auto" cols="12" md="3" lg="3">
+          <v-sheet class="mx-auto text-center"
+         :height="100"
+         :width="100"
+         :elevation="5"
+         rounded='xl'
+        >
+        <v-img
+        src="../assets/img/icons8-department-100.png"
+        ></v-img>
+        </v-sheet>
+        <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
+
+      </v-col>
+<!-- 
       <v-col class="mx-auto" cols="12" md="4" lg="4">
         <v-sheet class="mx-auto"
          :height="200"
-         :width="300"
+         :width="250"
          rounded='xl'
         ></v-sheet>
       </v-col>
@@ -144,10 +190,10 @@
       <v-col class="mx-auto" cols="12" md="4" lg="4">
         <v-sheet class="mx-auto"
          :height="200"
-         :width="300"
+         :width="250"
         rounded='xl'
         ></v-sheet>
-      </v-col>
+      </v-col> -->
       </v-row>
   </section>
 <br><br><br>
@@ -155,7 +201,7 @@
 
 
   <!-- footer -->
- <myfooter/>
+ <!-- <myfooter/> -->
 
 </template>
 
