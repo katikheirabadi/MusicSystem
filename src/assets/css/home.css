@@ -60,8 +60,58 @@
 
     .s4{
       min-height: 10vh;
-      background-color: #000000cd;
+      background-color: #5b1505;
     }
     .s4 .v-row{
       padding: 3%;
     }
+    .s5{
+      margin-top: 5%;
+    }
+
+    .ccontainer {
+      height: 60vh;
+      display: flex;
+      background-color: #5b15055c;
+     }
+    
+    .person-card {
+      display: flex;
+      position: relative;
+      margin: auto;
+      /* margin-bottom: 5%; */
+      border-radius: 5px;
+      /* margin-top: 3%; */
+      background-color: #5b1505;
+      color: white;
+      transition: all 0.4s; }
+      .person-card:hover {
+        cursor: pointer;
+        transform: translateY(-10px);
+        box-shadow: 10px 10px 35px #111; }
+        .person-card:hover .person-card-photo {
+          padding: 4px;
+          transform: translateY(-1rem); }
+      .person-card .person-card-photo {
+        box-sizing: border-box;
+        border: 0px solid #182028;
+        padding: 0;
+        overflow: hidden;
+        height: 25rem;
+        width: 18.75rem;
+        margin: -10rem 0 3rem 3rem;
+        transition: all 0.4s; }
+        .person-card .person-card-photo > img {
+          height: 25rem;
+          position: relative;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%); }
+      .person-card .person-card-info {
+        padding: 2rem 3rem; }
+        .person-card .person-card-info > h2 {
+          font-size: 2rem; }
+        .person-card .person-card-info > p {
+          opacity: 0.7; }
+    
+    

@@ -108,7 +108,7 @@
           جزئیات &nbsp
         <v-icon
           start
-          icon="mdi-arrow-left"
+          icon="fa fa-external-link"
         ></v-icon>
         </router-link>
 
@@ -130,7 +130,7 @@
          rounded='xl'
         >
         <v-img
-        src="../assets/img/icons8-department-100.png"
+        src="../assets/img/icons8-teacher-100.png"
         ></v-img>
         </v-sheet>
         <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
@@ -158,7 +158,7 @@
          rounded='xl'
         >
         <v-img
-        src="../assets/img/icons8-department-100.png"
+        src="../assets/img/icons8-acoustic-100 (1).png"
         ></v-img>
         </v-sheet>
         <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
@@ -172,7 +172,7 @@
          rounded='xl'
         >
         <v-img
-        src="../assets/img/icons8-department-100.png"
+        src="../assets/img/icons8-user-groups-64.png"
         ></v-img>
         </v-sheet>
         <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
@@ -196,8 +196,37 @@
       </v-col> -->
       </v-row>
   </section>
-<br><br><br>
 
+
+  <!-- prouducs  -->
+ <section class="s5">
+  <h1 class="text-right sectionheader" style=" padding-inline-start: 8%;font-size:30px;">اساتید کاروساز </h1>
+  <v-row>
+    <v-col cols="12">
+      <div class="ccontainer">
+        <div class="person-card">
+           <div class="person-card-photo">
+               <img src="http://games-of-thrones.ru/sites/default/files/pictures/a/Hoking/73.jpg"/>
+           </div>
+            <div class="person-card-info">
+                <h2>Стивен Хокинг</h2>
+                <p>8 января 1942 - 14 марта 2018</p>
+            </div>
+      </div> 
+    </div>
+      <v-pagination :length="5">
+  </v-pagination>
+  
+    </v-col>
+  </v-row>
+<v-row>
+<v-col cols="12">
+ 
+</v-col>
+
+</v-row>
+ 
+ </section>
 
 
   <!-- footer -->
@@ -258,3 +287,7 @@
   }
 </script>
 
+<style>
+
+
+</style>
