@@ -6,7 +6,7 @@
 
       <!-- system details -->
       <section class="s1">
-      <h1 class="text-center sectionheader" style="">سوابق کاروساز...</h1>
+      <h1 class="text-center sectionheader" style="">{{ $t('message.resume') }}</h1>
       <v-row class="text-center">   
         <v-col cols="2" class="d-xs-none d-md-none d-lg-flex"></v-col>   
       <v-col md="3" lg="2" sm="12" cols="12" class="my-auto ">
@@ -105,7 +105,7 @@
           to="/"
           class="ma-2 mybtn"
           >
-          جزئیات &nbsp
+          {{ $t('message.detail') }} &nbsp
         <v-icon
           start
           icon="fa fa-external-link"
@@ -198,7 +198,7 @@
   </section>
 
 
-  <!-- prouducs  -->
+  <!-- teachers  -->
  <section class="s5">
   <h1 class="text-right sectionheader" style=" padding-inline-start: 8%;font-size:30px;">اساتید کاروساز </h1>
   <v-row>
@@ -206,7 +206,7 @@
       <div class="ccontainer">
         <div class="person-card">
            <div class="person-card-photo">
-               <img src="http://games-of-thrones.ru/sites/default/files/pictures/a/Hoking/73.jpg"/>
+               <img src="../assets/img/73.jpg"/>
            </div>
             <div class="person-card-info">
                 <h2>Стивен Хокинг</h2>
@@ -230,7 +230,9 @@
 
 
   <!-- footer -->
- <!-- <myfooter/> -->
+
+
+    <myfooter/>
 
 </template>
 
