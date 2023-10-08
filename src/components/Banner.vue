@@ -23,7 +23,7 @@
   
     <v-col md="4" lg="6" style="display: flex;justify-content:end;">
       <img src="../assets/img/logo.png" alt="karosaz" height="47">
-      <router-link class="signinbtn" :to="{name:'welcome',params:{lang:this.$route.lang}}">{{ $t('message.sign') }}</router-link>
+      <router-link class="signinbtn" :to="{name:'welcome'}">{{ $t('message.sign') }}</router-link>
         
     </v-col>
 </v-row>

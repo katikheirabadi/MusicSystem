@@ -1,6 +1,11 @@
 <template>
  <div style="position: relative;">
 <v-row class="banner">
+  <v-img
+  :src="img"
+  cover=""
+  >
+  </v-img>
 </v-row>
 <div class="banner-text">
   <h1 style="font-size:30px">{{ header }}</h1>
@@ -16,6 +21,7 @@
  const props = defineProps({
   header: String,
   text:String,
-  btns:Array
+  btns:Array,
+  img:String
 })
 </script>

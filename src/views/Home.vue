@@ -1,6 +1,6 @@
 <template>
    <banner/>
-   <myheader :header="$t('message.sitename')" :text="$t('message.header_sub')" :btns="[{text:$t('message.showallcourses'),link:'/'}]"/>
+   <myheader img="src/assets/img/123.jpg" :header="$t('message.sitename')" :text="$t('message.header_sub')" :btns="[{text:$t('message.showallcourses'),link:'/'}]"/>
 
    <v-container>
 
@@ -76,8 +76,50 @@
     </section>
 
     <v-container>
+      <!-- Academies Cards -->
+      <section>
+        <h1 class="text-center sectionheader" style="font-size:30px;">{{ $t('message.Accademiessection_title') }}</h1>
+        <v-row>
+          <v-col cols="12" md="3" lg="3" v-for="academy in academies" :key="academy.id" >
+            <v-card 
+           class="mx-auto mt-5 academy" 
+            >
+          <v-img
+          height="150"
+          src="../assets/img/icons8-music-96.png"
+          ></v-img>
+
+          <v-card-item >
+          <v-card-title >{{ academy.name }}</v-card-title>
+          </v-card-item>
+
+          <v-card-text>
+          <div>{{ academy.addres }} - {{ academy.phone }}</div>
+          </v-card-text>
+          <v-card-actions style="  display: flex;justify-content: end;">
+          <router-link
+          :to="{name:'category',params:{academy:academy.name}}"
+          class="ma-2 mybtn"
+          >
+          {{ $t('message.details') }} &nbsp
+        <v-icon
+          start
+          icon="fa fa-external-link"
+        ></v-icon>
+        </router-link>
+
+       </v-card-actions>
+      </v-card>
+          
+          </v-col>
+        </v-row>
+        <v-pagination :length="4" style="margin-top: 3%;margin-bottom: 2%;">
+        </v-pagination>
+      </section>
+
+
     <!-- Class Cards  -->
-    <section class="s3" >
+    <!-- <section class="s3" >
       <h1 class="text-center sectionheader" style="font-size:30px;">{{ $t('message.section2_title') }}</h1>
 
       <v-row 
@@ -116,7 +158,8 @@
       </v-card>
       </v-col>
     </v-row>
-    </section>
+    </section> -->
+
   </v-container>
 
   <!-- options -->
@@ -219,20 +262,12 @@
   
     </v-col>
   </v-row>
-<v-row>
-<v-col cols="12">
- 
-</v-col>
 
-</v-row>
- 
  </section>
 
 
   <!-- footer -->
-
-
-    <myfooter/>
+    <!-- <myfooter/> -->
 
 </template>
 
@@ -268,13 +303,39 @@
             description: '  دوره شامل 10 جلسه 1 ساعته با رایج ترین تزبافباباددرالبا ها ...'
           }
         ]
+        ,academies :[
+          {
+            id:1,
+            name:'چگامه فردیس',
+            addres:'کرج - فردیس، فلکه سوم خیابان ۳۳ جدید، پلاک 29',
+            phone:'02636503521'
+          },
+          {
+            id:2,
+            name:'می ر سی',
+            addres:'تهران - شیخ بهایی جنوبی، بلوار آزادگان، انتهای خیابان ۲۴ غربی، مجموعه فرهنگی ورزشی آفتاب',
+            phone:'02188332195'
+          },
+          {
+            id:1,
+            name:'چگامه فرمانیه',
+            addres:'تهران - فرمانیه بلوار اندرزگو نبش کوچه عبدالهی جنوبی پ 72 واحد 17',
+            phone:'02122210307'
+          }, {
+            id:1,
+            name:'چگامه فرمانیه',
+            addres:'تهران - فرمانیه بلوار اندرزگو نبش کوچه عبدالهی جنوبی پ 72 واحد 17',
+            phone:'02122210307'
+          }
+          
+        ]
       }
     },
     components:{
     banner, myheader,myfooter,
     VSheet
 },
-    updated(){
+  updated(){
     var lang = this.$route.params.lang
     this.$vuetify.locale.current = lang
       this.$i18n.locale=lang
@@ -288,8 +349,3 @@
   }
   }
 </script>
-
-<style>
-
-
-</style>

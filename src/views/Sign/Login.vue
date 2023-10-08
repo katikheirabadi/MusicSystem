@@ -73,32 +73,9 @@
   </v-sheet>
 
 </template>
-<script>
+<script setup>
+import { ref } from 'vue';
 import '../../assets/css/login.css'
 import axios from 'axios'
-export default{
-  data(){
-    return {
-      signUp :false,
-      loginusername:'',
-      loginpass:''
-    }
-  },updated(){
-    var lang = this.$route.params.lang
-    this.$vuetify.locale.current = lang
-      this.$i18n.locale=lang
-      
-  },
-  mounted(){
-    var lang = this.$route.params.lang
-    this.$vuetify.locale.current = lang
-      this.$i18n.locale=lang
-  },
-
-  methods:{
-    login(){
-     
-    }
-  }
-}
+var signUp =  ref(false)
 </script>
