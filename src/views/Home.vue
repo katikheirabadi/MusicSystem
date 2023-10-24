@@ -80,7 +80,7 @@
       <section>
         <h1 class="text-center sectionheader" style="font-size:30px;">{{ $t('message.Accademiessection_title') }}</h1>
         <v-row>
-          <v-col cols="12" md="3" lg="3" v-for="academy in academies" :key="academy.id" >
+          <v-col cols="12" md="4" lg="4" v-for="academy in academies" :key="academy.id" >
             <v-card 
            class="mx-auto mt-5 academy" 
             >
@@ -98,7 +98,7 @@
           </v-card-text>
           <v-card-actions style="  display: flex;justify-content: end;">
           <router-link
-          :to="{name:'category',params:{academy:academy.name}}"
+          :to="{name:'AcademyHome',params:{academy:academy.name}}"
           class="ma-2 mybtn"
           >
           {{ $t('message.details') }} &nbsp
@@ -239,32 +239,28 @@
       </v-col> -->
       </v-row>
   </section>
+<router-link to="/Lessons/1">جزئیات</router-link>
 
-
-  <!-- teachers  -->
- <section class="s5">
-  <h1 class="text-right sectionheader" style=" padding-inline-start: 8%;font-size:30px;">اساتید کاروساز </h1>
-  <v-row>
-    <v-col cols="12">
-      <div class="ccontainer">
-        <div class="person-card">
-           <div class="person-card-photo">
-               <img src="../assets/img/73.jpg"/>
-           </div>
-            <div class="person-card-info">
-                <h2>Стивен Хокинг</h2>
-                <p>8 января 1942 - 14 марта 2018</p>
-            </div>
-      </div> 
+<!-- PRODUCTS -->
+<!-- <h1 class=" sectionheader" style="font-size:30px;">محبوب ترین ساز ها</h1>
+<v-row>
+  <v-col class="center-class" cols="3" v-for="i in (1,2,3,4)">
+    <div class="card">
+    <h2>پیانو</h2>
+    <div class="details">
+      <ul class="text-center">
+        <li><i class="fas fa-check"></i>Single Domain</li>
+        <li><i class="fas fa-check"></i>10GB Disk Space</li>
+        <li><i class="fas fa-check"></i>Single Domain</li>
+        <li><i class="fas fa-check"></i>10GB Disk Space</li>
+      </ul>
     </div>
-      <v-pagination :length="5">
-  </v-pagination>
-  
-    </v-col>
-  </v-row>
+    <p style="margin-inline-start: 15%;"><span>200,000,0000</span>ریال</p>
+    <button style="margin-inline-start: 5%;">افزودن به سبد خرید</button>
+  </div>
 
- </section>
-
+  </v-col>
+</v-row> -->
 
   <!-- footer -->
     <!-- <myfooter/> -->
@@ -276,7 +272,6 @@
   import banner from '../components/Banner.vue'
   import myheader from '../components/Header.vue'
   import myfooter from '../components/Footer.vue'
-  import '../assets/css/home.css'
   export default {
     data(){
       return{
@@ -321,11 +316,6 @@
             name:'چگامه فرمانیه',
             addres:'تهران - فرمانیه بلوار اندرزگو نبش کوچه عبدالهی جنوبی پ 72 واحد 17',
             phone:'02122210307'
-          }, {
-            id:1,
-            name:'چگامه فرمانیه',
-            addres:'تهران - فرمانیه بلوار اندرزگو نبش کوچه عبدالهی جنوبی پ 72 واحد 17',
-            phone:'02122210307'
           }
           
         ]
@@ -349,3 +339,7 @@
   }
   }
 </script>
+<style scoped>
+ @import '../assets/css/home.css'
+
+</style>

@@ -237,9 +237,9 @@ form {
   padding-bottom: 0px !important;
   margin-top: -15%;
 }
-.v-field__field{
-  color: rgb(82, 20, 12);
-  text-decoration: none;
+.field1{
+  color: rgb(82, 20, 12) !important;
+  text-decoration: none !important;
 }
 .sign-up h2{
   color: rgb(161, 71, 60);

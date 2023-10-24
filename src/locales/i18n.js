@@ -5,13 +5,14 @@ const messages = {
       category:{
         headertitle:"آمورشگاه ",
         headertext:"سامانه کاروساز با آموزشگاهای بسیاری همکاری می کند...",
-        headerbtn:"نمایش آموزشگاه ها",
-        gotocourses:"دوره ها"
+        headerbtn:"نمایش کلاس ها",
+        gotocourses:"دوره ها",
+        resume:'نتایج عملکرد ',
       },
       message: {
         sitename:'سامانه کاروساز',
         header_sub:'سامانه کار و ساز با هدف جذب نیروهای توانمند و جویای کار در زمینه تدریس موسیقی و آموزش به علاقمندان این رشته راه اندازی شده است',
-        showallcourses:'نمایش کلاس ها',
+        showallcourses:'نمایش آموزشگاه ها',
         academies:'آموزشگاه ها',
         gratuateds:'فارع التحصیلان',
         teachers:'اساتید',

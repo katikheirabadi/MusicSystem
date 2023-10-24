@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import home from '../views/Home.vue'
 import welcome from '../views/Sign/Login.vue'
-import category from '../views/Academy/Category.vue'
+import AcademyHome from '../views/Academy/AcademyHome.vue'
+import LessonDetail from '@/views/Lesson/Products.vue'
 const routes = [
   {
     path: '/:lang',
@@ -13,9 +14,14 @@ const routes = [
     component: welcome,
   },
   {
-    path: '/:academy/categories',
-    name:'category',
-    component: category,
+    path: '/Lessons/:lesson',
+    name:'lessondetail',
+    component: LessonDetail,
+  },
+  {
+    path: '/:academy',
+    name:'AcademyHome',
+    component: AcademyHome,
   },
   {
     path: '/',
