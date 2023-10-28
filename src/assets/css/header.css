@@ -24,6 +24,7 @@
 .bannerbtn{
   background-color: #ff673d;
   border-radius: 20px;
+  text-decoration: none;
   padding: 1%;
   font-size: 18px;
   color: white !important;

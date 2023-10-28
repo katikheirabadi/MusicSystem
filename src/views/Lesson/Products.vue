@@ -71,9 +71,9 @@
                     <v-sheet class="info" >
                         <h2 style="margin-top: 10%;">جزئیات</h2>
 	                <ul style="margin-top: 2%;margin-bottom: 5%;">
-		            <li><strong>مبلغ: </strong>{{ product.price }} ریال</li>
-		            <li><strong>تخفیف: </strong>%{{ product.Discount }}</li>
-		            <li><strong>روزهای هفته: </strong>{{ product.stringday }}</li>
+		                <li><strong>مبلغ: </strong>{{ product.price }} ریال</li>
+		                <li><strong>تخفیف: </strong>%{{ product.Discount }}</li>
+		                <li><strong>روزهای هفته: </strong>{{ product.stringday }}</li>
                     <li><strong>ساعت :</strong>{{ product.ProductAvailableSessions[0].Hour }}</li>
                     <li><strong>تعداد جلسات: </strong>{{ product.SessionsNumber }}</li>
                     <li><strong>مجموع ساعت: </strong>{{ product.ClassHour }}</li>
@@ -139,7 +139,7 @@
             color="green-darken-1"
             variant="flat"
             append-icon="fa fa-check"
-            @click="dialog = false"
+            @click="this.$router.replace({name:'bag'})"
             style="font-family: 'IRANSANS';display: flex; justify-content: start !important;"
           >
            افزودن به سبد خرید

@@ -272,6 +272,8 @@
   import banner from '../components/Banner.vue'
   import myheader from '../components/Header.vue'
   import myfooter from '../components/Footer.vue'
+  import config from '@/locales/config'
+  
   export default {
     data(){
       return{
@@ -324,22 +326,10 @@
     components:{
     banner, myheader,myfooter,
     VSheet
-},
-  updated(){
-    var lang = this.$route.params.lang
-    this.$vuetify.locale.current = lang
-      this.$i18n.locale=lang
-      
-  },
-  mounted(){
-    var lang = this.$route.params.lang
-    this.$vuetify.locale.current = lang
-      this.$i18n.locale=lang
-      
-  }
+}
   }
 </script>
 <style scoped>
- @import '../assets/css/home.css'
-
+ 
+@import '../assets/css/home.css';
 </style>

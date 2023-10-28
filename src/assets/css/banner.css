@@ -7,7 +7,7 @@
   padding: 0%;
   display: flex;
   justify-content: center;
-
+ 
 }
 .menuitemparent :hover{
   background-color: rgb(185, 180, 180);
@@ -16,8 +16,9 @@
   transition: all .2s ease-in-out;
 }
 .menuitem{
+  text-decoration: none;
   color: black ;
-  font-size: 18px;
+  font-size: 130%;
   font-weight: bold;
 }
 .signinbtn{
@@ -26,8 +27,23 @@
    text-decoration: none;
    color: rgb(255, 255, 255);
    padding: 1.2%;
-   margin-top: 0%;
+   margin-top: auto;
+   margin-bottom: auto;
    padding-left: 2.5%;
    padding-right: 2.5%;
    border-radius: 20px;
+   text-align: center;
+}
+
+@media all and (max-width:800px){
+  .row1{
+    display: none;
+  }
+  .v-banner__content{
+    justify-content: space-between !important;
+    padding: 2%;
+    padding-top: 0% !important;
+    margin-top:-3%;
+}
+
 }

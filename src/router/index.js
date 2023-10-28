@@ -3,6 +3,8 @@ import home from '../views/Home.vue'
 import welcome from '../views/Sign/Login.vue'
 import AcademyHome from '../views/Academy/AcademyHome.vue'
 import LessonDetail from '@/views/Lesson/Products.vue'
+import Shoppingbag from '@/views/User/Shoppingbag.vue'
+import Bank from '@/views/Bank/Result.vue'
 const routes = [
   {
     path: '/:lang',
@@ -24,13 +26,23 @@ const routes = [
     component: AcademyHome,
   },
   {
+    path: '/Your_Bag',
+    name:'bag',
+    component: Shoppingbag,
+  },
+  {
+    path: '/Bank',
+    name:'bank',
+    component: Bank,
+  },
+  {
     path: '/',
     redirect:'/fa'
   },
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes,
 })
 
