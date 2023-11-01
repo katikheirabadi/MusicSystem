@@ -5,6 +5,7 @@ import AcademyHome from '../views/Academy/AcademyHome.vue'
 import LessonDetail from '@/views/Lesson/Products.vue'
 import Shoppingbag from '@/views/User/Shoppingbag.vue'
 import Bank from '@/views/Bank/Result.vue'
+import About from '@/views/About.vue'
 const routes = [
   {
     path: '/:lang',
@@ -34,6 +35,11 @@ const routes = [
     path: '/Bank',
     name:'bank',
     component: Bank,
+  },
+  {
+    path: '/About-Karosaz',
+    name:'about',
+    component: About,
   },
   {
     path: '/',

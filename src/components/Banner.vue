@@ -1,6 +1,9 @@
 <template>
   <v-banner >
-    <v-row justify="center" class="d-xs-none d-sm-none d-md-flex row1" style=";">
+    <v-row justify="center" class="d-xs-none d-sm-none d-lg-flex row1" style=";">
+    <v-col class="menuitemparent" md="1" lg="1">
+        <router-link class="my-auto menuitem" to="/">{{ $t('message.home') }}</router-link>
+    </v-col>
     <v-col class="menuitemparent" md="2" lg="1">
         <router-link class="my-auto menuitem" to="/">{{ $t('message.academies') }}</router-link>
     </v-col>
@@ -9,12 +12,12 @@
       <router-link class="my-auto menuitem" to="/">{{ $t('message.classes') }}</router-link>
     </v-col>
 
-    <v-col class="menuitemparent" md="2"  lg="1">
-      <router-link class="my-auto menuitem" to="/">{{ $t('message.contact') }}</router-link>
+    <v-col class="menuitemparent" cols="3"  lg="1">
+      <router-link class="my-auto menuitem" to="/">{{ $t('message.certificate') }}</router-link>
     </v-col>
 
     <v-col class="menuitemparent" md="2"  lg="1">
-      <router-link class="my-auto menuitem" to="/">
+      <router-link class="my-auto menuitem" :to="{name:'about'}">
             {{ $t('message.about') }}</router-link>
     </v-col>
   
@@ -25,7 +28,7 @@
     </v-col>
     </v-row>
 
-    <v-row class="d-md-none row2" style="">
+    <v-row class="d-lg-none row2" style="">
     <v-layout>
       <v-navigation-drawer
         v-model="drawer"
@@ -39,8 +42,12 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item prepend-icon="	fa fa-institution" :title=" $t('message.academies')" @click="this.$router.replace({ name: 'welcome' })"></v-list-item>
-          <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item>
+          <v-list-item prepend-icon="fa fa-home" :title=" $t('message.home')" ></v-list-item>
+          <v-list-item prepend-icon="fa fa-institution" :title=" $t('message.academies')" ></v-list-item>
+          <v-list-item prepend-icon="fa fa-graduation-cap" :title="$t('message.classes')"></v-list-item>
+          <v-list-item prepend-icon="fa fa-certificate" :title="$t('message.certificate')"></v-list-item>
+          <v-list-item prepend-icon="fa fa-address-book" :title="$t('message.about')" @click="this.$router.replace({ name: 'about' })"></v-list-item>
+          <v-list-item style="background-color: #851313;color: aliceblue;" prepend-icon="fa fa-sign-in" :title="$t('message.sign')" @click="this.$router.replace({ name: 'welcome' })"></v-list-item>
         </v-list>
       </v-navigation-drawer>
       <v-main >

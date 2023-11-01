@@ -93,7 +93,7 @@
             variant="outlined" append-icon="fa fa-arrow-left" @click="shopdialog=true" >ادامه خرید</v-btn>
         </v-row>
      </v-container>  
-    
+    <myfooter/>
 
      <v-dialog
       v-model="shopdialog"
@@ -152,6 +152,7 @@
 <script setup>
 import banner from '@/components/Banner.vue';
 import myheader from '@/components/Header.vue';
+import myfooter from '@/components/Footer.vue'
 import { ref } from 'vue';
 let shopdialog = ref(false)
 </script>

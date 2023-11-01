@@ -163,7 +163,7 @@
   </v-container>
 
   <!-- options -->
-  <section class="s4 mx-auto">
+  <section class="s4 mx-auto mb-8">
       <v-row>
         <v-col class="mx-auto" cols="12" md="3" lg="3">
           <v-sheet class="mx-auto text-center"
@@ -221,49 +221,12 @@
         <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
 
       </v-col>
-<!-- 
-      <v-col class="mx-auto" cols="12" md="4" lg="4">
-        <v-sheet class="mx-auto"
-         :height="200"
-         :width="250"
-         rounded='xl'
-        ></v-sheet>
-      </v-col>
-
-      <v-col class="mx-auto" cols="12" md="4" lg="4">
-        <v-sheet class="mx-auto"
-         :height="200"
-         :width="250"
-        rounded='xl'
-        ></v-sheet>
-      </v-col> -->
       </v-row>
   </section>
 <router-link to="/Lessons/1">جزئیات</router-link>
 
-<!-- PRODUCTS -->
-<!-- <h1 class=" sectionheader" style="font-size:30px;">محبوب ترین ساز ها</h1>
-<v-row>
-  <v-col class="center-class" cols="3" v-for="i in (1,2,3,4)">
-    <div class="card">
-    <h2>پیانو</h2>
-    <div class="details">
-      <ul class="text-center">
-        <li><i class="fas fa-check"></i>Single Domain</li>
-        <li><i class="fas fa-check"></i>10GB Disk Space</li>
-        <li><i class="fas fa-check"></i>Single Domain</li>
-        <li><i class="fas fa-check"></i>10GB Disk Space</li>
-      </ul>
-    </div>
-    <p style="margin-inline-start: 15%;"><span>200,000,0000</span>ریال</p>
-    <button style="margin-inline-start: 5%;">افزودن به سبد خرید</button>
-  </div>
-
-  </v-col>
-</v-row> -->
-
   <!-- footer -->
-    <!-- <myfooter/> -->
+    <myfooter/>
 
 </template>
 

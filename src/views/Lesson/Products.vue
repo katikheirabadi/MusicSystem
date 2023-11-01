@@ -98,6 +98,7 @@
            </v-sheet>
         </v-sheet>
         </v-container>
+        <myfooter style="margin-top: 1.5%;"/>
     </div>
 
 
@@ -201,13 +202,15 @@
         </v-card-actions>
       </v-sheet>
     </v-dialog>
+
   </v-row>
+
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import banner from '../../components/Banner.vue'
-
+import myfooter from '../../components/Footer.vue'
 let regiaterdialog =ref(false)
 let advisedialog = ref(false)
 let data = {
@@ -222,7 +225,7 @@ let data = {
     concepts:[{"name":"مقدمات و مفاهیم رابط و تجربه کاربری","describle":"آشنایی با اسکچ، وایرفریم، پروتوتایپ، طراحی گرافیک، استراتژی UX و ..."},{"name":"اصول طراحی المان‌ها در رابط کاربری (روانشناسی رنگ، طراحی منو، طراحی فرم، اصول طراحی اپلیکیشن موبایل و ...)","describle":""},{"name":"کار با نرم‌افزار Adobe XD","describle":""},{"name":"طراحی پروژه وب‌سایت","describle":""},{"name":"طراحی پروژه موبایل","describle":""}]
 }
 </script>
-<style>
+<style scoped>
 .lessonimg{
     width: 100%;height: 100%;border-radius: 20% 0px;margin: 3%;background-size: cover;
 }
