@@ -38,7 +38,7 @@ box-shadow: 0 20px 30px rgba(0, 0, 0, .2),
     height: 100%;
     width: 200%;
     background: url('../../assets/img/wp12885225-violin-autumn-wallpapers.jpg');
-    background-size: 55vh;
+    background-size: 55%;
     color: rgb(255, 255, 255);
     transform: translateX(0);
     transition: transform .8s ease-in-out;
@@ -192,7 +192,12 @@ form {
     min-height: 100%;
   }
 }
-
+.v-col-md-12{
+  padding-top: 0% !important;
+  height: fit-content;
+  margin-bottom: 0% !important;
+  margin-top: -6%;
+}
 .form-btn{
   display: flex;
   justify-content: center;
@@ -252,7 +257,62 @@ form {
   margin: 0% !important;
 }
 
-@media all and (max-width:1500px) {
+.smallform .container {
+ 
+  width: 80%;
+  height: 90vh;
+  border-radius: 15px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, .2),
+  20px 20px 30px rgba(0, 0, 0, .2);
+  /* background: linear-gradient(to bottom, #efefef, #ccc); */
+  }
+
+  .smallform .container .sign-in {
+    width: 100%;
+    height: 100%;
+    left: 0;
+  }
+  
+  .smallform .container .sign-up {
+    transform: translateX(100%);
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+ .sign-up-active2 {
+  .sign-in {
+      opacity: 0;
+    }
+  
+   .sign-up {
+      opacity: 1;
+      z-index: 5;
+      width: 100%;
+      animation: show .5s;
+      transform: translateX(0%);
+    }
+  
+  }
+  .smallform article{
+    margin-inline-start: 0%;
+  }
+  .smallform .v-col-12{
+    margin-bottom: -40%;
+  }
+
+  .smallform .form-btn{
+    padding: 5.5%;
+  }
+  .smallform .form-btn2{
+    padding: 3.5%;
+    margin-bottom: 10%;
+  }
+/* @media all and (max-width:1500px) {
+  .form{
+    width: 100%;
+  }
   .v-row{
     margin-top: 3px !important;
   }
@@ -266,4 +326,4 @@ form {
   .form-btn2{
     margin-top: 3%;
   }
-}
+} */

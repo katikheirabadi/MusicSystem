@@ -1,6 +1,6 @@
 <template> 
   <v-sheet class="login mx-auto">
-  <div class="form" style="">
+  <div class="form d-none d-md-block" style="">
   <article >
     <div class="container" :class="{'sign-up-active' : signUp}">
       <div class="overlay-container">
@@ -26,16 +26,12 @@
           <v-col cols="12" sm="12" md="12" lg="6" style="">
             <v-text-field class="field1" :label="$t('message.login_signup_lastname') " required ></v-text-field>
           </v-col>
-        </v-row>
-        <v-row style="width: 100%;margin-top: -30%;">
           <v-col cols="12" sm="12" md="12" lg="6">
             <v-text-field class="field1" :label="$t('message.login_signup_natinalcode') " required ></v-text-field>
           </v-col>
           <v-col cols="12" sm="12" md="12" lg="6">
             <v-text-field class="field1" :label="$t('message.login_signup_PhoneNumber') " required ></v-text-field>
           </v-col>
-        </v-row>
-        <v-row style="width: 100%;margin-top: -30%;">
           <v-col cols="12" sm="12" md="12" lg="6">
             <v-text-field class="field1" :label="$t('message.login_signup_pass') " required ></v-text-field>
           </v-col>
@@ -69,7 +65,68 @@
     </div>
   </article>
   </div>
-  
+  <div class="smallform d-md-none" style="">
+  <article>
+    <div class="container mx-auto" :class="{'sign-up-active2' : signUp}">
+      <v-form class="sign-up">
+        <h2>{{ $t('message.login_signup_header') }}</h2>
+        <v-row style="width: 100%;">
+          <v-col cols="12" style="height: fit-content;">
+            <v-text-field  block class="field1" :label="$t('message.login_signup_name')" required ></v-text-field>
+          </v-col>
+          <v-col cols="12">
+            <v-text-field class="field1" :label="$t('message.login_signup_lastname') " required ></v-text-field>
+          </v-col>
+          <v-col cols="12">
+            <v-text-field class="field1" :label="$t('message.login_signup_natinalcode') " required ></v-text-field>
+          </v-col>
+          <v-col cols="12">
+            <v-text-field class="field1" :label="$t('message.login_signup_PhoneNumber') " required ></v-text-field>
+          </v-col>
+          <v-col cols="12">
+            <v-text-field class="field1" :label="$t('message.login_signup_pass') " required ></v-text-field>
+          </v-col>
+          <v-col cols="12">
+            <v-text-field class="field1" :label="$t('message.login_signup_Confirmpass') " required ></v-text-field>
+          </v-col>
+          <v-col cols="12">
+            <v-text-field class="field1" :label="$t('message.login_signup_Confirmpass') " required ></v-text-field>
+          </v-col>
+          <v-col class="center-class" cols="12" style="margin-top: 10%;">
+            <v-btn  @click="login" class="form-btn2" >{{ $t('message.login_login_signupbtn') }}</v-btn>
+          </v-col>
+          <v-col cols="12" style="color: brown !important;">
+             <router-link to="" style="color: brown;" @click="signUp = !signUp">ورود به سامانه</router-link>
+         </v-col>
+        </v-row>
+      </v-form>
+      <v-form class="sign-in center-class">
+        <v-img
+        width="300"
+        src="../../assets/img/logo.png"></v-img>
+        <h4>{{ $t('message.login_login_header') }}</h4>
+        <v-row style="width: 90%;" class="center-class">
+          <v-col cols="12" class="my-auto">
+            <v-text-field class='field1' v-model="loginusername" :label="$t('message.login_login_username') " required block ></v-text-field>
+          </v-col>
+          
+          <v-col cols="12" style="margin-top: -10% !important;">
+            <v-text-field type="password" class='field1' v-model="loginpass" :label="$t('message.login_login_pass') " required block ></v-text-field>
+          </v-col>
+          <v-col class="center-class" cols="12" style="margin-top: 10% !important;">
+            <v-btn @click="login" class="form-btn">{{ $t('message.login_login_loginbtn') }}</v-btn>
+            
+          </v-col>
+         <v-col cols="12" style="color: brown !important;">
+             <router-link to="" style="color: brown;">فراموشی رمز عبور</router-link>/
+             <router-link to="" style="color: brown;" @click="signUp = !signUp">ثبت نام </router-link>
+         </v-col>
+        </v-row>
+
+      </v-form>
+    </div>
+  </article>
+  </div>
   </v-sheet>
 
 </template>

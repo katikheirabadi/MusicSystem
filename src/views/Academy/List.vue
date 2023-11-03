@@ -24,7 +24,7 @@
           </v-card-item>
 
           <v-card-text>
-          <div>{{ academy.addres }} - {{ academy.phone }}</div>
+          <div>{{ academy.addres.substring(25)+'...' }}</div>
           </v-card-text>
           <v-card-actions style="  display: flex;justify-content: end;">
           <router-link
@@ -97,8 +97,8 @@ let academies=[
   box-shadow: 5px 10px 20px #564e4e;
   border-radius: 5% !important;
   width: 100%;
-  height:100%;
-  background-color: #ebc18dad;
+  height: max-content;
+  background-color: #ebc18d8f;
 }
 .academy:hover{
   box-shadow: 10px 15px 15px hsl(0, 6%, 16%);
@@ -111,5 +111,6 @@ let academies=[
     padding: 3% !important;
     color: aliceblue;
     border-radius: 15px;
+    margin-top: auto;
   }
 </style>
