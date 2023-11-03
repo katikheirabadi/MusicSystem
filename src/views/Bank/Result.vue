@@ -63,7 +63,7 @@
         </v-sheet>
         
     </div> 
-    <myfooter/> 
+    <myfooter style="margin-top: 0%;"/> 
 </template>
 <script setup>
 import banner from '@/components/Banner.vue'

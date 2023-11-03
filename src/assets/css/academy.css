@@ -1,0 +1,107 @@
+*
+{
+  
+  -webkit-transition: all .2s ease-out;
+  -moz-transition: all .2s ease-out;
+  -ms-transition: all .2s ease-out;
+  -o-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+.card-img-top{
+  min-height: 20vh !important;
+  width: auto;
+}
+.s1{
+  margin-bottom: 1.5%;
+}
+.sectionheader{
+  justify-content: center;
+  box-shadow: 30px 30px 30px white;
+  display: flex;
+  font-weight: bold;
+  font-size: 200%;
+  color: #751f08;
+  margin-top: 3%;
+  margin-bottom: 1%;
+}
+.card-title{
+  position:relative;
+  text-align:center;
+  font-weight:bold;
+  text-transform:uppercase;
+  font-size:2.5rem;
+  margin-top: -4.87rem;
+  color:#fffcfb;
+  z-index:1;
+}
+
+.detail{
+    height: 100%;
+    font-size: 25px;
+    padding-top: 5%;
+    padding-bottom: 6%;
+    min-width: 80%;
+    font-weight: bold;
+    font-family: 'IRANSANS';
+    color: #5d2415;
+    border: 3px solid #da3e14;
+    box-shadow: 2px 2px 9px #a03e23;
+  }
+.detail p{
+      font-family: 'IRANSANS' !important;
+      font-weight: bold;
+      font-size: 20px !important;
+      color: #5b1505;
+  }
+.card 
+{
+  box-shadow: 10px 10px 30px 5px;
+  border-radius: 10%;
+  width:95%;
+  margin: 5% !important;
+}
+
+a.btn
+{
+  width:100% !important;
+  justify-content: center;
+  margin-bottom: 0px;
+  border-radius:0;
+  text-transform:uppercase;
+  text-decoration: none;
+  font-weight:bold;
+  font-size:1.1rem;
+  background-color: #481203;
+  text-align: center;
+  color: #ffffff !important;
+  padding:5% !important;
+  width: fit-content;
+  display: flex;
+  justify-self: center;
+}
+
+[class^="hvr-"] {margin: .4em;padding: 1em;text-transform: uppercase;cursor: pointer;border-top:4px solid rgb(244, 165, 165);text-decoration: none;-webkit-font-smoothing: antialiased;}
+.hvr-bounce-to-bottom{display:inline-block;vertical-align:middle;-webkit-transform:perspective(1px) translateZ(0);transform:perspective(1px) translateZ(0);box-shadow:0 0 1px transparent;position:relative;-webkit-transition-property:color;transition-property:color;-webkit-transition-duration:.5s;transition-duration:.5s}
+.hvr-bounce-to-bottom:before{content:"";position:absolute;z-index:-1;top:0;left:0;right:0;bottom:0;background:rgb(116, 25, 25);-webkit-transform:scaleY(0);transform:scaleY(0);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-transition-property:transform;transition-property:transform;-webkit-transition-duration:.5s;transition-duration:.5s;-webkit-transition-timing-function:ease-out;transition-timing-function:ease-out}
+.hvr-bounce-to-bottom:active,.hvr-bounce-to-bottom:focus,.hvr-bounce-to-bottom:hover{color:#1c1f23;}
+.hvr-bounce-to-bottom:active:before,.hvr-bounce-to-bottom:focus:before,.hvr-bounce-to-bottom:hover:before{-webkit-transform:scaleY(1);transform:scaleY(1);-webkit-transition-timing-function:cubic-bezier(.52,1.64,.37,.66);transition-timing-function:cubic-bezier(.52,1.64,.37,.66)}
+
+
+.img-hover-zoom {
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+.img-hover-zoom img {
+  transition: transform .5s ease;
+}
+
+.img-hover-zoom--zoom-n-rotate img {
+  transition: transform .5s ease-in-out;
+}
+
+.img-hover-zoom--zoom-n-rotate:hover img {
+  transform: scale(1.6) rotate(10deg);
+}
+.s5{
+      margin-top: 10%;
+    }

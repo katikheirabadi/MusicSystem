@@ -1,14 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import home from '../views/Home.vue'
 import welcome from '../views/Sign/Login.vue'
-import AcademyHome from '../views/Academy/AcademyHome.vue'
+import About from '@/views/About.vue'
+
+import Academy from '../views/Academy/Home.vue'
+import Academies from '../views/Academy/List.vue'
+
+import Lessons from '@/views/Lesson/List.vue'
 import LessonDetail from '@/views/Lesson/Products.vue'
+
 import Shoppingbag from '@/views/User/Shoppingbag.vue'
 import Bank from '@/views/Bank/Result.vue'
-import About from '@/views/About.vue'
 const routes = [
   {
     path: '/:lang',
+    name:'Home',
     component: home,
   },
   {
@@ -17,14 +23,31 @@ const routes = [
     component: welcome,
   },
   {
-    path: '/Lessons/:lesson',
+    path: '/:academy/Lessons',
+    name:'lessons',
+    component: Lessons,
+    beforeRouteEnter(to, from, next) {
+      next(vm => {
+        vm.$nextTick(() => {
+          window.scrollTo(0, 0);
+        });
+      });
+    }
+  },
+  {
+    path: '/Lessons/:lessonid',
     name:'lessondetail',
     component: LessonDetail,
   },
   {
     path: '/:academy',
-    name:'AcademyHome',
-    component: AcademyHome,
+    name:'Academy',
+    component: Academy,
+  },
+  {
+    path:'/karosaz-academies',
+    name:'Academies',
+    component :Academies
   },
   {
     path: '/Your_Bag',
@@ -50,6 +73,13 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  }
+});
 
+router.beforeEach((to, from, next) => {
+  window.scrollTo(0, 0); // Scrolls to the top of the page
+  next(); // Proceeds with the route change
+});
 export default router

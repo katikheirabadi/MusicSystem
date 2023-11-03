@@ -1,6 +1,6 @@
 <template>
    <banner/>
-   <myheader img="src/assets/img/123.jpg" :header="$t('message.sitename')" :text="$t('message.header_sub')" :btns="[{text:$t('message.showallcourses'),link:'/'}]"/>
+   <myheader img="src/assets/img/123.jpg" :header="$t('message.sitename')" :text="$t('message.header_sub')" :btns="[{text:$t('message.showallcourses'),link:{name:'Academies'}}]"/>
 
    <v-container>
 
@@ -61,7 +61,7 @@
      </v-row>
 
       </section>
- 
+      
     </v-container>
 
      <!-- System description  -->
@@ -98,7 +98,7 @@
           </v-card-text>
           <v-card-actions style="  display: flex;justify-content: end;">
           <router-link
-          :to="{name:'AcademyHome',params:{academy:academy.name}}"
+          :to="{name:'Academy',params:{academy:academy.name}}"
           class="ma-2 mybtn"
           >
           {{ $t('message.details') }} &nbsp
@@ -117,48 +117,7 @@
         </v-pagination>
       </section>
 
-
-    <!-- Class Cards  -->
-    <!-- <section class="s3" >
-      <h1 class="text-center sectionheader" style="font-size:30px;">{{ $t('message.section2_title') }}</h1>
-
-      <v-row 
-       style="margin-bottom: 5%;">
-      <v-col v-for="myclass in classes" :key="myclass.id" cols="12" sm="6" md="4" lg="4">
-        <v-card 
-           class="mx-auto mt-5 classcard" 
-            >
-          <v-img
-          cover=""
-          height="200"
-          :src="myclass.img"
-          ></v-img>
-
-          <v-card-item >
-          <v-card-title >{{ myclass.name }}</v-card-title>
-          <v-card-subtitle>{{ myclass.price }}</v-card-subtitle>
-          </v-card-item>
-
-          <v-card-text>
-          <div>{{ myclass.description }}</div>
-          </v-card-text>
-          <v-card-actions style="  display: flex;justify-content: end;">
-          <router-link
-          to="/"
-          class="ma-2 mybtn"
-          >
-          {{ $t('message.detail') }} &nbsp
-        <v-icon
-          start
-          icon="fa fa-external-link"
-        ></v-icon>
-        </router-link>
-
-       </v-card-actions>
-      </v-card>
-      </v-col>
-    </v-row>
-    </section> -->
+   
 
   </v-container>
 
@@ -223,7 +182,6 @@
       </v-col>
       </v-row>
   </section>
-<router-link to="/Lessons/1">جزئیات</router-link>
 
   <!-- footer -->
     <myfooter/>
@@ -293,6 +251,5 @@
   }
 </script>
 <style scoped>
- 
 @import '../assets/css/home.css';
 </style>

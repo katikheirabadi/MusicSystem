@@ -2,7 +2,7 @@
     <banner/>
     <myheader img="http://localhost:3000/src/assets/img/options.jpeg" header="شناسه سبد خرید شما 2564"  text="اضافه کردن دوره/کالا به سبد خرید به منزله رزرو نمی باشد .(درصورتی که ظرفیت کلاس پر شود دوره به طور اتوماتیک از سبد خرید حذف میگردد)" :btns="[{text:'بازگشت به صفحه کاربری',link:'/'}]"/>
      <v-container class="mt-10 mb-10">
-        <section style="width: 80%;margin: auto;">
+        <section style="width: 100%;margin: auto;">
             <h1>لیست دوره ها</h1>
             
             <v-sheet  >
@@ -37,7 +37,7 @@
         </section>
         <!-- mobile classes -->
 
-        <section class="mt-10" style="width: 80%;margin: auto;">
+        <section class="mt-10" style="width: 100%;margin: auto;">
           <v-row>
             <v-col cols="6">
               <v-sheet>
@@ -157,7 +157,7 @@ import { ref } from 'vue';
 let shopdialog = ref(false)
 </script>
 
-<style>
+<style scoped>
 .content {
   border: 1px solid #e6e5e5;
 }

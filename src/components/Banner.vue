@@ -1,18 +1,14 @@
 <template>
-  <v-banner >
+  <v-banner align-start >
     <v-row justify="center" class="d-xs-none d-sm-none d-lg-flex row1" style=";">
-    <v-col class="menuitemparent" md="1" lg="1">
+    <v-col class="menuitemparent" md="1"  lg="1" style="width: fit-content !important;">
         <router-link class="my-auto menuitem" to="/">{{ $t('message.home') }}</router-link>
     </v-col>
-    <v-col class="menuitemparent" md="2" lg="1">
-        <router-link class="my-auto menuitem" to="/">{{ $t('message.academies') }}</router-link>
+    <v-col class="menuitemparent" md="2"  lg="1">
+        <router-link class="my-auto menuitem" :to="{name:'Academies'}">{{ $t('message.academies') }}</router-link>
     </v-col>
 
-    <v-col  class="menuitemparent" md="2"  lg="1">
-      <router-link class="my-auto menuitem" to="/">{{ $t('message.classes') }}</router-link>
-    </v-col>
-
-    <v-col class="menuitemparent" cols="3"  lg="1">
+    <v-col class="menuitemparent" md="2"  lg="1">
       <router-link class="my-auto menuitem" to="/">{{ $t('message.certificate') }}</router-link>
     </v-col>
 
@@ -42,9 +38,8 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item prepend-icon="fa fa-home" :title=" $t('message.home')" ></v-list-item>
-          <v-list-item prepend-icon="fa fa-institution" :title=" $t('message.academies')" ></v-list-item>
-          <v-list-item prepend-icon="fa fa-graduation-cap" :title="$t('message.classes')"></v-list-item>
+          <v-list-item prepend-icon="fa fa-home" :title=" $t('message.home')" @click="this.$router.replace({ name: 'Home' })"></v-list-item>
+          <v-list-item prepend-icon="fa fa-institution" :title=" $t('message.academies')"  @click="this.$router.replace({ name: 'Academies' })"></v-list-item>
           <v-list-item prepend-icon="fa fa-certificate" :title="$t('message.certificate')"></v-list-item>
           <v-list-item prepend-icon="fa fa-address-book" :title="$t('message.about')" @click="this.$router.replace({ name: 'about' })"></v-list-item>
           <v-list-item style="background-color: #851313;color: aliceblue;" prepend-icon="fa fa-sign-in" :title="$t('message.sign')" @click="this.$router.replace({ name: 'welcome' })"></v-list-item>

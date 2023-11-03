@@ -112,5 +112,6 @@
 .foot{
     background-color: rgb(0, 0, 0);
     min-height: 300px;
+    margin-top: 5%;
 }
 </style>

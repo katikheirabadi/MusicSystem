@@ -14,10 +14,11 @@
                 class="lessonimg"
                 :src="data.img"
                 style=""
+                cover=""
                 ></v-img>
             </v-col>
             <v-col cols="12" sm="12" md="6">
-                <v-container style="margin-top: 25%;">
+                <v-container style="margin-top: 10%;">
                     <h1 class="text-center">{{ data.name }}</h1>
                     <p class="text-center" style="margin-top:3%;">{{ data.desc }}</p>
                     <br>
@@ -227,7 +228,7 @@ let data = {
 </script>
 <style scoped>
 .lessonimg{
-    width: 100%;height: 100%;border-radius: 20% 0px;margin: 3%;background-size: cover;
+    width: 100%;height: 200%;border-radius: 20% 0px;margin: 3%;
 }
 .product-image {
 	transition: all 0.3s ease-out;
