@@ -1,0 +1,89 @@
+.card {
+    width:100% !important; 
+    min-height: 450% !important;
+    box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    margin: 1.2rem;
+  }
+  
+  .info{
+     position: absolute;
+     top: 0%;
+     left: 0%;
+     display: none;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.071);
+     color: #f8f8f8;
+  }
+  .info-btn{
+   margin-inline-start: 0%;
+   width: 50%;
+  }
+  .card h1 {
+    text-align: center;
+  }
+  
+  .card .additional {
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(#dE685E, #EE786E);
+    transition: width 0.4s;
+    overflow: hidden;
+    z-index: 2;
+  }
+  
+  .additional:hover {
+    width: 100%;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  .additional:hover .info{
+    display: block;
+  }
+  .card .additional .product-card {
+    height: 100%;
+  }
+  
+  .card .additional .product-card::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10%;
+    height: 80%;
+    border-left: 2px solid rgba(0,0,0,0.025);
+  }
+  .card .additional .more-info {
+    width: 100%;
+    top: 0;
+    position: absolute;
+    inset-inline-end: 100%;
+    height: 100%;
+  }
+  .card .general {
+    margin-inline-start: 20% !important;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    box-sizing: border-box;
+    padding-top: 0;
+  }
+  
+  .detail{
+    justify-content: space-around;
+    color: rgb(94, 92, 92);
+    border-top: #dE685E solid 3px;
+    line-height: 2;
+  }
+  
+  .v-col-12{
+    margin-bottom: 30% !important;
+  }
+  .v-col-md-4{
+    margin-bottom: 10% !important;
+  }
+  

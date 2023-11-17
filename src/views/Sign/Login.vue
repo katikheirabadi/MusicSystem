@@ -133,6 +133,11 @@
 <script setup>
 import { ref } from 'vue';
 var signUp =  ref(false)
+import { useRouter } from 'vue-router';
+const router = useRouter()
+function login(){
+  router.replace({ name: 'panel' })
+}
 </script>
 <style scoped>
 @import '../../assets/css/login.css';

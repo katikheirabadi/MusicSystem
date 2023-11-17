@@ -9,6 +9,7 @@ import Academies from '../views/Academy/List.vue'
 import Lessons from '@/views/Lesson/List.vue'
 import LessonDetail from '@/views/Lesson/Products.vue'
 
+import Panel from '@/views/User/Panel.vue'
 import Shoppingbag from '@/views/User/Shoppingbag.vue'
 import Bank from '@/views/Bank/Result.vue'
 const routes = [
@@ -25,14 +26,7 @@ const routes = [
   {
     path: '/:academy/Lessons',
     name:'lessons',
-    component: Lessons,
-    beforeRouteEnter(to, from, next) {
-      next(vm => {
-        vm.$nextTick(() => {
-          window.scrollTo(0, 0);
-        });
-      });
-    }
+    component: Lessons
   },
   {
     path: '/Lessons/:lessonid',
@@ -52,7 +46,7 @@ const routes = [
   {
     path: '/Your_Bag',
     name:'bag',
-    component: Shoppingbag,
+    component: Shoppingbag
   },
   {
     path: '/Bank',
@@ -63,6 +57,11 @@ const routes = [
     path: '/About-Karosaz',
     name:'about',
     component: About,
+  },
+  {
+    path: '/Hello!',
+    name:'panel',
+    component: Panel,
   },
   {
     path: '/',
