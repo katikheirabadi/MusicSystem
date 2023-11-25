@@ -124,12 +124,12 @@
             </v-col>
           </v-row>
           <!--  -->
-          <div class="container">
+          <div class="container mb-5">
              <div class="calendar">
              <div class="front">
-          <div class="current-date">
-            <h1> 6 آذر</h1>
-          </div>
+             <div class="current-date">
+             <h1> 6 آذر</h1>
+            </div>
 
           <div class="current-month">
             <ul class="week-days">
@@ -197,34 +197,33 @@
         </div>
 
         <div class="back">
-          <input placeholder="What's the event?">
-          <div class="info">
-            <div class="date">
-              <p class="info-date">
-              Date: <span>Jan 15th, 2016</span>
-              </p>
-              <p class="info-time">
-                Time: <span>6:35 PM</span>
-              </p>
-            </div>
-            <div class="address">
-              <p>
-                Address: <span>129 W 81st St, New York, NY</span>
-              </p>
-            </div>
-            <div class="observations">
-              <p>
-                Observations: <span>Be there 15 minutes earlier</span>
-              </p>
-            </div>
-          </div>
-
+          <v-row>
+            <v-col cols="12">
+              <v-sheet class="px-6 py-5" style="width: 100%;;overflow-y: auto;min-height: 400px;max-height: 400px;">
+                <h3>جلسات امروز</h3>
+                <v-row class="mt-2 mb-5 text-center" style="border-radius: 5px;background-color:  rgb(2, 83, 90);;color: aliceblue;">
+                  <v-col cols="1"><strong>* </strong></v-col>
+                  <v-col cols="3"><strong>نام دوره</strong></v-col>
+                  <v-col cols="3"><strong>نام استاد</strong></v-col>
+                  <v-col cols="2"><strong>ساعت شروع</strong></v-col>
+                  <v-col cols="3"><strong>کلاس آنلاین</strong></v-col>
+                </v-row>
+                <v-row v-for="i in 10" class="mt-5 mb-3 text-center">
+                  <v-col cols="1"><strong>{{i}} </strong></v-col>
+                  <v-col cols="3"><strong>گیتار</strong></v-col>
+                  <v-col cols="3"><strong>محسن پوربخت</strong></v-col>
+                  <v-col cols="2"><strong>12:35</strong></v-col>
+                  <v-col cols="3" class=""><router-link class="joinbtn"
+                  to="/">ورود به جلسه </router-link></v-col>
+                  <hr>
+                </v-row>
+              </v-sheet>
+            
+            </v-col>
+          </v-row>
           <div class="actions">
             <button class="save">
-              Save <i class="ion-checkmark"></i>
-            </button>
-            <button class="dismiss">
-              Dismiss <i class="ion-android-close"></i>
+              بازگشت 
             </button>
           </div>
         </div>
@@ -236,30 +235,7 @@
 
 
            <!-- exams -->
-           <v-row>
-            <v-col cols="12">
-              <v-sheet class="px-6 py-5" style="width: 100%;height: 40vh;overflow-y: auto;border-radius: 10px;">
-                <h3>جلسات امروز</h3>
-                <v-row class="mt-2 mb-5 text-center" style="border-radius: 5px;background-color:  rgb(2, 83, 90);;color: aliceblue;">
-                  <v-col cols="2"><strong>* </strong></v-col>
-                  <v-col cols="3"><strong>نام دوره</strong></v-col>
-                  <v-col cols="3"><strong>نام استاد</strong></v-col>
-                  <v-col cols="2"><strong>ساعت شروع</strong></v-col>
-                  <v-col cols="2"><strong>کلاس آنلاین</strong></v-col>
-                </v-row>
-                <v-row v-for="i in 4" class="mt-5 mb-3 text-center">
-                  <v-col cols="2"><strong>{{i}} </strong></v-col>
-                  <v-col cols="3"><strong>گیتار</strong></v-col>
-                  <v-col cols="3"><strong>محسن پوربخت</strong></v-col>
-                  <v-col cols="2"><strong>12:35</strong></v-col>
-                  <v-col cols="2" class=""><router-link class="joinbtn"
-                  to="/">ورود به جلسه </router-link></v-col>
-                  <hr>
-                </v-row>
-              </v-sheet>
-            
-            </v-col>
-          </v-row>
+        
         <!-- sessions and homeworks -->
           <v-row>
             <v-col cols="12" md="6">
@@ -364,6 +340,10 @@ export default{
 
 </script>
 <style scoped>
+* {
+  list-style: none;
+  outline: none;
+}
 .joinbtn{
 text-decoration: none;
 background-color: rgb(18, 121, 130);
@@ -396,14 +376,14 @@ a {
   height: 100%;
   justify-content: center;
   margin: 0 auto;
-  width: 100%;
+  width: 60%;
 }
 
 .calendar {
-  background: #3c687d;
+  background:rgb(14, 93, 101);;
   border-radius: 4px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
-  height: 501px;
+  height: 510px;
   perspective: 1000;
   transition: .9s;
   transform-style: preserve-3d;
@@ -541,7 +521,7 @@ a {
   bottom: 0;
   border-top: 1px solid rgba(73, 114, 133, .6);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   position: absolute;
   width: 100%;
 }
