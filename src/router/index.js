@@ -1,4 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from "../store/Store";
+
+
+
 import home from '../views/Home.vue'
 import welcome from '../views/Sign/Login.vue'
 import About from '@/views/About.vue'
@@ -77,8 +81,67 @@ const router = createRouter({
   }
 });
 
-router.beforeEach((to, from, next) => {
-  window.scrollTo(0, 0); // Scrolls to the top of the page
-  next(); // Proceeds with the route change
+const Auth = () => {
+  return localStorage.getItem("token") != null && localStorage.getItem("token") != ""
+} 
+
+router.beforeEach(async (to, from, next) => {
+  var destination = to.path;
+  if(to.name == 'Home'){
+     store.state.language = to.fullPath.split('/')[1]
+    localStorage.setItem('lang',store.state.language)
+  }
+  
+  const publicPages = ['Hone','welcome','lessons','lessondetail','Academy','Academies','about'];
+  const authRequired = publicPages.find(i => i==to.name);
+
+  if (Auth()) {
+      if (store.state.profile == null || Object.entries(store.state.profile).length === 0) {
+         //todo
+          await store.dispatch("getProfile").then((res) => {
+              if (res && !authRequired) {
+                  destination = 'Panel'
+
+              } else if (!res) {
+                  localStorage.removeItem('token');
+                  store.state.profile = {}
+                  destination = ':lang'
+
+              }
+          });
+         
+ 
+
+      }
+      else if (!authRequired) {
+          destination = to.from.path;
+      }
+
+  } else {
+      store.state.profile = {}
+  }
+
+  if (to.path == from.path) {
+    window.scrollTo(0, 0);
+    return next();
+  }
+
+  if (authRequired =='' && !Auth()) {
+      window.scrollTo(0, 0);
+      next({ name:'Home' });
+      return;
+  }
+
+  if (to.path != destination) {
+     window.scrollTo(0, 0);
+      next({ path: destination });
+  } else {
+      window.scrollTo(0, 0);
+      next()
+  }
+
+});
+router.afterEach(() => {
+  textFieldData.value = '';
 });
 export default router

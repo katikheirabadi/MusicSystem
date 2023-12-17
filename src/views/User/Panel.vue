@@ -307,6 +307,9 @@ export default{
     dashbord:true
   }
   },
+  components:{
+    classes
+  },
   mounted() {
     this.container = document.getElementsByClassName('calendar')[0];
     this.calendar = document.getElementsByClassName('front')[0];

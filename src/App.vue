@@ -1,31 +1,22 @@
 <template>
- <div class="main" :class="{'FARSI':this.$i18n.locale == 'fa'}">
+ <div class="main" style="position: relative;" :class="{'FARSI':this.$i18n.locale == 'fa'}">
   <router-view />
 </div>
 </template>
-
 <script>
-export default {
-  data(){
-    return {
-      lang :'fa'
-    }
-  },
+export default{
   mounted(){
-    window.scrollTo(0, 0);
-    this.$vuetify.locale.current = this.lang
-    this.$i18n.locale=this.lang
-    // if( window.location.href.split('/')[3]){
-    //   this.lang = window.location.href.split('/')[3]
-    //   localStorage.setItem('lang',this.lang)
-    // }else {
-    //   this.lang = localStorage.getItem('lang')
-    // }
-    // this.$vuetify.locale.current = this.lang
-    // this.$i18n.locale=this.lang
+    var lang = localStorage.getItem('lang');
+    this.$vuetify.locale.current = lang;
+    this.$i18n.locale = lang;
   },
   updated(){
-    window.scrollTo(0, 0);
+    if(window.location.href.split('/')[3] == 'fa' || window.location.href.split('/')[3] == 'en'){
+      localStorage.setItem('lang',window.location.href.split('/')[3]);
+      var lang = window.location.href.split('/')[3]
+      this.$vuetify.locale.current = lang;
+      this.$i18n.locale = lang;
+    }
   }
 }
 </script>

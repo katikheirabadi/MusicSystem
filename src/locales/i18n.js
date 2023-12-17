@@ -2,6 +2,16 @@ import {createI18n} from 'vue-i18n'
 
 const messages = {
     fa: {
+      banner:{
+        home:'خانه',
+        academies:'آموزشگاه ها',
+        certificate:'استعلام گواهینامه',
+        about:'درباره ما',
+        sign :'ورود و ثبت نام',
+      },
+      home:{
+
+      },
       category:{
         headertitle:"آمورشگاه ",
         headertext:"سامانه کاروساز با آموزشگاهای بسیاری همکاری می کند...",
@@ -13,7 +23,6 @@ const messages = {
         sitename:'سامانه کاروساز',
         header_sub:'سامانه کار و ساز با هدف جذب نیروهای توانمند و جویای کار در زمینه تدریس موسیقی و آموزش به علاقمندان این رشته راه اندازی شده است',
         showallcourses:'نمایش آموزشگاه ها',
-        academies:'آموزشگاه ها',
         gratuateds:'فارع التحصیلان',
         teachers:'اساتید',
         allusers:'کاربران',
@@ -21,10 +30,10 @@ const messages = {
         classes:'کلاس ها',
         detail:'مشاهده دوره',
         details:' دسته بندی ها',
-        about:'درباره ما',
+      
         contact:'تماس با ما',
-        certificate:'استعلام گواهینامه',
-        sign :'ورود و ثبت نام',
+       
+       
         Accademiessection_title:'کدوم آموزشگاه؟؟',
         section1_header:'چرا کار و ساز؟',
         section1_detail:'پس از سالها آموزش موسیقی در مجموعه های خود(آموزشگاه موسیقی چگامه در کرج و آموزشگاه های موسیقی چگامه و می ر سی در تهران)بر آن شدیم تا با ایجاد سامانه ائی پویا امکان ارائه دوره های آموزشی به تمام نقاط کشور و حتی خارج را داشته باشیم. این سامانه کلیه فعالیت های درون سازمانی آموزشگاه ها را نیز پوشش می‌دهد و قابل استفاده برای تمامی آموزشگاه داران عزیز است. سامانه کار و ساز با هدف جذب نیروهای توانمند و جویای کار در زمینه تدریس موسیقی و آموزش به علاقمندان این رشته راه اندازی شده است.',
@@ -50,6 +59,13 @@ const messages = {
       
     },
     en: {
+      banner:{
+        home:'Home',
+        academies:'Academies',
+        certificate:'Validate Certificates',
+        about:'About Us',
+        sign :'Sign in / Sign up',
+      },
       category:{
         headertitle:"Academy",
         headertext:"The Karosaz system cooperates with many schools...",
@@ -60,7 +76,6 @@ const messages = {
         sitename:'KaroSaz System',
         header_sub:'The job system has been launched with the aim of attracting capable and job-seeking forces in the field of music teaching and education for those interested in this field.',
         showallcourses:'All Courses',
-        academies:'Academies',
         gratuateds:'Graduates',
         teachers:'All Teachers',
         allusers:'All Users',
@@ -68,10 +83,7 @@ const messages = {
         detail:'Detail',
         details:'Categories',
         resume:'Up To Now...',
-        about: 'About Us',
-        certificate:'استعلام گواهینامه',
         contact:'Contact Us',
-        sign :'Sign in / Sign up',
         Accademiessection_title:'Which Academy..?',
         section1_header:'Why KaroSaz?',
         section1_detail:'After years of teaching music in our collections (Chagame music school in Karaj and Chagame and Mirsi music schools in Tehran), we decided to create a dynamic system to provide training courses to all parts of the country and even abroad. to be This system also covers all internal activities of schools and can be used by all dear school owners. The job system has been launched with the aim of attracting capable and job-seeking forces in the field of music teaching and education for those interested in this field.',

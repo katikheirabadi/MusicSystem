@@ -2,24 +2,24 @@
   <v-banner align-start >
     <v-row justify="center" class="d-xs-none d-sm-none d-lg-flex row1" style=";">
     <v-col class="menuitemparent" md="1"  lg="1" style="width: fit-content !important;">
-        <router-link class="my-auto menuitem" to="/">{{ $t('message.home') }}</router-link>
+        <router-link class="my-auto menuitem" to="/">{{ $t('banner.home') }}</router-link>
     </v-col>
     <v-col class="menuitemparent" md="2"  lg="1">
-        <router-link class="my-auto menuitem" :to="{name:'Academies'}">{{ $t('message.academies') }}</router-link>
+        <router-link class="my-auto menuitem" :to="{name:'Academies'}">{{ $t('banner.academies') }}</router-link>
     </v-col>
 
     <v-col class="menuitemparent" md="2"  lg="1">
-      <router-link class="my-auto menuitem" to="/">{{ $t('message.certificate') }}</router-link>
+      <router-link class="my-auto menuitem" to="/">{{ $t('banner.certificate') }}</router-link>
     </v-col>
 
     <v-col class="menuitemparent" md="2"  lg="1">
       <router-link class="my-auto menuitem" :to="{name:'about'}">
-            {{ $t('message.about') }}</router-link>
+            {{ $t('banner.about') }}</router-link>
     </v-col>
   
     <v-col md="3" lg="6" style="display: flex;justify-content:end;">
       <img src="../assets/img/logo.png" alt="karosaz" style="height: 60%;margin-top: auto;margin-bottom: auto;width: 20%;">
-      <router-link class="signinbtn" :to="{name:'welcome'}">{{ $t('message.sign') }}</router-link>
+      <router-link class="signinbtn" :to="{name:'welcome'}">{{ $t('banner.sign') }}</router-link>
         
     </v-col>
     </v-row>
@@ -38,11 +38,11 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item prepend-icon="fa fa-home" :title=" $t('message.home')" @click="this.$router.replace({ name: 'Home' })"></v-list-item>
-          <v-list-item prepend-icon="fa fa-institution" :title=" $t('message.academies')"  @click="this.$router.replace({ name: 'Academies' })"></v-list-item>
-          <v-list-item prepend-icon="fa fa-certificate" :title="$t('message.certificate')"></v-list-item>
-          <v-list-item prepend-icon="fa fa-address-book" :title="$t('message.about')" @click="this.$router.replace({ name: 'about' })"></v-list-item>
-          <v-list-item style="background-color: #851313;color: aliceblue;" prepend-icon="fa fa-sign-in" :title="$t('message.sign')" @click="this.$router.replace({ name: 'welcome' })"></v-list-item>
+          <v-list-item prepend-icon="fa fa-home" :title=" $t('banner.home')" @click="this.$router.replace({ name: 'Home' })"></v-list-item>
+          <v-list-item prepend-icon="fa fa-institution" :title=" $t('banner.academies')"  @click="this.$router.replace({ name: 'Academies' })"></v-list-item>
+          <v-list-item prepend-icon="fa fa-certificate" :title="$t('banner.certificate')"></v-list-item>
+          <v-list-item prepend-icon="fa fa-address-book" :title="$t('banner.about')" @click="this.$router.replace({ name: 'about' })"></v-list-item>
+          <v-list-item style="background-color: #851313;color: aliceblue;" prepend-icon="fa fa-sign-in" :title="$t('banner.sign')" @click="this.$router.replace({ name: 'welcome' })"></v-list-item>
         </v-list>
       </v-navigation-drawer>
       <v-main >
@@ -67,7 +67,6 @@
  
 </template>
 <script>
-import '../assets/css/banner.css'
 export default {
     data () {
       return {
@@ -76,3 +75,6 @@ export default {
     },
   }
 </script>
+<style scoped>
+@import url(../assets/css/Components/banner.css);
+</style>
