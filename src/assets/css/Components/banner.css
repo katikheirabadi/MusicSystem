@@ -1,6 +1,6 @@
 .v-banner__content{
     justify-content: space-between !important;
-    padding-left: 1%;
+    padding-left: 2%;
     padding-right: 2%;
 }
 .menuitemparent{
@@ -10,15 +10,15 @@
  
 }
 .menuitemparent :hover{
-  background-color: rgba(185, 180, 180, 0.685);
+  background-color: rgba(228, 128, 98, 0.685);
   border-radius: 5px;
-  padding: 5%;
+  padding: 10%;
   transition: all .2s ease-in-out;
 }
 .menuitem{
   text-decoration: none;
   color: black ;
-  font-size: 100%;
+  font-size: 110%;
   font-weight: bold;
 }
 .signinbtn{
@@ -34,7 +34,13 @@
    border-radius: 20px;
    text-align: center;
 }
-
+.banner-logo{
+  display: flex;
+  justify-content:end;
+}
+.banner-logo img{
+  height: 60%;margin-top: auto;margin-bottom: auto;width: 20%;
+}
 @media all and (max-width:1030px){
   .row1{
     display: none;

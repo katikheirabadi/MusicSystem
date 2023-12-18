@@ -1,106 +1,56 @@
 <template>
-    <loader id="loader" style="display: none;"/>
     <banner/>
-    <myheader img="src/assets/img/123.jpg" :header="$t('message.sitename')" :text="$t('message.header_sub')" :btns="[{text:$t('message.showallcourses'),link:{name:'Academies'}}]"/>
-
-<v-container>
-
-   <!-- system details -->
-   <section class="s1">
-   <h1 class="text-center sectionheader" style="">{{ $t('message.resume') }}</h1>
-   <v-row class="text-center">   
-     <v-col cols="2" class="d-xs-none d-md-none d-lg-flex"></v-col>   
-   <v-col md="3" lg="2" sm="12" cols="12" class="my-auto ">
-   <v-sheet 
-   class="my-auto detailcol" 
-   >
-   <v-sheet
-   :rounded="'xl'"
-   class="mx-auto my-auto text-center detail">
-         <h2>+25</h2>
-         <p>{{ $t('message.academies') }}</p>
-   </v-sheet>
-   </v-sheet>
-   </v-col>
-   <v-col  md="3" lg="2" sm="12" cols="12" class="my-auto ">
-   <v-sheet 
-   class="my-auto" 
-   >
-   <v-sheet
-   :rounded="'xl'"
-   class="mx-auto mx-auto my-auto text-center detail">
-         <h2>+450</h2>
-         <p>{{ $t('message.allusers') }}</p>
-   </v-sheet>
-   </v-sheet>
-   </v-col>
-   <v-col md="3" lg="2" sm="12" cols="12" class="my-auto ">
-   <v-sheet 
-   class="my-auto" 
-   >
-   <v-sheet
-   :rounded="'xl'"
-   class="mx-auto my-auto text-center detail">
-         <h2>+66</h2>
-         <p>{{ $t('message.teachers') }}</p>
-   </v-sheet>
-   </v-sheet>
-   </v-col>
-  <v-col  md="3" lg="2" sm="12" cols="12" class="my-auto " >
-   <v-sheet 
-   class="my-auto" 
-   >
-   <v-sheet
-   :rounded="'xl'"
-   class="mx-auto my-auto text-center detail">
-         <h2>+256</h2>
-         <p>{{ $t('message.gratuateds') }}</p>
-   </v-sheet>
-   </v-sheet>
-   </v-col>
-
-  </v-row>
-
-   </section>
+    <myheader img="src/assets/img/homeheader.jpg" :header="$t('message.sitename')" :text="$t('message.header_sub')" :btns="[{text:$t('message.showallacademies'),link:{name:'Academies'}}]"/>
+    <v-container>
+     <!-- system details -->
+    <section class="s1">
+    <detail :header="$t('home.resume')" :cards="[{count:companies,text:$t('home.academies')},{count:users,text:$t('home.allusers')},{count:teachers,text:$t('home.teachers')},{count:graduates,text:$t('home.gratuateds')}]"/>
+    </section>
    
- </v-container>
+    </v-container>
 
-  <!-- System description  -->
- <section class="s2">
-   <v-row>
-   <v-col sm="12" md="12" lg="12" class="my-auto s1text">
-     <h1 style="padding-inline-start: 3%;font-size: 28px;color: aliceblue;">{{ $t('message.section1_header') }}</h1>
-     <p style="font-size: 18px; color:aliceblue;">{{ $t('message.section1_detail') }}</p>
+    <!-- System description  -->
+    <section class="s2">
+    <v-row>
+     <v-col sm="12" md="12" lg="12" class="my-auto s1text">
+     <h1 style="padding-inline-start: 3%;font-size: 28px;color: aliceblue;">{{ $t('home.section1_header') }}</h1>
+     <p style="font-size: 18px; color:aliceblue;">{{ $t('home.section1_detail') }}</p>
 
-   </v-col>
-   </v-row>
- </section>
+    </v-col>
+    </v-row>
+    </section>
 
- <v-container>
-   <!-- Academies Cards -->
-   <section>
+    <v-container >
+    <!-- Academies Cards -->
+    <section >
      <h1 class="text-center sectionheader" style="font-size:30px;">{{ $t('message.Accademiessection_title') }}</h1>
-     <v-row>
-       <v-col cols="12" md="4" lg="4" v-for="academy in academies" :key="academy.id" >
+     <v-row >
+       <v-col cols="12" md="3" lg="3" v-for="academy in showacademies" :key="academy.id" >
          <v-card 
         class="mx-auto mt-5 academy" 
          >
-       <v-img
-       height="150"
-       src="../assets/img/icons8-music-96.png"
-       ></v-img>
+       <img :src="academy.logo" style="margin-inline-start: 27%;width: 45% !important;max-height: 30% !important;">
 
        <v-card-item >
-       <v-card-title >{{ academy.name }}</v-card-title>
+       <v-card-title class="text-center" >
+        {{ academy.name }}
+       </v-card-title>
        </v-card-item>
 
        <v-card-text>
-       <div>{{ academy.addres }} - {{ academy.phone }}</div>
+       <div class="text-center">{{ academy.addres }} <br> {{ academy.phone }}
+        <v-tooltip
+        activator="parent"
+        location="bottom"
+        style="font-family: 'IRANSANS';"
+        >{{ academy.showAddress }} 
+        </v-tooltip>
+      </div>
        </v-card-text>
        <v-card-actions style="  display: flex;justify-content: end;">
        <router-link
        :to="{name:'Academy',params:{academy:academy.name}}"
-       class="ma-2 mybtn"
+       class=" mybtn"
        >
        {{ $t('message.details') }} &nbsp
      <v-icon
@@ -114,7 +64,7 @@
        
        </v-col>
      </v-row>
-     <v-pagination :length="4" style="margin-top: 3%;margin-bottom: 2%;" id="1">
+     <v-pagination :length="total/showcount" v-model="current"  @click="onPageChange(current)" style="margin-top: 3%;margin-bottom: 2%;" id="1">
      </v-pagination>
    </section>
 
@@ -195,62 +145,77 @@
   import banner from '../components/Banner.vue'
   import myheader from '../components/Header.vue'
   import myfooter from '../components/Footer.vue'
-  import loader from '../components/Loader/Loader.vue'
+  import detail from '@/components/DetailCards.vue'
+
+  import { Callaxios } from '@/assets/composable/CallAxus'
+  import {shorttext} from '@/assets/helper/heper'
   export default {
     data(){
       return{
-        classes :[
-          {
-            id:1,
-            name:'پیانو',
-            price:'100,000,000 ریال',
-            img: window.location.origin +'/src/assets/img/piano.jpg',
-            description: 'دوره شامل 15 جلسه 1 ساعته با ...'
-          },
-           {
-            id:2,
-            name:'گیتار',
-            price:'150,000,000 ریال',
-            img: window.location.origin +'/src/assets/img/gituar.jpg',
-            description: '  دوره شامل 10 جلسه 1 ساعته با رایج ترین تخصص ها ...'
-          },
-           {
-            id:3,
-            name:'ویالون',
-            price:'500,000,000,000 ریال',
-            img: window.location.origin +'/src/assets/img/vialon.jpg',
-            description: '  دوره شامل 10 جلسه 1 ساعته با رایج ترین تزبافباباددرالبا ها ...'
-          }
-        ]
-        ,academies :[
-          {
-            id:1,
-            name:'چگامه فردیس',
-            addres:'کرج - فردیس، فلکه سوم خیابان ۳۳ جدید، پلاک 29',
-            phone:'02636503521'
-          },
-          {
-            id:2,
-            name:'می ر سی',
-            addres:'تهران - شیخ بهایی جنوبی، بلوار آزادگان، انتهای خیابان ۲۴ غربی، مجموعه فرهنگی ورزشی آفتاب',
-            phone:'02188332195'
-          },
-          {
-            id:1,
-            name:'چگامه فرمانیه',
-            addres:'تهران - فرمانیه بلوار اندرزگو نبش کوچه عبدالهی جنوبی پ 72 واحد 17',
-            phone:'02122210307'
-          }
-          
-        ]
+        users:0,
+        teachers:0,
+        companies : 0,
+        graduates:0,
+        academies :[],
+        showacademies :[],
+        total : 0,
+        current :0,
+        showcount:4
       }
     },
     components:{
     banner, myheader,myfooter,
-    VSheet,loader
-}
+    VSheet,detail
+    },
+    mounted(){
+      Callaxios('Home/SiteStatics','get',undefined,this.aftergetstatics);
+      Callaxios('Home/GetAllCompanies','get',undefined,this.aftergtallacademies)
+    },
+    methods: {
+      aftergetstatics(param){
+        var  data = param.Data
+        setInterval(()=>{
+          if(this.users < data.Users)
+          {
+            this.users ++;
+          }
+          if(this.teachers < data.Teachers)
+          {
+            this.teachers ++;
+          }
+          if(this.companies < data.Companies)
+          {
+            this.companies ++;
+          }
+          if(this.graduates < data.Graduates)
+          {
+            this.graduates ++;
+          }
+        },80)
+      },
+      aftergtallacademies(param){
+        this.academies = []
+        this.total = param.Data.length
+        param.Data.filter((i)=> this.academies.push({
+          id : i.Id,
+          name : i.Name,
+          addres : shorttext(i.Location,30),
+          showAddress : i.Location,
+          phone : i.Phone,
+          count : i.CourseCount,
+          logo : i.Logo == null? window.location.origin+'/src/assets/img/academy.png' :'https://tms.bamdad.co/'+ i.Logo
+        }))
+        this.onPageChange(1)
+      },
+      onPageChange(page) {
+      this.showacademies = []
+      for(var i=(page* this.showcount )-this.showcount; i< (page*this.showcount);i++){
+        this.showacademies.push(this.academies[i])
+      }
+    },
+    }
   }
 </script>
 <style scoped>
-@import '../assets/css/home.css';
+@import '@/assets/css/Views/home.css';
 </style>

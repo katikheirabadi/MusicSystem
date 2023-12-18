@@ -1,5 +1,4 @@
 import axios from 'axios'
-import store from '../store/index'
 
 async function Callaxios(url,method,input,callbackfunc){
   try{
@@ -7,7 +6,7 @@ async function Callaxios(url,method,input,callbackfunc){
   {axios.defaults.headers.common['Authorization'] = `Bearer ${ localStorage.getItem("token")}`}
   document.getElementById('loader').style.display='flex';
   //   base url
-  var baseUrl ='http://localhost:5034/';
+  var baseUrl ='http://localhost:5015/api/';
   var fullurl = baseUrl + url;
   if(input == undefined){
     if(method == 'post'){

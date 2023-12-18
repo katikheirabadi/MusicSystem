@@ -3,14 +3,20 @@ import {createI18n} from 'vue-i18n'
 const messages = {
     fa: {
       banner:{
-        home:'خانه',
+        home:'کاروساز',
         academies:'آموزشگاه ها',
         certificate:'استعلام گواهینامه',
         about:'درباره ما',
         sign :'ورود و ثبت نام',
       },
       home:{
-
+        teachers:'اساتید',
+        allusers:'کاربران',
+        resume:' سوابق کاروساز در نگاهی کوتاه ',
+        academies:'آموزشگاه ها',
+        gratuateds:'فارع التحصیلان',
+        section1_header:'چرا کار و ساز؟',
+        section1_detail:'پس از سالها آموزش موسیقی در مجموعه های خود(آموزشگاه موسیقی چگامه در کرج و آموزشگاه های موسیقی چگامه و می ر سی در تهران)بر آن شدیم تا با ایجاد سامانه ائی پویا امکان ارائه دوره های آموزشی به تمام نقاط کشور و حتی خارج را داشته باشیم. این سامانه کلیه فعالیت های درون سازمانی آموزشگاه ها را نیز پوشش می‌دهد و قابل استفاده برای تمامی آموزشگاه داران عزیز است. سامانه کار و ساز با هدف جذب نیروهای توانمند و جویای کار در زمینه تدریس موسیقی و آموزش به علاقمندان این رشته راه اندازی شده است.',
       },
       category:{
         headertitle:"آمورشگاه ",
@@ -22,11 +28,9 @@ const messages = {
       message: {
         sitename:'سامانه کاروساز',
         header_sub:'سامانه کار و ساز با هدف جذب نیروهای توانمند و جویای کار در زمینه تدریس موسیقی و آموزش به علاقمندان این رشته راه اندازی شده است',
-        showallcourses:'نمایش آموزشگاه ها',
-        gratuateds:'فارع التحصیلان',
-        teachers:'اساتید',
-        allusers:'کاربران',
-        resume:'سوابق کاروساز...',
+        showallacademies:'نمایش آموزشگاه ها',
+        
+      
         classes:'کلاس ها',
         detail:'مشاهده دوره',
         details:' دسته بندی ها',
@@ -35,8 +39,7 @@ const messages = {
        
        
         Accademiessection_title:'کدوم آموزشگاه؟؟',
-        section1_header:'چرا کار و ساز؟',
-        section1_detail:'پس از سالها آموزش موسیقی در مجموعه های خود(آموزشگاه موسیقی چگامه در کرج و آموزشگاه های موسیقی چگامه و می ر سی در تهران)بر آن شدیم تا با ایجاد سامانه ائی پویا امکان ارائه دوره های آموزشی به تمام نقاط کشور و حتی خارج را داشته باشیم. این سامانه کلیه فعالیت های درون سازمانی آموزشگاه ها را نیز پوشش می‌دهد و قابل استفاده برای تمامی آموزشگاه داران عزیز است. سامانه کار و ساز با هدف جذب نیروهای توانمند و جویای کار در زمینه تدریس موسیقی و آموزش به علاقمندان این رشته راه اندازی شده است.',
+       
         section2_title:'چه سازی دوست داری؟!',
         site_report_1:'آموزشگاه ها',
         login_login_header:'ورود به سامانه کاروساز',
@@ -75,7 +78,7 @@ const messages = {
       message: {
         sitename:'KaroSaz System',
         header_sub:'The job system has been launched with the aim of attracting capable and job-seeking forces in the field of music teaching and education for those interested in this field.',
-        showallcourses:'All Courses',
+        showallacademies:'All Academies',
         gratuateds:'Graduates',
         teachers:'All Teachers',
         allusers:'All Users',
