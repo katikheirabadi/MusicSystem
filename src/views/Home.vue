@@ -64,7 +64,7 @@
        
        </v-col>
      </v-row>
-     <v-pagination :length="total/showcount" v-model="current"  @click="onPageChange(current)" style="margin-top: 3%;margin-bottom: 2%;" id="1">
+      <v-pagination :length="total/showcount" v-model="current"  @click="onPageChange(current)" style="margin-top: 3%;margin-bottom: 2%;" id="1">
      </v-pagination>
    </section>
 
@@ -191,7 +191,7 @@
           {
             this.graduates ++;
           }
-        },80)
+        },50)
       },
       aftergtallacademies(param){
         this.academies = []

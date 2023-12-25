@@ -4,7 +4,7 @@ async function Callaxios(url,method,input,callbackfunc){
   try{
   if (localStorage.getItem('token')!=null && localStorage.getItem('token')!='')
   {axios.defaults.headers.common['Authorization'] = `Bearer ${ localStorage.getItem("token")}`}
-  document.getElementById('loader').style.display='flex';
+  document.getElementById('loader').style.display='block';
   //   base url
   var baseUrl ='http://localhost:5015/api/';
   var fullurl = baseUrl + url;
@@ -13,7 +13,6 @@ async function Callaxios(url,method,input,callbackfunc){
       const responce =await axios.post(fullurl)
       if(responce.data){
         document.getElementById('loader').style.display = 'none';
-        document.body.style.overflow = "auto";
        eval(callbackfunc)(responce.data);
       }
      }
@@ -22,7 +21,6 @@ async function Callaxios(url,method,input,callbackfunc){
       if(response.data)
       {
         document.getElementById('loader').style.display = 'none';
-        document.body.style.overflow = "auto";
           eval(callbackfunc)(response.data);
       }
    }
@@ -31,7 +29,6 @@ async function Callaxios(url,method,input,callbackfunc){
       const responce =await axios.post(fullurl, input)
       if(responce.data){
         document.getElementById('loader').style.display = 'none';
-        document.body.style.overflow = "auto";
        eval(callbackfunc)(responce.data);
       }
      }

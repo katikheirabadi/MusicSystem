@@ -1,0 +1,44 @@
+.foothead{
+    background-color: #5b1505;
+    text-align: center;
+    color: aliceblue;
+    border-radius: 30% 0;
+    margin-top: -3%;
+    margin-inline-start: 2%;
+    /* padding-top: 3% !important; */
+    z-index: 2;
+    padding-top: 1.5%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.foot{
+    background-color: rgb(0, 0, 0);
+    margin-top: 5%;
+}
+.footer_line1{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.footer_line1 img {
+    width: 20% !important;
+    padding-inline-end: 3%;
+}
+.media{
+    width: 100% !important;
+}
+.detailtitle{
+    display: flex;align-items: center; 
+}
+.socialmedia_line2{
+    margin-top: 0% !important;
+}
+.etemad{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+.etemad img{
+    width: 18% !important;
+    display: block;
+}
