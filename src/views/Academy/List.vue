@@ -1,39 +1,35 @@
 <template>
     <banner/>
-    <myheader img="http://localhost:3000/src/assets/img/wp5464254-wallpaper-full-hd-musica.png"
-    :header="'آمورشگاهای سامانه کاروساز'"
-    :text="'در این قسمت لیست تمامی آموزشگاهای فعال در سامانه را مشاهده می کنسد. با انتخاب هر کدام اطلاعات آموزشگاه برای شما نمایش داده می شود.'"
-    :btns="[{text:'بازگشت به خانه',link:'/'}]"
+    <myheader 
+    :img="header"
+    :header="$t('message.sitename')"
+    :text="$t('academy.list_header_subtitle')"
+    :btns="[{text: $t('academy.list_back'),link:'/'}]"
     />
-    <v-container style="margin-bottom: 3%;">
-
- 
+    <v-container class="mt-5" style="margin-bottom: 3%;">
     <v-row>
-          <v-col cols="12" md="4" v-for="academy in academies" :key="academy.id" >
-            <v-card 
-           class="mx-auto academy" 
-            >
-          <v-img
-          style="height: 55%;"
-          cover=""
-          src="../../assets/img/wp5464254-wallpaper-full-hd-musica.png"
-          ></v-img>
+          <v-col cols="12" md="3" v-for="academy in academies" :key="academy.id" >
+          <v-card 
+          class="mx-auto academy" 
+          >
+          <img :src="academy.logo">
 
           <v-card-item >
           <v-card-title >{{ academy.name }}</v-card-title>
           </v-card-item>
 
           <v-card-text>
-          <div>{{ academy.addres.substring(25)+'...' }}</div>
+          <div><span>{{ academy.addres }}</span></div>
+          <div><span>{{ $t('academy.list_phone') }}  : {{ academy.phone }}</span></div>
           </v-card-text>
-          <v-card-actions style="  display: flex;justify-content: end;">
+          <v-card-actions class="action">
           <router-link
-          :to="{name:'Academy',params:{academy:academy.name}}"
+          :to="{name:'Academy',params:{academy:academy.id}}"
           class="ma-2 mybtn"
           scroll-behavior="auto"
           >
           {{ $t('message.details') }} &nbsp
-        <v-icon
+         <v-icon
           start
           icon="fa fa-external-link"
         ></v-icon>
@@ -43,74 +39,45 @@
             </v-card>
           
           </v-col>
-        </v-row>
+    </v-row>
     </v-container>
-    <myfooter style="margin-top: 0;"/>
+    <myfooter/>
 </template>
-<script setup>
+<script>
 import banner from '@/components/Banner.vue'
 import myheader from '@/components/Header.vue'
 import myfooter from '@/components/Footer.vue'
+import { Callaxios } from '@/assets/composable/CallAxus'
+import {shorttext} from '@/assets/helper/heper'
 
-let academies=[
-          {
-            id:1,
-            name:'چگامه فردیس',
-            addres:'کرج - فردیس، فلکه سوم خیابان ۳۳ جدید، پلاک 29',
-            phone:'02636503521'
-          },
-          {
-            id:2,
-            name:'می ر سی',
-            addres:'تهران - شیخ بهایی جنوبی، بلوار آزادگان، انتهای خیابان ۲۴ غربی، مجموعه فرهنگی ورزشی آفتاب',
-            phone:'02188332195'
-          },
-          {
-            id:4,
-            name:'چگامه فرمانیه',
-            addres:'تهران - فرمانیه بلوار اندرزگو نبش کوچه عبدالهی جنوبی پ 72 واحد 17',
-            phone:'02122210307'
-          },
-          {
-            id:6,
-            name:'چگامه فردیس',
-            addres:'کرج - فردیس، فلکه سوم خیابان ۳۳ جدید، پلاک 29',
-            phone:'02636503521'
-          },
-          {
-            id:8,
-            name:'می ر سی',
-            addres:'تهران - شیخ بهایی جنوبی، بلوار آزادگان، انتهای خیابان ۲۴ غربی، مجموعه فرهنگی ورزشی آفتاب',
-            phone:'02188332195'
-          },
-          {
-            id:88,
-            name:'چگامه فرمانیه',
-            addres:'تهران - فرمانیه بلوار اندرزگو نبش کوچه عبدالهی جنوبی پ 72 واحد 17',
-            phone:'02122210307'
-          }
-          
-        ]
+export default{
+  components:{
+    banner,myheader,myfooter
+  },
+  data(){
+    return {
+      academies :[],
+      header : window.location.origin+'/src/assets/img/academydefult.png'
+    }
+  },mounted(){
+    Callaxios('Frant/GetAllCompanies','get',undefined,this.aftergtallacademies)
+  },
+  methods:{
+    aftergtallacademies(param){
+      this.academies = []
+      param.Data.filter((i)=> this.academies.push({
+          id : i.Id,
+          name : i.Name,
+          addres : shorttext(i.Location,60),
+          showAddress : i.Location,
+          phone : i.Phone,
+          count : i.CourseCount,
+          logo : window.location.origin+'/src/assets/img/academydefult.png'//i.Logo == null? window.location.origin+'/src/assets/img/academydefult.png' :'https://tms.bamdad.co/'+ i.Logo
+        }))
+    }
+  }
+}
 </script>
 <style scoped>
-.academy{
-  box-shadow: 5px 10px 20px #564e4e;
-  border-radius: 5% !important;
-  width: 100%;
-  height: max-content;
-  background-color: #ebc18d8f;
-}
-.academy:hover{
-  box-shadow: 10px 15px 15px hsl(0, 6%, 16%);
-}
-.mybtn{
-    background-color: #5b3405 !important;
-    width: 100%;
-    text-decoration: none;
-    text-align: center;
-    padding: 3% !important;
-    color: aliceblue;
-    border-radius: 15px;
-    margin-top: auto;
-  }
+@import url(../../assets/css/Views/Academy/list.css);
 </style>

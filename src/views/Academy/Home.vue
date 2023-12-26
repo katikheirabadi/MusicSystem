@@ -1,7 +1,14 @@
 <template>
      <banner/>
-     <myheader img="http://localhost:3000/src/assets/img/wp12166234-yamaha-piano-wallpapers.jpg" :header="$t('category.headertitle')+this.$route.params.academy" :text="$t('category.headertext')" :btns="[{text:$t('category.headerbtn'),link:'/'}]"/>
-     <detail :header=" $t('category.resume') +this.$route.params.academy" :cards="details"/>
+     <myheader
+     img="http://localhost:3000/src/assets/img/wp12166234-yamaha-piano-wallpapers.jpg" 
+     :header="$t('category.headertitle')+this.description.title" 
+     :text="$t('category.headertext')" :btns="[{text:$t('category.headerbtn'),link:'/'}]">
+    <template slot="logo">
+      <img  v-if="description.logo!=''" :src="description.logo" alt="" style="width: 20% !important;">
+    </template>
+    </myheader>
+     <detail :header=" $t('category.resume') +this.description.title" :cards="details"/>
      <description :title="description.title" :text="description.desc"/>
      <v-container>
       <!-- categories -->
@@ -31,11 +38,13 @@
  <myfooter/>
 </template>
 <script >
-import banner from '../../components/Banner.vue'
-import myheader from '../../components/Header.vue'
+import banner from '@/components/Banner.vue'
+import myheader from '@/components/Header.vue'
 import detail from '@/components/DetailCards.vue'
 import description from '@/components/Descripti9ontextRow.vue'
 import myfooter from '@/components/Footer.vue'
+
+import { Callaxios } from '@/assets/composable/CallAxus'
 export default{
     data(){
         return {
@@ -59,26 +68,7 @@ export default{
           desc:'Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.'
         }
           ],
-          categories:[
-                {
-                    name:'پیانو',
-                    img:window.location.origin + '/src/assets/img/pianp.jpg',
-                    text:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti suscipit sapiente laboriosam eveniet itaque sequi rerum animi minima ab nihil, molestiae similique asperiores, veniam obcaecati.',
-                    id:1
-                },
-                {
-                    name:'ویالون',
-                    img:window.location.origin + '/src/assets/img/p2.jpg',
-                    text:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti suscipit sapiente laboriosam eveniet itaque sequi rerum animi minima ab nihil, molestiae similique asperiores, veniam obcaecati.',
-                    id:2
-                },
-                {
-                    name:'گیتار',
-                    img:window.location.origin + '/src/assets/img/g.jpg',
-                    text:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti suscipit sapiente laboriosam eveniet itaque sequi rerum animi minima ab nihil, molestiae similique asperiores, veniam obcaecati.',
-                    id:3
-                }
-          ],
+          categories:[],
           details:[
             {
               count:523,
@@ -94,16 +84,27 @@ export default{
             }
           ],
           description:{
-            title: this.$route.params.academy,
-            desc: 'لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صلورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحهفحه'
+            title: '',
+            desc: '',
+            logo:''
           }
                
         }
     },
     components:{
         banner,myheader,detail,description,myfooter
+    },
+    mounted(){
+        Callaxios('Frant/GetCompany/'+this.$route.params.academy,'get',undefined,this.adtergetdetail)
     }
-   
+   ,methods:{
+    adtergetdetail(param){
+      console.log(param.Data)
+      this.description.title = param.Data.name
+      this.description.desc = param.Data.describle == ''? `${param.Data.address} <br> شماره تماس : ${param.Data.Phone}`:''
+      this.description.logo = param.Data.value == '' ?'': 'https://tms.bamdad.co/' + param.Data.value
+    }
+   }
 }
 </script>
 <style scoped>

@@ -1,6 +1,10 @@
 <template>
     <banner/>
-    <myheader img="src/assets/img/homeheader.jpg" :header="$t('message.sitename')" :text="$t('message.header_sub')" :btns="[{text:$t('message.showallacademies'),link:{name:'Academies'}}]"/>
+    <myheader 
+    img="src/assets/img/homeheader.jpg" 
+    :header="$t('message.sitename')" 
+    :text="$t('message.header_sub')"
+    :btns="[{text:$t('message.showallacademies'),link:{name:'Academies'}}]"/>
     <v-container>
      <!-- system details -->
     <section class="s1">
@@ -168,8 +172,8 @@
     VSheet,detail
     },
     mounted(){
-      Callaxios('Home/SiteStatics','get',undefined,this.aftergetstatics);
-      Callaxios('Home/GetAllCompanies','get',undefined,this.aftergtallacademies)
+      Callaxios('Frant/SiteStatics','get',undefined,this.aftergetstatics);
+      Callaxios('Frant/GetAllCompanies','get',undefined,this.aftergtallacademies)
     },
     methods: {
       aftergetstatics(param){

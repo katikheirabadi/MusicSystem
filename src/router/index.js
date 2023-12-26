@@ -38,9 +38,9 @@ const routes = [
     component: LessonDetail,
   },
   {
-    path: '/:academy',
+    path: '/Academy/:academy',
     name:'Academy',
-    component: Academy,
+    component: Academy
   },
   {
     path:'/karosaz-academies',
