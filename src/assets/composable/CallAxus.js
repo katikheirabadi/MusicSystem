@@ -36,6 +36,7 @@ async function Callaxios(url,method,input,callbackfunc){
 }
 catch (error) {
   document.getElementById('loader').style.display = 'none';
+  alert(error.message)
    }
 
 }

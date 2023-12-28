@@ -28,7 +28,7 @@ const routes = [
     component: welcome,
   },
   {
-    path: '/:academy/Lessons',
+    path: '/:academyId/:academy/:category/Lessons',
     name:'lessons',
     component: Lessons
   },

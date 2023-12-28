@@ -19,7 +19,15 @@
       </div>
       <v-form class="sign-up">
         <h2>{{ $t('message.login_signup_header') }}</h2>
+     
         <v-row style="width: 100%;">
+          <v-col cols="12">
+            <v-select 
+             label="زمان ثبت نام"
+             :items="['8:30', '10:30', '12:30']"
+             no-transition
+        ></v-select>
+          </v-col>
           <v-col cols="12" sm="12" md="12" lg="6">
             <v-text-field  block class="field1" :label="$t('message.login_signup_name')" required ></v-text-field>
           </v-col>
@@ -50,11 +58,24 @@
         <h4>{{ $t('message.login_login_header') }}</h4>
         <v-row style="width: 60%;" class="center-class">
           <v-col cols="12" class="my-auto">
-            <v-text-field class='field1' v-model="loginusername" :label="$t('message.login_login_username') " required block ></v-text-field>
+            <v-text-field 
+              class='field1'
+              v-model="loginusername"
+              :label="$t('message.login_login_username') "
+              required
+              block >
+              </v-text-field>
           </v-col>
           
           <v-col cols="12" style="margin-top: -20% !important;">
-            <v-text-field class='field1' v-model="loginpass" :label="$t('message.login_login_pass') " required block ></v-text-field>
+            <v-text-field 
+               type="password"
+               class='field1'
+               v-model="loginpass" 
+              :label="$t('message.login_login_pass')"
+               required 
+               block 
+               ></v-text-field>
           </v-col>
           <v-col class="center-class" cols="12">
             <v-btn @click="login" class="form-btn">{{ $t('message.login_login_loginbtn') }}</v-btn>
@@ -133,6 +154,8 @@
 <script setup>
 import { ref } from 'vue';
 var signUp =  ref(false)
+var loginusername = ref('')
+var loginpass=ref('')
 import { useRouter } from 'vue-router';
 const router = useRouter()
 function login(){

@@ -42,7 +42,12 @@ const messages = {
       academy:{
         list_header_subtitle :'در این قسمت لیست تمامی آموزشگاهای فعال در سامانه را مشاهده می کنسد. با انتخاب هر کدام اطلاعات آموزشگاه برای شما نمایش داده می شود.',
         list_phone : 'شماره تماس',
-        list_back :'بازگشت به خانه'
+        list_back :'بازگشت به خانه',
+        home_categories:'دسته بندی های آموزشگاه',
+        gratuateds:'فارع التحصیلان',
+        teachers:'اساتید',
+        allusers:'کاربران',
+        products:'دوره های درحال اجرا'
       },
       message: {
         sitename:'سامانه کاروساز',

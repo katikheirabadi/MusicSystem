@@ -8,7 +8,7 @@
     <v-container>
      <!-- system details -->
     <section class="s1">
-    <detail :header="$t('home.resume')" :cards="[{count:companies,text:$t('home.academies')},{count:users,text:$t('home.allusers')},{count:teachers,text:$t('home.teachers')},{count:graduates,text:$t('home.gratuateds')}]"/>
+    <detail v-if="items.length>0" :header="$t('home.resume')" :cards="items"/>
     </section>
    
     </v-container>
@@ -153,13 +153,11 @@
 
   import { Callaxios } from '@/assets/composable/CallAxus'
   import {shorttext} from '@/assets/helper/heper'
+  import Store from '@/store/Store'
   export default {
     data(){
       return{
-        users:0,
-        teachers:0,
-        companies : 0,
-        graduates:0,
+        items:[],
         academies :[],
         showacademies :[],
         total : 0,
@@ -178,24 +176,28 @@
     methods: {
       aftergetstatics(param){
         var  data = param.Data
-        setInterval(()=>{
-          if(this.users < data.Users)
+        this.items.push(
           {
-            this.users ++;
-          }
-          if(this.teachers < data.Teachers)
+            id:'allusers',
+            count:data.Companies,
+            text:this. $t('home.academies')
+          },
           {
-            this.teachers ++;
-          }
-          if(this.companies < data.Companies)
+            id:'allusers',
+            count:data.Users,
+            text:this. $t('home.allusers')
+          },
           {
-            this.companies ++;
-          }
-          if(this.graduates < data.Graduates)
+            id:'allusers',
+            count:data.Teachers,
+            text:this. $t('home.teachers')
+          },
           {
-            this.graduates ++;
+            id:'allusers',
+            count:data.Graduates,
+            text:this. $t('home.gratuateds')
           }
-        },50)
+        )
       },
       aftergtallacademies(param){
         this.academies = []
@@ -207,7 +209,7 @@
           showAddress : i.Location,
           phone : i.Phone,
           count : i.CourseCount,
-          logo : i.Logo == null? window.location.origin+'/src/assets/img/academy.png' :'https://tms.bamdad.co/'+ i.Logo
+          logo : i.Logo == null? window.location.origin+'/src/assets/img/academy.png' :Store.state.backuploadurl+ i.Logo
         }))
         this.onPageChange(1)
       },

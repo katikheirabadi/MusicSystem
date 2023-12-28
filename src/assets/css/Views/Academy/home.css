@@ -34,7 +34,12 @@
   color:#fffcfb;
   z-index:1;
 }
-
+.categoryimg{
+  display: flex;
+  height: 300px !important;
+  width: 100%;
+  filter: brightness(80%);
+}
 .detail{
     height: 100%;
     font-size: 25px;

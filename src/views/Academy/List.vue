@@ -8,7 +8,7 @@
     />
     <v-container class="mt-5" style="margin-bottom: 3%;">
     <v-row>
-          <v-col cols="12" md="3" v-for="academy in academies" :key="academy.id" >
+          <v-col cols="12" md="4" xl="3" v-for="academy in academies" :key="academy.id" >
           <v-card 
           class="mx-auto academy" 
           >
@@ -72,8 +72,8 @@ export default{
           showAddress : i.Location,
           phone : i.Phone,
           count : i.CourseCount,
-          logo : window.location.origin+'/src/assets/img/academydefult.png'//i.Logo == null? window.location.origin+'/src/assets/img/academydefult.png' :'https://tms.bamdad.co/'+ i.Logo
-        }))
+          logo : window.location.origin+'/src/assets/img/academydefult.png'
+         }))
     }
   }
 }

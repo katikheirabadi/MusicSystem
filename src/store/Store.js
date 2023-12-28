@@ -5,6 +5,7 @@ export default createStore({
     state: {
         profile: {},
         language:"",
+        backuploadurl : 'https://tms.bamdad.co/'
     },
     mutations: {
         profile(state, payload) {

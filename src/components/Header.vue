@@ -8,6 +8,7 @@
   </v-img>
 </v-row>
 <div class="banner-text">
+  <img :src="logo" alt="">
   <h1 style="font-size:30px">{{ header }}</h1>
   <h1 style="font-size:20px">{{ text }}</h1>
     <router-link  class="bannerbtn" v-for="btn in btns" style="font-weight: bold;color: aliceblue;" :to="btn.link">{{ btn.text }}</router-link>
@@ -22,6 +23,7 @@
   header: String,
   text:String,
   btns:Array,
-  img:String
+  img:String,
+  logo:String
 })
 </script>
