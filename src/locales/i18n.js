@@ -54,7 +54,25 @@ const messages = {
         list_subtitle: 'در این قسمت لیست تمامی درس های آموزشگاه را مشاهده می کنید. با انتخاب هر کدام اطلاعات دوره های درس برای شما نمایش داده می شود.',
         list_lessonstitle:'کدوم ساز انتخاب میکنی؟؟؟؟؟',
         list_visit:'بازدید',
-        list_products:'دوره ها'
+        list_products:'دوره ها',
+        home_tags:'کلمات کلیدی',
+        home_tagsDescs:'موضوعات کلیدی',
+        home_products:'دوره های فعال',
+        home_startdate:'تاریخ شروع',
+        home_info:'جزئیات',
+        :'مبلغ',
+        home_priceunit:'ریال',
+        home_discount:'تخفیف',
+        home_days:'روزهای هفته',
+        home_hour:'ساعت',
+        home_sessioncount:'تعداد جلسات',
+        home_sessionsumHours:'مجموع ساعت',
+        home_endprice:'مبلغ پرداختی',
+        home_buy:'ثبت نام',
+        home_councelling:'مشاوره',
+        home_noproducts:'کلاسی برای این دوره فعال نمی باشد',
+
+
       },
       message: {
         sitename:'سامانه کاروساز',

@@ -30,7 +30,7 @@
                             <p>1402/12/01 12:30</p>
                         </v-col>
                     </v-row>
-                    <h4 class="text-center mb-3 mt-3">کلمات کلیدی</h4>
+                    <h4 class="text-center mb-3 mt-3">{{ $t('lesson.home_title') }}</h4>
                     <v-row class="center-class">
                         <v-col class="tag" v-for="tag in data.tags">
                             
@@ -43,7 +43,7 @@
                         </v-col>
                     </v-row>
                     <br>
-                    <h4 class="text-center mb-3 mt-3">موضوعات کلیدی</h4>
+                    <h4 class="text-center mb-3 mt-3">{{ $t('lesson.home_tagsDescs') }}</h4>
                     <v-row class="center-class">
                         <v-col class="tag" v-for="concept in data.concepts">
                             
@@ -61,7 +61,7 @@
            </v-row>
            <br>
            <!-- product -->
-           <h1 class="text-center mt-5" v-if="data.products">دوره های فعال</h1>
+           <h1 class="text-center mt-5" v-if="data.products">{{ $t('lesson.home_products') }}</h1>
            <v-row class="center-class" v-if="data.products">
             <v-col cols="12" sm="6" md="4" xl="3" v-for="product in data.products[0].Product">
                 <v-sheet class="product-image text-center">
@@ -70,28 +70,28 @@
                       {{ product.ProductName }}
                       <br>
                       <h4>{{ product.TeacherName }}</h4>
-                      <h6 class="start">تاریخ شروع: {{ product.stringstartdate }}</h6>
+                      <h6 class="start">{{ $t('lesson.home_startdate') }}: {{ product.stringstartdate }}</h6>
                     </h2>
                   </div>
                     
                     <img class="img" :src="data.img" alt="">
                     <v-sheet class="info" >
                       
-                      <h2 class="mb-3">جزئیات</h2>
+                      <h2 class="mb-3">{{ $t('lesson.home_info') }}</h2>
                         
                           <ul class="mb-2" style="">
-		                          <li><strong>مبلغ: </strong>{{ product.price }} ریال</li>
-		                          <li><strong>تخفیف: </strong>%{{ product.Discount }}</li>
-		                          <li><strong>روزهای هفته: </strong>{{ product.stringday }}</li>
-                              <li><strong>ساعت :</strong>{{ product.ProductAvailableSessions[0].Hour }}</li>
-                              <li><strong>تعداد جلسات: </strong>{{ product.SessionsNumber }}</li>
-                              <li><strong>مجموع ساعت: </strong>{{ product.ClassHour }}</li>
-		                          <li><strong>مبلغ پرداختی: </strong>{{ product.payable }} ریال</li>
+		                          <li><strong>{{ $t('lesson.home_price') }}: </strong>{{ product.price }} {{ $t('lesson.home_priceunit') }}</li>
+		                          <li><strong>{{ $t('lesson.home_discount') }}: </strong>%{{ product.Discount }}</li>
+		                          <li><strong>{{ $t('lesson.home_days') }} : </strong>{{ product.stringday }}</li>
+                              <li><strong>{{ $t('lesson.home_hour') }} :</strong>{{ product.ProductAvailableSessions[0].Hour }}</li>
+                              <li><strong>{{ $t('lesson.home_sessioncount') }} : </strong>{{ product.SessionsNumber }}</li>
+                              <li><strong>{{ $t('lesson.home_sessionsumHours') }} : </strong>{{ product.ClassHour }}</li>
+		                          <li><strong>{{ $t('lesson.home_endprice') }} : </strong>{{ product.payable }} {{ $t('lesson.home_priceunit') }}</li>
 	                        </ul>
                        
 	                       
-                     <v-btn class="buy" color="green" @click="regiaterdialog = true">ثبت نام</v-btn>
-                     <v-btn class="moshavere" color="orange" @click="advisedialog=true">مشاوره</v-btn>
+                     <v-btn class="buy" color="green" @click="regiaterdialog = true">{{ $t('lesson.home_buy') }} </v-btn>
+                     <v-btn class="moshavere" color="orange" @click="advisedialog=true">{{ $t('lesson.home_councelling') }}</v-btn>
                     </v-sheet>
                 </v-sheet>
             </v-col>
@@ -102,7 +102,7 @@
            color="red"
            class="text-center mt-5 mb-5 pt-5 pb-5"
            >
-           <h1>کلاسی برای این دوره فعال نمی باشد</h1>
+           <h1>{{ $t('lesson.home_noproducts') }}</h1>
            </v-sheet>
         </v-sheet>
         </v-container>
