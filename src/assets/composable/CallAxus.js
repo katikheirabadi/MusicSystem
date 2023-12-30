@@ -1,5 +1,6 @@
 import axios from 'axios'
-
+import Swal from 'sweetalert2';
+import i18n from '@/locales/i18n';
 async function Callaxios(url,method,input,callbackfunc){
   try{
   if (localStorage.getItem('token')!=null && localStorage.getItem('token')!='')
@@ -36,7 +37,12 @@ async function Callaxios(url,method,input,callbackfunc){
 }
 catch (error) {
   document.getElementById('loader').style.display = 'none';
-  alert(error.message)
+  Swal.fire({
+    icon: "error",
+    title: 'خطا',
+    text: error.message,
+    confirmButtonColor:'red'
+  });
    }
 
 }

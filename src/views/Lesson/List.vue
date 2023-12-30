@@ -1,20 +1,21 @@
 <template>
     <banner/>
     <myheader :img="lessonimg"
-    :header="'درس های آموزشگاه '+this.company.name"
-    :text="'در این قسمت لیست تمامی درس های آموزشگاه را مشاهده می کنید. با انتخاب هر کدام اطلاعات دوره های درس برای شما نمایش داده می شود.'"
+    :header="$t('lesson.list_title')+this.company.name"
+    :text="$t('lesson.list_subtitle')"
     :btns="[{text:'بازگشت به خانه',link:'/'}]"
     :logo="company.logo"
     />
     <!-- Class Cards  -->
     <section>
-      <h1 class="text-center sectionheader">{{ $t('message.section2_title') }}</h1>
+      <h1 class="text-center sectionheader">{{ $t('lesson.list_lessonstitle') }}</h1>
       <v-container>
         <v-row >
-        <v-col v-for="myclass in classes" :key="myclass.id" cols="12" sm="6" md="4" xl="3">
-        <v-card 
-           class="mx-auto mt-5 classcard" 
-            >
+        <v-col 
+        v-for="myclass in classes" 
+        :key="myclass.id"
+         cols="12" sm="6" md="4" xl="3">
+        <v-card class="mx-auto mt-5 classcard" >
           <v-img
           cover=""
           height="200"
@@ -28,12 +29,12 @@
           <v-row class="text-center">
                         <v-col cols="6">
                             <v-icon icon="fa fa-eye"></v-icon>
-                            <h4>بازدید</h4>
+                            <h4>{{ $t('lesson.list_visit') }}</h4>
                             <p>{{ myclass.visit }}</p>
                         </v-col>
                         <v-col cols="6">
                             <v-icon icon="fa fa-cube"></v-icon>
-                            <h4>دوره ها</h4>
+                            <h4>{{ $t('lesson.list_products') }}</h4>
                             <p>{{ myclass.productcount }}</p>
                         </v-col>
            </v-row>
@@ -118,5 +119,4 @@ methods:{
 </script>
 <style scoped>
  @import url(../../assets/css/Views/Lesson/list.css);
- 
 </style>

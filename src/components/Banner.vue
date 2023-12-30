@@ -1,5 +1,5 @@
 <template>
-  <v-banner align-start >
+  <v-banner align-start style="" >
     <v-row justify="center" class="d-xs-none d-sm-none d-lg-flex row1">
     <v-col class="menuitemparent" md="2"  lg="1" >
         <router-link class="my-auto menuitem" to="/">{{ $t('banner.home') }}</router-link>
