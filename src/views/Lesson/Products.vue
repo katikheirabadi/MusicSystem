@@ -8,29 +8,31 @@
         >
             <!-- base -->
            <v-row>
-            <v-col cols="12" sm="12" md="6" >
+            <v-col cols="12" sm="12" md="5" style="height: 50vh;">
                 <v-img
                 class="lessonimg"
                 :src="data.img"
                 cover=""
                 ></v-img>
             </v-col>
-            <v-col cols="12" sm="12" md="6">
-                <v-container class="detail_desc">
+            <v-col cols="12" sm="12" md="7" class="more">
+                <v-container class="detail_desc " style="padding-inline-start: 5% !important;">
                     <h1 class="text-center">{{ data.name }}</h1>
-                    <p class="text-center">{{ data.desc }}</p>
+                   
+                    <p class="text-center" v-html="data.desc"></p>
+                   
                     <br>
                     <v-row class="text-center">
                         <v-col cols="6">
                             <v-icon icon="fa fa-eye"></v-icon>
-                            <p>250</p>
+                            <p>{{ data.visit }}</p>
                         </v-col>
                         <v-col cols="6">
                             <v-icon icon="fa fa-edit"></v-icon>
-                            <p>1402/12/01 12:30</p>
+                            <p>{{ data.modify }}</p>
                         </v-col>
                     </v-row>
-                    <h4 class="text-center mb-3 mt-3">{{ $t('lesson.home_title') }}</h4>
+                    <h4 v-if="data.tags.length != 0" class="text-center mb-3 mt-3">{{ $t('lesson.home_tags') }}</h4>
                     <v-row class="center-class">
                         <v-col class="tag" v-for="tag in data.tags">
                             
@@ -43,34 +45,37 @@
                         </v-col>
                     </v-row>
                     <br>
-                    <h4 class="text-center mb-3 mt-3">{{ $t('lesson.home_tagsDescs') }}</h4>
-                    <v-row class="center-class">
-                        <v-col class="tag" v-for="concept in data.concepts">
+                    <h4 v-if="data.concepts.length != 0" class="text-center mb-3 mt-3">{{ $t('lesson.home_tagsDescs') }}</h4>
+                    <ul >
+                        <li class="tag" v-for="concept in data.concepts">
                             
                             <v-chip
                             color="brown"
                             >
                              {{ concept.name }}
                             </v-chip>
-                        </v-col>
-                    </v-row>
+                        </li>
+                    </ul>
                     
                     
                 </v-container>
             </v-col>
            </v-row>
+           <v-row>
+            
+           </v-row>
            <br>
            <!-- product -->
-           <h1 class="text-center mt-5" v-if="data.products">{{ $t('lesson.home_products') }}</h1>
+           <h1 class="text-center mt-5" v-if="data.products.length !=0">{{ $t('lesson.home_products') }}</h1>
            <v-row class="center-class" v-if="data.products">
-            <v-col cols="12" sm="6" md="4" xl="3" v-for="product in data.products[0].Product">
+            <v-col cols="12" sm="6" md="4" xl="3" v-for="product in data.products">
                 <v-sheet class="product-image text-center">
                   <div class="title-posision">
                     <h2 class="title text-center">
-                      {{ product.ProductName }}
+                      {{ product.Product.ProductName }}
                       <br>
-                      <h4>{{ product.TeacherName }}</h4>
-                      <h6 class="start">{{ $t('lesson.home_startdate') }}: {{ product.stringstartdate }}</h6>
+                      <h4>{{ product.Product.TeacherName }}</h4>
+                      <h6 class="start">{{ $t('lesson.home_startdate') }}: {{ product.Product.stringstartdate }}</h6>
                     </h2>
                   </div>
                     
@@ -80,29 +85,29 @@
                       <h2 class="mb-3">{{ $t('lesson.home_info') }}</h2>
                         
                           <ul class="mb-2" style="">
-		                          <li><strong>{{ $t('lesson.home_price') }}: </strong>{{ product.price }} {{ $t('lesson.home_priceunit') }}</li>
-		                          <li><strong>{{ $t('lesson.home_discount') }}: </strong>%{{ product.Discount }}</li>
-		                          <li><strong>{{ $t('lesson.home_days') }} : </strong>{{ product.stringday }}</li>
-                              <li><strong>{{ $t('lesson.home_hour') }} :</strong>{{ product.ProductAvailableSessions[0].Hour }}</li>
-                              <li><strong>{{ $t('lesson.home_sessioncount') }} : </strong>{{ product.SessionsNumber }}</li>
-                              <li><strong>{{ $t('lesson.home_sessionsumHours') }} : </strong>{{ product.ClassHour }}</li>
-		                          <li><strong>{{ $t('lesson.home_endprice') }} : </strong>{{ product.payable }} {{ $t('lesson.home_priceunit') }}</li>
+		                          <li><strong>{{ $t('lesson.home_price') }}: </strong>{{ product.Product.price }} {{ $t('lesson.home_priceunit') }}</li>
+		                          <li><strong>{{ $t('lesson.home_discount') }}: </strong>%{{ product.Product.Discount }}</li>
+		                          <li><strong>{{ $t('lesson.home_days') }} : </strong>{{ product.Product.stringday }}</li>
+                              <!-- <li><strong>{{ $t('lesson.home_hour') }} :</strong>{{ product.Product.ProductAvailableSessions[0].Hour }}</li> -->
+                              <li><strong>{{ $t('lesson.home_sessioncount') }} : </strong>{{ product.Product.SessionsNumber }}</li>
+                              <li><strong>{{ $t('lesson.home_sessionsumHours') }} : </strong>{{ product.Product.ClassHour }}</li>
+		                          <li><strong>{{ $t('lesson.home_endprice') }} : </strong>{{ product.Product.payable }} {{ $t('lesson.home_priceunit') }}</li>
 	                        </ul>
                        
 	                       
-                     <v-btn class="buy" color="green" @click="regiaterdialog = true">{{ $t('lesson.home_buy') }} </v-btn>
-                     <v-btn class="moshavere" color="orange" @click="advisedialog=true">{{ $t('lesson.home_councelling') }}</v-btn>
+                     <v-btn class="buy" color="green" @click="registrationmodal(product.Id)">{{ $t('lesson.home_buy') }} </v-btn>
+                     <v-btn class="moshavere" color="orange" @click="courseadvise()">{{ $t('lesson.home_councelling') }}</v-btn>
                     </v-sheet>
                 </v-sheet>
             </v-col>
             
 
            </v-row>
-           <v-sheet v-if="!data.products"
+           <v-sheet v-if="data.products.length ==0"
            color="red"
            class="text-center mt-5 mb-5 pt-5 pb-5"
            >
-           <h1>{{ $t('lesson.home_noproducts') }}</h1>
+           <h3>{{ $t('lesson.home_noproducts') }}</h3>
            </v-sheet>
         </v-sheet>
         </v-container>
@@ -117,17 +122,18 @@
       class="dialog"
     >
       <v-sheet>
-        <v-card-title class="dialog_title">ثبت نام</v-card-title>
+        <v-card-title class="dialog_title">{{ $t('lesson.home_registertitle') }}</v-card-title>
         <v-divider></v-divider>
-            <p class="mt-5" style="font-family: 'IRANSANS';"> توجه کنید
-            <br>
-             ساعت مورد نظر جهت ثبت نام انتخاب کرده و برای افزودن به سبد خرید دکمه مربوطه را کلیک کنید<br>
-            <br> 
-         
+            <p class="mt-5 حس-2" style="font-family: 'IRANSANS';"> 
+            {{ $t('lesson.home_registertext') }}
+            <br> <br> 
         </p>
         <v-select 
-        label="زمان ثبت نام"
-        :items="['8:30', '10:30', '12:30']"
+        :label="$t('lesson.home_registerpastitle')"
+        v-model="selectpas"
+        :items="registratiiontimes"
+        :item-title="item=>item.time"
+        :item-value="item=>item.id"
         variant="outlined"
         class="selectclass"
         no-transition
@@ -141,15 +147,15 @@
             @click="regiaterdialog = false"
             append-icon="fa fa-close"
           >
-            بستن
+          {{ $t('lesson.home_modalclose') }}
           </v-btn>
           <v-btn
             color="green-darken-1"
             variant="flat"
             append-icon="fa fa-check"
-            @click="this.$router.replace({name:'bag'})"
+            @click="gotobag()"
           >
-           افزودن به سبد خرید
+          {{ $t('lesson.home_gotobag') }}
           </v-btn>
         </v-card-actions>
       </v-sheet>
@@ -172,14 +178,20 @@
             <v-col cols="6"> <v-select 
             no-transition
             label="ساعت مشاوره"
-            :items="['8:30', '10:30', '12:30']"
+            :items="appointments"
+            :item-title="item=>item.Time"
+            :item-value="item=>item.Id"
+            v-model="selectappointment"
             variant="outlined"
             class="selectclass"
         ></v-select></v-col>
             <v-col cols="6"> <v-select 
             no-transition
             label="روز"
-            :items="['امروز', 'فردا', 'پس فردا']"
+            :items="days"
+            :item-title="item=>item.name"
+            :item-value="item=>item.id"
+            v-model="selectday"
             variant="outlined"
             class="selectclass"
         ></v-select></v-col>
@@ -199,7 +211,7 @@
             color="green-darken-1"
             variant="flat"
             append-icon="fa fa-check"
-            @click="dialog = false"
+            @click="addadvise()"
           >
            ثبت درخواست مشاوره
           </v-btn>
@@ -211,23 +223,98 @@
 
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script >
+import { storeKey } from 'vuex'
 import banner from '../../components/Banner.vue'
 import myfooter from '../../components/Footer.vue'
-var regiaterdialog =ref(false)
-var advisedialog = ref(true)
-let data = {
-    name:"کلاس پیانو",
-    img: window.location.origin + '/src/assets/img/piano.jpg',
-    desc:'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.'
-    ,
-    visit:235,
-    modify:'1402/02/3',
-    tags:['پیانو','آکوستیک','بهترین استاد','بهترین آموزشگاه','دیجیتال','کلاس'],
-    products :[{"Id":310,"ProductId":317,"LessonId":95,"CreationDate":"2023-09-04T14:13:00","Product":[{"RemainCapacity":11,"id":317,"ProductName":"بوتکمپ برنامه نامه نویسی React js","name":"بوتکمپ برنامه نامه نویسی React js - حضوری و آنلاین","describle":"","price":42500000,"image":"\/img\/Default-course.jpg","SessionsNumber":17,"stringstartdate":"01 آذر 1402 ","startDate":"2023-11-22T00:00:00","endDate":"2023-12-30T00:00:00","expire":0,"sellCount":14,"Discount":0.000000000000000e+000,"Day":"[{\"DayId\":\"0\",\"StartTime\":\"۱۸:۰۰\",\"EndTime\":\"۲۱:۰۰\"},{\"DayId\":\"2\",\"StartTime\":\"۱۸:۰۰\",\"EndTime\":\"۲۱:۰۰\"},{\"DayId\":\"4\",\"StartTime\":\"۱۸:۰۰\",\"EndTime\":\"۲۱:۰۰\"}]","stringday":"شنبه و دوشنبه و چهارشنبه","SellType":1,"IsShown":1,"count":25,"tag":"برنامه نویسی,طراحی سایت,Front end,فرانت اند,ریکت,جاوااسکریپت,React","SessionCapacity":25,"RegisterType":1,"DiscountPercent":0.00,"Concepts":"","RemainSession":17,"payable":42500000,"TeacherName":"پویا هراتی زاده","ClassGendre":"3","MinimumCapacity":"10","ClassHour":"50","CertType":1,"CertTemplate":1,"MinAbsenceAllowed":5,"MinMark":60,"CourseType":6,"CategoryID":1,"CategoryName":"برنامه نویسی","CompanyID":3,"CompanyName":"دانش و فناوری بامداد","CompanyParent":2,"RegisterDis":"0","CashDis":"0","SemesterName":"پاییز1402","SemesterStartDate":"2022-09-23","SemesterEndDate":"2022-10-22","TeacherId":3014,"TeacherPercent":0.000000000000000e+000,"ProductAvailableSessions":[{"Id":444,"ProductId":317,"Hour":"18:00 تا 21:00","IsActive":1,"Status":1,"CreationDate":"2023-09-04T14:13:00","Capacity":25}]},{"RemainCapacity":11,"id":317,"ProductName":"بوتکمپ برنامه نامه نویسی React js","name":"بوتکمپ برنامه نامه نویسی React js - حضوری و آنلاین","describle":"","price":42500000,"image":"\/img\/Default-course.jpg","SessionsNumber":17,"stringstartdate":"01 آذر 1402 ","startDate":"2023-11-22T00:00:00","endDate":"2023-12-30T00:00:00","expire":0,"sellCount":14,"Discount":0.000000000000000e+000,"Day":"[{\"DayId\":\"0\",\"StartTime\":\"۱۸:۰۰\",\"EndTime\":\"۲۱:۰۰\"},{\"DayId\":\"2\",\"StartTime\":\"۱۸:۰۰\",\"EndTime\":\"۲۱:۰۰\"},{\"DayId\":\"4\",\"StartTime\":\"۱۸:۰۰\",\"EndTime\":\"۲۱:۰۰\"}]","stringday":"شنبه و دوشنبه و چهارشنبه","SellType":1,"IsShown":1,"count":25,"tag":"برنامه نویسی,طراحی سایت,Front end,فرانت اند,ریکت,جاوااسکریپت,React","SessionCapacity":25,"RegisterType":1,"DiscountPercent":0.00,"Concepts":"","RemainSession":17,"payable":42500000,"TeacherName":"پویا هراتی زاده","ClassGendre":"3","MinimumCapacity":"10","ClassHour":"50","CertType":1,"CertTemplate":1,"MinAbsenceAllowed":5,"MinMark":60,"CourseType":6,"CategoryID":6,"CategoryName":"فرانت","CompanyID":3,"CompanyName":"دانش و فناوری بامداد","CompanyParent":2,"RegisterDis":"0","CashDis":"0","SemesterName":"پاییز1402","SemesterStartDate":"2022-09-23","SemesterEndDate":"2022-10-22","TeacherId":3014,"TeacherPercent":0.000000000000000e+000,"ProductAvailableSessions":[{"Id":444,"ProductId":317,"Hour":"18:00 تا 21:00","IsActive":1,"Status":1,"CreationDate":"2023-09-04T14:13:00","Capacity":25}]}]}],
-    concepts:[{"name":"مقدمات و مفاهیم رابط و تجربه کاربری","describle":"آشنایی با اسکچ، وایرفریم، پروتوتایپ، طراحی گرافیک، استراتژی UX و ..."},{"name":"اصول طراحی المان‌ها در رابط کاربری (روانشناسی رنگ، طراحی منو، طراحی فرم، اصول طراحی اپلیکیشن موبایل و ...)","describle":""},{"name":"کار با نرم‌افزار Adobe XD","describle":""},{"name":"طراحی پروژه وب‌سایت","describle":""},{"name":"طراحی پروژه موبایل","describle":""}]
+
+import { Callaxios } from '@/assets/composable/CallAxus'
+import Store from '@/store/Store'
+export default{
+  data(){
+    return {
+      regiaterdialog:false,
+      advisedialog:false,
+      data : {
+                id:0,
+                name:'',
+                img: '',
+                desc:'',
+                visit:0,
+                modify:'',
+                tags:[],
+                products :[],
+                concepts:[]
+            },
+      registratiiontimes:[],
+      selectpas :0,
+      appointments:[],
+      selectappointment:1,
+      days:[
+        {
+          name:'امروز',
+          id:0
+        },
+        {
+          name:'فردا',
+          id:1
+        },
+        {
+          name:'پس فردا',
+          id:2
+        }
+      ],
+      selectday:0
+
+    }
+  },
+  components:{
+    banner,myfooter
+  },
+  mounted(){
+    Callaxios('Lesson/GetLessonDetail/'+this.$route.params.lessonid,'get',undefined,this.aftergetdetail )
+    
+  },
+  methods:{
+    aftergetdetail(param){
+      this.data.name = param.Data.Name
+      this.data.img = param.Data.Image ==''?window.location.origin + '/src/assets/img/piano.jpg': Store.state.backuploadurl+ param.Data.Image
+      this.data.desc = param.Data.Describle.replaceAll('/UploadFile',Store.state.backuploadurl + '/UploadFile')
+      this.data.visit = param.Data.VisitingCount
+      this.data.modify = new Date(param.Data.ModifiedDate).toLocaleDateString('fa', {  year: "numeric", month: "short", day: "numeric"});
+      this.data.tags.push(param.Data.Tag)
+      this.data.concepts = JSON.parse(param.Data.Concepts)
+      param.Data.LessonProducts.filter((i)=> this.data.products.push(i))
+     
+    },
+    registrationmodal(productId){
+      this.registratiiontimes =[]
+      this.data.products.filter((i)=> i.Id == productId)[0].Product.ProductAvailableSessions.filter((i) => this.registratiiontimes.push({
+        time:i.Hour,
+        id:i.Id
+      }))
+      this.regiaterdialog = true
+    },
+    courseadvise(){
+      if(Store.state.userId != -1)
+      {
+        Callaxios('CourseAdvice/GetAppointments','get',undefined,this.aftercourseadvise )
+      }else{
+        Store.commit('backurl',window.location.href)
+        this.$router.replace({name:'welcome'})
+      }
+    },
+    aftercourseadvise(param){
+      this.appointments = []
+      param.Data.filter((i)=> this.appointments.push(i))
+      this.advisedialog=true
+    },
+    gotobag(){
+      alert(this.selectpas)
+    }
+  }
 }
+
 </script>
 <style scoped>
 @import url(../../assets/css/Views/Lesson/home.css);

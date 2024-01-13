@@ -40,7 +40,7 @@ catch (error) {
   Swal.fire({
     icon: "error",
     title: 'خطا',
-    text: error.message,
+    text: error.response.data.Message ==  undefined? error.message:error.response.data.Message,
     confirmButtonColor:'red'
   });
    }

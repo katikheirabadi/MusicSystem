@@ -60,7 +60,7 @@ const messages = {
         home_products:'دوره های فعال',
         home_startdate:'تاریخ شروع',
         home_info:'جزئیات',
-        :'مبلغ',
+        home_price:'مبلغ',
         home_priceunit:'ریال',
         home_discount:'تخفیف',
         home_days:'روزهای هفته',
@@ -71,7 +71,11 @@ const messages = {
         home_buy:'ثبت نام',
         home_councelling:'مشاوره',
         home_noproducts:'کلاسی برای این دوره فعال نمی باشد',
-
+        home_registertitle:'ثبت نام',
+        home_registertext:'ساعت مورد نظر جهت ثبت نام انتخاب کرده و برای افزودن به سبد خرید دکمه مربوطه را کلیک کنید',
+        home_registerpastitle:'زمان  کلاس ها',
+        home_modalclose:'بستن',
+        home_gotobag:'افزودن به سبد خرید'
 
       },
       message: {

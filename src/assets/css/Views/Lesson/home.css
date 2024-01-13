@@ -43,7 +43,7 @@
     background-size: cover;
       position: relative;
       overflow: hidden;
-      height: 100%;
+      height: 40vh;
       width: 100%;
   }
   .img {
@@ -52,6 +52,7 @@
     z-index: 0;
     filter: blur(6px);
 }
+
   .info {
       background: rgba(27, 26, 26, 0.9);
       transition: all 0.3s ease-out;

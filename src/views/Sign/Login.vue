@@ -151,11 +151,17 @@
   </v-sheet>
 
 </template>
-<script setup>
-import { ref } from 'vue';
-var signUp =  ref(false)
-var loginusername = ref('')
-var loginpass=ref('')
+<script>
+export default{
+  data(){
+    return {
+      signUp:false,
+      loginusername:'',
+      loginpass:''
+    }
+  }
+}
+var =ref('')
 import { useRouter } from 'vue-router';
 const router = useRouter()
 function login(){

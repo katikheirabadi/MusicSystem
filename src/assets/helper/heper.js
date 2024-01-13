@@ -55,5 +55,6 @@ function mynationalcode(nationalcode){
     mystring=mystring.substring(0,length)+"...";
     return mystring;
   }
+
   
   export {shorttext,toEnglishDigits,mynationalcode}

@@ -70,12 +70,7 @@ export default{
     mounted(){
      
        Callaxios('Frant/GetCompany/'+this.$route.params.academy,'get',undefined,this.adtergetdetail)
-        var input ={
-             "id": 0,
-             "name": "",
-             "Type": 0
-            }
-        Callaxios('Category/GetCategories','post',input,this.adtergetcategories)
+        
     }
    ,methods:{
     adtergetdetail(param){
@@ -104,6 +99,12 @@ export default{
               text: this.$t('academy.products')
             }
       )
+      var input ={
+             "id": 0,
+             "name": "",
+             "Type": 0
+            }
+        Callaxios('Category/GetCategories','post',input,this.adtergetcategories)
     },
     adtergetcategories(param){
       console.log(param.Data)
