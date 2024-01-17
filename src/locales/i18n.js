@@ -8,6 +8,8 @@ const messages = {
         certificate:'استعلام گواهینامه',
         about:'درباره ما',
         sign :'ورود و ثبت نام',
+        account:'ورود به پنل کاربری',
+        exit:'خروج'
       },
       footer:{
         phonetitle:"شماره تماس",

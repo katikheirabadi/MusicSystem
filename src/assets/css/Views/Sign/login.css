@@ -37,7 +37,7 @@ box-shadow: 0 20px 30px rgba(0, 0, 0, .2),
     position: relative;
     height: 100%;
     width: 200%;
-    background: url('../../assets/img/wp12885225-violin-autumn-wallpapers.jpg');
+    background: url('../../../img/wp12885225-violin-autumn-wallpapers.jpg');
     background-size: 55%;
     color: rgb(255, 255, 255);
     transform: translateX(0);
@@ -160,7 +160,9 @@ form {
   z-index: 1;
   opacity: 0;
 }
-
+.signup_row{
+  width: 100% !important;
+}
 .sign-up-active {
   .sign-in {
     transform: translateX(100%);
@@ -187,7 +189,7 @@ form {
 
   .overlay-right {
     transform: translateX(-50%);
-    background: url('../../assets/img/wp12201805-acoustic-guitar-players-wallpapers.jpg');
+    background: url('../../../img/wp12201805-acoustic-guitar-players-wallpapers.jpg');
     background-size: 50%;
     min-height: 100%;
   }
@@ -241,6 +243,12 @@ form {
   color: rgb(161, 71, 60);
   padding-bottom: 0px !important;
   margin-top: -15%;
+}
+.signin_pass{
+  margin-top: -20% !important;
+}
+.signin_Username{
+  width: 60% !important;
 }
 .field1{
   color: rgb(82, 20, 12) !important;

@@ -20,7 +20,7 @@
       <v-form class="sign-up">
         <h2>{{ $t('message.login_signup_header') }}</h2>
      
-        <v-row style="width: 100%;">
+        <v-row class="signup_row">
           <v-col cols="12">
             <v-select 
              label="زمان ثبت نام"
@@ -56,7 +56,7 @@
         width="300"
         src="../../assets/img/logo.png"></v-img>
         <h4>{{ $t('message.login_login_header') }}</h4>
-        <v-row style="width: 60%;" class="center-class">
+        <v-row class="center-class signin_Username">
           <v-col cols="12" class="my-auto">
             <v-text-field 
               class='field1'
@@ -67,7 +67,7 @@
               </v-text-field>
           </v-col>
           
-          <v-col cols="12" style="margin-top: -20% !important;">
+          <v-col class="signin_pass" cols="12">
             <v-text-field 
                type="password"
                class='field1'
@@ -152,6 +152,8 @@
 
 </template>
 <script>
+import { Callaxios } from '@/assets/composable/CallAxus';
+import Store from '@/store/Store';
 export default{
   data(){
     return {
@@ -159,16 +161,24 @@ export default{
       loginusername:'',
       loginpass:''
     }
+  },
+  methods :{
+    login(){
+      var input={
+        Username:this.loginusername,
+        Password:this.loginpass,
+        Captcha:''
+      }
+      Callaxios('Auth/Login','post',input,this.afterlogin)
+    },
+    afterlogin(param){
+       localStorage.setItem('token',param.Data.Token)
+      this.$router.replace(Store.state.backurl)
+    }
   }
-}
-var =ref('')
-import { useRouter } from 'vue-router';
-const router = useRouter()
-function login(){
-  router.replace({ name: 'panel' })
-}
+} 
 </script>
 <style scoped>
-@import '../../assets/css/login.css';
+@import '../../assets/css/Views/Sign/login.css';
 
 </style>

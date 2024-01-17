@@ -12,9 +12,33 @@
       <router-link class="my-auto menuitem" to="/">{{ $t('banner.certificate') }}</router-link>
     </v-col>
   
-    <v-col md="3" lg="6" class="banner-logo">
-      <img src="../assets/img/logo.png" alt="karosaz">
+    <v-col v-if="Name == ''" md="3" lg="6" class="banner-logo">
+      <img  src="../assets/img/logo.png" alt="karosaz">
       <router-link class="signinbtn" :to="{name:'welcome'}">{{ $t('banner.sign') }}</router-link>     
+    </v-col>
+    <v-col v-if="Name != ''" md="3" lg="6" class="banner-logo">
+      <h3 class="pt-3 pe-2 text-brown">{{Name  }}</h3><span class="pt-3 pe-2">خوش آمدید</span>
+      <a class="signinbtn me-1">
+        <v-icon icon="fa fa-user">
+        </v-icon>
+        <v-tooltip
+         style="font-family: 'IRANSANS';"
+          activator="parent"
+          location="bottom"
+          >{{ $t('banner.account') }}
+        </v-tooltip>
+      </a>  
+      <a class="signinbtn" @click="Logout()">
+        <v-icon icon="fa fa-sign-out">
+        </v-icon>
+        <v-tooltip
+         style="font-family: 'IRANSANS';"
+          activator="parent"
+          location="bottom"
+          >{{ $t('banner.exit') }}
+        </v-tooltip>
+       </a>     
+   
     </v-col>
     </v-row>
 
@@ -60,13 +84,33 @@
 
 </template>
 <script>
+import Store from '@/store/Store';
+import { Callaxios } from '@/assets/composable/CallAxus';
 export default {
     data () {
       return {
         drawer: null,
-        logo : window.location.origin + '/src/assets/img/academy.png'
+        logo : window.location.origin + '/src/assets/img/academy.png',
+        Name:''
       }
     },
+    mounted(){
+      if(Object.entries(Store.state.profile).length != 0){
+        this.Name = Store.state.profile.fName + ' ' + Store.state.profile.lName
+
+    }else{
+      this.Name = ''
+    }
+  },
+  methods:{
+    Logout(){
+      Callaxios('Auth/Logout','post',undefined,this.afterlogout)
+    },
+    afterlogout(param){
+      localStorage.removeItem('token')
+      location.reload()
+    }
+  }
   }
 </script>
 <style scoped>

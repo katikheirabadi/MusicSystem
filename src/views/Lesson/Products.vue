@@ -296,11 +296,11 @@ export default{
       this.regiaterdialog = true
     },
     courseadvise(){
-      if(Store.state.userId != -1)
+      if(Store.state.profile != {})
       {
         Callaxios('CourseAdvice/GetAppointments','get',undefined,this.aftercourseadvise )
       }else{
-        Store.commit('backurl',window.location.href)
+        Store.commit('backurl',{name:'lessondetail',params:{lessonid:this.$route.params.lessonid}})
         this.$router.replace({name:'welcome'})
       }
     },

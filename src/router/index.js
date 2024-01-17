@@ -87,7 +87,7 @@ const Auth = () => {
 
 router.beforeEach(async (to, from, next) => {
   var destination = to.path;
-  if(to.name == 'Home'){
+  if(to.name == 'Home' && localStorage.getItem('token')==undefined){
      store.state.language = to.fullPath.split('/')[1]
     localStorage.setItem('lang',store.state.language)
   }
@@ -100,12 +100,12 @@ router.beforeEach(async (to, from, next) => {
          //todo
           await store.dispatch("getProfile").then((res) => {
               if (res && !authRequired) {
-                  destination = 'Panel'
+                  destination = 'panel'
 
               } else if (!res) {
                   localStorage.removeItem('token');
                   store.state.profile = {}
-                  destination = ':lang'
+                  destination = 'fa'
 
               }
           });
@@ -113,9 +113,9 @@ router.beforeEach(async (to, from, next) => {
  
 
       }
-      else if (!authRequired) {
-          destination = to.from.path;
-      }
+      // else if (!authRequired) {
+      //     destination = to.from.path;
+      // }
 
   } else {
       store.state.profile = {}
@@ -134,14 +134,12 @@ router.beforeEach(async (to, from, next) => {
 
   if (to.path != destination) {
      window.scrollTo(0, 0);
-      next({ path: destination });
+      next({ name: destination });
   } else {
       window.scrollTo(0, 0);
       next()
   }
 
 });
-router.afterEach(() => {
-  textFieldData.value = '';
-});
+
 export default router
