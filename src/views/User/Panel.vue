@@ -1,23 +1,29 @@
 <template>
  <v-card>
     <v-layout>
-      <v-navigation-drawer  permanent>
-        <v-list-item 
-          nav
-          class="center-class"
-        >
-        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Hello" style="border-radius: 50%;">
-        <h4 class="text-center" style="color: #912909;">محسن پوریخت 
+      <v-navigation-drawer 
+      v-model="drawer"
+      :rail="rail"
+      permanent
+      @click="rail = false"
+      >
+      <v-list-item 
+      nav
+      class="center-class"
+      >
+        <img v-if="rail" src="https://randomuser.me/api/portraits/men/85.jpg" alt="Hello" style="border-radius: 50%;width: 100%;margin-top: 50%;">
+        <img v-if="!rail"  @click.stop="rail = !rail" src="https://randomuser.me/api/portraits/men/85.jpg" alt="Hello" style="border-radius: 50%;">
+        <h4  v-if="!rail" class="text-center" style="color: #912909;">محسن پوریخت 
         
         </h4>
        
         </v-list-item>
         <v-list nav>
-          <v-list-item  style="color: #9c280e;" prepend-icon="	fa fa-calendar" title="داشبورد" value="داشبورد" @click="classescomp=false,dashbord=true"></v-list-item>
-          <v-list-item  style="color: #9c280e;" prepend-icon="	fa fa-calendar" title="کلاس های من" value="کلاس های من" @click="classescomp=true,dashbord=false"></v-list-item>
-          <v-list-item style="color: #9c280e;" prepend-icon="fa fa-certificate" title="گواهینامه ها" value="گواهینامه ها" @click="classescomp=false,dashbord=false"></v-list-item>
-          <v-list-item style="color: #9c280e;" prepend-icon="	fa fa-calculator" title="مدیریت اعتبار" value="مدیریت اعتبار" @click="classescomp=false,dashbord=false"></v-list-item>
-          <v-list-item style="color: #9c280e;" prepend-icon="	fa fa-address-book" title="معرفی به دوستان" value="معرفی به دوستان" @click="classescomp=false,dashbord=false"></v-list-item>
+          <v-list-item  style="color: #9c280e;" prepend-icon="	fa fa-calendar" title="داشبورد" value="داشبورد" @click="classescomp=false,Credit=false,dashbord=true"></v-list-item>
+          <v-list-item  style="color: #9c280e;" prepend-icon="	fa fa-calendar" title="کلاس های من" value="کلاس های من" @click="classescomp=true,Credit=false,dashbord=false"></v-list-item>
+          <v-list-item style="color: #9c280e;" prepend-icon="fa fa-certificate" title="گواهینامه ها" value="گواهینامه ها" @click="classescomp=false,Credit=false,dashbord=false"></v-list-item>
+          <v-list-item style="color: #9c280e;" prepend-icon="	fa fa-calculator" title="مدیریت اعتبار" value="مدیریت اعتبار" @click="classescomp=false,Credit=true,dashbord=false"></v-list-item>
+          <v-list-item style="color: #9c280e;" prepend-icon="	fa fa-address-book" title="معرفی به دوستان" value="معرفی به دوستان" @click="classescomp=false,Credit=false,dashbord=false"></v-list-item>
           <v-list-item style=";color: #9c280e;"  prepend-icon="fa fa-edit" title="ویرایش مشخصات" value="ویرایش مشخصات"></v-list-item>
         </v-list>
       </v-navigation-drawer>
@@ -284,7 +290,7 @@
           </v-row>
          
          </v-container>
-        
+        <credit v-if="Credit"/>
    
     
       </v-main>
@@ -294,6 +300,7 @@
 </template>
 <script>
 import classes from '@/components/UserPanel/Classes.vue'
+import Credit from '@/components/UserPanel/Credit.vue';
 export default{
   data(){
     return  {
@@ -304,11 +311,14 @@ export default{
     input: null,
     buttons: null,
     classescomp:false,
-    dashbord:true
+    dashbord:true,
+    credit:false,
+    rail:true,
+    drawer:true
   }
   },
   components:{
-    classes
+    classes,Credit
   },
   mounted() {
     this.container = document.getElementsByClassName('calendar')[0];

@@ -18,8 +18,8 @@
     </v-col>
     <v-col v-if="Name != ''" md="3" lg="6" class="banner-logo">
       <h3 class="pt-3 pe-2 text-brown">{{Name  }}</h3><span class="pt-3 pe-2">خوش آمدید</span>
-      <a class="signinbtn me-1">
-        <v-icon icon="fa fa-user">
+      <a class="signinbtn me-1"  @click="this.$router.replace({name:'panel'})">
+        <v-icon icon="fa fa-user" >
         </v-icon>
         <v-tooltip
          style="font-family: 'IRANSANS';"

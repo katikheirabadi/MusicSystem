@@ -71,7 +71,7 @@ import myfooter from '@/components/Footer.vue'
 import { ref } from 'vue';
 let status = ref(false)
 </script>
-<style scoped>
+<style>
 .successmain{
     width: 100%;
     min-height: 80vh !important;

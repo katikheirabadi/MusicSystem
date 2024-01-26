@@ -296,7 +296,7 @@ export default{
       this.regiaterdialog = true
     },
     courseadvise(){
-      if(Store.state.profile != {})
+      if(Object.entries(Store.state.profile).length != 0)
       {
         Callaxios('CourseAdvice/GetAppointments','get',undefined,this.aftercourseadvise )
       }else{
@@ -310,7 +310,7 @@ export default{
       this.advisedialog=true
     },
     gotobag(){
-      alert(this.selectpas)
+      this.$router.replace({name:'bag'})
     }
   }
 }

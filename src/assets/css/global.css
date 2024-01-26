@@ -56,3 +56,6 @@
         right: 0px;
     }
   }
+  .v-btn {
+    letter-spacing:0 !important
+}
