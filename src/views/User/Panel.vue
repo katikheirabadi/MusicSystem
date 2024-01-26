@@ -3,33 +3,36 @@
     <v-layout>
       <v-navigation-drawer 
       v-model="drawer"
-      :rail="rail"
-      permanent
+      temporary
       @click="rail = false"
       >
       <v-list-item 
       nav
       class="center-class"
-      >
-        <img v-if="rail" src="https://randomuser.me/api/portraits/men/85.jpg" alt="Hello" style="border-radius: 50%;width: 100%;margin-top: 50%;">
-        <img v-if="!rail"  @click.stop="rail = !rail" src="https://randomuser.me/api/portraits/men/85.jpg" alt="Hello" style="border-radius: 50%;">
-        <h4  v-if="!rail" class="text-center" style="color: #912909;">محسن پوریخت 
+      style="display: flex;"
+      >      
+        <img src="../../../src/assets/img/profile.png" alt="Hello" style="border-radius: 50%;width: 100% !important;margin-top: 10%;">
+        <h4  class="text-center" style="color: #912909;">محسن پوریخت 
         
         </h4>
        
         </v-list-item>
         <v-list nav>
-          <v-list-item  style="color: #9c280e;" prepend-icon="	fa fa-calendar" title="داشبورد" value="داشبورد" @click="classescomp=false,Credit=false,dashbord=true"></v-list-item>
-          <v-list-item  style="color: #9c280e;" prepend-icon="	fa fa-calendar" title="کلاس های من" value="کلاس های من" @click="classescomp=true,Credit=false,dashbord=false"></v-list-item>
-          <v-list-item style="color: #9c280e;" prepend-icon="fa fa-certificate" title="گواهینامه ها" value="گواهینامه ها" @click="classescomp=false,Credit=false,dashbord=false"></v-list-item>
-          <v-list-item style="color: #9c280e;" prepend-icon="	fa fa-calculator" title="مدیریت اعتبار" value="مدیریت اعتبار" @click="classescomp=false,Credit=true,dashbord=false"></v-list-item>
-          <v-list-item style="color: #9c280e;" prepend-icon="	fa fa-address-book" title="معرفی به دوستان" value="معرفی به دوستان" @click="classescomp=false,Credit=false,dashbord=false"></v-list-item>
-          <v-list-item style=";color: #9c280e;"  prepend-icon="fa fa-edit" title="ویرایش مشخصات" value="ویرایش مشخصات"></v-list-item>
+          <v-list-item class="panellist"  prepend-icon="fa fa-calendar" title="داشبورد" value="0" @click="classescomp=false,Credit=false,dashbord=true,certificate=false"></v-list-item>
+          <v-list-item class="panellist"  prepend-icon="fa fa-calendar" title="کلاس های من" value="1" @click="classescomp=true,Credit=false,dashbord=false,certificate=false"></v-list-item>
+          <v-list-item class="panellist"  prepend-icon="fa fa-certificate" title="گواهینامه ها" value="2" @click="classescomp=false,Credit=false,dashbord=false,certificate=true"></v-list-item>
+          <v-list-item class="panellist"  prepend-icon="fa fa-calculator" title="مدیریت اعتبار" value="3" @click="classescomp=false,Credit=true,dashbord=false,certificate=false"></v-list-item>
+          <v-list-item class="panellist"  prepend-icon="fa fa-address-book" title="معرفی به دوستان" value="4" @click="classescomp=false,Credit=false,dashbord=false,certificate=false"></v-list-item>
+          <v-list-item class="panellist"  prepend-icon="fa fa-edit" title="ویرایش مشخصات" value="4"></v-list-item>
         </v-list>
       </v-navigation-drawer>
       <v-app-bar
-        color="#5b1505">
-        <v-spacer></v-spacer>
+        color="#5b1505"
+        style="display: flex;
+        justify-content: space-between !important;">
+      <img v-if="!drawer"  @click.stop="drawer = !drawer" src="../../../src/assets/img/profile2.png" alt="Hello" style="border-radius: 50%;width: 5vh;margin-inline-start: 1%;">
+      <v-spacer></v-spacer>
+      <div>
       <v-btn variant="text" @click="this.$router.replace({name:'bag'})" >
         <v-badge content="5"
           color="green"> 
@@ -54,8 +57,9 @@
           >خروج
         </v-tooltip>
         </v-btn>
+      </div>
       </v-app-bar>
-      <v-main style="min-height: 100vh;background-color: #761d083b;margin-inline-start: 1%;padding-inline-end: 2%;">
+      <v-main style="min-height: 100vh;background-color: #761d083b;margin-inline-start: 0%;padding-inline-end: 2%;">
         <classes v-if="classescomp"/>
          <v-container v-if="dashbord">
           <!-- cards -->
@@ -291,7 +295,7 @@
          
          </v-container>
         <credit v-if="Credit"/>
-   
+        <certificate v-if="certificate"/>
     
       </v-main>
     </v-layout>
@@ -301,6 +305,7 @@
 <script>
 import classes from '@/components/UserPanel/Classes.vue'
 import Credit from '@/components/UserPanel/Credit.vue';
+import certificate from '@/components/UserPanel/Certificate.vue'
 export default{
   data(){
     return  {
@@ -313,12 +318,13 @@ export default{
     classescomp:false,
     dashbord:true,
     credit:false,
+    certificate:false,
     rail:true,
-    drawer:true
+    drawer:false
   }
   },
   components:{
-    classes,Credit
+    classes,Credit,certificate
   },
   mounted() {
     this.container = document.getElementsByClassName('calendar')[0];
@@ -356,6 +362,9 @@ export default{
 * {
   list-style: none;
   outline: none;
+}
+.panellist{
+  color: #9c280e;
 }
 .joinbtn{
 text-decoration: none;
