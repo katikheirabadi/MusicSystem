@@ -1,7 +1,7 @@
 <template>
     <banner/>
     <div v-if="status" class="successmain center-class">
-        <v-sheet class="result text-center center-class" >
+        <v-sheet class="result text-center" >
                 <img src="../../assets/img/icons8-success-96.png" alt="">
                 <h2 >پرداخت موفق</h2>
                 <v-row style="margin-top: 2%;font-size: 120%;">
@@ -24,7 +24,7 @@
                     <v-col cols="12" sm="4" class="text-center">وضعیت :</v-col>
                     <v-col cols="12" sm="5" class="text-center"> <span>موفق</span></v-col>
                 </v-row>
-                <v-row style="margin-top: 2%;font-size: 120%;">
+                <v-row style="margin-top: 2%;font-size: 100%;">
                   <v-col cols="12" class="center-class">
                     <router-link class="back" to="/">بازگشت به کاروساز</router-link>
                   </v-col>
@@ -32,7 +32,7 @@
         </v-sheet>
     </div> 
     <div v-if="!status" class="faildmain center-class">
-        <v-sheet class="result text-center pt-3 center-class" >
+        <v-sheet class="result text-center pt-3" >
                 <img src="../../assets/img/icons8-fail-96.png" alt="">
                 <h2 style="color: red;" >پرداخت ناموفق</h2>
                 <v-row style="margin-top: 2%;font-size: 100%;">
@@ -69,7 +69,7 @@
 import banner from '@/components/Banner.vue'
 import myfooter from '@/components/Footer.vue'
 import { ref } from 'vue';
-let status = ref(false)
+let status = ref(true)
 </script>
 <style>
 .successmain{

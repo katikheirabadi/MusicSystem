@@ -18,12 +18,11 @@
        
         </v-list-item>
         <v-list nav>
-          <v-list-item class="panellist"  prepend-icon="fa fa-calendar" title="داشبورد" value="0" @click="classescomp=false,Credit=false,dashbord=true,certificate=false"></v-list-item>
-          <v-list-item class="panellist"  prepend-icon="fa fa-calendar" title="کلاس های من" value="1" @click="classescomp=true,Credit=false,dashbord=false,certificate=false"></v-list-item>
-          <v-list-item class="panellist"  prepend-icon="fa fa-certificate" title="گواهینامه ها" value="2" @click="classescomp=false,Credit=false,dashbord=false,certificate=true"></v-list-item>
-          <v-list-item class="panellist"  prepend-icon="fa fa-calculator" title="مدیریت اعتبار" value="3" @click="classescomp=false,Credit=true,dashbord=false,certificate=false"></v-list-item>
-          <v-list-item class="panellist"  prepend-icon="fa fa-address-book" title="معرفی به دوستان" value="4" @click="classescomp=false,Credit=false,dashbord=false,certificate=false"></v-list-item>
-          <v-list-item class="panellist"  prepend-icon="fa fa-edit" title="ویرایش مشخصات" value="4"></v-list-item>
+          <v-list-item class="panellist"  prepend-icon="fa fa-calendar" title="داشبورد" value="0" @click="classescomp=false,Credit=false,dashbord=true,certificate=false,editProfile=false"></v-list-item>
+          <v-list-item class="panellist"  prepend-icon="fa fa-calendar" title="کلاس های من" value="1" @click="classescomp=true,Credit=false,dashbord=false,certificate=false,editProfile=false"></v-list-item>
+          <v-list-item class="panellist"  prepend-icon="fa fa-certificate" title="گواهینامه ها" value="2" @click="classescomp=false,Credit=false,dashbord=false,certificate=true,editProfile=false"></v-list-item>
+          <v-list-item class="panellist"  prepend-icon="fa fa-calculator" title="مدیریت اعتبار" value="3" @click="classescomp=false,Credit=true,dashbord=false,certificate=false,editProfile=false"></v-list-item>
+          <v-list-item class="panellist"  prepend-icon="fa fa-edit" title="ویرایش مشخصات" value="4" @click="classescomp=false,Credit=false,dashbord=false,certificate=false,editProfile=true"></v-list-item>
         </v-list>
       </v-navigation-drawer>
       <v-app-bar
@@ -239,13 +238,7 @@
         </div>
 
       </div>
-    </div>
-
-
-
-
-           <!-- exams -->
-        
+          </div>
         <!-- sessions and homeworks -->
           <v-row>
             <v-col cols="12" md="6">
@@ -296,7 +289,7 @@
          </v-container>
         <credit v-if="Credit"/>
         <certificate v-if="certificate"/>
-    
+        <editProfile v-if="editProfile"/>
       </v-main>
     </v-layout>
   </v-card>
@@ -306,6 +299,8 @@
 import classes from '@/components/UserPanel/Classes.vue'
 import Credit from '@/components/UserPanel/Credit.vue';
 import certificate from '@/components/UserPanel/Certificate.vue'
+import editProfile from '@/components/UserPanel/EditProfile.vue';
+import { fa } from 'vuetify/lib/iconsets/fa.mjs';
 export default{
   data(){
     return  {
@@ -319,12 +314,13 @@ export default{
     dashbord:true,
     credit:false,
     certificate:false,
+    editProfile:false,
     rail:true,
     drawer:false
   }
   },
   components:{
-    classes,Credit,certificate
+    classes,Credit,certificate,editProfile
   },
   mounted() {
     this.container = document.getElementsByClassName('calendar')[0];
