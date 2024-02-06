@@ -1,97 +1,187 @@
-<template>
-<h2 class="text-center mt-10 title">مشخصات فردی</h2>
+<template v-if="reloadComponent">
+<h2 class="text-center mt-10 title">{{ $t('panel.editprofile.infotitle') }} </h2>
 <v-container class="bg-white mt-4">
     <v-row>
         <v-col cols="12" md="5" >
             <div  class="d-flex justify-center ">
-                <img height="190px" src="../../assets/img/profile3.png" alt="">
+                <img height="190px" :src="img" alt="">
             </div>
             <div>
-                <v-file-input class="credit" label=" بارگذاری تصویر جدید" variant="outlined"></v-file-input>
+                <v-file-input class="credit" :label="$t('panel.editprofile.uploadimg')" variant="outlined"></v-file-input>
             </div>
 
         </v-col>
     <v-col cols="12" md="7" >
      <v-row >
         <v-col cols="0" md="6">
-            <v-text-field type="text" label="نام" required ></v-text-field>
+            <v-text-field type="text" v-model="name" :label="$t('panel.editprofile.name')" required ></v-text-field>
         </v-col>
         <v-col cols="12" md="6">
-            <v-text-field type="text" label=" نام خانوادگی"  required ></v-text-field>
+            <v-text-field type="text" v-model="familyname" :label="$t('panel.editprofile.familyname')"  required ></v-text-field>
         </v-col>
     </v-row>
     <v-row >
         <v-col cols="12" md="6">
-            <v-text-field type="text" label="شماره همراه" required ></v-text-field>
+            <v-text-field type="text" v-model="phone" :label="$t('panel.editprofile.phone')" required ></v-text-field>
         </v-col>
         <v-col cols="12" md="6">
-            <v-text-field type="email" label="ایمیل"  required ></v-text-field>
+            <v-text-field type="email" v-model="email" :label="$t('panel.editprofile.email')"  required ></v-text-field>
         </v-col>
             </v-row>
             <v-row >
         <v-col cols="12" md="2"></v-col>
         <v-col cols="12" md="4">
-            <v-radio-group inline >
+            <v-radio-group inline  v-model="gender" >
                 <v-radio
-                label="زن"
+                :label="$t('panel.editprofile.female')"
                 color="rgb(109, 5, 5)"
-                value="0"
+                :value="0"
+               
               ></v-radio>
               <v-radio
-                label="مرد"
+              :label="$t('panel.editprofile.male')"
                 color="rgb(109, 5, 5)"
-                value="1"
+                :value="1"  
               ></v-radio>
             </v-radio-group>
         </v-col>
         <v-col class="d-flex align-center" cols="12" md="4" >
-            <v-btn class="editbtn" block>ویرایش اطلاعات فردی</v-btn>
+            <v-btn class="editbtn" @click="updateInfo" block>{{ $t('panel.editprofile.updateinfobtn') }}  </v-btn>
         </v-col> <v-col cols="12" md="1"></v-col>
             </v-row>
         </v-col>
     </v-row>
 </v-container>
-<h2 class="text-center mt-5  title">ویرایش رمز عبور </h2>
+<h2 class="text-center mt-5  title">{{ $t('panel.editprofile.passtitle') }} </h2>
 <v-container class="bg-white mt-6 mb-5">
+    <v-form ref="form">
+
+  
 <v-row>
-    <v-col cols="12" md="6">
-        <v-text-field type="password" label="رمز عبور جدید" ></v-text-field>
+    <v-col cols="12" md="4">
+        <v-text-field type="password" v-model="odlpassword" :rules="oldpassrules" :label="$t('panel.editprofile.oldpass')" ></v-text-field>
     </v-col>
-    <v-col cols="12" md="6">
-        <v-text-field type="password" label="تکرار رمز عبور جدید" ></v-text-field>
+    <v-col cols="12" md="4">
+        <v-text-field type="password" v-model="password" :rules="passrules" :label="$t('panel.editprofile.pass')" ></v-text-field>
+    </v-col>
+    <v-col cols="12" md="4">
+        <v-text-field type="password" v-model="confirm" :rules="confirmpassrules" :label="$t('panel.editprofile.confirmpass')" ></v-text-field>
     </v-col>
 </v-row>
 <v-row>
-    <v-btn class="mb-5 editbtn">ویرایش  رمز عبور</v-btn>
+    <v-btn @click="updatepass" class="mb-5 editbtn">{{ $t('panel.editprofile.updatepassbtn') }}</v-btn>
 </v-row>
+</v-form>
 </v-container>
+<ResultNotification v-if="snackbar" :type="mtype" :text="message" :show="snackbar" @close="snackbar=false"/>
+
 </template>
 <script>
 import { Callaxios } from '@/assets/composable/CallAxus';
+import Swal from 'sweetalert2';
 import Store from '@/store/Store';
-export default{
-    data(){},
-    methods:{},
-    mounted(){
+import i18n from '@/locales/i18n.js'
 
+import ResultNotification from '../ResultNotification.vue';
+export default{
+    data(){
+        return{
+            snackbar:false,
+            reloadComponent:true,
+            img:'',
+            name:'',
+            familyname:'',
+            phone:'',
+            email:'',
+            gender:0,
+            imgaddress:'',
+            odlpassword:'',
+            password:'',
+            confirm:'',
+            message:'',
+            mtype:0,
+            oldpassrules:[
+            v => !!v || i18n.global.t('panel.editprofile.required')
+            ],
+            passrules:[
+            v => !!v || i18n.global.t('panel.editprofile.required'),
+            v => v.length >= 8 || i18n.global.t('panel.editprofile.passlen'),
+            ],
+            confirmpassrules:[
+            v => !!v || i18n.global.t('panel.editprofile.required'),
+             v => v === this.password || i18n.global.t('panel.editprofile.confirm'),
+            ],
+        }
+    },
+    components:{ResultNotification},
+    methods:{
+        aftergetinfo(param){
+            this.img = param.Image==''?window.location.origin + '/src/assets/img/profile3.png':Store.state.backuploadurl + param.Image
+            this.imgaddress = param.Image==''? '':param.Image
+            this.name = param.FName
+            this.familyname = param.LName
+            this.phone = param.PhoneNumber
+            this.email = param.EmailAddress
+            this.gender = param.Gender
+
+        },
+        updateInfo(){
+            var input={
+                FirstName:this.name,
+                LastName:this.familyname,
+                PhoneNumber:this.phone,
+                Email:this.email,
+                ProfileImage: this.imgaddress,
+                Gender:this.gender,
+                OldPass:'',
+                RealPass:''
+            }
+            Callaxios('User/UpdateUserProfileDetails','post',input,this.afterupdateInfo)
+        },
+        afterupdateInfo(param){
+            this.message = param.Data.Message
+            if(param.Data.Result == 1){
+                this.mtype = '1'
+            }else{
+                this.mtype = '0'
+            }
+            this.snackbar = true
+        },
+        updatepass(){
+            if (this.odlpassword=='' ||
+                this.password=='' ||
+                this.confirm ==''||
+                this.confirm != this.password){
+           this.message=i18n.global.t('panel.editprofile.passvaliderror')
+           this.mtype='0'
+           this.snackbar=true
+        }else{
+            var input={
+                FirstName:this.name,
+                LastName:this.familyname,
+                PhoneNumber:this.phone,
+                Email:this.email,
+                ProfileImage: this.imgaddress,
+                Gender:this.gender,
+                OldPass:this.odlpassword,
+                RealPass:this.password
+            }
+            Callaxios('User/UpdateUserProfileDetails','post',input,this.afterupdateInfo)
+        }
+        },
+        reload() {
+        this.reloadComponent = false;
+          this.$nextTick(() => {
+          this.reloadComponent = true;
+         });
+        },
+       
+    },
+    mounted(){
+        Callaxios('User/GetUserBaseInfo','get',undefined,this.aftergetinfo)
     }
 }
 </script>
 <style scoped>
-.title{
-    color:rgb(109, 5, 5) 
-}
-.v-container{
-    width: 70%;
-}
-.editbtn{
-    background-color:rgb(109, 5, 5) ;
-    color: aliceblue;
-    padding-inline: 5% !important;
-    margin-inline: auto !important;
-    display: flex;
-}
-.v-text-field,.v-file-input{
-    color:rgb(109, 5, 5) ;  
-}
+@import url(../../assets/css/UserPanel/editprofile.css);
 </style>

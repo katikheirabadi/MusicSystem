@@ -1,0 +1,39 @@
+.creditcard{
+    width:100% !important;
+    min-height:50% !important;
+    border-radius: 10px;
+    border: #912909 4px solid;
+    background-color : #912909
+}
+.creditcardimg{
+    padding-inline-end: 0% !important;
+}
+.creditcardimg img {
+    width: 80%;height: 90% !important;
+}
+.chargecard{
+    width:100% !important;
+    min-height:50% !important;
+    border-radius: 10px;
+    border:  #dd6b1f64  4px solid;
+    background-color :  #dd6b1f
+}
+.chargecardimg{
+    padding-inline-end: 0% !important;
+}
+.chargecardimg img {
+    width: 80%;height: 90% !important;
+}
+.v-main{
+  overflow-y: auto !important;
+}
+.tablerow{
+  color:#912909 !important;
+}
+.tablerowdark{
+  background-color: #dd6b1f64;
+  color:#912909 !important;
+}
+.table{
+  box-shadow: 1px 1px 10px ;
+}

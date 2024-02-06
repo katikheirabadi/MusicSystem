@@ -9,7 +9,7 @@ export default createStore({
         backuploadurl : 'https://tms.bamdad.co/',
         apihost: 'http://localhost:5015',
         userId : -1,
-        backurl :''
+        backurl :{name:'panel'}
     },
     mutations: {
         backurl(state, payload) {

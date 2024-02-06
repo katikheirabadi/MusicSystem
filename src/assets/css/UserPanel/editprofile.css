@@ -1,0 +1,17 @@
+
+.title{
+    color:rgb(109, 5, 5) 
+}
+.v-container{
+    width: 70%;
+}
+.editbtn{
+    background-color:rgb(109, 5, 5) ;
+    color: aliceblue;
+    padding-inline: 5% !important;
+    margin-inline: auto !important;
+    display: flex;
+}
+.v-text-field,.v-file-input{
+    color:rgb(109, 5, 5) ;  
+}

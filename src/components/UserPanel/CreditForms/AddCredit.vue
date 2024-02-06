@@ -1,11 +1,11 @@
 <template>
     <v-card class="card">
         <v-card-title class="title mt-3">
-            افزایش اعتبار از طریق بانک
+            {{ $t('panel.credit.addcredittitle') }}
         </v-card-title>
-        <h5 class="my-3 mx-5">برای افزایش اعتبار از طریق بانک، لطفا ابتدا مبلغ مد نظر را نوشته و دکمه پرداخت را بزنید.</h5>
-        <v-text-field v-model="amount" class="credit" type="number" label="مبلغ (ریال)" required ></v-text-field>
-        <v-btn @click="AddCredit" class="my-3 creditbtn">پرداخت</v-btn>
+        <h5 class="my-3 mx-5">{{ $t('panel.credit.addcreditdesc') }}</h5>
+        <v-text-field v-model="amount" class="credit" type="number" :label="$t('panel.credit.addcreditfield')" required ></v-text-field>
+        <v-btn @click="AddCredit" class="my-3 creditbtn">{{ $t('panel.credit.addcreditbtn') }}</v-btn>
 
     </v-card>
 

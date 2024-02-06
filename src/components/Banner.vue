@@ -17,7 +17,7 @@
       <router-link class="signinbtn" :to="{name:'welcome'}">{{ $t('banner.sign') }}</router-link>     
     </v-col>
     <v-col v-if="Name != ''" md="3" lg="6" class="banner-logo">
-      <h3 class="pt-3 pe-2 text-brown">{{Name  }}</h3><span class="pt-3 pe-2">خوش آمدید</span>
+      <h3 class="pt-3 pe-2 text-brown">{{Name  }}</h3><span class="pt-3 pe-2"></span>
       <a class="signinbtn me-1"  @click="this.$router.replace({name:'panel'})">
         <v-icon icon="fa fa-user" >
         </v-icon>
@@ -96,7 +96,7 @@ export default {
     },
     mounted(){
       if(Object.entries(Store.state.profile).length != 0){
-        this.Name = Store.state.profile.fName + ' ' + Store.state.profile.lName
+        this.Name = Store.state.profile.FName + ' ' + Store.state.profile.LName
 
     }else{
       this.Name = ''

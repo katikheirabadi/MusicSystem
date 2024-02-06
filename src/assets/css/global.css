@@ -7,8 +7,15 @@
     display: flex;
     justify-content: center;
    }
-
-   
+   .v-card-subtitle{
+    font-family: 'IRANSANS' !important;
+  }
+.v-btn__content{
+  font-family:  'IRANSANS';
+}
+   .swal2-html-container,.swal2-styled{
+    font-family: 'IRANSANS' ;
+   }
    @keyframes bounceIn {
     0% {
       transform: scale(0.5);

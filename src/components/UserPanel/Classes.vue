@@ -1,48 +1,85 @@
 <template>
-     <v-row>
-          <v-col v-for="i in 4" cols="12" md="4">
-            <v-sheet  class="card">
-              <v-sheet class="additional">
-                <v-sheet class="product-card">
-                  <img src="http://localhost:3000/src/assets/img/pianp.jpg" style="width: 100%; height: 100%;"/>
-                  <v-sheet class="text-center info mt-3">
-                    <h3 class="mb-1">هارمونیکا{محسن دهقانی یکشنبه}پاییز
-                      <v-icon  style="padding-inline-start: 6%;font-size: 15px;" icon="fa fa-ellipsis-h"></v-icon>
-                      <!-- <v-icon style="padding-inline-start: 6%;font-size: 15px;" icon="fa fa-ellipsis-h"></v-icon> -->
-                    </h3>
-                    <v-btn class="info-btn bg-deep-orange-darken-2 mb-1">جلسات</v-btn>
-                    <br>
-                    <v-btn class="info-btn bg-green-darken-2 mb-1">آزمون ها</v-btn>
-                    <br>
-                    <v-btn class="info-btn text-white bg-light-blue-darken-3 mb-1">نظرسنجی</v-btn>
-                   
-                  </v-sheet>
-                </v-sheet>            
+     <v-row class="mt-10 ma-2">
+          <v-col v-for="i in 5" cols="12" md="3">
+            <v-sheet class="card">
+              <v-sheet class="setting">...
               </v-sheet>
-              <v-sheet class="general text-center mt-auto">
-                <h3>هارمونیکا{محسن ده...
-                  <v-tooltip
-                   activator="parent"
-                   location="bottom"
-                   >هارمونیکا{محسن دهقانی یکشنبه}پاییز
-                  </v-tooltip>
-                </h3>
-                <v-divider></v-divider>
-                <v-sheet class="detail  mt-auto">
-                  <p>نام استاد: محسن دهقانی</p>
-                  <p>	18:00 تا 18:30	</p>
-                  <p>تعداد جلسات : 28</p>
-                  <p>نمره : 20 </p>
+              <v-sheet class="d-flex justify-center">
+                <v-sheet class="title">
+                  <div class="d-flex justify-center">
+                    <img src="../../assets/img/classacademy.png" alt="">
+                  </div>
+                  <div class="d-flex justify-center">
+                    <h10 class="text-white text-center">دانش و فناوری بامداد</h10>
+                  </div>
                 </v-sheet>
+              </v-sheet>
+              
+              <v-sheet class="content ma-2">
+                <h3 class="text-center">دف نوازی سنتی</h3>
+                <p class="text-center">1402/12/23</p>
+                <h4 class="mt-2 text-center">کتایون خیرآبادی</h4>
+                <h4 class="mt-2 text-center">5 جلسه</h4>
+                <h4 class="mt-2 text-center">شنبه و دوشنبه</h4>
+                <h4 class="mt-2 text-center">ساعت 12:45</h4>
+                <h4 class="mt-2 text-center mb-2">نمره شما 20 از 100 است</h4>
+                
+                <hr/>
+                <v-row class="d-flext justify-space-between">
+                  <v-col class="d-flex justify-center" cols="6">
+                    <v-btn class="classbtn session">جلسات</v-btn>
+                  </v-col>
+                  <v-col class="d-flex justify-center" cols="6">
+                    <v-btn class="classbtn surveis" @click="ShowSurvey(2)">نظرسنجی</v-btn>
+                  </v-col>
+                </v-row>
+                
                 
               </v-sheet>
-         
+   
             </v-sheet>
-      
           </v-col>
           
-          </v-row>
+      </v-row>
+
+    <v-dialog width="30%" v-model="showserveymodal">
+    <v-card subtitle="نظرسنجی های دوره">
+      <v-sheet class="mt-5 mb-5">
+       <v-row>
+        <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">نام نظرسنجی</v-col>
+        <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">ورد به نظرسنجی </v-col>
+       </v-row>
+       
+      </v-sheet>
+
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn
+          text="بستن"
+          @click="showserveymodal = false"
+        ></v-btn>
+      </v-card-actions>
+    </v-card>
+
+</v-dialog>
+
 </template>
+<script>
+export default{
+  data(){
+    return{
+      showserveymodal:false,
+      upselected :0
+    }
+  },
+  methods:{
+    ShowSurvey(up){
+      this.upselected = up
+      this.showserveymodal = true
+    }
+  }
+}
+</script>
 <style scoped>
 @import url(../../assets/css/UserPanel/classes.css);
 </style>

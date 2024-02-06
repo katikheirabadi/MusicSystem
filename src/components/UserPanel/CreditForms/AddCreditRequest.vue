@@ -1,12 +1,12 @@
 <template>
     <v-card class="card center-class">
         <v-card-title class="title mt-3">
-           درخواست افزایش اعتبار 
+            {{ $t('panel.credit.addreqtitle') }}
         </v-card-title>
-        <h5 class="my-3 mx-4">برای ثبت درخواست افزایش اعتبار، لطفا ابتدا مبلغ مد نظر و عکس رسید پرداختی را آپلود کرده و دکمه ثبت درخواست را بزنید.</h5>
-        <v-text-field v-model="amount" class="credit" type="number" label="مبلغ (ریال)" required ></v-text-field>
-        <v-file-input class="credit" label=" بارگذاری رسید" variant="outlined"></v-file-input>
-        <v-btn @click="AddCreditReq" class="my-3 creditbtn">ثبت درخواست</v-btn>
+        <h5 class="my-3 mx-4">{{ $t('panel.credit.addreqdesc') }}</h5>
+        <v-text-field v-model="amount" class="credit" type="number" :label="$t('panel.credit.addcreditfield')" required ></v-text-field>
+        <v-file-input class="credit" :label="$t('panel.credit.addreqimg')" variant="outlined"></v-file-input>
+        <v-btn @click="AddCreditReq" class="my-3 creditbtn">{{ $t('panel.credit.addreqbtn') }}</v-btn>
 
     </v-card>
 
