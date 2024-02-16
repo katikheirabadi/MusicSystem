@@ -43,7 +43,7 @@
              <router-link
                  :to="{name:'lessondetail',
                  params:{lessonname:myclass.name,
-                        academy:this.$route.params.academy,
+                  academyId:this.$route.params.academyId,
                         lessonid:myclass.id}}"
                 class="ma-2 mybtn"
                 >
@@ -99,7 +99,6 @@ mounted(){
 },
 methods:{
   aftergetlessons(params){
-    console.log(params.Data)
     params.Data.filter((i)=> this.classes.push({
       id:i.Id,
       img: i.Image=='no'?this.lessonimg:Store.state.backuploadurl+i.Image,
@@ -107,7 +106,6 @@ methods:{
       visit : i.VisitingCount,
       productcount: i.ProductCount
     }))
-    console.log(this.classes)
   },
   adtergetdetail(param){
     this.company.name =param.Data.name

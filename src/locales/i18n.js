@@ -27,6 +27,9 @@ const messages = {
 
       },    
       home:{
+        sitename:'سامانه کاروساز',
+        header_sub:'سامانه کار و ساز با هدف جذب نیروهای توانمند و جویای کار در زمینه تدریس موسیقی و آموزش به علاقمندان این رشته راه اندازی شده است',
+        showallacademies:'نمایش آموزشگاه ها',
         teachers:'اساتید',
         allusers:'کاربران',
         resume:' سوابق کاروساز در نگاهی کوتاه ',
@@ -34,6 +37,34 @@ const messages = {
         gratuateds:'فارع التحصیلان',
         section1_header:'چرا کار و ساز؟',
         section1_detail:'پس از سالها آموزش موسیقی در مجموعه های خود(آموزشگاه موسیقی چگامه در کرج و آموزشگاه های موسیقی چگامه و می ر سی در تهران)بر آن شدیم تا با ایجاد سامانه ائی پویا امکان ارائه دوره های آموزشی به تمام نقاط کشور و حتی خارج را داشته باشیم. این سامانه کلیه فعالیت های درون سازمانی آموزشگاه ها را نیز پوشش می‌دهد و قابل استفاده برای تمامی آموزشگاه داران عزیز است. سامانه کار و ساز با هدف جذب نیروهای توانمند و جویای کار در زمینه تدریس موسیقی و آموزش به علاقمندان این رشته راه اندازی شده است.',
+        Accademiessection_title:'کدوم آموزشگاه میخوای بری؟؟',
+        details:' دسته بندی ها',
+        optionheader:'چرا کاروساز انتخاب کنم؟؟',
+        optionone:` <img
+        src="../src/assets/img/1.png"
+        style="width: 80%;"
+       />
+       <h3 class="text-center pb-5">مدیریت کلیه امور داخلی آموزشگاه<br/>هرزمان و هرمکان</h3>
+      `,
+      optiontwo:` <img
+      src="../src/assets/img/4.webp"
+      style="width: 80%;"
+     />
+     <h3 class="text-center pb-5">امکان برگزاری کلاس<br> آنلاین و غیرحضوری</h3>
+    `,
+    optionthree:` <img
+      src="../src/assets/img/2.png"
+      style="width: 80%;"
+     />
+     <h3 class="text-center pb-5">برگزاری آزمون و <br>اراثه گواهینامه با QRCode</h3>
+    `,
+    optionfour:` <img
+      src="../src/assets/img/3.png"
+      style="width: 80%;"
+     />
+     <h3 class="text-center pb-5">ارزیابی استاد و آموزشگاه<br> توسط شما</h3>
+    `
+      
       },
       category:{
         headertitle:"آمورشگاه ",
@@ -78,8 +109,18 @@ const messages = {
         home_registertext:'ساعت مورد نظر جهت ثبت نام انتخاب کرده و برای افزودن به سبد خرید دکمه مربوطه را کلیک کنید',
         home_registerpastitle:'زمان  کلاس ها',
         home_modalclose:'بستن',
-        home_gotobag:'افزودن به سبد خرید'
-
+        home_gotobag:'افزودن به سبد خرید',
+        home_advise:'مشاوره',
+        home_advisetext:'روز و ساعت درخواست خودرا وارد کنید.',
+        home_advisehour:'ساعت',
+        home_adviseday:'روز',
+        home_adviseclose:'بستن',
+        home_adviseadd:'ثبت درخواست مشاوره',
+        today:'امروز',
+        tomorrow:'فردا',
+        twodaylater:'پس فردا',
+        adviseeroor : 'لطفا یک ساعت را انتخاب کنید.',
+        advisedayeroor : 'لطفا یک روز را انتخاب کنید.'
       },
       panel:{
         editprofile:{
@@ -121,19 +162,17 @@ const messages = {
         }
       },
       message: {
-        sitename:'سامانه کاروساز',
-        header_sub:'سامانه کار و ساز با هدف جذب نیروهای توانمند و جویای کار در زمینه تدریس موسیقی و آموزش به علاقمندان این رشته راه اندازی شده است',
-        showallacademies:'نمایش آموزشگاه ها',
+       
         error:'خطا',
       
         classes:'کلاس ها',
         detail:'مشاهده دوره',
-        details:' دسته بندی ها',
+       
       
         contact:'تماس با ما',
        
        
-        Accademiessection_title:'کدوم آموزشگاه؟؟',
+       
        
         section2_title:'چه سازی دوست داری؟!',
         site_report_1:'آموزشگاه ها',

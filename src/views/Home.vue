@@ -2,38 +2,29 @@
     <banner/>
     <myheader 
     img="src/assets/img/homeheader.jpg" 
-    :header="$t('message.sitename')" 
-    :text="$t('message.header_sub')"
-    :btns="[{text:$t('message.showallacademies'),link:{name:'Academies'}}]"/>
+    :header="$t('home.sitename')" 
+    :text="$t('home.header_sub')"
+    :btns="[{text:$t('home.showallacademies'),link:{name:'Academies'}}]"/>
     <v-container>
      <!-- system details -->
     <section class="s1">
     <detail v-if="items.length>0" :header="$t('home.resume')" :cards="items"/>
     </section>
-   
     </v-container>
 
     <!-- System description  -->
-    <section class="s2">
-    <v-row>
-     <v-col sm="12" md="12" lg="12" class="my-auto s1text">
-     <h1 style="padding-inline-start: 3%;font-size: 28px;color: aliceblue;">{{ $t('home.section1_header') }}</h1>
-     <p style="font-size: 18px; color:aliceblue;">{{ $t('home.section1_detail') }}</p>
-
-    </v-col>
-    </v-row>
-    </section>
+    <Descripti9ontextRow :title="$t('home.section1_header')" :text=" $t('home.section1_detail') "/>
 
     <v-container >
     <!-- Academies Cards -->
     <section >
-     <h1 class="text-center sectionheader" style="font-size:30px;">{{ $t('message.Accademiessection_title') }}</h1>
+     <h1 class="text-center sectionheader">{{ $t('home.Accademiessection_title') }}</h1>
      <v-row >
-       <v-col cols="12" md="3" lg="3" v-for="academy in showacademies" :key="academy.id" >
+       <v-col cols="12" md="4" lg="3" v-for="academy in showacademies" :key="academy.id" >
          <v-card 
-        class="mx-auto mt-5 academy" 
+         class="mx-auto mt-5 academy" 
          >
-       <img :src="academy.logo" style="margin-inline-start: 27%;width: 45% !important;max-height: 30% !important;">
+        <img :src="academy.logo">
 
        <v-card-item >
        <v-card-title class="text-center" >
@@ -51,23 +42,23 @@
         </v-tooltip>
       </div>
        </v-card-text>
-       <v-card-actions style="  display: flex;justify-content: end;">
+       <v-card-actions class="d-flex justify-end">
        <router-link
-       :to="{name:'Academy',params:{academy:academy.name}}"
+       :to="{name:'Academy',params:{academy:academy.id}}"
        class=" mybtn"
        >
-       {{ $t('message.details') }} &nbsp
-     <v-icon
+       {{ $t('home.details') }} &nbsp
+      <v-icon
        start
        icon="fa fa-external-link"
      ></v-icon>
      </router-link>
 
-    </v-card-actions>
-   </v-card>
+     </v-card-actions>
+     </v-card>
        
        </v-col>
-     </v-row>
+      </v-row>
       <v-pagination :length="total/showcount" v-model="current"  @click="onPageChange(current)" style="margin-top: 3%;margin-bottom: 2%;" id="1">
      </v-pagination>
    </section>
@@ -77,69 +68,42 @@
 </v-container>
 
 <!-- options -->
-<section class="s4 mx-auto mb-8">
+<section class="s4 mx-auto"> 
+  <h1 class="text-center text-white pt-10" style="font-size: 30px;">{{ $t('home.optionheader') }}</h1>
    <v-row>
-     <v-col class="mx-auto" cols="12" md="3" lg="3">
+    <v-col class="mx-auto" cols="12" md="3">
        <v-sheet class="mx-auto text-center"
-      :height="100"
-      :width="100"
-      :elevation="5"
-      rounded='xl'
-     >
-     <v-img
-     src="../assets/img/icons8-teacher-100.png"
-     ></v-img>
-     </v-sheet>
-     <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
-
+        rounded='xl'
+        :elevation="20"
+        v-html="$t('home.optionone')"
+      ></v-sheet>
+    </v-col>
+    <v-col class="mx-auto" cols="12" md="3">
+       <v-sheet class="mx-auto text-center"
+         rounded='xl'
+        :elevation="20"
+        v-html="$t('home.optiontwo')"
+      ></v-sheet>
    </v-col>
-   <v-col class="mx-auto" cols="12" md="3" lg="3">
-       <v-sheet class="mx-auto text-center"
-      :height="100"
-      :width="100"
-      :elevation="5"
-      rounded='xl'
-     >
-     <v-img
-     src="../assets/img/icons8-department-100.png"
-     ></v-img>
-     </v-sheet>
-     <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
-
+   <v-col class="mx-auto text-center" cols="12" md="3">
+    <v-sheet class="mx-auto text-center"
+         rounded='xl'
+        :elevation="20"
+        v-html="$t('home.optionthree')"
+      ></v-sheet>
+  
    </v-col>
-   <v-col class="mx-auto" cols="12" md="3" lg="3">
-       <v-sheet class="mx-auto text-center"
-      :height="100"
-      :width="100"
-      :elevation="5"
-      rounded='xl'
-     >
-     <v-img
-     src="../assets/img/icons8-acoustic-100 (1).png"
-     ></v-img>
-     </v-sheet>
-     <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
-
-   </v-col>
-   <v-col class="mx-auto" cols="12" md="3" lg="3">
-       <v-sheet class="mx-auto text-center"
-      :height="100"
-      :width="100"
-      :elevation="5"
-      rounded='xl'
-     >
-     <v-img
-     src="../assets/img/icons8-user-groups-64.png"
-     ></v-img>
-     </v-sheet>
-     <p class="text-center text-white" style="margin-top: 5%;">آموزشگاه های متفاوت در شهر های متفاوت <br/>آموزشگاهای متفاوتی دارد اینجااااا</p>
-
+   <v-col class="mx-auto text-center" cols="12" md="3">
+    <v-sheet class="mx-auto text-center"
+         rounded='xl'
+         v-html="$t('home.optionfour')"
+      ></v-sheet>
    </v-col>
    </v-row>
 </section>
 
 <!-- footer -->
- <myfooter/>
+ <myfooter style="margin-top: -10px;"/>
 
  
 </template>
@@ -150,6 +114,7 @@
   import myheader from '../components/Header.vue'
   import myfooter from '../components/Footer.vue'
   import detail from '@/components/DetailCards.vue'
+  import Descripti9ontextRow from '@/components/Descripti9ontextRow.vue'
 
   import { Callaxios } from '@/assets/composable/CallAxus'
   import {shorttext} from '@/assets/helper/heper'
@@ -167,7 +132,7 @@
     },
     components:{
     banner, myheader,myfooter,
-    VSheet,detail
+    VSheet,detail,Descripti9ontextRow
     },
     mounted(){
       Callaxios('Frant/SiteStatics','get',undefined,this.aftergetstatics);

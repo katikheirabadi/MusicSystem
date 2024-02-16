@@ -136,7 +136,7 @@
         <v-row class="mt-5 d-flex justify-end">
           <v-btn color="green-darken-4"
             rounded="0"
-           append-icon="fa fa-arrow-left" @click="shopdialog=true" >ادامه خرید</v-btn>
+           append-icon="fa fa-arrow-left" @click="this.$router.push({name:'bank'})" >ادامه خرید</v-btn>
         </v-row>
      </v-container>  
      <v-container class="mt-10" v-else>
@@ -146,7 +146,7 @@
 
 
     <ResultNotification v-if="snackbar" :show="snackbar" :location="'top right'" :type="snackbartype" :text="snackbartext" @close="snackbar=false"/>
-     <v-dialog
+     <!-- <v-dialog
       v-model="shopdialog"
       scrollable
       style="width: 60%;"
@@ -198,7 +198,7 @@
           </v-btn>
         </v-card-actions>
       </v-sheet>
-    </v-dialog>
+    </v-dialog> -->
 </template>
 <script>
 import banner from '@/components/Banner.vue';
@@ -292,7 +292,7 @@ export default{
       Callaxios('ShoppingBag/RemovefromCart','post',input,this.afterremove)
     },
     afterremove(param){
-      this.snackbartext=param.Title
+      this.snackbartext=param.Data
       this.snackbartype='success'
       this.snackbar=true
       window.location.reload()

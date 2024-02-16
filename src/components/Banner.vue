@@ -9,16 +9,23 @@
     </v-col>
 
     <v-col class="menuitemparent" md="2"  lg="1">
-      <router-link class="my-auto menuitem" to="/">{{ $t('banner.certificate') }}</router-link>
+      <!-- <router-link class="my-auto menuitem" @click="َAlert" :to=null>{{ $t('banner.certificate') }}</router-link> -->
+      <p class="my-auto menuitem" @click="Alert">{{ $t('banner.certificate') }}</p>
+
+    </v-col>
+    <v-col class="menuitemparent" md="2"  lg="1">
+      <!-- <router-link class="my-auto menuitem" @click="َAlert" :to=null>{{ $t('banner.about') }}</router-link> -->
+      <p class="my-auto menuitem" @click="Alert">{{ $t('banner.about') }}</p>
+
     </v-col>
   
     <v-col v-if="Name == ''" md="3" lg="6" class="banner-logo">
-      <img  src="../assets/img/logo.png" alt="karosaz">
+      <img src="../assets/img/logo.png" alt="karosaz">
       <router-link class="signinbtn" :to="{name:'welcome'}">{{ $t('banner.sign') }}</router-link>     
     </v-col>
     <v-col v-if="Name != ''" md="3" lg="6" class="banner-logo">
       <h3 class="pt-3 pe-2 text-brown">{{Name  }}</h3><span class="pt-3 pe-2"></span>
-      <a class="signinbtn me-1"  @click="this.$router.replace({name:'panel'})">
+      <a class="signinbtn me-1"  @click="this.$router.push({name:'panel'})">
         <v-icon icon="fa fa-user" >
         </v-icon>
         <v-tooltip
@@ -28,7 +35,7 @@
           >{{ $t('banner.account') }}
         </v-tooltip>
       </a> 
-      <a class="signinbtn me-1"  @click="this.$router.replace({name:'bag'})">
+      <a class="signinbtn me-1"  @click="this.$router.push({name:'bag'})">
         <v-badge :content="Bags"
           color="green"> 
           <v-icon  icon="fa fa-shopping-bag">
@@ -63,27 +70,46 @@
       >
         <v-list-item
           :prepend-avatar="logo"
-          :title="$t('message.sitename')"
+          :title="$t('home.sitename')"
         ></v-list-item>
 
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item prepend-icon="fa fa-home" :title=" $t('banner.home')" @click="this.$router.replace({ name: 'Home' })"></v-list-item>
-          <v-list-item prepend-icon="fa fa-institution" :title=" $t('banner.academies')"  @click="this.$router.replace({ name: 'Academies' })"></v-list-item>
-          <v-list-item prepend-icon="fa fa-certificate" :title="$t('banner.certificate')"></v-list-item>
-          <v-list-item style="background-color: #851313;color: aliceblue;" prepend-icon="fa fa-sign-in" :title="$t('banner.sign')" @click="this.$router.replace({ name: 'welcome' })"></v-list-item>
-        </v-list>
+          <v-list-item 
+          prepend-icon="fa fa-home" 
+          :title=" $t('banner.home')" 
+          @click="this.$router.push({ name: 'Home' })">
+        </v-list-item>
+
+        <v-list-item 
+        prepend-icon="fa fa-institution"
+        :title=" $t('banner.academies')"
+        @click="this.$router.push({ name: 'Academies' })">
+        </v-list-item>
+
+        <v-list-item
+        prepend-icon="fa fa-certificate"
+        @click="Alert"
+        :title="$t('banner.certificate')">
+        </v-list-item>
+
+       <v-list-item 
+       style="background-color: #851313;color: aliceblue;" 
+       prepend-icon="fa fa-sign-in"
+       :title="$t('banner.sign')"
+       @click="this.$router.push({ name: 'welcome' })"></v-list-item>
+       </v-list>
       </v-navigation-drawer>
       <v-main style="margin-bottom: 20px;margin-inline: 1.5%;">
         <div class="d-flex justify-space-between">
           <v-btn
           icon="fa fa-ellipsis-h"
           class="menuopen"
-            @click.stop="drawer = !drawer"
-          ></v-btn>
-      <div>
-        <v-btn class="signinbtn me-1"  @click="this.$router.replace({name:'bag'})">
+          @click.stop="drawer = !drawer"
+        ></v-btn>
+        <div>
+        <v-btn class="signinbtn me-1" v-if="Name !=''"  @click="this.$router.go({name:'bag'})">
         <v-badge  :content="Bags"
           color="green"> 
           <v-icon  icon="fa fa-shopping-bag">
@@ -95,19 +121,26 @@
           location="bottom"
           >{{ $t('banner.shoppingbag') }}
         </v-tooltip>
-      </v-btn>  
+        </v-btn>  
           <v-btn
           icon="fa fa-sign-in"
-            @click.stop="this.$router.replace({ name: 'welcome' })"
+            @click.stop="this.$router.go({ name: 'welcome' })"
             class="signinbtn"
           > 
           
-          <v-icon icon="fa fa-sign-out"></v-icon>
-          <v-tooltip
+          <v-icon  v-if="Name !=''" icon="fa fa-sign-out"></v-icon>
+          <v-icon  v-else icon="fa fa-sign-in"></v-icon>
+          <v-tooltip v-if="Name !=''"
          style="font-family: 'IRANSANS';"
           activator="parent"
           location="bottom"
           >{{ $t('banner.exit') }}
+        </v-tooltip>
+        <v-tooltip v-else
+         style="font-family: 'IRANSANS';"
+          activator="parent"
+          location="bottom"
+          >{{ $t('banner.sign') }}
         </v-tooltip>
           </v-btn>
         </div>
@@ -122,6 +155,8 @@
 <script>
 import Store from '@/store/Store';
 import { Callaxios } from '@/assets/composable/CallAxus';
+import Swal from 'sweetalert2';
+import router from '@/router';
 export default {
     data () {
       return {
@@ -146,6 +181,15 @@ export default {
     afterlogout(param){
       localStorage.removeItem('token')
       location.reload()
+    },
+    Alert(){
+      Swal.fire({
+      icon: "info",
+      title: 'توجه کنید....',
+    text: 'این قسمت هنوز پیاده سازی نشده است',
+    confirmButtonColor:'cadetblue',
+    confirmButtonText:'متوجه شدم'
+  });
     }
   }
   }

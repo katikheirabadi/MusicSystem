@@ -59,17 +59,14 @@
                     
                     
                 </v-container>
-            </v-col>
-           </v-row>
-           <v-row>
-            
+            </v-col>          
            </v-row>
            <br>
            <!-- product -->
            <h1 class="text-center mt-5" v-if="data.products.length !=0">{{ $t('lesson.home_products') }}</h1>
            <v-container  v-if="data.products">
            <v-row class="center-class">
-            <v-col cols="12" sm="6" md="4" xl="3" v-for="product in data.products">
+            <v-col cols="12" sm="6" md="4"  v-for="product in data.products">
                 <v-sheet class="product-image text-center">
                   <div class="title-posision">
                     <h2 class="title text-center">
@@ -97,7 +94,7 @@
                        
 	                       
                      <v-btn class="buy" color="green" @click="registrationmodal(product.ProductId)">{{ $t('lesson.home_buy') }} </v-btn>
-                     <v-btn class="moshavere" color="orange" @click="courseadvise()">{{ $t('lesson.home_councelling') }}</v-btn>
+                     <v-btn class="moshavere" color="orange" @click="courseadvise(product.ProductId)">{{ $t('lesson.home_councelling') }}</v-btn>
                     </v-sheet>
                 </v-sheet>
             </v-col>
@@ -114,8 +111,6 @@
         </v-container>
         <myfooter style="margin-top: 1.5%;"/>
     </div>
-
-
     <v-row justify="center">
       <v-dialog
       v-model="regiaterdialog"
@@ -170,30 +165,34 @@
       class="dialog"
     >
       <v-sheet>
-        <v-card-title class="dialog_title">مشاوره </v-card-title>
+        <v-card-title class="dialog_title">{{ $t('lesson.home_advise') }}</v-card-title>
         <v-divider></v-divider>
      
-            <p class="mt-5" style="font-family: 'IRANSANS';">در تاریخ انتخاب شده، کارشناسان ما با شما تماس خواهند گرفت.<br>
-همچنین شما می‌توانید برای کسب اطلاعات بیشتر و دریافت مشاوره با شماره تلفن روبه رو تماس حاصل فرمایید: ٠٢١٩١٣٠٠٩١٩ داخلی ١
+        <p class="mt-5" style="font-family: 'IRANSANS';">
+          {{ $t('lesson.home_advisetext') }}
         </p>
         <br>
         <v-row>
             <v-col cols="6"> <v-select 
             no-transition
-            label="ساعت مشاوره"
+            :label="$t('lesson.home_advisehour')"
             :items="appointments"
             :item-title="item=>item.Time"
             :item-value="item=>item.Id"
             v-model="selectappointment"
+            :error="adviseeroor!=''"
+            :error-messages="adviseeroor"
             variant="outlined"
             class="selectclass"
         ></v-select></v-col>
             <v-col cols="6"> <v-select 
             no-transition
-            label="روز"
+            :label="$t('lesson.home_adviseday')"
             :items="days"
             :item-title="item=>item.name"
             :item-value="item=>item.id"
+            :error="advisedayeroor!=''"
+            :error-messages="advisedayeroor"
             v-model="selectday"
             variant="outlined"
             class="selectclass"
@@ -208,7 +207,7 @@
             @click="advisedialog = false"
             append-icon="fa fa-close"
           >
-            بستن
+          {{$t('lesson.home_adviseclose')}}
           </v-btn>
           <v-btn
             color="green-darken-1"
@@ -216,12 +215,13 @@
             append-icon="fa fa-check"
             @click="addadvise()"
           >
-           ثبت درخواست مشاوره
+          {{$t('lesson.home_adviseadd')}}
           </v-btn>
         </v-card-actions>
       </v-sheet>
     </v-dialog>
 
+    <notif v-if="snackbar" :show="snackbar" :location="'top right'" :text="snackbartext" :type="snackbartype" @close="snackbar=false"/>
     </v-row>
 
 </template>
@@ -230,7 +230,9 @@
 import { storeKey } from 'vuex'
 import banner from '../../components/Banner.vue'
 import myfooter from '../../components/Footer.vue'
+import notif from '../../components/ResultNotification.vue'
 
+import i18n from '@/locales/i18n'
 import { Callaxios } from '@/assets/composable/CallAxus'
 import Store from '@/store/Store'
 export default{
@@ -253,31 +255,37 @@ export default{
             },
       registratiiontimes:[],
       selectpas :0,
+      selectproduct:0,
       appointments:[],
-      selectappointment:1,
+      selectappointment:0,
       days:[
         {
-          name:'امروز',
+          name:i18n.global.t('lesson.today'),
           id:0
         },
         {
-          name:'فردا',
+          name:i18n.global.t('lesson.tomorrow'),
           id:1
         },
         {
-          name:'پس فردا',
+          name:i18n.global.t('lesson.twodaylater'),
           id:2
         }
       ],
-      selectday:0
+      snackbar:false,
+      snackbartype:'',
+      snackbartext:'',
+      selectday:0,
+      adviseeroor:'',
+      advisedayeroor:''
 
     }
   },
   components:{
-    banner,myfooter
+    banner,myfooter,notif
   },
   mounted(){
-    Callaxios('Lesson/GetLessonDetail/'+this.$route.params.lessonid,'get',undefined,this.aftergetdetail )
+    Callaxios('Lesson/GetLessonDetail/'+this.$route.params.lessonid+'/'+this.$route.params.academyId,'get',undefined,this.aftergetdetail )
     
   },
   methods:{
@@ -295,6 +303,7 @@ export default{
     registrationmodal(productId){
       if(Object.entries(Store.state.profile).length != 0)
       {
+        this.selectproduct = productId
         Callaxios('ProductAvailableSession/GetHours/'+productId,'get',undefined,this.aftergethours )
       }else{
         Store.commit('backurl',{name:'lessondetail',params:{lessonid:this.$route.params.lessonid}})
@@ -312,9 +321,10 @@ export default{
       }))
       this.regiaterdialog = true
     },
-    courseadvise(){
+    courseadvise(productId){
       if(Object.entries(Store.state.profile).length != 0)
       {
+        this.selectproduct = productId
         Callaxios('CourseAdvice/GetAppointments','get',undefined,this.aftercourseadvise )
       }else{
         Store.commit('backurl',{name:'lessondetail',params:{lessonid:this.$route.params.lessonid}})
@@ -331,10 +341,67 @@ export default{
       {
         this.bagerror = 'باید یک ساعت انتخاب کنید'
       }else{
-        Store.commit('productforbuy',this.selectpas)
-        this.$router.replace({name:'bag'})
+        var input={
+          ProductId:this.selectproduct,
+          ProductAvailableSessionId:this.selectpas,
+          CompanyId:this.$route.params.academyId
+        }
+        this.regiaterdialog = false
+        Callaxios('ShoppingBag/ValidateForAddToCart','post',input,this.aftervalidate)
       }
     }
+    ,aftervalidate(param){
+      if(param.Data.Result==0){
+        this.snackbartext=param.Data.Message
+      this.snackbartype='error'
+      this.snackbar=true
+      }else{
+        var input={
+          ProductId:this.selectproduct,
+          ProductAvailableSessionId:this.selectpas,
+          Count:1
+        }
+        Callaxios('ShoppingBag/AddToCartWithCompany','post',input,this.afteraddtocard)
+      }
+    },
+    afteraddtocard(param){
+      if(param.Data.Result==0){
+        this.snackbartext=param.Data.Message
+      this.snackbartype='error'
+      this.snackbar=true
+      }else{
+        this.regiaterdialog=false
+        this.$router.push({name:'bag'})
+      }
+    },
+    addadvise(){
+      if(this.selectappointment ==0){
+        this.adviseeroor = i18n.global.t('lesson.adviseeroor')
+      }else
+      if(this.selectday ==-1){
+        this.advisedayeroor =i18n.global.t('lesson.advisedayeroor')
+      }else{
+        var input={
+          ProductId:this.selectproduct,
+          AddDay:this.selectday,
+          AppointmentId:this.selectappointment
+        }
+        this.advisedialog=false
+        Callaxios('CourseAdvice/Add','post',input,this.afteraddadvise)
+      }
+
+    },afteraddadvise(param){
+        if(param.TypeInt ==1){
+          this.snackbartext=param.Data
+          this.snackbartype='error'
+          this.snackbar=true
+        } else{
+          this.snackbartext=param.Data
+          this.snackbartype='success'
+          this.snackbar=true
+        } 
+      }
+    
   }
 }
 

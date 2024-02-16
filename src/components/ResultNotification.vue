@@ -5,12 +5,13 @@
       v-model="s"
       text-color="black"
       :location="location"
+      :timeout="timeout"
     >
     <h3 style="font-family: 'IRANSANS' !important;" v-if="type=='success'">موفقیت</h3>
     <h3 style="font-family: 'IRANSANS' !important;" v-else>خطا</h3>
-      <h4 style="font-family: 'IRANSANS' !important;">
+    <h4 style="font-family: 'IRANSANS' !important;">
         {{ text }}
-      </h4>
+    </h4>
 
       <template v-slot:actions>
         <v-btn
@@ -31,12 +32,14 @@ export default{
     data(){
         return{
             color:'',
-            s:false
+            s:false,
+            timeout:8000
         }
     },
     mounted(){
-        this.color = this.type == '0'?'rgb(91, 21, 5)':'success'
+        this.color = this.type == 'error'?'rgb(91, 21, 5)':'success'
         this.s=this.show
+        setTimeout(() => { this.$emit("close"); },this.timeout);
     }
 }
 </script>

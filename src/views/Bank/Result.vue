@@ -70,6 +70,15 @@ import banner from '@/components/Banner.vue'
 import myfooter from '@/components/Footer.vue'
 import { ref } from 'vue';
 let status = ref(true)
+function Alert(){
+      Swal.fire({
+      icon: "info",
+      title: 'توجه کنید....',
+    text: 'این قسمت هنوز پیاده سازی نشده است',
+    confirmButtonColor:'cadetblue',
+    confirmButtonText:'متوجه شدم'
+  });
+    }
 </script>
 <style>
 .successmain{
