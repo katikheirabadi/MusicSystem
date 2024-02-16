@@ -21,9 +21,13 @@
   font-size: 110%;
   font-weight: bold;
 }
+.menuopen{
+  background-color: #851313;
+  color: aliceblue;
+}
 .signinbtn{
   font-weight: bold;
-  background-color: #da3e14;
+  background-color: #851313;
    text-decoration: none;
    color: rgb(255, 255, 255);
    padding: 1.2%;

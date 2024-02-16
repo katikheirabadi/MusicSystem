@@ -100,7 +100,7 @@ router.beforeEach(async (to, from, next) => {
          //todo
           await store.dispatch("getProfile").then((res) => {
               if (res && !authRequired) {
-                  destination = 'panel'
+                  destination = to.path
 
               } else if (!res) {
                   localStorage.removeItem('token');

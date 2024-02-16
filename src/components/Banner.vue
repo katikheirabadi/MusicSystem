@@ -1,5 +1,5 @@
 <template>
-  <v-banner align-start style="" >
+  <v-banner align-start >
     <v-row justify="center" class="d-xs-none d-sm-none d-lg-flex row1">
     <v-col class="menuitemparent" md="2"  lg="1" >
         <router-link class="my-auto menuitem" to="/">{{ $t('banner.home') }}</router-link>
@@ -26,6 +26,19 @@
           activator="parent"
           location="bottom"
           >{{ $t('banner.account') }}
+        </v-tooltip>
+      </a> 
+      <a class="signinbtn me-1"  @click="this.$router.replace({name:'bag'})">
+        <v-badge :content="Bags"
+          color="green"> 
+          <v-icon  icon="fa fa-shopping-bag">
+          </v-icon> 
+        </v-badge>
+        <v-tooltip
+         style="font-family: 'IRANSANS';"
+          activator="parent"
+          location="bottom"
+          >{{ $t('banner.shoppingbag') }}
         </v-tooltip>
       </a>  
       <a class="signinbtn" @click="Logout()">
@@ -62,19 +75,42 @@
           <v-list-item style="background-color: #851313;color: aliceblue;" prepend-icon="fa fa-sign-in" :title="$t('banner.sign')" @click="this.$router.replace({ name: 'welcome' })"></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main >
-        <div style="display: flex; justify-content: space-between !important;">
+      <v-main style="margin-bottom: 20px;margin-inline: 1.5%;">
+        <div class="d-flex justify-space-between">
           <v-btn
           icon="fa fa-ellipsis-h"
+          class="menuopen"
             @click.stop="drawer = !drawer"
           ></v-btn>
-      
+      <div>
+        <v-btn class="signinbtn me-1"  @click="this.$router.replace({name:'bag'})">
+        <v-badge  :content="Bags"
+          color="green"> 
+          <v-icon  icon="fa fa-shopping-bag">
+          </v-icon> 
+        </v-badge>
+        <v-tooltip
+         style="font-family: 'IRANSANS';"
+          activator="parent"
+          location="bottom"
+          >{{ $t('banner.shoppingbag') }}
+        </v-tooltip>
+      </v-btn>  
           <v-btn
           icon="fa fa-sign-in"
             @click.stop="this.$router.replace({ name: 'welcome' })"
             class="signinbtn"
-          >
+          > 
+          
+          <v-icon icon="fa fa-sign-out"></v-icon>
+          <v-tooltip
+         style="font-family: 'IRANSANS';"
+          activator="parent"
+          location="bottom"
+          >{{ $t('banner.exit') }}
+        </v-tooltip>
           </v-btn>
+        </div>
         </div>
       </v-main>
     </v-layout>
@@ -91,13 +127,14 @@ export default {
       return {
         drawer: null,
         logo : window.location.origin + '/src/assets/img/academy.png',
-        Name:''
+        Name:'',
+        Bags:0
       }
     },
     mounted(){
       if(Object.entries(Store.state.profile).length != 0){
         this.Name = Store.state.profile.FName + ' ' + Store.state.profile.LName
-
+        this.Bags= Store.state.profile.BagsCount
     }else{
       this.Name = ''
     }

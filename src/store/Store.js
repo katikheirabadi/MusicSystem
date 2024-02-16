@@ -6,15 +6,19 @@ export default createStore({
     state: {
         profile: {},
         language:"",
-        backuploadurl : 'https://tms.bamdad.co/',
+        backuploadurl : 'https://www.karosaz.com/',
         apihost: 'http://localhost:5015',
         userId : -1,
-        backurl :{name:'panel'}
+        backurl :{name:'panel'},
+        productforbuy:0
     },
     mutations: {
         backurl(state, payload) {
           state.backurl = payload;
         },
+        productforbuy(state, payload) {
+            state.productforbuy = payload;
+          },
         profile(state, payload) {
             state.profile = payload
         }                                                                                                                               

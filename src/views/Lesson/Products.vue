@@ -8,7 +8,7 @@
         >
             <!-- base -->
            <v-row>
-            <v-col cols="12" sm="12" md="5" style="height: 50vh;">
+            <v-col cols="12" sm="12" md="5" >
                 <v-img
                 class="lessonimg"
                 :src="data.img"
@@ -67,7 +67,8 @@
            <br>
            <!-- product -->
            <h1 class="text-center mt-5" v-if="data.products.length !=0">{{ $t('lesson.home_products') }}</h1>
-           <v-row class="center-class" v-if="data.products">
+           <v-container  v-if="data.products">
+           <v-row class="center-class">
             <v-col cols="12" sm="6" md="4" xl="3" v-for="product in data.products">
                 <v-sheet class="product-image text-center">
                   <div class="title-posision">
@@ -95,14 +96,14 @@
 	                        </ul>
                        
 	                       
-                     <v-btn class="buy" color="green" @click="registrationmodal(product.Id)">{{ $t('lesson.home_buy') }} </v-btn>
+                     <v-btn class="buy" color="green" @click="registrationmodal(product.ProductId)">{{ $t('lesson.home_buy') }} </v-btn>
                      <v-btn class="moshavere" color="orange" @click="courseadvise()">{{ $t('lesson.home_councelling') }}</v-btn>
                     </v-sheet>
                 </v-sheet>
             </v-col>
             
-
-           </v-row>
+          </v-row>
+        </v-container>
            <v-sheet v-if="data.products.length ==0"
            color="red"
            class="text-center mt-5 mb-5 pt-5 pb-5"
@@ -134,6 +135,8 @@
         :items="registratiiontimes"
         :item-title="item=>item.time"
         :item-value="item=>item.id"
+        :error-messages="bagerror"
+        :error="bagerror !=''"
         variant="outlined"
         class="selectclass"
         no-transition
@@ -233,6 +236,7 @@ import Store from '@/store/Store'
 export default{
   data(){
     return {
+      bagerror:'',
       regiaterdialog:false,
       advisedialog:false,
       data : {
@@ -244,7 +248,8 @@ export default{
                 modify:'',
                 tags:[],
                 products :[],
-                concepts:[]
+                concepts:[],
+                
             },
       registratiiontimes:[],
       selectpas :0,
@@ -288,8 +293,20 @@ export default{
      
     },
     registrationmodal(productId){
+      if(Object.entries(Store.state.profile).length != 0)
+      {
+        Callaxios('ProductAvailableSession/GetHours/'+productId,'get',undefined,this.aftergethours )
+      }else{
+        Store.commit('backurl',{name:'lessondetail',params:{lessonid:this.$route.params.lessonid}})
+        this.$router.replace({name:'welcome'})
+      }
+     
+    },
+    aftergethours(param){
+      this.selectpas=0
+      this.bagerror=''
       this.registratiiontimes =[]
-      this.data.products.filter((i)=> i.Id == productId)[0].Product.ProductAvailableSessions.filter((i) => this.registratiiontimes.push({
+      param.Data.filter((i) => this.registratiiontimes.push({
         time:i.Hour,
         id:i.Id
       }))
@@ -310,7 +327,13 @@ export default{
       this.advisedialog=true
     },
     gotobag(){
-      this.$router.replace({name:'bag'})
+      if(this.selectpas==0)
+      {
+        this.bagerror = 'باید یک ساعت انتخاب کنید'
+      }else{
+        Store.commit('productforbuy',this.selectpas)
+        this.$router.replace({name:'bag'})
+      }
     }
   }
 }
