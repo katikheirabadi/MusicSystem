@@ -1,5 +1,24 @@
 <template> 
 <v-container>
+  <v-row class="mt-5 d-flex justify-center">
+    <v-col cols="12" md="4">
+      <v-select 
+      no-transition
+      :label="$t('panel.editprofile.selectcompany')"
+      :items="companies"
+      :item-title="item=>item.key"
+      :item-value="item=>item.value"
+      v-model="selectcompany"
+      variant="outlined"
+      class="selectclass"
+      ></v-select>
+    </v-col>
+    <v-col cols="12" md="2">
+      <v-btn class="creditcard text-white" style="height: 70%;" @click="changeactiveCompany">تغییر آموزشگاه</v-btn>
+    </v-col>
+     
+    </v-row>
+
    <!-- cards -->
     <v-row class="mt-1 d-flex justify-center" >
             <v-col cols="12" sm="6" md="3">
@@ -11,7 +30,7 @@
                   <img src="../../assets/img/credit.png" alt="">
                 </v-col>
                 <v-col cols="7" class="my-auto text-center text-white">
-                  <h2>20,000 {{ $t('panel.credit.priceunit') }}</h2> 
+                  <h2>{{ amount }} {{ $t('panel.credit.priceunit') }}</h2> 
                   
                   <h4 class="mt-3">{{ $t('panel.credit.mycredir') }} </h4>
                 </v-col>
@@ -28,7 +47,7 @@
                   <img src="../../assets/img/charge.png" alt="" >
                 </v-col>
                 <v-col cols="7" class="my-auto text-center text-white">
-                  <h2>450,000 {{ $t('panel.credit.priceunit') }}</h2>
+                  <h2>{{ charge }} {{ $t('panel.credit.priceunit') }}</h2>
                   <h4 class="mt-3">{{ $t('panel.credit.mycharge') }}</h4>
                 </v-col>
               </v-row>
@@ -36,10 +55,11 @@
               </v-sheet>
             </v-col>
     </v-row>
+   
     <!-- forms -->
     <v-row>
       <v-col cols="12" md="4" class="d-flex justify-center">
-          <addcredit/>
+        <addcredit/>
       </v-col>
       <v-col cols="12" md="4" class="d-flex justify-center">
         <transferCredit/>
@@ -118,6 +138,9 @@
   import addcredit from '@/components/UserPanel/CreditForms/AddCredit.vue'
   import transferCredit from './CreditForms/TransferCredit.vue';
   import addcreditreq from './CreditForms/AddCreditRequest.vue'
+
+  import { Callaxios } from '@/assets/composable/CallAxus';
+
     export default {
       data: () => ({
         page:1,
@@ -154,13 +177,38 @@
             nouaount:'٢٤,٠٠١,٠٠٠ ریال',
             type:'برای دوره'
         }
-       ]
+       ],
+       selectcompany:0,
+       companies:[],
+       amount:0,
+       charge:0
       }),
       components:{
         addcredit,transferCredit,addcreditreq
       },
       methods:{
-       
+       aftergetallcompanies(param){
+        this.companies = param.Data
+        Callaxios('Company/GetActiveCompany','get',undefined,this.aftergetactivecompany)
+       },
+       aftergetactivecompany(param){
+        if(param.Data.companyId ==0){
+          this.selectcompany = undefined
+        }else{
+          this.selectcompany = param.Data.companyId
+        }
+        Callaxios('UserCredit/GetUserCompanyDetail/'+this.selectcompany,'get',undefined,this.afterfetusercompany)
+       },
+       changeactiveCompany(){
+        Callaxios('UserCredit/GetUserCompanyDetail/'+this.selectcompany,'get',undefined,this.afterfetusercompany)
+       },
+       afterfetusercompany(param){
+        this.amount = param.Data.TotalAmount
+        this.charge = param.Data.TotalCharge
+       }
+      },
+      mounted(){
+        Callaxios('Company/GetAllCompanyForSelect','get',undefined,this.aftergetallcompanies)
       }
     }
   </script>

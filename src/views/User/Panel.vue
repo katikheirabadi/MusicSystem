@@ -11,7 +11,7 @@
       class="center-class"
       style="display: flex;"
       >      
-        <img src="../../../src/assets/img/profile.png" alt="Hello" class="" style="border-radius: 50%;width: 100% !important;margin-top: 10%;">
+        <img :src="Img" alt="Hello" class="" style="border-radius: 50%;width:150px !important;margin-top: 10%;height: 150px;">
         <h4  class="text-center" style="color: #912909;">{{ Name }}        
         </h4>
        
@@ -28,7 +28,7 @@
         color="#5b1505"
         style="display: flex;
         justify-content: space-between !important;">
-      <img v-if="!drawer"  @click.stop="drawer = !drawer" src="../../../src/assets/img/profile2.png" alt="Hello" style="border-radius: 50%;width: 5vh;margin-inline-start: 1%;">
+      <img v-if="!drawer"  @click.stop="drawer = !drawer" :src="Img" alt="Hello" style="border-radius: 50%;width: 5vh;margin-inline-start: 1%;">
       <v-spacer></v-spacer>
       <div>
       <v-btn variant="text" @click="this.$router.replace({name:'bag'})" >
@@ -300,7 +300,7 @@ import Credit from '@/components/UserPanel/Credit.vue';
 import certificate from '@/components/UserPanel/Certificate.vue'
 import editProfile from '@/components/UserPanel/EditProfile.vue';
 import Store from '@/store/Store';
-
+import config from '../../../public/config.json'
 export default{
   data(){
     return  {
@@ -318,6 +318,7 @@ export default{
     rail:true,
     drawer:false,
     Name:'',
+    Img:'',
     Profile:{}
   }
   },
@@ -327,6 +328,11 @@ export default{
   mounted() {
     this.Name = Store.state.profile.FName + ' ' + Store.state.profile.LName
     this.Profile = Store.state.profile;
+    console.log(Store.state.profile.Image)
+    console.log(window.location.origin + '/src/assets/img/profile2.png')
+    console.log(config.backuploadurl+Store.state.profile.Image)
+    this.Img = Store.state.profile.Image =="" ? window.location.origin + '/src/assets/img/profile2.png': config.backuploadurl+Store.state.profile.Image
+
     this.container = document.getElementsByClassName('calendar')[0];
     this.calendar = document.getElementsByClassName('front')[0];
     this.days = document.querySelectorAll('.weeks span');

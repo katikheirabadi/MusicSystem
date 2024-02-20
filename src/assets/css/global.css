@@ -13,6 +13,9 @@
 .v-btn__content{
   font-family:  'IRANSANS';
 }
+.v-select{
+  font-family: 'IRANSANS' !important;
+}
    .swal2-html-container,.swal2-styled,.swal2-title{
     font-family: 'IRANSANS' ;
     direction: rtl;

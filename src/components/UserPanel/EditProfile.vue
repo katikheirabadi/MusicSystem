@@ -3,8 +3,8 @@
 <v-container class="bg-white mt-4">
     <v-row>
         <v-col cols="12" md="5" >
-            <div  class="d-flex justify-center ">
-                <img height="190px" :src="img" alt="">
+            <div  class="d-flex justify-center mb-2">
+                <img height="190px" width="300px" :src="img" alt="">
             </div>
             <div>
                 <v-file-input class="credit" @change="uploadimg" :label="$t('panel.editprofile.uploadimg')" v-model="newpro" variant="outlined"></v-file-input>
@@ -81,6 +81,7 @@ import { Callaxios } from '@/assets/composable/CallAxus';
 import Swal from 'sweetalert2';
 import Store from '@/store/Store';
 import i18n from '@/locales/i18n.js'
+import config from '../../../public/config.json'
 
 import ResultNotification from '../ResultNotification.vue';
 export default{
@@ -124,7 +125,8 @@ export default{
             this.phone = param.PhoneNumber
             this.email = param.EmailAddress
             this.gender = param.Gender
-
+            Store.state.profile.Name = this.name
+            Store.state.profile.Image = config.backuploadurl+ this.imgaddress
         },
         updateInfo(){
             var input={
@@ -184,7 +186,8 @@ export default{
             Callaxios('Upload/UploadFiles','post',form,this.afterupload)
         },
         afterupload(param){
-            console.log(param)
+           this.imgaddress = param.replace('Temp/','')
+           this.img = 'http://www.sina.local'+param
         }
        
     },

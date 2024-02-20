@@ -125,6 +125,7 @@ const messages = {
       },
       panel:{
         editprofile:{
+          selectcompany:'',
           infotitle:'مشخصات فردی',
           uploadimg:'بارگذاری تصویر جدید',
           name:'نام',
