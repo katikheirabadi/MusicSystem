@@ -1,13 +1,13 @@
 import axios from 'axios'
 import Swal from 'sweetalert2';
-import i18n from '@/locales/i18n';
+import config from '../../../public/config.json'
 async function Callaxios(url,method,input,callbackfunc){
   try{
   if (localStorage.getItem('token')!=null && localStorage.getItem('token')!='')
   {axios.defaults.headers.common['Authorization'] = `Bearer ${ localStorage.getItem("token")}`}
   document.getElementById('loader').style.display='block';
   //   base url
-  var baseUrl ='http://localhost:5015/api/';
+  var baseUrl = config.apihost + 'api/';
   var fullurl = baseUrl + url;
   if(input == undefined){
     if(method == 'post'){

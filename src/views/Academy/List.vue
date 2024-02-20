@@ -2,7 +2,7 @@
     <banner/>
     <myheader 
     :img="header"
-    :header="$t('message.sitename')"
+    :header="$t('home.sitename')"
     :text="$t('academy.list_header_subtitle')"
     :btns="[{text: $t('academy.list_back'),link:'/'}]"
     />
@@ -28,7 +28,7 @@
           class="ma-2 mybtn"
           scroll-behavior="auto"
           >
-          {{ $t('message.details') }} &nbsp
+          {{ $t('academy.btn') }} &nbsp
          <v-icon
           start
           icon="fa fa-external-link"

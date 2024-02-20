@@ -7,7 +7,7 @@
                 <img height="190px" :src="img" alt="">
             </div>
             <div>
-                <v-file-input class="credit" :label="$t('panel.editprofile.uploadimg')" variant="outlined"></v-file-input>
+                <v-file-input class="credit" @change="uploadimg" :label="$t('panel.editprofile.uploadimg')" v-model="newpro" variant="outlined"></v-file-input>
             </div>
 
         </v-col>
@@ -100,6 +100,7 @@ export default{
             confirm:'',
             message:'',
             mtype:0,
+            newpro:'',
             oldpassrules:[
             v => !!v || i18n.global.t('panel.editprofile.required')
             ],
@@ -175,6 +176,16 @@ export default{
           this.reloadComponent = true;
          });
         },
+        uploadimg(){
+            var form = new FormData();
+            if (this.newpro.length > 0) {
+                   form.append("fileName", this.newpro[0]);
+             }
+            Callaxios('Upload/UploadFiles','post',form,this.afterupload)
+        },
+        afterupload(param){
+            console.log(param)
+        }
        
     },
     mounted(){

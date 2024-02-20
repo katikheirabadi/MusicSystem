@@ -10,7 +10,7 @@
             height="7"
           ></v-progress-linear>
         </v-sheet>
-        <div class="text-center">
+        <div class="text-center d-block d-md-none">
 
           <v-progress-circular
           indeterminate

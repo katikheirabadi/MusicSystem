@@ -11,9 +11,8 @@
       class="center-class"
       style="display: flex;"
       >      
-        <img src="../../../src/assets/img/profile.png" alt="Hello" style="border-radius: 50%;width: 100% !important;margin-top: 10%;">
-        <h4  class="text-center" style="color: #912909;">محسن پوریخت 
-        
+        <img src="../../../src/assets/img/profile.png" alt="Hello" class="" style="border-radius: 50%;width: 100% !important;margin-top: 10%;">
+        <h4  class="text-center" style="color: #912909;">{{ Name }}        
         </h4>
        
         </v-list-item>
@@ -104,7 +103,7 @@
                >
               <v-row>
                 <v-col cols="5" style="padding-inline-end: 0px !important;">
-                  <img src="../../assets/img/icons8-card-exchange-80.png" alt="" style="width: 100%;height: 100% !important;">
+                  <img src="../../assets/img/credit.png" alt="" style="width: 100%;height: 100% !important;">
                 </v-col>
                 <v-col cols="7" class="my-auto text-center text-white">
                   <h1>450,000</h1>
@@ -300,7 +299,8 @@ import classes from '@/components/UserPanel/Classes.vue'
 import Credit from '@/components/UserPanel/Credit.vue';
 import certificate from '@/components/UserPanel/Certificate.vue'
 import editProfile from '@/components/UserPanel/EditProfile.vue';
-import { fa } from 'vuetify/lib/iconsets/fa.mjs';
+import Store from '@/store/Store';
+
 export default{
   data(){
     return  {
@@ -316,13 +316,17 @@ export default{
     certificate:false,
     editProfile:false,
     rail:true,
-    drawer:false
+    drawer:false,
+    Name:'',
+    Profile:{}
   }
   },
   components:{
     classes,Credit,certificate,editProfile
   },
   mounted() {
+    this.Name = Store.state.profile.FName + ' ' + Store.state.profile.LName
+    this.Profile = Store.state.profile;
     this.container = document.getElementsByClassName('calendar')[0];
     this.calendar = document.getElementsByClassName('front')[0];
     this.days = document.querySelectorAll('.weeks span');

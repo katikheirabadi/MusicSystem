@@ -98,19 +98,18 @@ router.beforeEach(async (to, from, next) => {
   if (Auth()) {
       if (store.state.profile == null || Object.entries(store.state.profile).length === 0) {
          //todo
-          await store.dispatch("getProfile").then((res) => {
-              if (res && !authRequired) {
-                  destination = to.path
-
-              } else if (!res) {
-                  localStorage.removeItem('token');
-                  store.state.profile = {}
-                  destination = 'fa'
-
-              }
-          });
-         
- 
+         try {
+          const res = await store.dispatch("getProfile");
+          if (res && true) {
+              destination = to.path;
+          } else if (!res) {
+              localStorage.removeItem('token');
+              store.state.profile = {};
+              destination = 'fa';
+          }
+      } catch (error) {
+          console.error(error);
+      }
 
       }
       // else if (!authRequired) {

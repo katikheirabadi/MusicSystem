@@ -47,7 +47,7 @@ const messages = {
        <h3 class="text-center pb-5">مدیریت کلیه امور داخلی آموزشگاه<br/>هرزمان و هرمکان</h3>
       `,
       optiontwo:` <img
-      src="../src/assets/img/4.webp"
+      src="../src/assets/img/4.jpg"
       style="width: 80%;"
      />
      <h3 class="text-center pb-5">امکان برگزاری کلاس<br> آنلاین و غیرحضوری</h3>
@@ -81,7 +81,8 @@ const messages = {
         gratuateds:'فارع التحصیلان',
         teachers:'اساتید',
         allusers:'کاربران',
-        products:'دوره های درحال اجرا'
+        products:'دوره های درحال اجرا',
+        btn:'جزئیات'
       },
       lesson:{
         list_title :'درس های آموزشگاه ',

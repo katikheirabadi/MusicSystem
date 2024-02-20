@@ -1,13 +1,13 @@
 import { createStore } from "vuex";
-
+import config from '../../public/config.json'
 import axios from 'axios'
 
 export default createStore({
     state: {
         profile: {},
         language:"",
-        backuploadurl : 'https://www.karosaz.com/',
-        apihost: 'http://localhost:5015',
+        backuploadurl : config.backuploadurl,
+        apihost: config.apihost,
         userId : -1,
         backurl :{name:'panel'},
         productforbuy:0
@@ -25,35 +25,32 @@ export default createStore({
       },
     actions: {
         async getProfile({ commit }) {
-            if (localStorage.getItem("token") != null && localStorage.getItem("token") != "") {
-                var r = false;
-                await axios.get(this.state.apihost + '/api/User/GetUserBaseInfo',  {headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`}
-                  },)
-                    .then((res) => {
-                        // console.log(res);
-                        if (res.error != null) {
-                    
-                            r = false;
-                            return
-                        }
-                        r = true;
-                        // console.log(res.response)
-                        commit("profile", res.data);
-
-                    })
-                    .catch((error) => {
-                        console.log(error);
-
-                    }).finally(() => {
-                        //Perform action in always
-                    });
-
+            if (!!localStorage.getItem("token")) {
+                let r = false;
+                axios.get(this.state.apihost + 'api/User/GetUserBaseInfo', {
+                  headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                  }
+                })
+                .then((res) => {
+                  if (res.error != null) {
+                    r = false;
+                    return;
+                  }
+                  r = true;
+                  commit("profile", res.data);
+                })
+                .catch((error) => {
+                  console.log(error);
+                })
+                .finally(() => {
+                  // Perform action always
+                });
+              
                 return r;
-            }
-            else {
+              } else {
                 return false;
-            }
+              }
         }
     }
 })
