@@ -2,20 +2,20 @@
     width:100%;
     margin:10px;
     border-radius:10px;
-    box-shadow:2px 5px 6px 0px rgba(113, 9, 9, 0.313)
+    box-shadow:2px 5px 6px 0px #13504062
 }
 
 .title{
-    color:rgba(199, 5, 5, 0.822)
+    color:#135e4a
 }
 .credit{
     width:80% !important;
     margin-inline:auto;
     margin-top:10px;
-    color:rgba(109, 5, 5, 0.822)
+    color:#135040
 }
 .creditbtn{
-    background-color:rgb(109, 5, 5) ;
+    background-color:#135040 ;
     color: aliceblue;
     padding-inline: 5% !important;
     margin-inline: auto !important;

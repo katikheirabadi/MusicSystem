@@ -32,7 +32,14 @@ function mynationalcode(nationalcode){
   return result;
   }
   
-  
+  function ToRial(str) {
+    str = str.toString().replace(/\,/g, '');
+    var objRegex = new RegExp('(-?[0-9]+)([0-9]{3})');
+    while (objRegex.test(str)) {
+        str = str.replace(objRegex, '$1,$2');
+    }
+    return str;
+}
   function toEnglishDigits(str) {
   
     // convert persian digits [۰۱۲۳۴۵۶۷۸۹]
@@ -57,4 +64,4 @@ function mynationalcode(nationalcode){
   }
 
   
-  export {shorttext,toEnglishDigits,mynationalcode}
+  export {shorttext,toEnglishDigits,ToRial}

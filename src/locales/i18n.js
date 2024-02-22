@@ -148,7 +148,7 @@ const messages = {
         credit:{
           priceunit:'ریال',
           mycredir:'اعتبار من',
-          mycharge:'شارژ من',
+          mycharge:'هدیه‌های من',
           addcredittitle:'افزایش اعتبار از طریق بانک',
           addcreditdesc:'برای افزایش اعتبار از طریق بانک، لطفا ابتدا مبلغ مد نظر را نوشته و دکمه پرداخت را بزنید.',
           addcreditfield:'مبلغ (ریال)',

@@ -28,11 +28,12 @@
         color="#5b1505"
         style="display: flex;
         justify-content: space-between !important;">
-      <img v-if="!drawer"  @click.stop="drawer = !drawer" :src="Img" alt="Hello" style="border-radius: 50%;width: 5vh;margin-inline-start: 1%;">
+        <v-icon v-if="!drawer"  @click.stop="drawer = !drawer" icon="fa fa-bars" style="margin-inline-start: 1%;"></v-icon>
+      <!-- <img v-if="!drawer"  @click.stop="drawer = !drawer" :src="Img" alt="Hello" style="border-radius: 50%;width: 6vh;height: 6vh ;margin-inline-start: 1%;"> -->
       <v-spacer></v-spacer>
       <div>
       <v-btn variant="text" @click="this.$router.replace({name:'bag'})" >
-        <v-badge content="5"
+        <v-badge :content="Profile.BagsCount"
           color="green"> 
           <v-icon  icon="fa fa-shopping-bag">
           </v-icon> 
@@ -301,6 +302,7 @@ import certificate from '@/components/UserPanel/Certificate.vue'
 import editProfile from '@/components/UserPanel/EditProfile.vue';
 import Store from '@/store/Store';
 import config from '../../../public/config.json'
+import { Callaxios } from '@/assets/composable/CallAxus';
 export default{
   data(){
     return  {
@@ -328,9 +330,6 @@ export default{
   mounted() {
     this.Name = Store.state.profile.FName + ' ' + Store.state.profile.LName
     this.Profile = Store.state.profile;
-    console.log(Store.state.profile.Image)
-    console.log(window.location.origin + '/src/assets/img/profile2.png')
-    console.log(config.backuploadurl+Store.state.profile.Image)
     this.Img = Store.state.profile.Image =="" ? window.location.origin + '/src/assets/img/profile2.png': config.backuploadurl+Store.state.profile.Image
 
     this.container = document.getElementsByClassName('calendar')[0];

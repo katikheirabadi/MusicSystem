@@ -139,8 +139,11 @@
            append-icon="fa fa-arrow-left" @click="this.$router.push({name:'bank'})" >ادامه خرید</v-btn>
         </v-row>
      </v-container>  
-     <v-container class="mt-10" v-else>
-      <h2 class="text-center">دوره ای در سبد خرید شما نیست</h2>
+     <v-container class="mt-10 mb-10" v-else>
+      <div class="d-flex justify-center mb-2">
+        <img  src="../../assets/img/icons8-shopping-cart-100.png" alt="">
+      </div>
+      <h2 style="color: #B2550A;" class="text-center">دوره ای در سبد خرید شما نیست</h2>
      </v-container>
     <myfooter style="margin-top: -6px;"/>
 

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     margin: 5px;
-    box-shadow: -10px 10px 10px 0px  rgba(155, 55, 44, 0.637);
+    box-shadow: -10px 10px 10px 0px  rgba(155, 55, 44, 0.425);
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
     width: 100%;
@@ -14,25 +14,26 @@
   box-shadow: -10px 10px 10px 0px  rgba(155, 55, 44, 0.502);
   animation-duration: 3s;
  }
-  .card h3 {
-    margin: 0px;
-    padding: 10px 0px 8px 0px;
+  .card h4 {
+    padding: 5px 0px 8px 0px;
     font-family:'IRANSANS';
-    color: #822b21;
+    color: rgb(15, 90, 128);
  }
  .title{
-  background-color: rgb(172, 72, 44);
-  border-radius: 50%;
-  padding: 3%;
-  width: 45%;
-  margin-top: -15%;
+  background-color: rgb(54, 125, 161);
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+
  }
- 
+ .title img{
+  width: 10% !important;
+  margin-inline-end: 1%;
+ }
   .card hr {
     display: block;
     border: none;
     height: 3px;
-    background-color: rgb(172, 72, 44);
+    background-color:  rgb(88, 127, 146);
     margin: 0px;
  }
   
@@ -41,17 +42,19 @@
   padding-inline: 20%;
 }
 .surveis{
-  background-color: #932da8;
+  background-color: rgb(13, 68, 96);;
   color: aliceblue;
 }
 .session{
-  background-color:rgb(26, 123, 100);
+  background-color: rgb(43, 111, 183);
   color: aliceblue;
 }
 .setting{
   font-size: 20px;
   text-align: end;
   margin-inline-end: 5%;
+  background-color: rgb(54, 125, 161);
+  color: aliceblue;
 }
 .content p {
   color: rgba(128, 128, 128, 0.779);

@@ -1,9 +1,16 @@
-.creditcard{
+.creditcardbtn{
     width:100% !important;
     min-height:50% !important;
     border-radius: 10px;
-    border: #912909 4px solid;
-    background-color : #912909
+    border: #135040 4px solid;
+    background-color : #135040
+}
+.creditcard{
+  width:100% !important;
+  min-height:50% !important;
+  border-radius: 10px;
+  border: #009E60 4px solid;
+  background-color :#009E60
 }
 .creditcardimg{
     padding-inline-end: 0% !important;
@@ -15,8 +22,8 @@
     width:100% !important;
     min-height:50% !important;
     border-radius: 10px;
-    border:  #dd6b1f64  4px solid;
-    background-color :  #dd6b1f
+    border:  #24846a 4px solid;
+    background-color :  #24846a
 }
 .chargecardimg{
     padding-inline-end: 0% !important;
@@ -28,11 +35,11 @@
   overflow-y: auto !important;
 }
 .tablerow{
-  color:#912909 !important;
+  color:#24846a !important;
 }
 .tablerowdark{
-  background-color: #dd6b1f64;
-  color:#912909 !important;
+  background-color: #24846a37;
+  color:#24846a !important;
 }
 .table{
   box-shadow: 1px 1px 10px ;

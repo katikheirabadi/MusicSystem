@@ -13,6 +13,9 @@
 .v-btn__content{
   font-family:  'IRANSANS';
 }
+.v-tooltip,.v-menu__content{
+  font-family: 'IRANSANS' !important;
+}
 .v-select{
   font-family: 'IRANSANS' !important;
 }

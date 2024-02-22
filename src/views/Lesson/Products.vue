@@ -227,7 +227,6 @@
 </template>
 
 <script >
-import { storeKey } from 'vuex'
 import banner from '../../components/Banner.vue'
 import myfooter from '../../components/Footer.vue'
 import notif from '../../components/ResultNotification.vue'

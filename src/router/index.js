@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import store from "../store/Store";
-
-
+import config from '../../public/config.json'
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 import home from '../views/Home.vue'
 import welcome from '../views/Sign/Login.vue'
@@ -16,6 +17,9 @@ import LessonDetail from '@/views/Lesson/Products.vue'
 import Panel from '@/views/User/Panel.vue'
 import Shoppingbag from '@/views/User/Shoppingbag.vue'
 import Bank from '@/views/Bank/Result.vue'
+import Store from '../store/Store';
+
+
 const routes = [
   {
     path: '/:lang',
@@ -85,59 +89,72 @@ const Auth = () => {
   return localStorage.getItem("token") != null && localStorage.getItem("token") != ""
 } 
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach((to, from, next) => {
   var destination = to.path;
   if(to.name == 'Home' && localStorage.getItem('token')==undefined){
      store.state.language = to.fullPath.split('/')[1]
     localStorage.setItem('lang',store.state.language)
   }
   
-  const publicPages = ['Hone','welcome','lessons','lessondetail','Academy','Academies','about'];
+  const publicPages = ['Home','welcome','lessons','lessondetail','Academy','Academies','about'];
   const authRequired = publicPages.find(i => i==to.name);
 
   if (Auth()) {
       if (store.state.profile == null || Object.entries(store.state.profile).length === 0) {
-         //todo
-         try {
-          const res = await store.dispatch("getProfile");
-          if (res && !authRequired) {
-              destination = to.path;
-          } else if (!res) {
-              localStorage.removeItem('token');
-              store.state.profile = {};
-              destination = 'fa';
-          }
+   
+      try {
+        if (localStorage.getItem('token')!=null && localStorage.getItem('token')!='')
+         {axios.defaults.headers.common['Authorization'] = `Bearer ${ localStorage.getItem("token")}`}   
+        axios.get(config.apihost + 'api/User/GetUserBaseInfo')
+        .then(response => {
+         store.commit("profile", response.data)
+         
+         if (to.path == from.path && to.path == destination) {
+          to.path=destination
+        }
+        window.scrollTo(0, 0);
+        next()
+        })
+        .catch(error => {
+          localStorage.removeItem('token');
+          store.state.profile = {};
+          to.path = '/';
+          Swal.fire({
+            icon: "error",
+            title: '2خطا',
+            text: error,
+            confirmButtonColor:'red'
+          })
+        //  next(false)
+        })
       } catch (error) {
-          console.error(error);
+         Swal.fire({
+          icon: "error",
+          title: 'خطا',
+          text: error,
+          confirmButtonColor:'red'
+        })
+        next(false)
       }
 
+      }else{
+        next()
       }
-      // else if (!authRequired) {
-      //     destination = to.from.path;
-      // }
-
+    
   } else {
       store.state.profile = {}
-  }
+      //next({name:'Home',params:localStorage.getItem('lang')})
+      if(authRequired == undefined){
+        destination='/fa'
+      }else{
+        next()
+        return
+      }
+      next(destination)
+      return
 
-  if (to.path == from.path) {
-    window.scrollTo(0, 0);
-    return next();
   }
-
-  if (authRequired =='' && !Auth()) {
-      window.scrollTo(0, 0);
-      next({ name:'Home' });
-      return;
-  }
-
-  if (to.path != destination) {
-     window.scrollTo(0, 0);
-      next({ name: destination });
-  } else {
-      window.scrollTo(0, 0);
-      next()
-  }
+  
 
 });
 

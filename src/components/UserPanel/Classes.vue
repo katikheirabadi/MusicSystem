@@ -2,27 +2,27 @@
      <v-row class="mt-10 ma-2">
           <v-col v-for="i in 5" cols="12" md="3">
             <v-sheet class="card">
-              <v-sheet class="setting">...
-              </v-sheet>
-              <v-sheet class="d-flex justify-center">
-                <v-sheet class="title">
-                  <div class="d-flex justify-center">
+             
+              <v-sheet class="d-flex justify-center" style="border-radius: 10px;">
+               
+                <v-sheet class="title d-flex justify-space-between">
+                    <div class="d-flex justify-start align-center pt-2 pb-2" style="width: 80%;">
                     <img src="../../assets/img/classacademy.png" alt="">
-                  </div>
-                  <div class="d-flex justify-center">
-                    <h10 class="text-white text-center">دانش و فناوری بامداد</h10>
-                  </div>
+                    <h5 class="text-white text-center">دانش و فناوری بامداد</h5>
+                    </div> 
+                    <v-sheet class="setting d-flex align-center">...
+                    </v-sheet>
                 </v-sheet>
               </v-sheet>
               
               <v-sheet class="content ma-2">
-                <h3 class="text-center">دف نوازی سنتی</h3>
-                <p class="text-center">1402/12/23</p>
-                <h4 class="mt-2 text-center">کتایون خیرآبادی</h4>
-                <h4 class="mt-2 text-center">5 جلسه</h4>
-                <h4 class="mt-2 text-center">شنبه و دوشنبه</h4>
-                <h4 class="mt-2 text-center">ساعت 12:45</h4>
-                <h4 class="mt-2 text-center mb-2">نمره شما 20 از 100 است</h4>
+                <h4 class="text-center">دف نوازی سنتی</h4>
+                <p class="text-center"><strong class="text-black">تاریخ شروع: </strong>1402/12/23</p>
+                <h5 class="mt-2 text-center"><strong class="text-black">تاریخ شروع: </strong>کتایون خیرآبادی</h5>
+                <h5 class="mt-2 text-center">5 جلسه</h5>
+                <h5 class="mt-2 text-center">شنبه و دوشنبه</h5>
+                <h5 class="mt-2 text-center">ساعت 12:45</h5>
+                <h5 class="mt-2 text-center mb-2">نمره شما 20 از 100 است</h5>
                 
                 <hr/>
                 <v-row class="d-flext justify-space-between">
