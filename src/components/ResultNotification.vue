@@ -37,7 +37,7 @@ export default{
         }
     },
     mounted(){
-        this.color = this.type == 'error'?'rgb(91, 21, 5)':'success'
+        this.color = this.type == 'error'?'red':'success'
         this.s=this.show
         setTimeout(() => { this.$emit("close"); },this.timeout);
     }
