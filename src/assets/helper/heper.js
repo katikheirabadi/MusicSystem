@@ -63,5 +63,10 @@ function mynationalcode(nationalcode){
     return mystring;
   }
 
+  function ToPersionDate(date){
+    var options= { year: 'numeric', month: 'long', day: 'numeric' }
+
+    return new Date(date).toLocaleDateString('fa-IR',options)
+  }
   
-  export {shorttext,toEnglishDigits,ToRial}
+  export {shorttext,toEnglishDigits,ToRial,ToPersionDate}
