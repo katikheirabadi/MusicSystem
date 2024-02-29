@@ -85,6 +85,7 @@
   <v-dialog  
              transition="dialog-bottom-transition" 
              v-model="showsessions" 
+             width="70%"
              >
     <v-card   style="background-color: #ffffff;" title="جلسات دوره شما">
       <v-sheet class="mt-5  mb-5 ">
@@ -153,6 +154,7 @@
   <v-dialog
         transition="dialog-top-transition"
         v-model="showsuggestionmodal"
+        width="50%"
       >  
           <v-card>
             <v-toolbar
