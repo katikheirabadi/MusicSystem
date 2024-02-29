@@ -38,11 +38,11 @@ export default {
             notiftext: '',
             location: 'top right',
             natinalrules: [
-                v => !!v || 'پرکردن این قسمت الزامی است',
-                v => v.length == 10 || 'کد ملی باید 11 رقم باشد',
+                v => !!v || i18n.global.t('panel.credit.natinalfull'),
+                v => v.length == 10 || i18n.global.t('panel.credit.natinallen'),
             ],
             amountrules: [
-                v => v > 0 || 'پرکردن این قسمت الزامی است',
+                v => v > 0 ||i18n.global.t('panel.credit.amountfull'),
             ],
         }
     },
@@ -60,7 +60,7 @@ export default {
             }else if(this.companyId == -1){
                 this.show = true
                 this.notiftype='error'
-                this.notiftext='لطفا یک آموزشگاه انتخاب کنید'
+                this.notiftext=i18n.global.t('panel.credit.selectcompany')
             }
         },
         afterValidate(param) {
@@ -70,15 +70,15 @@ export default {
                 this.notiftext = param.Data.Message
             } else {
                 Swal.fire({
-                    title: `<strong>انتقال اعتبار</strong>`,
+                    title: `<strong>${i18n.global.t('panel.credit.transferttitle')}</strong>`,
                     text: param.Data.Message,
                     icon: "info",
                     showCloseButton: true,
                     showCancelButton: true,
                     confirmButtonColor: '#00b1ff',
                     cancelButtonColor: 'red',
-                    confirmButtonText: `بله`,
-                    cancelButtonText: `خیر`,
+                    confirmButtonText: i18n.global.t('message.ok'),
+                    cancelButtonText:i18n.global.t('message.cancel'),
                 }).then((result) => {
                     if (result.isConfirmed) {
                         Callaxios('UserCredit/Transfer', 'post',param.Data, this.afterTransfer)

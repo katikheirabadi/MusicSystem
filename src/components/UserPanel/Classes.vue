@@ -18,19 +18,19 @@
               <v-sheet class="content ma-2">
                 <h4 class="text-center">دف نوازی سنتی</h4>
                 <p class="text-center"><strong class="text-black">تاریخ شروع: </strong>1402/12/23</p>
-                <h5 class="mt-2 text-center"><strong class="text-black">تاریخ شروع: </strong>کتایون خیرآبادی</h5>
-                <h5 class="mt-2 text-center">5 جلسه</h5>
-                <h5 class="mt-2 text-center">شنبه و دوشنبه</h5>
-                <h5 class="mt-2 text-center">ساعت 12:45</h5>
-                <h5 class="mt-2 text-center mb-2">نمره شما 20 از 100 است</h5>
+                <p class="mt-2 text-center"><strong class="text-black">استاد : </strong>کتایون خیرآبادی</p>
+                <p class="mt-2 text-center"><strong class="text-black">تعداد جلسات : </strong>5 جلسه</p>
+                <p class="mt-2 text-center"><strong class="text-black">روزهای هفته : </strong>شنبه و دوشنبه</p>
+                <p class="mt-2 text-center"><strong class="text-black">ساعت برگزاری : </strong> 12:45</p>
+                <p class="mt-2 text-center mb-2">نمره شما 20 از 100 است</p>
                 
                 <hr/>
                 <v-row class="d-flext justify-space-between">
                   <v-col class="d-flex justify-center" cols="6">
-                    <v-btn class="classbtn session">جلسات</v-btn>
+                    <v-btn block class="classbtn session">جلسات</v-btn>
                   </v-col>
                   <v-col class="d-flex justify-center" cols="6">
-                    <v-btn class="classbtn surveis" @click="ShowSurvey(2)">نظرسنجی</v-btn>
+                    <v-btn block="" class="classbtn surveis" @click="ShowSurvey(2)">نظرسنجی</v-btn>
                   </v-col>
                 </v-row>
                 
@@ -46,8 +46,8 @@
     <v-card subtitle="نظرسنجی های دوره">
       <v-sheet class="mt-5 mb-5">
        <v-row>
-        <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">نام نظرسنجی</v-col>
-        <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">ورد به نظرسنجی </v-col>
+        <v-col cols="12" md="6" class="text-center bg-blue-darken-4 column">نام نظرسنجی</v-col>
+        <v-col cols="12" md="6" class="text-center bg-blue-darken-4 column">ورد به نظرسنجی </v-col>
        </v-row>
        
       </v-sheet>
@@ -65,17 +65,28 @@
 
 </template>
 <script>
+import { Callaxios } from '@/assets/composable/CallAxus'
 export default{
   data(){
     return{
       showserveymodal:false,
-      upselected :0
+      upselected :0,
+      courses:[]
     }
+  },
+  mounted(){
+    Callaxios('UserProduct/UserCourses','post',undefined,)
   },
   methods:{
     ShowSurvey(up){
       this.upselected = up
       this.showserveymodal = true
+    },
+    aftergetproducts(param){
+      this.courses=[]
+      param.Data.filter((i)=> this.courses.push({
+       
+      }))
     }
   }
 }

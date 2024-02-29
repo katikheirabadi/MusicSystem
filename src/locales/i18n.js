@@ -160,13 +160,31 @@ const messages = {
           transferttitle:'انتقال اعتبار',
           transferdesc:'برای انتقال اعتبار، لطفا ابتدا مبلغ مد نظر و کد ملی دوستتان را نوشته و دکمه انتقال را بزنید.',
           transfernatinal:'کدملی',
-          transferbtn:'انتقال'
+          transferbtn:'انتقال',
+          selectcompany:'آموزشگاه خد را انتخاب کنید',
+          changeActivcompany:'تغییر آموزشگاه',
+          amountfull:'پرکردن این قسمت الزامی است',
+          natinalfull:'پرکردن این قسمت الزامی است',
+          natinallen:'کد ملی باید 11 رقم باشد',
+          reqfull:'پرکردن این قسمت الزامی است',
+         successreq:'درخواست شما با موفقیت ثبت شد',
+         creditreprttitle:'گزارش صندوق نقدی',
+         reportdate:'تاریخ',
+         reqdesc:'توضیحات',
+         reqproductname:'نام دوره',
+         reqprice:'مبلغ',
+         reqnow:'مانده',
+         reqtype:'تراکنش',
+         reqno:'موردی یافت نشد',
+         chargereporttitle:'هدایای من'
         }
       },
       message: {
        
         error:'خطا',
-      
+        ok:'بله',
+        cancel:'خیر',
+        unit:'ریال',
         classes:'کلاس ها',
         detail:'مشاهده دوره',
        

@@ -2,12 +2,12 @@
   <v-container>
     <v-row class="mt-5 d-flex justify-center">
       <v-col cols="12" md="4">
-        <v-select no-transition :label="$t('panel.editprofile.selectcompany')" :items="companies"
+        <v-select no-transition :label="$t('panel.credit.selectcompany')" :items="companies"
           :item-title="item => item.key" :item-value="item => item.value" v-model="selectcompany" variant="outlined"
           class="selectclass"></v-select>
       </v-col>
       <v-col cols="12" md="2">
-        <v-btn class="creditcardbtn text-white" style="height: 70%;" @click="changeactiveCompany">تغییر آموزشگاه</v-btn>
+        <v-btn class="creditcardbtn text-white" style="height: 70%;" @click="changeactiveCompany">{{ $t('panel.credit.changeActivcompany') }}</v-btn>
       </v-col>
 
     </v-row>
@@ -48,67 +48,75 @@
     <!-- forms -->
     <v-row>
       <v-col cols="12" md="4" class="d-flex justify-center">
-        <addcredit />
+        <addcredit :companyId="selectcompany"/>
       </v-col>
       <v-col cols="12" md="4" class="d-flex justify-center">
         <transferCredit :companyId="selectcompany" />
       </v-col>
       <v-col cols="12" md="4" class="d-flex justify-center">
-        <addcreditreq />
+        <addcreditreq :companyId="selectcompany"/>
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="12" md="6">
         <!-- credits -->
         <v-row class="d-flex justify-center pb-5  mt-5">
-          <h2 class="text-center" style="color: #0f5d48;">گزارش صندوق نقدی</h2>
-          <v-card class="mt-5 table" width="90%">
-
-            <v-row class="pt-5 pb-2" style="background-color: #0f5d48;color: aliceblue;">
+          <h2 class="text-center creditreprttitle">{{ $t('panel.credit.creditreprttitle') }}</h2>
+          <v-card class="mt-5 table" width="95%">
+            <v-row class="pt-5 pb-2 creditreportcol">
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center">تاریخ</h4>
+                <h4 class="text-center">{{ $t('panel.credit.reportdate') }}</h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center">توضیحات</h4>
+                <h4 class="text-center">{{ $t('panel.credit.reqdesc') }}</h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center">نام دوره</h4>
+                <h4 class="text-center">{{ $t('panel.credit.reqproductname') }}</h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center">مبلغ</h4>
+                <h4 class="text-center">{{  $t('panel.credit.reqprice') }}</h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center">مانده </h4>
+                <h4 class="text-center">{{  $t('panel.credit.reqnow') }} </h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center"> تراکنش</h4>
+                <h4 class="text-center"> {{ $t('panel.credit.reqtype') }}</h4>
               </v-col>
             </v-row>
             <v-row v-if="showcredit.length == 0" class="py-3 tablerow">
               <v-col>
-                <h3 class="text-center">موردی یافت نشد</h3>
+                <h3 class="text-center">{{  $t('panel.credit.reqno') }}</h3>
               </v-col>
             </v-row>
-            <v-row v-if="showcredit.length > 0" v-for="(credit, index) in showcredit" class="pt-3 pb-5 tablerow"
+            <v-row v-if="showcredit.length > 0" v-for="(credit, index) in showcredit" 
+              class="pt-3 pb-5 tablerow"
               :class="{ 'tablerowdark': index % 2 == 1 }">
               <v-col md="2" cols="12" class="d-flex justify-center">
                 <h4 class="text-center">{{ credit.date }}</h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center" >{{ credit.shortdesc }} <v-tooltip activator="parent" location="top">{{
-                  credit.desc }}</v-tooltip></h4>
+                <h4 class="text-center" >{{ credit.shortdesc }}
+                 <v-tooltip activator="parent" location="top">{{
+                  credit.desc }}</v-tooltip>
+                </h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
                 <h4 class="text-center">{{ credit.product }}</h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center" :class="{'decrees':credit.amount.includes('-')}">{{ credit.amount }}</h4>
+                <h4 class="text-center" :class="{'decrees':credit.amount.includes('-')}">
+                  {{ credit.amount }}
+                </h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center" :class="{'decrees':credit.nouaount.includes('-')}">{{ credit.nouaount }}</h4>
+                <h4 class="text-center" :class="{'decrees':credit.nouaount.includes('-')}">
+                  {{ credit.nouaount }}
+                </h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center" :class="{'decrees':credit.amount.includes('-')}">{{ credit.type }} </h4>
+                <h4 class="text-center" :class="{'decrees':credit.amount.includes('-')}">
+                  {{ credit.type }} 
+                </h4>
               </v-col>
             </v-row>
           </v-card>
@@ -123,31 +131,31 @@
       <v-col cols="12" md="6">
         <!-- charges -->
         <v-row class="d-flex justify-center pb-5 mt-6">
-          <h2 class="text-center" style="color: #0f5d48;">هدایای من</h2>
-          <v-card class="mt-5 table" width="90%">
-            <v-row class="pt-5 pb-2" style="background-color: #0f5d48;color: aliceblue;">
+          <h2 class="text-center creditreprttitle">{{  $t('panel.credit.chargereporttitle') }}</h2>
+          <v-card class="mt-5 table" width="95%">
+            <v-row class="pt-5 pb-2 creditreportcol">
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center">تاریخ</h4>
+                <h4 class="text-center">{{ $t('panel.credit.reportdate') }}</h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center">توضیحات</h4>
+                <h4 class="text-center">{{ $t('panel.credit.reqdesc') }}</h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center">نام دوره</h4>
+                <h4 class="text-center">{{ $t('panel.credit.reqproductname') }}</h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center">مبلغ</h4>
+                <h4 class="text-center">{{ $t('panel.credit.reqprice') }}</h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center">مانده </h4>
+                <h4 class="text-center">{{ $t('panel.credit.reqnow') }} </h4>
               </v-col>
               <v-col md="2" cols="12" class="d-flex justify-center">
-                <h4 class="text-center"> تراکنش</h4>
+                <h4 class="text-center">{{ $t('panel.credit.reqtype') }}</h4>
               </v-col>
             </v-row>
             <v-row v-if="showcharge.length == 0" class="py-3 tablerow">
               <v-col>
-                <h3 class="text-center">موردی یافت نشد</h3>
+                <h3 class="text-center">{{ $t('panel.credit.reqno') }}</h3>
               </v-col>
             </v-row>
             <v-row v-if="showcharge.length > 0" v-for="(charge, index) in showcharge" class="py-3 tablerow"
@@ -189,6 +197,7 @@
 import addcredit from '@/components/UserPanel/CreditForms/AddCredit.vue'
 import transferCredit from './CreditForms/TransferCredit.vue';
 import addcreditreq from './CreditForms/AddCreditRequest.vue'
+import i18n from '@/locales/i18n'
 
 import { Callaxios } from '@/assets/composable/CallAxus';
 import { shorttext, ToRial } from '@/assets/helper/heper.js'
@@ -253,8 +262,8 @@ export default {
         desc: i.Description,
         shortdesc: shorttext(i.Description, 10),
         product: i.productname == '' ? '--------' : i.productname,
-        amount: ToRial(i.TransactionAmount) + ' ریال',
-        nouaount: ToRial(i.TotalAmount) + ' ریال',
+        amount: ToRial(i.TransactionAmount) + i18n.global.t('message.unit'),
+        nouaount: ToRial(i.TotalAmount) + i18n.global.t('message.unit'),
         type: i.CrediRoot
       }))
 
@@ -279,8 +288,8 @@ export default {
         desc: i.Description,
         shortdesc: shorttext(i.Description, 10),
         product: i.productname == '' ? '--------' : i.productname,
-        amount: ToRial(i.TransactionAmount) + ' ریال',
-        nouaount: ToRial(i.TotalAmount) + ' ریال',
+        amount: ToRial(i.TransactionAmount) +i18n.global.t('message.unit'),
+        nouaount: ToRial(i.TotalAmount) + i18n.global.t('message.unit'),
         type: i.CrediRoot
       }))
       this.onchargePageChange(1)

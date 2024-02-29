@@ -20,7 +20,7 @@
     color: rgb(15, 90, 128);
  }
  .title{
-  background-color: rgb(54, 125, 161);
+  background-color:#1560bd;
   width: 100%;
   border-radius: 10px 10px 0px 0px;
 
@@ -42,22 +42,22 @@
   padding-inline: 20%;
 }
 .surveis{
-  background-color: rgb(13, 68, 96);;
+  background-color:#4B9CD3;
   color: aliceblue;
 }
 .session{
-  background-color: rgb(43, 111, 183);
+  background-color:#6495ED;
   color: aliceblue;
 }
 .setting{
   font-size: 20px;
   text-align: end;
   margin-inline-end: 5%;
-  background-color: rgb(54, 125, 161);
+  background-color:#1560bd;
   color: aliceblue;
 }
 .content p {
-  color: rgba(128, 128, 128, 0.779);
+  color: rgba(67, 96, 116, 0.779);
 }
 .content h5{
   font-weight: bold;

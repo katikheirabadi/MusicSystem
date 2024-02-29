@@ -4,26 +4,54 @@
             {{ $t('panel.credit.addcredittitle') }}
         </v-card-title>
         <h5 class="my-3 mx-5">{{ $t('panel.credit.addcreditdesc') }}</h5>
-        <v-text-field v-model="amount" class="credit" type="number" :label="$t('panel.credit.addcreditfield')"
-            required></v-text-field>
+        <v-text-field 
+        :rules="amountrules"
+         v-model="amount"
+        class="credit"
+        type="number"
+        ref="amount"
+        :label="$t('panel.credit.addcreditfield')"
+        required>
+        </v-text-field>
         <v-btn @click="AddCredit" class="my-3 creditbtn">{{ $t('panel.credit.addcreditbtn') }}</v-btn>
 
     </v-card>
+    <notif v-if="show" :show="show" :text="notiftext" :type="notiftype" :location="location" @close="show = false" />
+
 </template>
 <script>
+import notif from '@/components/ResultNotification.vue'
+import { Callaxios } from '@/assets/composable/CallAxus'
+import i18n from '@/locales/i18n'
+
 export default {
-    props: ['company'],
+    props: ['companyId'],
     data() {
         return {
-            amount: 0
+            amount: 0,
+            amountrules: [
+                v => v > 1000 || i18n.global.t('panel.credit.amountfull'),
+            ],
+            notiftype: '',
+            show: false,
+            notiftext: '',
+            location: 'top right'
         }
+    },
+    components: {
+        notif
     },
     methods: {
         AddCredit() {
-
+            if(this.$refs.amount.validate() && this.companyId !=-1) {
+                Callaxios('UserCredit/IncreaseByUser','post',{
+                    TransactionAmount:this.amount,
+                    ComponyId:this.companyId
+                },this.afterAdd)
+            }
         },
-        AfterAdd(param) {
-
+        afterAdd(param) {
+            window.open(param.Data)
         }
     }
 }

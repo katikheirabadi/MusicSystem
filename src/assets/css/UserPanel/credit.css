@@ -47,3 +47,10 @@
 .decrees{
   color: red !important;
 }
+.creditreprttitle{
+  color: #0f5d48;
+}
+.creditreportcol{
+  background-color: #0f5d48;
+  color: aliceblue;
+}
