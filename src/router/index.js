@@ -107,8 +107,7 @@ router.beforeEach((to, from, next) => {
          {axios.defaults.headers.common['Authorization'] = `Bearer ${ localStorage.getItem("token")}`}   
         axios.get(config.apihost + 'api/User/GetUserBaseInfo')
         .then(response => {
-         store.commit("profile", response.data)
-         
+         store.state.profile = response.data
          if (to.path == from.path && to.path == destination) {
           to.path=destination
         }
@@ -143,7 +142,6 @@ router.beforeEach((to, from, next) => {
     
   } else {
       store.state.profile = {}
-      //next({name:'Home',params:localStorage.getItem('lang')})
       if(authRequired == undefined){
         destination='/fa'
       }else{

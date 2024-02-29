@@ -330,7 +330,7 @@ export default{
   mounted() {
     this.Name = Store.state.profile.FName + ' ' + Store.state.profile.LName
     this.Profile = Store.state.profile;
-    this.Img = Store.state.profile.Image =="" ? window.location.origin + '/src/assets/img/profile2.png': config.backuploadurl+Store.state.profile.Image
+    this.Img = Store.state.profile.Image =="" ? window.location.origin + '/src/assets/img/profile.png': config.backuploadurl+Store.state.profile.Image
 
     this.container = document.getElementsByClassName('calendar')[0];
     this.calendar = document.getElementsByClassName('front')[0];

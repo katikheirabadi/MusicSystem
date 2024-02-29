@@ -18,6 +18,8 @@
 }
 .v-select{
   font-family: 'IRANSANS' !important;
+}.v-list-item-title,.v-list,.v-card-title,.v-toolbar,.v-label,.v-field__input,.v-card-text{
+  font-family: 'IRANSANS' !important;
 }
    .swal2-html-container,.swal2-styled,.swal2-title{
     font-family: 'IRANSANS' ;

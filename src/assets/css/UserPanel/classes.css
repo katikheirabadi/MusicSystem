@@ -9,31 +9,35 @@
     width: 100%;
     margin-bottom: 5%;
  }
+ .head{
+  border-radius: 10px;
+ }
  .card:hover{
   transform: scale(1.02);
   box-shadow: -10px 10px 10px 0px  rgba(155, 55, 44, 0.502);
   animation-duration: 3s;
  }
   .card h4 {
-    padding: 5px 0px 8px 0px;
+    padding: 5px 0px 4px 0px;
     font-family:'IRANSANS';
-    color: rgb(15, 90, 128);
+    color: rgb(138, 96, 5);
+    font-size: 17px;
  }
  .title{
-  background-color:#1560bd;
   width: 100%;
   border-radius: 10px 10px 0px 0px;
-
+  background-color: rgb(222, 152, 2);
  }
+
  .title img{
   width: 10% !important;
-  margin-inline-end: 1%;
+  margin-inline-end: 2%;
  }
   .card hr {
     display: block;
     border: none;
     height: 3px;
-    background-color:  rgb(88, 127, 146);
+    background: linear-gradient(to right, rgb(235, 212, 163) 60%, rgb(222, 152, 2) 100%);
     margin: 0px;
  }
   
@@ -42,22 +46,35 @@
   padding-inline: 20%;
 }
 .surveis{
-  background-color:#4B9CD3;
-  color: aliceblue;
+  color: white;
+  background-color: rgb(197, 85, 67);;
 }
 .session{
-  background-color:#6495ED;
-  color: aliceblue;
+  color:  rgb(94, 77, 10);
+  background-color: rgb(215, 189, 84);
 }
 .setting{
-  font-size: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
   text-align: end;
   margin-inline-end: 5%;
-  background-color:#1560bd;
+  background-color: rgb(222, 152, 2);;
   color: aliceblue;
+  padding: 5px !important;
 }
-.content p {
-  color: rgba(67, 96, 116, 0.779);
+.setting :hover{
+  color:#4b0907 !important;
+  transform: scale(1.02);
+  animation-duration: 3s;
+}
+.content h5{
+  font-size: 13px;
+  font-weight: bold !important;
+  color: #b08e1e;
+}
+.content strong{
+  font-size: 15px;
+  color: #786200;
 }
 .content h5{
   font-weight: bold;
@@ -65,3 +82,27 @@
 .column{
   font-family: 'IRANSANS';
 }
+.sessionrow{
+  background-color: #ffc1085a;
+}
+.sessions{
+  color: #725a0f
+}
+.negetive{
+  color: red;
+}
+  .v-list{
+    font-size: 12px;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    right: -4vw;
+  }
+  .v-list-item{
+    min-width: 8vw
+  }
+  .v-list-item:hover{
+    background-color: #edb61051;
+  }
+  .v-label{
+    color:#06514a !important
+  }
