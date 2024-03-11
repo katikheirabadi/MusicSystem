@@ -21,7 +21,7 @@
                    <v-icon icon="fa fa-commenting"></v-icon>
                   </p>
                   </v-list-item>
-                  <v-list-item>
+                  <v-list-item @click="upselected=myclass.userProductId;deleteproductname=myclass.ProductName;selectedpas=myclass.ProductAvailableId;showdeletemodal=true">
                     <p  class="d-flex justify-space-between"> 
                        انصراف از دوره
                       <v-icon icon="fa fa-caret-square-left"></v-icon>
@@ -71,7 +71,7 @@
           <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">نام نظرسنجی</v-col>
           <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">ورد به نظرسنجی </v-col>
         </v-row>
-
+        
       </v-sheet>
 
       <v-card-actions>
@@ -170,13 +170,14 @@
               style="color:#06514a !important"
               >
               </v-select>
-              <p class="negetive mb-2" v-if="suggestiontype!=2">متاسفیم امکانات آموزشی مناسبی ارائه نکردیم <br>لطفا نظر خود را برای ما بنویسید.</p>
-              <v-textarea  clearable label="متن شما ...." variant="solo-filled"></v-textarea>
+              <p class="negetive mb-2" v-if="suggestiontype!=2">متاسفیم امکانات آموزشی مناسبی ارائه نکردیم
+                 <br>لطفا نظر خود را برای ما بنویسید.</p>
+              <v-textarea v-model="suggestionText" label="متن شما ...." variant="solo-filled"></v-textarea>
             </v-card-text>
             <v-card-actions class="justify-end">
               <v-btn
                 class="bg-green-darken-1"
-                @click="showsuggestionmodal = false"
+                @click="addsuggestion"
               > <v-icon icon="fa fa-check"></v-icon>ارسال نظر</v-btn>
               <v-btn
                 class="bg-red-darken-1"
@@ -185,11 +186,56 @@
             </v-card-actions>
           </v-card>
         
-      </v-dialog>
+  </v-dialog>
+  <!-- add deleteuprequest -->
+  <v-dialog
+        transition="dialog-top-transition"
+        v-model="showdeletemodal"
+        width="50%"
+      >  
+          <v-card>
+            <v-toolbar
+              color="blue-darken-1"
+              title="درخواست انصراف از دوره"
+            ></v-toolbar>
+            <v-card-text>
+              <h3>شرایط انصراف</h3>
+              <br>
+              <p>شما درخواست حذف دوره &nbsp<strong class="text-info">{{ deleteproductname  }} </strong>&nbspرا دارید. در صورت اطمینان متن در خواست خود را به همراه شماره کارت به همراه نام صاحب کارت نوشته و دکمه ثبت را بزنید</p>
+              <br>
+              <v-textarea v-model="deletetext" label="متن درخواست شما ...." variant="solo-filled"></v-textarea>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field type="text" v-model="deletecreditnumber" :rules="deleterules" label="شماره کارت" ></v-text-field>
+                </v-col>
+                <v-col cols="12" md="6">
+
+                  <v-text-field type="text" v-model="deletecredituser" :rules="deleterules" label="نام و نام خانوادگی صاحب کارت" ></v-text-field>
+                </v-col>
+              </v-row>
+            
+
+            </v-card-text>
+            <v-card-actions class="justify-end">
+              <v-btn
+                class="bg-blue-darken-4"
+                @click="adddeleterequest"
+              > <v-icon icon="fa fa-check"></v-icon>ثبت درخواست</v-btn>
+              <v-btn
+                class="bg-red-darken-1"
+                @click="showdeletemodal = false"
+              > <v-icon icon="fa fa-close"></v-icon>بستن</v-btn>
+            </v-card-actions>
+          </v-card>
+        
+  </v-dialog>
+  <notif v-if="snackbar" :type="snackbartype" :text="snackbarmessage" :show="snackbar" @close="snackbar=false"/>
 </template>
 <script>
 import { Callaxios } from '@/assets/composable/CallAxus'
 import { ToPersionDate } from '@/assets/helper/heper'
+
+import notif from '@/components/ResultNotification.vue'
 export default {
   data() {
     return {
@@ -204,8 +250,24 @@ export default {
         {name:'پیشنهاد',value:2},
         {name:'اعتراض',value:3},
       ],
-      suggestiontype:2
+      suggestiontype:2,
+      suggestionText:'',
+      snackbar:false,
+      snackbartype:'',
+      snackbarmessage:'',
+      showdeletemodal:false,
+      deleteproductname:'',
+      deletetext:'',
+      deletecreditnumber:'',
+      deletecredituser:'',
+      deleterules:[
+            v => !!v || 'پر کردن این فیلد اجباری است',
+            ],
+      selectedpas:0
     }
+  },
+  components:{
+    notif
   },
   mounted() {
     Callaxios('UserProduct/UserCourses', 'post', {}, this.aftergetcourses)
@@ -268,6 +330,41 @@ export default {
     getUrlByMscoIdSucces(param) {
       window.open(param.Data, '_blank')
     },
+    addsuggestion(){
+      var input={
+        Text:this.suggestionText,
+        IsNegetive: this.suggestiontype !=2 ?true:false,
+        IsComplaint:this.suggestiontype !=3 ?false:true,
+        UserProductId:this.upselected
+      }
+      Callaxios('UserSuggestion/AddUserSuggestion','post',input,this.afteraddsuggestion)
+    },
+    afteraddsuggestion(param){
+      this.snackbarmessage = param.Data
+      this.snackbartype = 'success'
+      this.snackbar=true
+      this.suggestionText =''
+      this.suggestiontype=2
+      this.showsuggestionmodal = false
+
+    },
+    adddeleterequest(){
+      var input={
+        Text:this.deletetext + '\n' + this.deletecredituser + ":" + this.deletecreditnumber,
+        ProductAvalableSessionId:this.selectedpas,
+        UserProductId:this.upselected
+      }
+      Callaxios('UserRequest/AddRequest','post',input,this.afteradddeleterequest)
+    },
+    afteradddeleterequest(param){
+      this.snackbarmessage = param.Data
+      this.snackbartype = 'success'
+      this.snackbar=true
+      this.showdeletemodal=false
+      this.deletetext =''
+      this.deletecreditnumber=''
+      this.deletecredituser = ''
+    }
   },
   computed: {
     iconContent() {
