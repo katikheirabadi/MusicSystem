@@ -52,7 +52,7 @@
               <v-btn v-else block class="classbtn bg-grey-darken-2">------</v-btn>
             </v-col>
             <v-col class="d-flex justify-center" cols="6">
-              <v-btn block class="classbtn surveis" @click="ShowSurvey(2)">نظرسنجی</v-btn>
+              <v-btn block class="classbtn surveis" @click="showsurvey(myclass.userProductId,myclass.ProductName)">نظرسنجی</v-btn>
             </v-col>
           </v-row>
 
@@ -64,16 +64,52 @@
 
   </v-row>
   <!-- surveys -->
-  <v-dialog width="30%" v-model="showserveymodal">
-    <v-card subtitle="نظرسنجی های دوره">
-      <v-sheet class="mt-5 mb-5">
+  <v-dialog width="50%" v-model="showserveymodal">
+    <v-card :subtitle="' نظرسنجی های دوره ی' + productname">
+      <v-sheet class="mt-5 mb-5" style="font-family: 'IRANSANS';">
         <v-row>
           <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">نام نظرسنجی</v-col>
           <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">ورد به نظرسنجی </v-col>
         </v-row>
-        
+        <v-row v-for="survey in surveis" :key="survey.PackageId">
+          <v-col cols="12" md="6" class="text-center">
+            <strong>{{ survey.PackageName }}- {{ survey.PackageType }}</strong> 
+          </v-col>
+          <v-col cols="12" md="6" class="text-center">
+            <v-btn class="text-center bg-orange-darken-2">ورود به نظرسنجی</v-btn>
+          </v-col>
+        </v-row>
       </v-sheet>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn text="بستن" @click="showserveymodal = false"></v-btn>
+      </v-card-actions>
+    </v-card>
 
+  </v-dialog>
+  <v-dialog class="d-block d-md-none" v-model="showserveymodal">
+    <v-card :subtitle="' نظرسنجی های دوره ی' + productname">
+      <v-sheet class="mt-5 mb-5 d-none d-md-block" style="font-family: 'IRANSANS';">
+        <v-row>
+          <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">نام نظرسنجی</v-col>
+          <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">ورد به نظرسنجی </v-col>
+        </v-row>
+        <v-row v-for="survey in surveis" :key="survey.PackageId">
+          <v-col cols="12" md="6" class="text-center">
+            <strong>{{ survey.PackageName }}- {{ survey.PackageType }}</strong> 
+          </v-col>
+          <v-col cols="12" md="6" class="text-center">
+            <v-btn class="text-center bg-orange-darken-2">ورود به نظرسنجی</v-btn>
+          </v-col>
+        </v-row>
+      </v-sheet>
+      <v-sheet class="mt-5 mb-5 d-block d-md-none" style="font-family: 'IRANSANS';">
+        <v-sheet v-for="survey in surveis" :key="survey.PackageId" class="text-center" style="border-radius: 10px;box-shadow: 4px 4px 10px orange;margin-inline: 10%;">
+         
+          <h4 class="pb-2 pt-2">{{ survey.PackageName }}- {{ survey.PackageType }}</h4> 
+          <v-btn class="text-center bg-orange-darken-2 mt-2 mb-2">ورود به نظرسنجی</v-btn>
+        </v-sheet>
+      </v-sheet>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text="بستن" @click="showserveymodal = false"></v-btn>
@@ -240,6 +276,8 @@ export default {
   data() {
     return {
       showserveymodal: false,
+      surveis:[],
+      productname:'',
       upselected: 0,
       classes: [],
       sessions: [],
@@ -276,8 +314,14 @@ export default {
     aftergetcourses(param) {
       this.classes = param.Data
     },
-    ShowSurvey(up) {
+    showsurvey(up,name) {
       this.upselected = up
+      this.productname = name
+      Callaxios('Survey/GetAllSurveysForProduct','post',{UserProductId:up},this.aftergetallsurveys)
+     
+    },
+    aftergetallsurveys(param){
+      this.surveis = param.Data
       this.showserveymodal = true
     },
     getAllsessions(pasId) {
