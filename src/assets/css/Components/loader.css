@@ -6,7 +6,6 @@
      background-color: rgba(0, 0, 0, 0.751)
 }
 .loader-sheet{
-    width: 20% !important;
      position: fixed;
      opacity:500%;
      padding: 1.5%;

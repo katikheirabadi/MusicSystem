@@ -23,9 +23,9 @@
                 <v-sheet
                  class="card-body"
                  >
-                 <h5 class="card-title">
+                 <h6 class="card-title">
 					     	 {{ category.name }}
-					       </h5>
+					       </h6>
 					
                   <router-link 
                   :to="{name:'lessons',

@@ -296,6 +296,7 @@ export default{
       this.data.modify = new Date(param.Data.ModifiedDate).toLocaleDateString('fa', {  year: "numeric", month: "short", day: "numeric"});
       this.data.tags.push(param.Data.Tag)
       this.data.concepts = JSON.parse(param.Data.Concepts)
+      console.log( param.Data.LessonProducts)
       param.Data.LessonProducts.filter((i)=> this.data.products.push(i))
      
     },

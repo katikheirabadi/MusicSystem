@@ -7,7 +7,7 @@
       class="my-auto detailcol" 
       >
       <v-sheet
-      :rounded="'xl'"
+      :rounded="'l'"
       class="mx-auto my-auto text-center detail">
             <h2>{{ card.count }}+</h2>
             <p>{{ card.text }}</p>
@@ -35,7 +35,7 @@ export default{
    methods:{
       init(){
             this.cards.filter((i)=>this.endcards.push({
-            count :0,
+            count :i.count>100?i.count-100:0,
             total:i.count,
             text :i.text
       }))
@@ -46,7 +46,7 @@ export default{
               this.endcards[i].count +=1
             }
          }
-        },60)
+        },50)
       }
    }
 

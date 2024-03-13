@@ -10,18 +10,18 @@
             <h1>لیست دوره ها</h1>
             
             <v-sheet class="d-none d-md-block" >
-              <v-row  class="mt-5 text-center content contentheader d-flex justify-center">
-                  <v-col class="d-flex justify-center align-center" cols="2"><strong>نام دوره</strong></v-col>
-                  <v-col class="d-flex justify-center align-center" cols="1"><strong>نوع</strong></v-col>
-                  <v-col class="d-flex justify-center align-center"  cols="1"><strong>جلسات باقی مانده</strong></v-col>
-                  <v-col class="d-flex justify-center align-center"  cols="1"><strong>جلسه</strong></v-col>
-                  <v-col class="d-flex justify-center align-center"  cols="1"><strong>قیمت اصلی</strong></v-col>
-                  <v-col class="d-flex justify-center align-center"  cols="1"><strong >{{ endprice }}</strong></v-col>
-                  <v-col class="d-flex justify-center align-center" cols="1" v-if="creditplace!=''"><strong >{{ creditplace }}</strong></v-col>
-                  <v-col class="d-flex justify-center align-center" cols="1"><strong>تخفیف باشگاه</strong></v-col>
-                  <v-col class="d-flex justify-center align-center" cols="2" v-if="takhfif!=''"><strong >{{ takhfif }}</strong></v-col>
-                  <v-col v-if="0==1" class="d-flex justify-center align-center" cols="1"><strong>بن آموزشگاه</strong></v-col>
-                  <v-col cols="1"></v-col>
+              <v-row  class="mt-5 text-center content d-flex justify-center">
+                  <v-col class="d-flex justify-center contentheader align-center" cols="2"><strong>نام دوره</strong></v-col>
+                  <v-col class="d-flex justify-center contentheader align-center" cols="1"><strong>نوع</strong></v-col>
+                  <v-col class="d-flex justify-center contentheader align-center"  cols="1"><strong>جلسات باقی مانده</strong></v-col>
+                  <v-col class="d-flex justify-center contentheader align-center"  cols="1"><strong>جلسه</strong></v-col>
+                  <v-col class="d-flex justify-center contentheader align-center"  cols="1"><strong>قیمت اصلی</strong></v-col>
+                  <v-col class="d-flex justify-center contentheader align-center"  cols="1"><strong >{{ endprice }}</strong></v-col>
+                  <v-col class="d-flex justify-center contentheader align-center" cols="1" v-if="creditplace!=''"><strong >{{ creditplace }}</strong></v-col>
+                  <v-col class="d-flex justify-center contentheader align-center" cols="1"><strong>تخفیف باشگاه</strong></v-col>
+                  <v-col class="d-flex justify-center contentheader align-center" cols="2" v-if="takhfif!=''"><strong >{{ takhfif }}</strong></v-col>
+                  <v-col v-if="0==1" class="d-flex justify-center contentheader align-center" cols="1"><strong>بن آموزشگاه</strong></v-col>
+                  <v-col cols="1" class="contentheader"></v-col>
                 </v-row>
                
                 <v-row v-for="(bagproduct,i) in bagproducts" class="text-center content d-flex justify-center" :class="{'contentrow':i%2!=0}">
@@ -136,7 +136,7 @@
         <v-row class="mt-5 d-flex justify-end">
           <v-btn color="green-darken-4"
             rounded="0"
-           append-icon="fa fa-arrow-left" @click="this.$router.push({name:'bank'})" >ادامه خرید</v-btn>
+           append-icon="fa fa-arrow-left" @click="gobank()" >ادامه خرید</v-btn>
         </v-row>
      </v-container>  
      <v-container class="mt-10 mb-10" v-else>
@@ -149,59 +149,7 @@
 
 
     <ResultNotification v-if="snackbar" :show="snackbar" :location="'top right'" :type="snackbartype" :text="snackbartext" @close="snackbar=false"/>
-     <!-- <v-dialog
-      v-model="shopdialog"
-      scrollable
-      style="width: 60%;"
-    >
-      <v-sheet style="height: auto">
-        <v-card-title style="font-family: 'IRANSANS';display: flex; justify-content: start !important;font-size: x-large;">شرایط و قوانین ثبت نام دوره/کالا  </v-card-title>
-        <v-divider></v-divider>
-        <v-card-text class="" style="padding-inline-start: 8% !important;font-family: 'IRANSANS'">
-          <h3>قوانین و مقررات آموزشگاه بامداد</h3>
-    <h5>مهارت جویان می توانند پیش از ثبت نام در صورت نیاز، از مشاوره رایگان با مدرسین و مسئولین آموزشگاه بهره مند گردند.</h5>
-    <ol>
-        <li>۱در صورت وجود هرگونه ابهام و سوال در خصوص شرایط آموزشی و ثبت نام، مهارت جویان پیش از تکمیل فرآیند ثبت نام میتوانند با استفاده از امکان درخواست مشاوره در زمان تعیین شده در آموزشکاه حضور پیدا کرده و مسئولین آموزشگاه کلیه اطلاعات لازم را در اختیار مهارت جویان و مراجعین قرار خواهند داد .</li>
-        <li>برابر قوانین کشوری، ثبت نام مهارت جویان زیر هجده سال منوط به رضایت کتبی والدین و یا سرپرست قانونی مهارت جو خواهد بود .</li>
-        <li>مهارت جو موظف به رعایت کلیه شئونات اخلاقی و انضباطی برابر با قوانین جاری کشور و عرف میباشد.</li>
-        <li>مهارت جویان موظفند در محیط آموزشگاه و دیگر اماکن مرتبط مانند تور، گروهای مجازی و&hellip; در کلیه موارد،رعایت احترام مدرسین، مهارت جویان دیگر و مسولین را داشته باشند .</li>
-        <li>&nbsp;احترام به حقوق شهروندی و رعایت حال دیگران الزامی میباشد لذا از ایجاد هرگونه مزاحمت برای سایرین مانند تجمع و ایجاد سر و صدا در راهروها و راه پله آموزشگاه جدا خودداری فرمایید</li>
-        <li>به دلیل حفظ امنیت و اطمینان خاطر مهارت جویان و آرامش خانواده ها، آموزشگاه مجهز به دوربینهای نظارتی میباشد .</li>
-        <li>&nbsp;استعمال دخانیات در کلیه اماکن ساختمان آموزشگاه ممنوع میباشد .</li>
-        <li>&nbsp;ثبت نام قطعی پس از تسویه حساب کامل امکانپذیر میباشد .</li>
-        <li>&nbsp;مهارت جو موظف است پس از ثبت نام حداقل یک هفته قبل از شروع دوره انصراف خود را کتباً به آموزشگاه اعلام نماید.</li>
-        <li>تشکیل کلاسها در هر دوره منوط به احراز حد نصاب لازم جهت تشکیل کلاس در همان دوره بوده و درصورت نیاز برگزاری کلاس از طرف آموزشگاه تا موعد مقرر به تعویق خواهد افتاد.</li>
-        <li>تغییر ساعات، تاریخ و استادان، کلاسها و دوره ها با نظر آموزشگاه میباشد .</li>
-        <li>در صورت عدم برگزاری ساعت آموزش به دلیل تعطیلات رسمی و یا عدم حضور مدرس، جلسه جبرانی آن کلاس برگزار خواهد گردید .</li>
-        <li>&nbsp;ضبط جلسات تدریس بصورت ویدیویی اکیدا ممنوع بوده و ضبط صوتی فقط با هماهنگی استاد و تایید آموزشگاه امکانپذیر خواهد بود.</li>
-        <li>مهارت جویان بایستی در حفظ تجهیزات کمک آموزشی کوشا باشند. بدیهی است در صورت آسیب رسیدن به تجهیزات، تادیه خسارت برعهده مهارت جو خواهد بود.</li>
-        <li>مهارت جویان نباید خارج از برنامه های آموزشی اعلام گردیده آموزشگاه انتظار و تقاضایی از مسولین آموزشگاه داشته و بایستی کلیه آیین نامه ها و دستورالعملهای اجرایی ابلاغ شده از سوی مراجع بالادستی را رعایت نمایند .</li>
-        <li>مهارت جو به آموزشگاه اختیار میدهد تا روند اطلاع رسانی پیرامون فعالیتهای آموزشگاه از طریق پیامک روی تلفن همراه و همچنین پست الکترونیکی درج گردیده در فرم ثبت نام را دریافت نماید. لذا در صورت عدم تمایل نیز کافی است آموزشگاه را از طریق پیامک اختصاصی، پست الکترونیک و یا تماس تلفنی مطلع نماید .</li>
-        <li>دریافت گواهینامه های آموزشی منوط به حضور مهارت جو در کلاس و شرکت در آزمون پایان دوره میباشد. صدور گواهینامه آموزشگاه فاقد هزینه می باشد .</li>
-        <li>
-            سایت آموزشگاه همواره بروز بوده و هرگونه خبر و تغییر برنامه بر روی آن قابل مشاهده میباشد. لذاخواهشمندیم همواره از طریق سایت و خبرنامه الکترونیکی با ما در ارتباط باشید . ضوابط استرداد شهریه آموزشگاه موظف است تحت شرایط مندرج در زیر و در صورت درخواست متقاضی وجه ثبت نام را تماماً به متقاضی باز پس دهد.
-            <ul>
-                <li>تغییر یا تعویض زمان شروع کلاس ها</li>
-                <li>&nbsp;برگزار نشدن کلاس مورد نظر</li>
-                <li>تغییر مربی توافق شده در هنگام ثبت نام</li>
-                <li>انصراف متقاضی تا یک هفته پیش از شروع کلاس ها</li>
-            </ul>
-        </li>
-    </ol>
-      </v-card-text>
-        <v-card-actions style="display: flex; justify-content: end !important;">
-          <v-btn
-            color="green-darken-4"
-            variant="flat"
-            append-icon="fa fa-check"
-            @click="this.$router.replace({name:'bank'})"
-            style="font-family: 'IRANSANS';display: flex; justify-content: end !important;"
-          >
-          پذیرش قوانین و پرداخت
-          </v-btn>
-        </v-card-actions>
-      </v-sheet>
-    </v-dialog> -->
+    
 </template>
 <script>
 import banner from '@/components/Banner.vue';
@@ -299,6 +247,12 @@ export default{
       this.snackbartype='success'
       this.snackbar=true
       window.location.reload()
+    },
+    gobank(){
+      Callaxios('Online/CheckBank','post',{ isCredit: 100,sb:{}},this.aftercheck)
+    },
+    aftercheck(param){
+      window.open(param.Data)
     }
   }
 }

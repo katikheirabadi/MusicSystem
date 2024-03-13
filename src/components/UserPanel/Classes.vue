@@ -47,7 +47,7 @@
           <hr />
           <v-row class="d-flext justify-space-between">
             <v-col class="d-flex justify-center" cols="6">
-              <v-btn v-if="myclass.IsLock == null" block class="classbtn session"
+              <v-btn v-if="myclass.IsLock == null || myclass.IsLock==0" block class="classbtn session"
                 @click="getAllsessions(myclass.ProductAvailableId)">جلسات</v-btn>
               <v-btn v-else block class="classbtn bg-grey-darken-2">------</v-btn>
             </v-col>
@@ -64,13 +64,12 @@
 
   </v-row>
   <!-- surveys -->
-  <v-dialog width="50%" v-model="showserveymodal">
+  <v-dialog responsive="true"  width="auto" v-model="showserveymodal">
     <v-card :subtitle="' نظرسنجی های دوره ی' + productname">
       <v-sheet class="mt-5 mb-5" style="font-family: 'IRANSANS';">
-        <v-row>
-          <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">نام نظرسنجی</v-col>
-          <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">ورد به نظرسنجی </v-col>
-        </v-row>
+        <v-sheet>
+          
+        </v-sheet>
         <v-row v-for="survey in surveis" :key="survey.PackageId">
           <v-col cols="12" md="6" class="text-center">
             <strong>{{ survey.PackageName }}- {{ survey.PackageType }}</strong> 
@@ -87,7 +86,7 @@
     </v-card>
 
   </v-dialog>
-  <v-dialog class="d-block d-md-none" v-model="showserveymodal">
+  <!-- <v-dialog max-width="sm" v-model="showserveymodal">
     <v-card :subtitle="' نظرسنجی های دوره ی' + productname">
       <v-sheet class="mt-5 mb-5 d-none d-md-block" style="font-family: 'IRANSANS';">
         <v-row>
@@ -116,12 +115,13 @@
       </v-card-actions>
     </v-card>
 
-  </v-dialog>
+  </v-dialog> -->
   <!-- sessions -->
   <v-dialog  
              transition="dialog-bottom-transition" 
              v-model="showsessions" 
-             width="70%"
+             width="70%" 
+            
              >
     <v-card   style="background-color: #ffffff;" title="جلسات دوره شما">
       <v-sheet class="mt-5  mb-5 ">
@@ -190,9 +190,10 @@
   <v-dialog
         transition="dialog-top-transition"
         v-model="showsuggestionmodal"
-        width="50%"
+        width="auto" 
+        responsive="true" 
       >  
-          <v-card>
+          <v-card >
             <v-toolbar
               color="teal-darken-1"
               title="ثبت نظرات شما (انتقاد،پیشنهاد و اعتراض)"
@@ -208,7 +209,11 @@
               </v-select>
               <p class="negetive mb-2" v-if="suggestiontype!=2">متاسفیم امکانات آموزشی مناسبی ارائه نکردیم
                  <br>لطفا نظر خود را برای ما بنویسید.</p>
-              <v-textarea v-model="suggestionText" label="متن شما ...." variant="solo-filled"></v-textarea>
+              <v-textarea 
+              v-model="suggestionText"
+               label="متن شما ...."
+                variant="solo-filled"
+             ></v-textarea>
             </v-card-text>
             <v-card-actions class="justify-end">
               <v-btn
@@ -227,7 +232,8 @@
   <v-dialog
         transition="dialog-top-transition"
         v-model="showdeletemodal"
-        width="50%"
+        width="auto" 
+             responsive="true" 
       >  
           <v-card>
             <v-toolbar
