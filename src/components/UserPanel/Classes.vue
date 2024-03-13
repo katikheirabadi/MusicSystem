@@ -61,7 +61,6 @@
 
       </v-sheet>
     </v-col>
-
   </v-row>
   <!-- surveys -->
   <v-dialog responsive="true"  width="auto" v-model="showserveymodal">
@@ -70,7 +69,7 @@
         <v-sheet>
           
         </v-sheet>
-        <v-row v-for="survey in surveis" :key="survey.PackageId">
+        <v-row v-for="(survey,index) in surveis" :key="survey.PackageId" :class="{'surveyrow':index%2!=0}">
           <v-col cols="12" md="6" class="text-center">
             <strong>{{ survey.PackageName }}- {{ survey.PackageType }}</strong> 
           </v-col>
@@ -86,54 +85,26 @@
     </v-card>
 
   </v-dialog>
-  <!-- <v-dialog max-width="sm" v-model="showserveymodal">
-    <v-card :subtitle="' نظرسنجی های دوره ی' + productname">
-      <v-sheet class="mt-5 mb-5 d-none d-md-block" style="font-family: 'IRANSANS';">
-        <v-row>
-          <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">نام نظرسنجی</v-col>
-          <v-col cols="12" md="6" class="text-center bg-orange-darken-4 column">ورد به نظرسنجی </v-col>
-        </v-row>
-        <v-row v-for="survey in surveis" :key="survey.PackageId">
-          <v-col cols="12" md="6" class="text-center">
-            <strong>{{ survey.PackageName }}- {{ survey.PackageType }}</strong> 
-          </v-col>
-          <v-col cols="12" md="6" class="text-center">
-            <v-btn class="text-center bg-orange-darken-2">ورود به نظرسنجی</v-btn>
-          </v-col>
-        </v-row>
-      </v-sheet>
-      <v-sheet class="mt-5 mb-5 d-block d-md-none" style="font-family: 'IRANSANS';">
-        <v-sheet v-for="survey in surveis" :key="survey.PackageId" class="text-center" style="border-radius: 10px;box-shadow: 4px 4px 10px orange;margin-inline: 10%;">
-         
-          <h4 class="pb-2 pt-2">{{ survey.PackageName }}- {{ survey.PackageType }}</h4> 
-          <v-btn class="text-center bg-orange-darken-2 mt-2 mb-2">ورود به نظرسنجی</v-btn>
-        </v-sheet>
-      </v-sheet>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn text="بستن" @click="showserveymodal = false"></v-btn>
-      </v-card-actions>
-    </v-card>
-
-  </v-dialog> -->
+ 
   <!-- sessions -->
   <v-dialog  
              transition="dialog-bottom-transition" 
              v-model="showsessions" 
-             width="70%" 
-            
+             width="auto" 
+             min-width="70%"
+             responsive="true"
              >
     <v-card   style="background-color: #ffffff;" title="جلسات دوره شما">
       <v-sheet class="mt-5  mb-5 ">
 
         <v-row class="d-sm-none d-md-flex">
-          <v-col md="1" class="text-center bg-yellow-darken-2 column">*</v-col>
-          <v-col md="1" class="text-center bg-yellow-darken-2 column">حضور شما</v-col>
-          <v-col md="2" class="text-center bg-yellow-darken-2 column">تاریخ جلسه</v-col>
-          <v-col md="2" class="text-center bg-yellow-darken-2 column">کلاس آنلاین </v-col>
-          <v-col md="2" class="text-center bg-yellow-darken-2 column">محتوای جلسه</v-col>
-          <v-col md="2" class="text-center bg-yellow-darken-2 column">تکالیف </v-col>
-          <v-col md="2" class="text-center bg-yellow-darken-2 column">نمره شما در جلسه</v-col>
+          <v-col cols="12" md="1" class="text-center bg-yellow-darken-2 column">*</v-col>
+          <v-col cols="12" md="1" class="text-center bg-yellow-darken-2 column">حضور شما</v-col>
+          <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">تاریخ جلسه</v-col>
+          <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">کلاس آنلاین </v-col>
+          <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">محتوای جلسه</v-col>
+          <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">تکالیف </v-col>
+          <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">نمره شما در جلسه</v-col>
         </v-row>
         <v-row v-for="(session, index) in sessions" :key="session.Id" class="sessions" :class="{ 'sessionrow': index % 2 != 0 },
           { 'bg-red-lighten-1': session.isactive != 1 }
@@ -145,8 +116,8 @@
             <br>
             ({{ session.desc }})
           </v-tooltip>
-          <v-col md="1" class="text-center column">{{ index + 1 }}</v-col>
-          <v-col md="1" class="text-center column">
+          <v-col cols="12" md="1" class="text-center column">{{ index + 1 }}</v-col>
+          <v-col cols="12" md="1" class="text-center column">
             <v-tooltip v-if="session.status == 1 && session.isactive == 1" activator="parent" location="top">حضور خورده
               اید</v-tooltip>
             <v-icon v-if="session.status == 1 && session.isactive == 1" class="text-success"
@@ -162,20 +133,20 @@
               icon="fa fa-exclamation-triangle"></v-icon>
 
           </v-col>
-          <v-col md="2" class="text-center column">{{ session.date }} </v-col>
-          <v-col md="2" class="text-center column">
+          <v-col cols="12" md="2" class="text-center column">{{ session.date }} </v-col>
+          <v-col cols="12" md="2" class="text-center column">
             <p v-if="session.msco == ''" class="negetive" :class="{ 'text-white': session.isactive != 1 }">-----</p>
-            <v-btn v-else block class="bg-deep-purple-lighten-1"
+            <v-btn v-else class="bg-deep-purple-lighten-1"
               @click="gotoonlineclass(session.Id, session.msco, session.platform)">ورود به کلاس آنلاین</v-btn>
           </v-col>
-          <v-col md="2" class="text-center column">
-            <v-btn v-if="session.isactive == 1" class="bg-green-darken-1" block>محتواهای جلسه</v-btn>
+          <v-col cols="12" md="2" class="text-center column">
+            <v-btn v-if="session.isactive == 1" class="bg-green-darken-1" >محتواهای جلسه</v-btn>
           </v-col>
-          <v-col md="2" class="text-center column">
+          <v-col cols="12" md="2" class="text-center column">
             <p v-if="session.HavePractice != 1" class="negetive" :class="{ 'text-white': session.isactive != 1 }">-----</p>
-            <v-btn v-else block class="bg-teal-darken-1">مشاهده تکالیف</v-btn>
+            <v-btn v-else  class="bg-teal-darken-1">مشاهده تکالیف</v-btn>
           </v-col>
-          <v-col md="2" class="text-center column">{{ session.mark }}</v-col>
+          <v-col cols="12" md="2" class="text-center column">{{ session.mark }}</v-col>
         </v-row>
       </v-sheet>
 

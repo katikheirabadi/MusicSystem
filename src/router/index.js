@@ -7,6 +7,7 @@ import axios from 'axios';
 import home from '../views/Home.vue'
 import welcome from '../views/Sign/Login.vue'
 import About from '@/views/About.vue'
+import Survey from '@/views/User/Survey.vue';
 
 import Academy from '../views/Academy/Home.vue'
 import Academies from '../views/Academy/List.vue'
@@ -70,6 +71,11 @@ const routes = [
     path: '/Hello!',
     name:'panel',
     component: Panel,
+  },
+  {
+    path:'/Say_Your_Opinion',
+    name:'survey',
+    component:Survey
   },
   {
     path: '/',
