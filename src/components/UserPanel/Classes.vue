@@ -10,20 +10,21 @@
               <img src="../../assets/img/classacademy.png" alt="">
               <h4 class="text-white text-center">{{ myclass.CompanyName }}</h4>
             </div>
-            <v-sheet  class="setting d-flex align-center">
-               <v-menu location="bottom">
+            <v-sheet class="setting d-flex align-center">
+              <v-menu location="bottom">
                 <template v-slot:activator="{ props }">
                   <v-icon v-bind="props" icon="fa fa-gear"></v-icon>
                 </template>
                 <v-list class="text-center">
-                  <v-list-item @click="upselected=myclass.userProductId;showsuggestionmodal=true">
-                   <p class="d-flex justify-space-between"> ثبت نظرات 
-                   <v-icon icon="fa fa-commenting"></v-icon>
-                  </p>
+                  <v-list-item @click="upselected = myclass.userProductId; showsuggestionmodal = true">
+                    <p class="d-flex justify-space-between"> ثبت نظرات
+                      <v-icon icon="fa fa-commenting"></v-icon>
+                    </p>
                   </v-list-item>
-                  <v-list-item @click="upselected=myclass.userProductId;deleteproductname=myclass.ProductName;selectedpas=myclass.ProductAvailableId;showdeletemodal=true">
-                    <p  class="d-flex justify-space-between"> 
-                       انصراف از دوره
+                  <v-list-item
+                    @click="upselected = myclass.userProductId; deleteproductname = myclass.ProductName; selectedpas = myclass.ProductAvailableId; showdeletemodal = true">
+                    <p class="d-flex justify-space-between">
+                      انصراف از دوره
                       <v-icon icon="fa fa-caret-square-left"></v-icon>
                     </p>
                   </v-list-item>
@@ -37,9 +38,10 @@
           <h4 class="text-center">{{ myclass.ProductName }}</h4>
           <hr class="mt-1 mb-2">
           <h5 class="text-center"><strong>تاریخ شروع: </strong>{{ myclass.startDate }}</h5>
-          <h5 class="mt-2 text-center"><strong> استاد: </strong>{{ myclass.TeacherFName }} {{ myclass.TeacherLName }}</h5>
+          <h5 class="mt-2 text-center"><strong> استاد: </strong>{{ myclass.TeacherFName }} {{ myclass.TeacherLName }}
+          </h5>
           <h5 class="mt-2 text-center"><strong>تعداد جلسات: </strong>{{ myclass.SessionsCount }} از {{
-            myclass.SessionsNumber }}</h5>
+      myclass.SessionsNumber }}</h5>
           <h5 class="mt-2 text-center"><strong>روز های برگزاری: </strong>{{ myclass.SessionDays }}</h5>
           <h5 class="mt-2 text-center"><strong>ساعت برگزاری</strong> {{ myclass.Hour }}</h5>
           <h5 class="mt-2 text-center mb-2"><strong>نمره: </strong>{{ myclass.Grade }}</h5>
@@ -47,12 +49,13 @@
           <hr />
           <v-row class="d-flext justify-space-between">
             <v-col class="d-flex justify-center" cols="6">
-              <v-btn v-if="myclass.IsLock == null || myclass.IsLock==0" block class="classbtn session"
+              <v-btn v-if="myclass.IsLock == null || myclass.IsLock == 0" block class="classbtn session"
                 @click="getAllsessions(myclass.ProductAvailableId)">جلسات</v-btn>
               <v-btn v-else block class="classbtn bg-grey-darken-2">------</v-btn>
             </v-col>
             <v-col class="d-flex justify-center" cols="6">
-              <v-btn block class="classbtn surveis" @click="showsurvey(myclass.userProductId,myclass.ProductName)">نظرسنجی</v-btn>
+              <v-btn block class="classbtn surveis"
+                @click="showsurvey(myclass.userProductId, myclass.ProductName)">نظرسنجی</v-btn>
             </v-col>
           </v-row>
 
@@ -63,18 +66,19 @@
     </v-col>
   </v-row>
   <!-- surveys -->
-  <v-dialog responsive="true"  width="auto" v-model="showserveymodal">
+  <v-dialog responsive="true" width="auto" v-model="showserveymodal">
     <v-card :subtitle="' نظرسنجی های دوره ی' + productname">
       <v-sheet class="mt-5 mb-5" style="font-family: 'IRANSANS';">
         <v-sheet>
-          
+
         </v-sheet>
-        <v-row v-for="(survey,index) in surveis" :key="survey.PackageId" :class="{'surveyrow':index%2!=0}">
+        <v-row v-for="(survey, index) in surveis" :key="survey.PackageId" :class="{ 'surveyrow': index % 2 != 0 }">
           <v-col cols="12" md="6" class="text-center">
-            <strong>{{ survey.PackageName }}- {{ survey.PackageType }}</strong> 
+            <strong>{{ survey.PackageName }}- {{ survey.PackageType }}</strong>
           </v-col>
           <v-col cols="12" md="6" class="text-center">
-            <v-btn class="text-center bg-orange-darken-2">ورود به نظرسنجی</v-btn>
+            <v-btn @click="gotosurvey(upselected, survey.PackageId, survey.SurveyPackageType)"
+              class="text-center bg-orange-darken-2">ورود به نظرسنجی</v-btn>
           </v-col>
         </v-row>
       </v-sheet>
@@ -85,16 +89,10 @@
     </v-card>
 
   </v-dialog>
- 
+
   <!-- sessions -->
-  <v-dialog  
-             transition="dialog-bottom-transition" 
-             v-model="showsessions" 
-             width="auto" 
-             min-width="70%"
-             responsive="true"
-             >
-    <v-card   style="background-color: #ffffff;" title="جلسات دوره شما">
+  <v-dialog transition="dialog-bottom-transition" v-model="showsessions" width="auto" min-width="70%" responsive="true">
+    <v-card style="background-color: #ffffff;" title="جلسات دوره شما">
       <v-sheet class="mt-5  mb-5 ">
 
         <v-row class="d-sm-none d-md-flex">
@@ -107,8 +105,8 @@
           <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">نمره شما در جلسه</v-col>
         </v-row>
         <v-row v-for="(session, index) in sessions" :key="session.Id" class="sessions" :class="{ 'sessionrow': index % 2 != 0 },
-          { 'bg-red-lighten-1': session.isactive != 1 }
-          , { 'bg-purple-lighten-2': session.isactive == 5 }">
+      { 'bg-red-lighten-1': session.isactive != 1 }
+      , { 'bg-purple-lighten-2': session.isactive == 5 }">
           <v-tooltip location="top" activator="parent" class="text-center" v-if="session.isactive != 1">
             <strong v-if="session.isactive == 2">لغو شده توسط اموزشگاه </strong>
             <strong v-if="session.isactive == 4">لغو شده توسط استاد </strong>
@@ -127,7 +125,8 @@
               اید</v-tooltip>
             <v-icon v-if="session.status == 0 && session.isactive == 1" color="red" icon="fa fa-close"></v-icon>
 
-            <v-tooltip v-if="session.status == -1 && session.isactive == 1" activator="parent" location="top">حضور غیاب نشده
+            <v-tooltip v-if="session.status == -1 && session.isactive == 1" activator="parent" location="top">حضور غیاب
+              نشده
               اید</v-tooltip>
             <v-icon v-if="session.status == -1 && session.isactive == 1" color="gold"
               icon="fa fa-exclamation-triangle"></v-icon>
@@ -140,11 +139,12 @@
               @click="gotoonlineclass(session.Id, session.msco, session.platform)">ورود به کلاس آنلاین</v-btn>
           </v-col>
           <v-col cols="12" md="2" class="text-center column">
-            <v-btn v-if="session.isactive == 1" class="bg-green-darken-1" >محتواهای جلسه</v-btn>
+            <v-btn v-if="session.isactive == 1" class="bg-green-darken-1">محتواهای جلسه</v-btn>
           </v-col>
           <v-col cols="12" md="2" class="text-center column">
-            <p v-if="session.HavePractice != 1" class="negetive" :class="{ 'text-white': session.isactive != 1 }">-----</p>
-            <v-btn v-else  class="bg-teal-darken-1">مشاهده تکالیف</v-btn>
+            <p v-if="session.HavePractice != 1" class="negetive" :class="{ 'text-white': session.isactive != 1 }">-----
+            </p>
+            <v-btn v-else class="bg-teal-darken-1">مشاهده تکالیف</v-btn>
           </v-col>
           <v-col cols="12" md="2" class="text-center column">{{ session.mark }}</v-col>
         </v-row>
@@ -152,97 +152,67 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn  text="بستن" @click="showsessions = false"></v-btn>
+        <v-btn text="بستن" @click="showsessions = false"></v-btn>
       </v-card-actions>
     </v-card>
 
   </v-dialog>
   <!-- add suggestion -->
-  <v-dialog
-        transition="dialog-top-transition"
-        v-model="showsuggestionmodal"
-        width="auto" 
-        responsive="true" 
-      >  
-          <v-card >
-            <v-toolbar
-              color="teal-darken-1"
-              title="ثبت نظرات شما (انتقاد،پیشنهاد و اعتراض)"
-            ></v-toolbar>
-            <v-card-text>
-              <v-select
-              :items="suggestiontypes"
-              :item-title="(i)=> i.name"
-              :item-value="(i)=> i.value"
-              v-model="suggestiontype"
-              style="color:#06514a !important"
-              >
-              </v-select>
-              <p class="negetive mb-2" v-if="suggestiontype!=2">متاسفیم امکانات آموزشی مناسبی ارائه نکردیم
-                 <br>لطفا نظر خود را برای ما بنویسید.</p>
-              <v-textarea 
-              v-model="suggestionText"
-               label="متن شما ...."
-                variant="solo-filled"
-             ></v-textarea>
-            </v-card-text>
-            <v-card-actions class="justify-end">
-              <v-btn
-                class="bg-green-darken-1"
-                @click="addsuggestion"
-              > <v-icon icon="fa fa-check"></v-icon>ارسال نظر</v-btn>
-              <v-btn
-                class="bg-red-darken-1"
-                @click="showsuggestionmodal = false"
-              > <v-icon icon="fa fa-close"></v-icon>بستن</v-btn>
-            </v-card-actions>
-          </v-card>
-        
+  <v-dialog transition="dialog-top-transition" v-model="showsuggestionmodal" width="auto" responsive="true">
+    <v-card>
+      <v-toolbar color="teal-darken-1" title="ثبت نظرات شما (انتقاد،پیشنهاد و اعتراض)"></v-toolbar>
+      <v-card-text>
+        <v-select :items="suggestiontypes" :item-title="(i) => i.name" :item-value="(i) => i.value"
+          v-model="suggestiontype" style="color:#06514a !important">
+        </v-select>
+        <p class="negetive mb-2" v-if="suggestiontype != 2">متاسفیم امکانات آموزشی مناسبی ارائه نکردیم
+          <br>لطفا نظر خود را برای ما بنویسید.
+        </p>
+        <v-textarea v-model="suggestionText" label="متن شما ...." variant="solo-filled"></v-textarea>
+      </v-card-text>
+      <v-card-actions class="justify-end">
+        <v-btn class="bg-green-darken-1" @click="addsuggestion"> <v-icon icon="fa fa-check"></v-icon>ارسال نظر</v-btn>
+        <v-btn class="bg-red-darken-1" @click="showsuggestionmodal = false"> <v-icon
+            icon="fa fa-close"></v-icon>بستن</v-btn>
+      </v-card-actions>
+    </v-card>
+
   </v-dialog>
   <!-- add deleteuprequest -->
-  <v-dialog
-        transition="dialog-top-transition"
-        v-model="showdeletemodal"
-        width="auto" 
-             responsive="true" 
-      >  
-          <v-card>
-            <v-toolbar
-              color="blue-darken-1"
-              title="درخواست انصراف از دوره"
-            ></v-toolbar>
-            <v-card-text>
-              <h3>شرایط انصراف</h3>
-              <br>
-              <p>شما درخواست حذف دوره &nbsp<strong class="text-info">{{ deleteproductname  }} </strong>&nbspرا دارید. در صورت اطمینان متن در خواست خود را به همراه شماره کارت به همراه نام صاحب کارت نوشته و دکمه ثبت را بزنید</p>
-              <br>
-              <v-textarea v-model="deletetext" label="متن درخواست شما ...." variant="solo-filled"></v-textarea>
-              <v-row>
-                <v-col cols="12" md="6">
-                  <v-text-field type="text" v-model="deletecreditnumber" :rules="deleterules" label="شماره کارت" ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="6">
+  <v-dialog transition="dialog-top-transition" v-model="showdeletemodal" width="auto" responsive="true">
+    <v-card>
+      <v-toolbar color="blue-darken-1" title="درخواست انصراف از دوره"></v-toolbar>
+      <v-card-text>
+        <h3>شرایط انصراف</h3>
+        <br>
+        <p>شما درخواست حذف دوره &nbsp<strong class="text-info">{{ deleteproductname }} </strong>&nbspرا دارید. در صورت
+          اطمینان متن در خواست خود را به همراه شماره کارت به همراه نام صاحب کارت نوشته و دکمه ثبت را بزنید</p>
+        <br>
+        <v-textarea v-model="deletetext" label="متن درخواست شما ...." variant="solo-filled"></v-textarea>
+        <v-row>
+          <v-col cols="12" md="6">
+            <v-text-field type="text" v-model="deletecreditnumber" :rules="deleterules"
+              label="شماره کارت"></v-text-field>
+          </v-col>
+          <v-col cols="12" md="6">
 
-                  <v-text-field type="text" v-model="deletecredituser" :rules="deleterules" label="نام و نام خانوادگی صاحب کارت" ></v-text-field>
-                </v-col>
-              </v-row>
-            
+            <v-text-field type="text" v-model="deletecredituser" :rules="deleterules"
+              label="نام و نام خانوادگی صاحب کارت"></v-text-field>
+          </v-col>
+        </v-row>
 
-            </v-card-text>
-            <v-card-actions class="justify-end">
-              <v-btn
-                class="bg-blue-darken-4"
-                @click="adddeleterequest"
-              > <v-icon icon="fa fa-check"></v-icon>ثبت درخواست</v-btn>
-              <v-btn
-                class="bg-red-darken-1"
-                @click="showdeletemodal = false"
-              > <v-icon icon="fa fa-close"></v-icon>بستن</v-btn>
-            </v-card-actions>
-          </v-card>
-        
+
+      </v-card-text>
+      <v-card-actions class="justify-end">
+        <v-btn class="bg-blue-darken-4" @click="adddeleterequest"> <v-icon icon="fa fa-check"></v-icon>ثبت
+          درخواست</v-btn>
+        <v-btn class="bg-red-darken-1" @click="showdeletemodal = false"> <v-icon
+            icon="fa fa-close"></v-icon>بستن</v-btn>
+      </v-card-actions>
+    </v-card>
+
   </v-dialog>
-  <notif v-if="snackbar" :type="snackbartype" :text="snackbarmessage" :show="snackbar" @close="snackbar=false"/>
+  <notif v-if="snackbar" :type="snackbartype" :text="snackbarmessage" :show="snackbar" @close="snackbar = false" />
 </template>
 <script>
 import { Callaxios } from '@/assets/composable/CallAxus'
@@ -253,35 +223,37 @@ export default {
   data() {
     return {
       showserveymodal: false,
-      surveis:[],
-      productname:'',
+      surveis: [],
+      productname: '',
       upselected: 0,
       classes: [],
       sessions: [],
       showsessions: false,
-      showsuggestionmodal:false,
-      suggestiontypes:[
-        {name:'انتقاد',value:1},
-        {name:'پیشنهاد',value:2},
-        {name:'اعتراض',value:3},
+      showsuggestionmodal: false,
+      suggestiontypes: [
+        { name: 'انتقاد', value: 1 },
+        { name: 'پیشنهاد', value: 2 },
+        { name: 'اعتراض', value: 3 },
       ],
-      suggestiontype:2,
-      suggestionText:'',
-      snackbar:false,
-      snackbartype:'',
-      snackbarmessage:'',
-      showdeletemodal:false,
-      deleteproductname:'',
-      deletetext:'',
-      deletecreditnumber:'',
-      deletecredituser:'',
-      deleterules:[
-            v => !!v || 'پر کردن این فیلد اجباری است',
-            ],
-      selectedpas:0
+      suggestiontype: 2,
+      suggestionText: '',
+      snackbar: false,
+      snackbartype: '',
+      snackbarmessage: '',
+      showdeletemodal: false,
+      deleteproductname: '',
+      deletetext: '',
+      deletecreditnumber: '',
+      deletecredituser: '',
+      deleterules: [
+        v => !!v || 'پر کردن این فیلد اجباری است',
+      ],
+      selectedpas: 0,
+      package:0,
+      packagetype:0
     }
   },
-  components:{
+  components: {
     notif
   },
   mounted() {
@@ -291,13 +263,13 @@ export default {
     aftergetcourses(param) {
       this.classes = param.Data
     },
-    showsurvey(up,name) {
+    showsurvey(up, name) {
       this.upselected = up
       this.productname = name
-      Callaxios('Survey/GetAllSurveysForProduct','post',{UserProductId:up},this.aftergetallsurveys)
-     
+      Callaxios('Survey/GetAllSurveysForProduct', 'post', { UserProductId: up }, this.aftergetallsurveys)
+
     },
-    aftergetallsurveys(param){
+    aftergetallsurveys(param) {
       this.surveis = param.Data
       this.showserveymodal = true
     },
@@ -351,40 +323,63 @@ export default {
     getUrlByMscoIdSucces(param) {
       window.open(param.Data, '_blank')
     },
-    addsuggestion(){
-      var input={
-        Text:this.suggestionText,
-        IsNegetive: this.suggestiontype !=2 ?true:false,
-        IsComplaint:this.suggestiontype !=3 ?false:true,
-        UserProductId:this.upselected
+    addsuggestion() {
+      var input = {
+        Text: this.suggestionText,
+        IsNegetive: this.suggestiontype != 2 ? true : false,
+        IsComplaint: this.suggestiontype != 3 ? false : true,
+        UserProductId: this.upselected
       }
-      Callaxios('UserSuggestion/AddUserSuggestion','post',input,this.afteraddsuggestion)
+      Callaxios('UserSuggestion/AddUserSuggestion', 'post', input, this.afteraddsuggestion)
     },
-    afteraddsuggestion(param){
+    afteraddsuggestion(param) {
       this.snackbarmessage = param.Data
       this.snackbartype = 'success'
-      this.snackbar=true
-      this.suggestionText =''
-      this.suggestiontype=2
+      this.snackbar = true
+      this.suggestionText = ''
+      this.suggestiontype = 2
       this.showsuggestionmodal = false
 
     },
-    adddeleterequest(){
-      var input={
-        Text:this.deletetext + '\n' + this.deletecredituser + ":" + this.deletecreditnumber,
-        ProductAvalableSessionId:this.selectedpas,
-        UserProductId:this.upselected
+    adddeleterequest() {
+      var input = {
+        Text: this.deletetext + '\n' + this.deletecredituser + ":" + this.deletecreditnumber,
+        ProductAvalableSessionId: this.selectedpas,
+        UserProductId: this.upselected
       }
-      Callaxios('UserRequest/AddRequest','post',input,this.afteradddeleterequest)
+      Callaxios('UserRequest/AddRequest', 'post', input, this.afteradddeleterequest)
     },
-    afteradddeleterequest(param){
+    afteradddeleterequest(param) {
       this.snackbarmessage = param.Data
       this.snackbartype = 'success'
-      this.snackbar=true
-      this.showdeletemodal=false
-      this.deletetext =''
-      this.deletecreditnumber=''
+      this.snackbar = true
+      this.showdeletemodal = false
+      this.deletetext = ''
+      this.deletecreditnumber = ''
       this.deletecredituser = ''
+    },
+    gotosurvey(up, pack, packt) {
+      var input = {
+        UserProductId: up,
+        PackageId: pack,
+        PackageType: packt
+      }
+      this.package = pack
+      this.packagetype = packt
+      Callaxios('Survey/IsPartisipateInSurvey','post',input,this.aftercheck)
+    },
+    aftercheck(param){
+      if(param.Data ==0){
+        this.snackbartype='error'
+        this.snackbarmessage='شما قبلا در این نظرسنجی شرکت کرده اید'
+        this.snackbar = true
+      }else if(param.Data == -1){
+        this.snackbartype='error'
+        this.snackbarmessage='شما تا قبل از پایان دوره اجازه شرکت ندارید'
+        this.snackbar = true
+      }else{
+       this.$router.push({name:'survey',params:{pack:this.package,Up:this.upselected,type:this.packagetype}})
+      }
     }
   },
   computed: {
