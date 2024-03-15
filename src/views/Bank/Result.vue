@@ -7,22 +7,22 @@
                 <v-row style="margin-top: 2%;font-size: 120%;">
                     <v-col cols="12" sm="2"></v-col>
                     <v-col cols="12" sm="4" class="text-center">شماره تراکنش:</v-col>
-                    <v-col cols="12" sm="5" class="text-center"> <span>1258</span></v-col>
+                    <v-col cols="12" sm="5" class="text-center"> <span>{{ online }}</span></v-col>
                 </v-row>
                 <v-row style="margin-top: 2%;font-size: 120%;">
                     <v-col cols="12" sm="2"></v-col>
                     <v-col cols="12" sm="4" class="text-center">شماره پیگیری:</v-col>
-                    <v-col cols="12" sm="5" class="text-center"> <span>2321656525</span></v-col>
+                    <v-col cols="12" sm="5" class="text-center"> <span>{{  trannumber}}</span></v-col>
                 </v-row>
                 <v-row style="margin-top: 2%;font-size: 120%;">
                     <v-col cols="12" sm="2"></v-col>
                     <v-col cols="12" sm="4"  class="text-center"> مبلغ:</v-col>
-                    <v-col cols="12" sm="5" class="text-center"> <span>25,000,000 ریال</span></v-col>
+                    <v-col cols="12" sm="5" class="text-center"> <span>{{ price }}ریال</span></v-col>
                 </v-row>
                 <v-row style="margin-top: 2%;font-size: 120%;">
                     <v-col cols="12" sm="2"></v-col>
                     <v-col cols="12" sm="4" class="text-center">وضعیت :</v-col>
-                    <v-col cols="12" sm="5" class="text-center"> <span>موفق</span></v-col>
+                    <v-col cols="12" sm="5" class="text-center"> <span>{{  desc}}</span></v-col>
                 </v-row>
                 <v-row style="margin-top: 2%;font-size: 100%;">
                   <v-col cols="12" class="center-class">
@@ -38,22 +38,22 @@
                 <v-row style="margin-top: 2%;font-size: 100%;">
                     <v-col cols="12" md="2"></v-col>
                     <v-col cols="12" md="4" class="text-center">شماره تراکنش:</v-col>
-                    <v-col cols="12" md="5" class="text-center"> <span>1258</span></v-col>
+                    <v-col cols="12" md="5" class="text-center"> <span>{{ online }}</span></v-col>
                 </v-row>
                 <v-row style="margin-top: 2%;font-size: 100%;">
                     <v-col cols="12" md="2"></v-col>
                     <v-col cols="12" md="4" class="text-center">شماره پیگیری:</v-col>
-                    <v-col cols="12" md="5" class="text-center"> <span>2321656525</span></v-col>
+                    <v-col cols="12" md="5" class="text-center"> <span>{{  trannumber}}</span></v-col>
                 </v-row>
                 <v-row style="margin-top: 2%;font-size: 100%;">
                     <v-col cols="12" md="2"></v-col>
                     <v-col cols="12" md="4"  class="text-center"> مبلغ:</v-col>
-                    <v-col cols="12" md="5" class="text-center"> <span>25,000,000 ریال</span></v-col>
+                    <v-col cols="12" md="5" class="text-center"> <span>{{  price}} ریال</span></v-col>
                 </v-row>
                 <v-row style="margin-top: 2%;font-size: 100%;">
                     <v-col cols="12" md="2"></v-col>
                     <v-col cols="12" md="4" class="text-center">وضعیت :</v-col>
-                    <v-col cols="12" md="5" class="text-center"> <span>ناموفق</span></v-col>
+                    <v-col cols="12" md="5" class="text-center"> <span>{{  desc}}</span></v-col>
                 </v-row>
                 <v-row style="margin-top: 2%;font-size: 100%;">
                   <v-col cols="12" class="center-class">
@@ -65,51 +65,39 @@
     </div> 
     <myfooter style="margin-top: 0%;"/> 
 </template>
-<script setup>
+<script>
 import banner from '@/components/Banner.vue'
 import myfooter from '@/components/Footer.vue'
-import { ref } from 'vue';
-let status = ref(true)
-function Alert(){
-      Swal.fire({
-      icon: "info",
-      title: 'توجه کنید....',
-    text: 'این قسمت هنوز پیاده سازی نشده است',
-    confirmButtonColor:'cadetblue',
-    confirmButtonText:'متوجه شدم'
-  });
+
+import { Callaxios } from '@/assets/composable/CallAxus'
+export default{
+    data(){
+        return {
+            status:false,
+            online:0,
+            trannumber:0,
+            desc:'',
+            price:0
+        }
+    },
+    components:{
+        banner,myfooter
+    },
+    mounted(){
+        var onlineid = parseInt(window.location.href.split('?OnlineID=')[1])
+       Callaxios('Online/ResultBank/'+onlineid,'get',undefined,this.aftergetdetail)
+    },
+    methods:{
+        aftergetdetail(param){
+           this.status = param.Data.Status
+            this.desc =param.Data.Description
+            this.trannumber = param.Data.TransactionNo
+            this.online = param.Data.id
+            this.price = param.Data.tranceAmount
+        }
     }
+}
 </script>
-<style>
-.successmain{
-    width: 100%;
-    min-height: 80vh !important;
-    background-color: rgba(46, 154, 46, 0.418) !important;
-}
-.faildmain{
-    width: 100%;
-    min-height: 80vh !important;
-    background-color: rgba(239, 40, 40, 0.308) !important;
-}
-.result{
-    min-width: 30%;
-    min-height: 100% !important;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    line-height: 2.5;
-    border-radius: 10px;
-}
-.result h2{
-    color: green;
-}
-.back{
-    text-decoration: none;
-    background-color: rgb(46, 154, 46);
-    padding: 1.5%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    margin-bottom: 2%;
-    color: white;
-    border-radius: 25px;
-}
+<style scoped>
+@import url(../../assets/css/Views/Bank/result.css);
 </style>

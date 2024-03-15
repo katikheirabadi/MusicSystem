@@ -120,11 +120,11 @@
                   <v-col cols="8"><strong>قابل پرداخت از محل اعتبار آموزشی</strong></v-col>
                   <v-col cols="4"><strong>	{{ CartDetail.SysShare }} ریال</strong></v-col>
                 </v-row>
-                <!-- <v-row class="factorrow">
-                  <v-col cols="8"><v-text-field label="کد هدیه دارید؟وارد کنید..."></v-text-field>
+                <v-row class="factorrow">
+                  <v-col cols="8"><v-text-field v-model="serialnumber" label="کد هدیه دارید؟وارد کنید..."></v-text-field>
                   </v-col>
-                  <v-col cols="4"><v-btn class="code" append-icon="fa fa-credit-card">اعمال کد</v-btn></v-col>
-                </v-row> -->
+                  <v-col cols="4"><v-btn class="code" @click="adduserserial" append-icon="fa fa-credit-card">اعمال کد</v-btn></v-col>
+                </v-row>
                 <v-row class="factorrow">
                   <v-col cols="8"><strong>مبلغ قابل پرداخت</strong></v-col>
                   <v-col cols="4"><strong>	{{ CartDetail.BankPay }} ریال</strong></v-col>
@@ -171,7 +171,8 @@ export default{
       snackbartype:'',
       snackbartext:'',
       CartDetail:{},
-      bagcount:0
+      bagcount:0,
+      serialnumber:''
     }
   },
   components:{
@@ -249,10 +250,16 @@ export default{
       window.location.reload()
     },
     gobank(){
-      Callaxios('Online/CheckBank','post',{ isCredit: 100,sb:{}},this.aftercheck)
+      Callaxios('Online/CheckBank','post',{ isCredit: 100,sb:{id:this.bagid,PayPrice:this.CartDetail.BankPay}},this.aftercheck)
     },
     aftercheck(param){
       window.open(param.Data)
+    },
+    adduserserial(){
+      Callaxios('SerialNumbers/GetSerialNumberContent/'+this.serialnumber,'get',undefined,this.afteraddserialnumber)
+    },
+    afteraddserialnumber(param){
+      window.location.reload()
     }
   }
 }

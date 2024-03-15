@@ -1,0 +1,31 @@
+.successmain{
+    width: 100%;
+    min-height: 80vh !important;
+    background-color: rgba(46, 154, 46, 0.418) !important;
+}
+.faildmain{
+    width: 100%;
+    min-height: 80vh !important;
+    background-color: rgba(239, 40, 40, 0.308) !important;
+}
+.result{
+    min-width: 30%;
+    min-height: 100% !important;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    line-height: 2.5;
+    border-radius: 10px;
+}
+.result h2{
+    color: green;
+}
+.back{
+    text-decoration: none;
+    background-color: rgb(46, 154, 46);
+    padding: 1.5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-bottom: 2%;
+    color: white;
+    border-radius: 25px;
+}
