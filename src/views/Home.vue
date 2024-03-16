@@ -59,7 +59,7 @@
        
        </v-col>
       </v-row>
-      <v-pagination :length="total/showcount" v-model="current"  @click="onPageChange(current)" style="margin-top: 3%;margin-bottom: 2%;" id="1">
+      <v-pagination :length="showlen" v-model="current"  @click="onPageChange(current)" style="margin-top: 3%;margin-bottom: 2%;" id="1">
      </v-pagination>
    </section>
 
@@ -127,7 +127,8 @@
         showacademies :[],
         total : 0,
         current :0,
-        showcount:4
+        showcount:4,
+        showlen:0
       }
     },
     components:{
@@ -167,6 +168,13 @@
       aftergtallacademies(param){
         this.academies = []
         this.total = param.Data.length
+        if(this.total> this.showcount){
+          var len= this.total%this.showcount==0
+          this.showlen = len?this.total / this.showcount:(this.total / this.showcount)+1
+        }else{
+          this.showlen = 1
+        }
+      //  this.showlen = this.total > this.showcount ? this.total / this.showcount : 1
         param.Data.filter((i)=> this.academies.push({
           id : i.Id,
           name : i.Name,
@@ -180,7 +188,7 @@
       },
       onPageChange(page) {
       this.showacademies = []
-      for(var i=(page* this.showcount )-this.showcount; i< (page*this.showcount);i++){
+      for(var i=(page* this.showcount )-this.showcount; i< (page*this.showcount) && i < this.total;i++){
         this.showacademies.push(this.academies[i])
       }
     },

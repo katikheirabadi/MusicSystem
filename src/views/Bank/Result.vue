@@ -89,7 +89,7 @@ export default{
     },
     methods:{
         aftergetdetail(param){
-           this.status = param.Data.Status
+           this.status = param.Data.status
             this.desc =param.Data.Description
             this.trannumber = param.Data.TransactionNo
             this.online = param.Data.id

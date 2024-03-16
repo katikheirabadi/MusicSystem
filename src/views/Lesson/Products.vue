@@ -327,7 +327,7 @@ export default{
         this.selectproduct = productId
         Callaxios('CourseAdvice/GetAppointments','get',undefined,this.aftercourseadvise )
       }else{
-        Store.commit('backurl',{name:'lessondetail',params:{lessonid:this.$route.params.lessonid}})
+        Store.commit('backurl',{name:'lessondetail',params:{lessonid:this.$route.params.lessonid,academyId:this.$route.params.academyId}})
         this.$router.replace({name:'welcome'})
       }
     },
