@@ -3,7 +3,7 @@
      <myheader
      :img="img" 
      :header="$t('category.headertitle')+this.description.title" 
-     :text="$t('category.headertext')" :btns="[{text:$t('category.headerbtn'),link:'#cats'}]"
+     :text="$t('category.headertext')" :btns="[]"
      :logo="description.logo"
      />
      <detail :header=" $t('category.resume') +this.description.title" :cards="details"/>
