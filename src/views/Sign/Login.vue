@@ -226,7 +226,7 @@ export default {
         UserProfiles:[],
         companyId:this.selectcompany
       }
-      alert(this.selectcompany)
+     
       Callaxios('User/Register','post',input,this.afterlogin)
     },
     login() {
