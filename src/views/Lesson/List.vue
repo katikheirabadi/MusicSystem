@@ -10,7 +10,7 @@
     <section>
       <h1 class="text-center sectionheader">{{ $t('lesson.list_lessonstitle') }}</h1>
       <v-container>
-        <v-row >
+        <v-row v-if="classes.length !=0" >
         <v-col 
         v-for="myclass in classes" 
         :key="myclass.id"
@@ -58,6 +58,7 @@
       </v-card>
       </v-col>
     </v-row>
+     <h4 class="text-center" v-else>{{ $t('lesson.emptylist') }}</h4>
       </v-container>
    
     </section>
