@@ -6,25 +6,25 @@
           <div class="overlay-container">
             <div class="overlay">
               <div class="overlay-right" v-if="signUp">
-                <h2>{{ $t('message.login_signup_signinheader') }}</h2>
-                <p>{{ $t('message.login_signup_signinmessage') }}</p>
-                <button class="invert" id="signIn" @click="signUp = !signUp">{{ $t('message.login_login_loginbtn')
+                <h2>{{ $t('login.login_signup_signinheader') }}</h2>
+                <p>{{ $t('login.login_signup_signinmessage') }}</p>
+                <button class="invert" id="signIn" @click="signUp = !signUp">{{ $t('login.login_login_loginbtn')
                   }}</button>
               </div>
               <div class="overlay-left" v-else>
-                <h2>{{ $t('message.login_login_signupheader') }}</h2>
-                <p>{{ $t('message.login_login_signupmessage') }}</p>
-                <button class="invert" id="signUp" @click="signUp = !signUp">{{ $t('message.login_login_signupbtn')
+                <h2>{{ $t('login.login_login_signupheader') }}</h2>
+                <p>{{ $t('login.login_login_signupmessage') }}</p>
+                <button class="invert" id="signUp" @click="signUp = !signUp">{{ $t('login.login_login_signupbtn')
                   }}</button>
               </div>
             </div>
           </div>
           <v-form class="sign-up">
-            <h2>{{ $t('message.login_signup_header') }}</h2>
+            <h2>{{ $t('login.login_signup_header') }}</h2>
             <v-row class="signup_row">
               <v-col cols="12">
                 <v-select class="field1" 
-                label="آموزشگاه" 
+                :label="$t('login.loginacademies')" 
                 :items="companies"
                 :item-title="item=>item.key"
                 :item-value="item=>item.value"
@@ -34,58 +34,59 @@
               <v-col cols="12">
                 <v-text-field block 
                 class="field1"
-                :label="$t('message.login_signup_name')"
+                :label="$t('login.login_signup_name')"
                 v-model="name"
                 required></v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-text-field
                 class="field1"
-                :label="$t('message.login_signup_lastname')"
+                :label="$t('login.login_signup_lastname')"
                 v-model="lastname"
                 required></v-text-field>
               </v-col>
               <v-col cols="12" >
                 <v-text-field
                 class="field1"
-                :label="$t('message.login_signup_natinalcode')"
+                :label="$t('login.login_signup_natinalcode')"
                 v-model="natinalcode"
                 required></v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-text-field
                 class="field1"
-                :label="$t('message.login_signup_PhoneNumber')"
+                :label="$t('login.login_signup_PhoneNumber')"
                 v-model="phonenumber"
                 required></v-text-field>
               </v-col>
-              <!-- <v-col cols="12" md="6">
-                <v-text-field class="field1" :label="$t('message.login_signup_pass')" required></v-text-field>
-              </v-col>
-              <v-col cols="12"  md="6">
-                <v-text-field class="field1" :label="$t('message.login_signup_Confirmpass')" required></v-text-field>
-              </v-col> -->
               <v-col class="d-flex justify-center mt-5" cols="12">
-                <v-btn @click="register" class="form-btn2">{{ $t('message.login_login_signupbtn') }}</v-btn>
+                <v-btn @click="register" class="form-btn2">{{ $t('login.login_login_signupbtn') }}</v-btn>
               </v-col>
             </v-row>
           </v-form>
           <v-form class="sign-in">
             <v-img width="300" src="../../assets/img/logo.png"></v-img>
-            <h4>{{ $t('message.login_login_header') }}</h4>
+            <h4>{{ $t('login.login_login_header') }}</h4>
             <v-row class="center-class signin_Username">
               <v-col cols="12" class="my-auto">
-                <v-text-field class='field1' v-model="loginusername" :label="$t('message.login_login_username')"
-                  required block>
+                <v-text-field class='field1' 
+                v-model="loginusername" 
+                :label="$t('login.login_login_username')"
+                required 
+                block>
                 </v-text-field>
               </v-col>
 
               <v-col class="signin_pass" cols="12">
-                <v-text-field type="password" class='field1' v-model="loginpass" :label="$t('message.login_login_pass')"
+                <v-text-field 
+                type="password"
+                 class='field1'
+                 v-model="loginpass"
+                 :label="$t('login.login_login_pass')"
                   required block></v-text-field>
               </v-col>
               <v-col class="center-class" cols="12">
-                <v-btn @click="login" class="form-btn">{{ $t('message.login_login_loginbtn') }}</v-btn>
+                <v-btn @click="login" class="form-btn">{{ $t('login.login_login_loginbtn') }}</v-btn>
               </v-col>
             </v-row>
 
@@ -93,61 +94,85 @@
         </div>
       </article>
     </div>
-    <div class="smallform d-md-none" style="">
+    <div class="smallform d-md-none">
       <article>
         <div class="container mx-auto" :class="{ 'sign-up-active2': signUp }">
           <v-form class="sign-up">
-            <h2>{{ $t('message.login_signup_header') }}</h2>
+            <h2>{{ $t('login.login_signup_header') }}</h2>
             <v-row style="width: 100%;">
+              <v-col cols="12">
+                <v-select class="field1" 
+                :label="$t('login.loginacademies')" 
+                :items="companies"
+                :item-title="item=>item.key"
+                :item-value="item=>item.value"
+                v-model="selectcompany"
+                no-transition></v-select>
+              </v-col>
               <v-col cols="12" style="height: fit-content;">
-                <v-text-field block class="field1" :label="$t('message.login_signup_name')" required></v-text-field>
+                <v-text-field 
+                block 
+                class="field1"
+                :label="$t('login.login_signup_name')"
+                v-model="name"
+                 required>
+                </v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field class="field1" :label="$t('message.login_signup_lastname')" required></v-text-field>
+                <v-text-field 
+                class="field1"
+                :label="$t('login.login_signup_lastname')"
+                required
+                v-model="lastname">
+              </v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field class="field1" :label="$t('message.login_signup_natinalcode')" required></v-text-field>
+                <v-text-field 
+                class="field1"
+                :label="$t('login.login_signup_natinalcode')" 
+                v-model="natinalcode"
+                required></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field class="field1" :label="$t('message.login_signup_PhoneNumber')" required></v-text-field>
+                <v-text-field 
+                class="field1"
+                :label="$t('login.login_signup_PhoneNumber')"
+                v-model="phonenumber"
+                required></v-text-field>
+              </v-col>             
+              <v-col class="d-flex justify-center mt-5" cols="12">
+                <v-btn @click="register" class="form-btn2">{{ $t('login.login_login_signupbtn') }}</v-btn>
               </v-col>
-              <v-col cols="12">
-                <v-text-field class="field1" :label="$t('message.login_signup_pass')" required></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field class="field1" :label="$t('message.login_signup_Confirmpass')" required></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field class="field1" :label="$t('message.login_signup_Confirmpass')" required></v-text-field>
-              </v-col>
-              <v-col class="center-class" cols="12" style="margin-top: 10%;">
-                <v-btn @click="login" class="form-btn2">{{ $t('message.login_login_signupbtn') }}</v-btn>
-              </v-col>
-              <v-col cols="12" style="color: brown !important;">
-                <router-link to="" style="color: brown;" @click="signUp = !signUp">ورود به سامانه</router-link>
+              <v-col cols="12" class="link">
+                <router-link to="" class="link" @click="signUp = !signUp">{{ $t('login.loginbtn') }} </router-link>
               </v-col>
             </v-row>
           </v-form>
-          <v-form class="sign-in center-class">
+          <v-form class="sign-in d-flex justify-center">
             <v-img width="300" src="../../assets/img/logo.png"></v-img>
-            <h4>{{ $t('message.login_login_header') }}</h4>
-            <v-row style="width: 90%;" class="center-class">
+            <h4>{{ $t('login.login_login_header') }}</h4>
+            <v-row style="width: 90%;" class="d-flex justify-center">
               <v-col cols="12" class="my-auto">
-                <v-text-field class='field1' v-model="loginusername" :label="$t('message.login_login_username')"
-                  required block></v-text-field>
+                <v-text-field class='field1' 
+                v-model="loginusername"
+               :label="$t('login.login_login_username')"
+                required block></v-text-field>
               </v-col>
 
-              <v-col cols="12" style="margin-top: -10% !important;">
-                <v-text-field type="password" class='field1' v-model="loginpass"
-                  :label="$t('message.login_login_pass')" required block></v-text-field>
+              <v-col cols="12" class="smallpass" style="">
+                <v-text-field 
+                type="password"
+                class='field1'
+                v-model="loginpass"
+                :label="$t('login.login_login_pass')"
+                required block></v-text-field>
               </v-col>
-              <v-col class="center-class" cols="12" style="margin-top: 10% !important;">
-                <v-btn @click="login" class="form-btn">{{ $t('message.login_login_loginbtn') }}</v-btn>
+              <v-col class="d-flex justify-center smalloginbtn"  cols="12" >
+                <v-btn @click="login" class="form-btn">{{ $t('login.login_login_loginbtn') }}</v-btn>
 
               </v-col>
-              <v-col cols="12" style="color: brown !important;">
-                <router-link to="" style="color: brown;">فراموشی رمز عبور</router-link>/
-                <router-link to="" style="color: brown;" @click="signUp = !signUp">ثبت نام </router-link>
+              <v-col cols="12">
+                <router-link to="" class="link" @click="signUp = !signUp"> {{ $t('login.registerbtn') }} </router-link>
               </v-col>
             </v-row>
 
@@ -194,9 +219,14 @@ export default {
         password:this.natinalcode,
         confirmPass:this.natinalcode,
         emailAddress:'',
-        gender:null,
+        gender:0,
+        Captcha:'',
+        FriendNationalCode:'',
+        status:0,
+        UserProfiles:[],
         companyId:this.selectcompany
       }
+      alert(this.selectcompany)
       Callaxios('User/Register','post',input,this.afterlogin)
     },
     login() {

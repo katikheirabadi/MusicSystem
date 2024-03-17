@@ -14,7 +14,7 @@ article{
 .container {
  
 width: 50%;
-height: 70vh;
+height: 75vh;
 border-radius: 15px;
 position: relative;
 overflow: hidden;
@@ -182,7 +182,7 @@ button.invert {
   margin-top: -9%;
 }
 .v-col-12{
-  margin-top: -3%;
+  margin-top: -9%;
 }
 .form-btn{
   display: flex;
@@ -241,7 +241,7 @@ button.invert {
 .sign-up h2{
   color: rgb(161, 71, 60);
   margin-top: 5%;
-  margin-bottom: 8%;
+  margin-bottom: 10%;
 }
 
 .v-col-6{
@@ -301,3 +301,13 @@ button.invert {
     padding: 3.5%;
     margin-bottom: 10%;
   }
+
+  .link{
+    color: brown !important;
+  }
+.smallpass{
+  margin-top: -20% !important;
+}
+.smalloginbtn{
+  margin-top: 10% !important;
+}

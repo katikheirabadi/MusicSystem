@@ -151,5 +151,7 @@ router.beforeEach((to, from, next) => {
 
 
 });
-
+router.afterEach((to, from, next) =>{
+  window.scroll(0,0)
+})
 export default router

@@ -87,7 +87,7 @@
   .product-image:hover .title{display: none;}
   .info ul li{
     transition: 0.3s ease;
-    margin-bottom: calc(0.7vw + 1vh);
+    margin-bottom: calc(0.6vw + 1vh);
   }
   .info ul li:hover{transform: translateX(20px) scale(1.3);}
   

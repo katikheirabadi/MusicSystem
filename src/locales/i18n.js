@@ -186,6 +186,27 @@ const messages = {
         notcomplete:'شما به همه سوالات جواب نداده اید',
         send:' به زودی به صفحه کاربری خود باز خواهید گشت'
       },
+      login:{
+        login_login_header:'ورود به سامانه کاروساز',
+        login_login_username:'نام کاربری',
+        login_login_pass:'رمز عبور',
+        login_login_signupheader:'هنرجوی عزیز سلام',
+        login_login_signupmessage:'صفحه شخصی خودتو بساز',
+        login_login_loginbtn:' ورود ',
+        login_login_signupbtn:'ثبت نام',
+        login_signup_header:'ثبت نام در سامانه',
+        login_signup_name:'نام',
+        login_signup_lastname:'نام خوانوادگی',
+        login_signup_PhoneNumber:'شماره موبایل',
+        login_signup_natinalcode:'شماره ملی',
+        login_signup_pass:'رمز عبور',
+        login_signup_Confirmpass:'تکرار رمز عبور',
+        login_signup_signinheader:'!!خوش برگشتی',
+        login_signup_signinmessage:'با مشخصات خودت بیا',
+        loginacademies:'آموزشگاه',
+        loginbtn:'ورود به سامانه',
+        registerbtn:'ثبت نام'
+      },
       message: {
        
         error:'خطا',
@@ -203,22 +224,7 @@ const messages = {
        
         section2_title:'چه سازی دوست داری؟!',
         site_report_1:'آموزشگاه ها',
-        login_login_header:'ورود به سامانه کاروساز',
-        login_login_username:'نام کاربری',
-        login_login_pass:'رمز عبور',
-        login_login_signupheader:'هنرجوی عزیز سلام',
-        login_login_signupmessage:'صفحه شخصی خودتو بساز',
-        login_login_loginbtn:' ورود ',
-        login_login_signupbtn:'ثبت نام',
-        login_signup_header:'ثبت نام در سامانه',
-        login_signup_name:'نام',
-        login_signup_lastname:'نام خوانوادگی',
-        login_signup_PhoneNumber:'شماره موبایل',
-        login_signup_natinalcode:'شماره ملی',
-        login_signup_pass:'رمز عبور',
-        login_signup_Confirmpass:'تکرار رمز عبور',
-        login_signup_signinheader:'!!خوش برگشتی',
-        login_signup_signinmessage:'با مشخصات خودت بیا'
+       
       },
       
     },
