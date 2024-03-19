@@ -70,7 +70,7 @@
                 <v-sheet class="product-image text-center">
                   <div class="title-posision">
                     <h2 class="title text-center">
-                      {{ product.Product.ProductName }}
+                      {{ product.Product.name }}
                       <br>
                       <h4>{{ product.Product.TeacherName }}</h4>
                       <h6 class="start">{{ $t('lesson.home_startdate') }}: {{ product.Product.stringstartdate }}</h6>
@@ -297,7 +297,7 @@ export default{
       this.data.tags.push(param.Data.Tag)
       this.data.concepts = JSON.parse(param.Data.Concepts)
       param.Data.LessonProducts.filter((i)=> this.data.products.push(i))
-     
+           
     },
     registrationmodal(productId){
       if(Object.entries(Store.state.profile).length != 0)
@@ -333,6 +333,7 @@ export default{
     aftercourseadvise(param){
       this.appointments = []
       param.Data.filter((i)=> this.appointments.push(i))
+      this.selectappointment = this.appointments[0].Id
       this.advisedialog=true
     },
     gotobag(){
