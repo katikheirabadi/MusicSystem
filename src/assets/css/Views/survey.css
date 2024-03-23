@@ -4,7 +4,7 @@
 }
 .survey {
     min-height: 100vh;
-    background-color: rgba(238, 188, 238, 0.733);
+    background-color: rgba(238, 188, 238, 0.637);
 }
 
 .content {
@@ -15,7 +15,7 @@
     color: #6A1B9A;
 }
 .suerveytitle {
-    width: 60%;
+    width: 60% !important;
     border-radius: 10px !important;
 }
 
@@ -26,6 +26,5 @@
 .sendsurvey{
     font-size: 15px;
 }
-.question{
-    
-}
+        
+
