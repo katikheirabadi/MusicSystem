@@ -1,0 +1,15 @@
+.fullwidth{
+    width: 100%;
+}
+.content{
+    min-height: 84vh;
+}
+.reqbody{
+    border: 3px solid #880E4F;width: 100%
+}
+.reqbodysmall{
+    width: 99.5%;
+}
+.sugbody{
+    border: 3px solid #1565C0;
+}
