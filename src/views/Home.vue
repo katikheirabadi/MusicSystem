@@ -70,7 +70,7 @@
 <!-- options -->
 <section class="s4 mx-auto"> 
   <h1 class="text-center text-white pt-10" style="font-size: 30px;">{{ $t('home.optionheader') }}</h1>
-   <v-row>
+   <v-row style="margin: auto;">
     <v-col class="mx-auto" cols="12" md="3">
        <v-sheet class="mx-auto text-center"
         rounded='xl'
