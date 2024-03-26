@@ -187,6 +187,20 @@ const messages = {
         notcomplete:'شما به همه سوالات جواب نداده اید',
         send:' به زودی به صفحه کاربری خود باز خواهید گشت'
       },
+      requests:{
+        deletereqtab:'درخواست های انصراف',
+        suggestiontab:'انتقاد و پیشنهادات',
+        deleteproductname:'نام دوره',
+        deletehour:'ساعت برگزاری',
+        deletedate:'تاریخ درخواست',
+        deletestate:'وضعیت',
+        sugproductname:'نام دوره',
+        sughour:'ساعت برگزاری',
+        sugdate:'تاریخ درخواست',
+        sugtype:'نوع درخواست',
+        sugtext:'متن درخواست',
+        sugcomment:'جواب درخواست'
+      },
       login:{
         login_login_header:'ورود به سامانه کاروساز',
         login_login_username:'نام کاربری',
