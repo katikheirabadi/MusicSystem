@@ -1,5 +1,5 @@
 <template>
-  <v-row class="mt-10 ma-2">
+  <v-row class="mt-5 ma-2">
     <v-col v-for="myclass in classes" cols="12" md="3" :key="myclass.ProductAvailableId">
       <v-sheet class="card">
 
@@ -8,7 +8,7 @@
           <v-sheet class="title d-flex justify-space-between">
             <div class="d-flex justify-start align-center pt-2 pb-2" style="width: 80%;">
               <img src="../../assets/img/classacademy.png" alt="">
-              <h4 class="text-white text-center">{{ myclass.CompanyName }}</h4>
+              <h7 class="text-white text-center">{{ myclass.CompanyName }}</h7>
             </div>
             <v-sheet class="setting d-flex align-center">
               <v-menu location="bottom">
@@ -35,7 +35,7 @@
         </v-sheet>
 
         <v-sheet class="content ma-2">
-          <h4 class="text-center">{{ myclass.ProductName }}</h4>
+          <h5 class="text-center">{{ myclass.ProductName }}</h5>
           <hr class="mt-1 mb-2">
           <h5 class="text-center"><strong>تاریخ شروع: </strong>{{ myclass.startDate }}</h5>
           <h5 class="mt-2 text-center"><strong> استاد: </strong>{{ myclass.TeacherFName }} {{ myclass.TeacherLName }}
@@ -67,16 +67,13 @@
   </v-row>
   <!-- surveys -->
   <v-dialog responsive="true" width="auto" v-model="showserveymodal">
-    <v-card :subtitle="' نظرسنجی های دوره ی' + productname">
+    <v-card :subtitle="'نظرسنجی های دوره ی' + productname">
       <v-sheet class="mt-5 mb-5" style="font-family: 'IRANSANS';">
-        <v-sheet>
-
-        </v-sheet>
         <v-row v-for="(survey, index) in surveis" :key="survey.PackageId" :class="{ 'surveyrow': index % 2 != 0 }">
-          <v-col cols="12" md="6" class="text-center">
+          <v-col cols="6" class="text-center">
             <strong>{{ survey.PackageName }}- {{ survey.PackageType }}</strong>
           </v-col>
-          <v-col cols="12" md="6" class="text-center">
+          <v-col cols="6" class="text-center">
             <v-btn @click="gotosurvey(upselected, survey.PackageId, survey.SurveyPackageType)"
               class="text-center bg-orange-darken-2">ورود به نظرسنجی</v-btn>
           </v-col>
@@ -84,15 +81,15 @@
       </v-sheet>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text="بستن" @click="showserveymodal = false"></v-btn>
+        <v-btn class="bg-red" text="بستن" @click="showserveymodal = false"></v-btn>
       </v-card-actions>
     </v-card>
 
   </v-dialog>
 
   <!-- sessions -->
-  <v-dialog transition="dialog-bottom-transition" v-model="showsessions" width="auto" min-width="70%" responsive="true">
-    <v-card style="background-color: #ffffff;" title="جلسات دوره شما">
+  <v-dialog transition="dialog-bottom-transition" v-model="showsessions">
+    <v-card class="d-none d-md-block" style="background-color: #ffffff;" title="جلسات دوره شما">
       <v-sheet class="mt-5  mb-5 ">
 
         <v-row class="d-sm-none d-md-flex">
@@ -155,10 +152,67 @@
         <v-btn text="بستن" @click="showsessions = false"></v-btn>
       </v-card-actions>
     </v-card>
+    <v-card class="d-block d-md-none" style="background-color: #ffffff;" title="جلسات دوره شما">
+      <v-sheet class="mt-5  mb-5 ">
+        <v-slide-group
+        show-arrows="">
+          <v-slide-group-item v-for="(session, index) in sessions" :key="session.Id">
+            <v-row class="d-sm-none d-md-flex smallsession" :class="{ 'sessionrow': index % 2 != 0 },
+      { 'bg-red-lighten-1': session.isactive != 1 }
+      , { 'bg-purple-lighten-2': session.isactive == 5 }">
+              <v-col cols="12" class="text-center column">
+                <h2 class="sessions">جلسه {{ index + 1 }}</h2>
+              </v-col>
+              <v-col cols="6" class="text-center column">
+                <h3 class="sessions">توضیحات </h3>
+                <p> {{ session.desc }}</p>
+              </v-col>
+              <v-col cols="6" class="text-center column">
+                <h3 class="sessions">حضور شما </h3>
+                <p class="text-success" v-if="session.status == 1 && session.isactive == 1">حضور</p>
+                <p class="text-danger" v-if="session.status == 0 && session.isactive == 1">غیبت</p>
+                <p class="text-primary" v-if="session.status == -1 && session.isactive == 1">نامعلوم</p>
+              </v-col>
+              <v-col cols="6" class="text-center column">
+                <h3 class="sessions">تاریخ جلسه</h3>
+                <p>{{ session.date }}</p>
+              </v-col>
+              <v-col cols="6" class="text-center column">
+                <h3 class="sessions mb-1">کلاس آنلاین</h3>
+                <p v-if="session.msco == ''" class="negetive">-----</p>
+                <v-btn v-else class="bg-deep-purple-lighten-1"
+                  @click="gotoonlineclass(session.Id, session.msco, session.platform)">ورود به کلاس آنلاین</v-btn>
+              </v-col>
+              <v-col cols="6" class="text-center column">
+                <h3 class="sessions mb-1">محتوای جلسه</h3>
+                <v-btn v-if="session.isactive == 1" class="bg-green-darken-1">محتواهای جلسه</v-btn>
+              </v-col>
+              <v-col cols="6" class="text-center column">
+                <h3 class="sessions mb-1"> تکالیف</h3>
+                <p v-if="session.HavePractice != 1" class="negetive" :class="{ 'text-white': session.isactive != 1 }">
+                  -----
+                </p>
+                <v-btn v-else class="bg-teal-darken-1">مشاهده تکالیف</v-btn>
+              </v-col>
+              <v-col cols="12" class="text-center column">
+                <h3 class="sessions">نمره شما در جلسه</h3>
+                <p>{{ session.mark }}</p>
+              </v-col>
+            </v-row>
 
+          </v-slide-group-item>
+        </v-slide-group>
+
+      </v-sheet>
+
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn class="bg-red" text="بستن" @click="showsessions = false"></v-btn>
+      </v-card-actions>
+    </v-card>
   </v-dialog>
   <!-- add suggestion -->
-  <v-dialog transition="dialog-top-transition" v-model="showsuggestionmodal" width="auto" responsive="true">
+  <v-dialog transition="dialog-top-transition" v-model="showsuggestionmodal" width="80%" responsive="true">
     <v-card>
       <v-toolbar color="teal-darken-1" title="ثبت نظرات شما (انتقاد،پیشنهاد و اعتراض)"></v-toolbar>
       <v-card-text>
@@ -249,8 +303,8 @@ export default {
         v => !!v || 'پر کردن این فیلد اجباری است',
       ],
       selectedpas: 0,
-      package:0,
-      packagetype:0
+      package: 0,
+      packagetype: 0
     }
   },
   components: {
@@ -366,19 +420,19 @@ export default {
       }
       this.package = pack
       this.packagetype = packt
-      Callaxios('Survey/IsPartisipateInSurvey','post',input,this.aftercheck)
+      Callaxios('Survey/IsPartisipateInSurvey', 'post', input, this.aftercheck)
     },
-    aftercheck(param){
-      if(param.Data ==0){
-        this.snackbartype='error'
-        this.snackbarmessage='شما قبلا در این نظرسنجی شرکت کرده اید'
+    aftercheck(param) {
+      if (param.Data == 0) {
+        this.snackbartype = 'error'
+        this.snackbarmessage = 'شما قبلا در این نظرسنجی شرکت کرده اید'
         this.snackbar = true
-      }else if(param.Data == -1){
-        this.snackbartype='error'
-        this.snackbarmessage='شما تا قبل از پایان دوره اجازه شرکت ندارید'
+      } else if (param.Data == -1) {
+        this.snackbartype = 'error'
+        this.snackbarmessage = 'شما تا قبل از پایان دوره اجازه شرکت ندارید'
         this.snackbar = true
-      }else{
-       this.$router.push({name:'survey',params:{pack:this.package,Up:this.upselected,type:this.packagetype}})
+      } else {
+        this.$router.push({ name: 'survey', params: { pack: this.package, Up: this.upselected, type: this.packagetype } })
       }
     }
   },

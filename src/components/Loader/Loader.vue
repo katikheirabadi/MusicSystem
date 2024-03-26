@@ -1,7 +1,6 @@
 <template>
     <v-sheet class="overlay">
         <v-sheet class="loader-sheet text-center d-none d-md-block">
-          <!-- <h2 class="pb-6">{{ $t('message.sitename') }}</h2> -->
           <img src="../../assets/img/logo.png" alt="">
           <v-progress-linear
             color="deep-orange-darken-4"
@@ -17,7 +16,7 @@
           :size="200"
           :width="15"
           color="deep-orange-darken-1"
-          style="margin-top:50vh"
+          style="margin-top:50vh;z-index: 3000;"
           >
          <h3>{{ $t('home.sitename') }}</h3> 
         </v-progress-circular>
