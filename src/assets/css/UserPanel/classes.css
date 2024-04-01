@@ -139,3 +139,11 @@
     margin: 5px;
     width: 263px !important;
   }
+  .practicecols{
+    background-color: #0e675e;
+    color: white;
+  }
+  .practiserow{
+    background-color: rgba(29, 202, 185, 0.199);
+    height: auto;
+  }

@@ -50,7 +50,7 @@
           <v-row class="d-flext justify-space-between">
             <v-col class="d-flex justify-center" cols="6">
               <v-btn v-if="myclass.IsLock == null || myclass.IsLock == 0" block class="classbtn session"
-                @click="getAllsessions(myclass.ProductAvailableId)">جلسات</v-btn>
+                @click="getAllsessions(myclass.ProductAvailableId, myclass.ProductId)">جلسات</v-btn>
               <v-btn v-else block class="classbtn bg-grey-darken-2">------</v-btn>
             </v-col>
             <v-col class="d-flex justify-center" cols="6">
@@ -136,12 +136,14 @@
               @click="gotoonlineclass(session.Id, session.msco, session.platform)">ورود به کلاس آنلاین</v-btn>
           </v-col>
           <v-col cols="12" md="2" class="text-center column">
-            <v-btn v-if="session.isactive == 1" class="bg-green-darken-1">محتواهای جلسه</v-btn>
+            <v-btn v-if="session.isactive == 1" @click="console.log(session.Id)" class="bg-green-darken-1">محتواهای
+              جلسه</v-btn>
           </v-col>
           <v-col cols="12" md="2" class="text-center column">
-            <p v-if="session.HavePractice != 1" class="negetive" :class="{ 'text-white': session.isactive != 1 }">-----
+            <p v-if="session.practice != 1" class="negetive" :class="{ 'text-white': session.isactive != 1 }">-----
             </p>
-            <v-btn v-else class="bg-teal-darken-1">مشاهده تکالیف</v-btn>
+            <v-btn v-if="session.practice == 1" @click="getallpractises(session.Id)" class="bg-teal-darken-1">مشاهده
+              تکالیف</v-btn>
           </v-col>
           <v-col cols="12" md="2" class="text-center column">{{ session.mark }}</v-col>
         </v-row>
@@ -154,8 +156,7 @@
     </v-card>
     <v-card class="d-block d-md-none" style="background-color: #ffffff;" title="جلسات دوره شما">
       <v-sheet class="mt-5  mb-5 ">
-        <v-slide-group
-        show-arrows="">
+        <v-slide-group show-arrows="">
           <v-slide-group-item v-for="(session, index) in sessions" :key="session.Id">
             <v-row class="d-sm-none d-md-flex smallsession" :class="{ 'sessionrow': index % 2 != 0 },
       { 'bg-red-lighten-1': session.isactive != 1 }
@@ -266,11 +267,88 @@
     </v-card>
 
   </v-dialog>
-  <notif v-if="snackbar" :type="snackbartype" :text="snackbarmessage" :show="snackbar" @close="snackbar = false" />
+  <notif v-if="snackbar" :type="snackbartype" :location="'top right'" :text="snackbarmessage" :show="snackbar" @close="snackbar = false" />
+  <!-- practices -->
+  <v-dialog responsive="true" width="70%" v-model="showpractises">
+    <v-card title="تکالیف شما">
+      <v-sheet class="mt-5 mb-5" style="font-family: 'IRANSANS';">
+        <v-row v-if="practices.length != 0" class="d-flex justify-center practicecols " >
+          <v-col  cols="2" class="text-center">
+            <strong class="text-center">نام تکلیف</strong>
+          </v-col>
+          <v-col  cols="1" class="text-center">
+            <strong>دانلود سوال</strong>
+          </v-col>
+          <v-col cols="2" class="text-center">
+            <strong>بارگذاری جواب</strong>
+          </v-col>
+          <v-col cols="1" class="text-center">
+          </v-col>
+          <v-col cols="2" class="text-center">
+            <strong>دانلود جواب</strong>
+          </v-col>
+          <v-col cols="1" class="text-center">
+            <strong>نمره شما</strong>
+          </v-col>
+          <v-col v-if="HaveDeleteOption==0" cols="2" class="text-center">
+            <strong>حذف</strong>
+          </v-col>
+        </v-row>
+        <v-row class="d-flex justify-center" v-for="(practice, index) in practices" :key="practice.Id" 
+        :class="{ 'practiserow': index % 2 == 0 }">
+          <v-col cols="2" class="text-center pt-12 ">
+            <h3 style="padding-top: auto;">{{ practice.Name }}</h3>
+          </v-col>
+          <v-col cols="1" class="text-center d-flex align-center">
+            <v-btn block height="50%" color="teal-lighten-1" :href="back + practice.Path" target="_blank" download>
+              دانلود فایل 
+            </v-btn>
+          </v-col>
+          <v-col cols="2" class="text-center ">
+            <br>
+            <v-file-input label="بارگذاری جواب" v-model="practicefile[index]" variant="outlined"></v-file-input>
+          </v-col>
+          <v-col cols="1" class="d-flex align-center">
+            <v-btn @click="upload(practice.Id,index)" block height="50%" color="cyan-darken-3">
+              بارگذاری  
+            </v-btn>
+          </v-col>
+          <v-col cols="2"class="text-center d-flex align-center justify-center">
+            <v-btn color="green-darken-1" height="50%"  
+            v-if="practice.AddAnswer !=''" :href="back + practice.AddAnswer" 
+            target="_blank" 
+            download>
+              دانلود جواب
+            </v-btn>
+            <p v-else>------</p>
+          </v-col>
+          <v-col cols="1" class="text-center d-flex align-center justify-center">
+            <h3 v-if="practice.AnswerMark != -1">100 /  {{ practice.AnswerMark }} </h3>
+            <strong v-else>------</strong>
+          </v-col>
+          <v-col v-if="practice.HaveDeleteOption!=1 " cols="2" 
+           class="text-center d-flex align-center justify-center">
+            <v-btn 
+             color="red-darken-2" height="40%"
+             @click='deletepractise(practice.Id)'
+             >
+            حذف سوال
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-sheet>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn class="bg-red" text="بستن" @click="showpractises = false"></v-btn>
+      </v-card-actions>
+    </v-card>
+
+  </v-dialog>
 </template>
 <script>
 import { Callaxios } from '@/assets/composable/CallAxus'
 import { ToPersionDate } from '@/assets/helper/heper'
+import Store from '@/store/Store'
 
 import notif from '@/components/ResultNotification.vue'
 export default {
@@ -304,7 +382,15 @@ export default {
       ],
       selectedpas: 0,
       package: 0,
-      packagetype: 0
+      packagetype: 0,
+      selstproduct: 0,
+      practices: [],
+      showpractises: false,
+      back: Store.state.backuploadurl,
+      HaveDeleteOption:true,
+      practicefile:[],
+      practicetemp:'',
+      selectsesion:0
     }
   },
   components: {
@@ -327,12 +413,12 @@ export default {
       this.surveis = param.Data
       this.showserveymodal = true
     },
-    getAllsessions(pasId) {
+    getAllsessions(pasId, productid) {
+      this.selstproduct = productid
       Callaxios('UserSession/GetUserProductSessions', 'post', { ProductAvailableSessionId: pasId }, this.aftergetallsessions)
     },
     aftergetallsessions(param) {
       this.sessions = []
-      // this.sessions= param.Data
       for (var i = 0; i < param.Data.length; i++) {
         var desc = ''
         if (param.Data[i].Description == '') {
@@ -434,6 +520,51 @@ export default {
       } else {
         this.$router.push({ name: 'survey', params: { pack: this.package, Up: this.upselected, type: this.packagetype } })
       }
+    },
+    getallpractises(sessionId) {
+      var input = {
+        Id: sessionId,
+        ProductId: this.selstproduct
+      }
+      this.selectsesion=sessionId
+      Callaxios('CourseSession/GetAllPractices', 'post', input, this.aftergetallpractices)
+    },
+    aftergetallpractices(param) {
+      this.practices=[]
+      this.practicefile=[]
+      this.practices = param.Data
+      this.HaveDeleteOption = param.Data[0].HaveDeleteOption
+      this.showpractises = true
+
+    },
+    upload(practice,index){
+      var form = new FormData();
+            if (this.practicefile[index].length > 0) {
+                   form.append("fileName", this.practicefile[index][0]);
+                   form.append('PracticeId',practice)
+                   form.append('SessionId',this.selectsesion)
+             }
+            Callaxios('Upload/UserAnswerPracFile','post',form,this.afterupload)
+    },
+    afterupload(param){
+      this.snackbarmessage=param
+      this.snackbartype='success'
+      this.showpractises=false
+      this.snackbar=true
+      
+    },
+    deletepractise(source){
+      var input={
+        Id : source
+      }
+      Callaxios('CourseSession/DeleteSource','post',input,this.afterdeletesource)
+    },
+    afterdeletesource(param){
+      this.snackbarmessage=param.Data
+      this.snackbartype='success'
+      this.showpractises=false
+      this.snackbar=true
+  
     }
   },
   computed: {
