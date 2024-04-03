@@ -158,7 +158,7 @@
       <v-sheet class="mt-5  mb-5 ">
         <v-slide-group show-arrows="">
           <v-slide-group-item v-for="(session, index) in sessions" :key="session.Id">
-            <v-row class="d-sm-none d-md-flex smallsession" :class="{ 'sessionrow': index % 2 != 0 },
+            <v-row class="smallsession" :class="{ 'sessionrow': index % 2 != 0 },
       { 'bg-red-lighten-1': session.isactive != 1 }
       , { 'bg-purple-lighten-2': session.isactive == 5 }">
               <v-col cols="12" class="text-center column">
@@ -344,6 +344,8 @@
     </v-card>
 
   </v-dialog>
+  <!-- vclasses and sources -->
+  
 </template>
 <script>
 import { Callaxios } from '@/assets/composable/CallAxus'
