@@ -48,6 +48,11 @@ export default {
                     TransactionAmount:this.amount,
                     ComponyId:this.companyId
                 },this.afterAdd)
+            }else if (this.companyId == -1){
+                this.notiftext = i18n.global.t('panel.credit.selectcompany')
+                this.notiftype ='error'
+                this.location =''
+                this.show = true
             }
         },
         afterAdd(param) {

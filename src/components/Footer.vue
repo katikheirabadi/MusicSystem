@@ -11,7 +11,7 @@
                          style="font-family: 'IRANSANS';"
                          >{{ $t('footer.phonetitle') }} </v-tooltip>
                  
-                    <h4 class="text-white text-center"  >09102150135 <br> 021-2230041</h4>
+                  <div v-html="$t('footer.phone')"></div>
                 </v-row>          
             </v-col>
             <v-col cols="12" md="4"  >
@@ -23,7 +23,7 @@
                          style="font-family: 'IRANSANS';"
                          >{{ $t('footer.emailtitle') }}  </v-tooltip>
                  
-                    <h3 class="text-white text-center ps-3"  >info@karosaz.com</h3>
+                   <div v-html="$t('footer.email')"></div>
                 </v-row>          
             </v-col>
             <v-col cols="12" md="4"  >
@@ -35,7 +35,7 @@
                          style="font-family: 'IRANSANS';"
                          >{{ $t('footer.addresstitle') }}  </v-tooltip>
                  
-                    <h4 class="text-white text-center"  >کرج ،فردیس ،فلکه سوم <br>،خیابان ٢٣ ،پلاک ٢٩</h4>
+                  <div v-html="$t('footer.address')"></div>
                 </v-row>          
             </v-col>
         </v-row>

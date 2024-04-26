@@ -23,8 +23,10 @@ const messages = {
         telegram:'آیدی تلگرام',
         facebook:'آیدی فیسبوک',
         youtube:'آیدی کانال یوتیوب',
-        etemad :"نماد اعتماد"
-
+        etemad :"نماد اعتماد",
+        address:'<h4 class="text-white text-center"  >البرز ،فردیس ،فلکه سوم <br>،خیابان ٢٣ ،پلاک ٢٩</h4>',
+        email:'<h3 class="text-white text-center ps-3"  >info@karosaz.com</h3>',
+        phone:'<h4 class="text-white text-center"  >09102150135 <br> 026-6503521</h4>'
       },    
       home:{
         sitename:'سامانه کاروساز',
@@ -32,7 +34,7 @@ const messages = {
         showallacademies:'نمایش آموزشگاه ها',
         teachers:'اساتید',
         allusers:'کاربران',
-        resume:' سوابق کاروساز در نگاهی کوتاه ',
+        resume:' کاروساز در یک نگاه ',
         academies:'آموزشگاه ها',
         gratuateds:'فارع التحصیلان',
         section1_header:'چرا کار و ساز؟',
@@ -179,7 +181,21 @@ const messages = {
          reqno:'موردی یافت نشد',
          chargereporttitle:'هدایای من'
         },
-       
+        requests:{
+          deletereqtab:'درخواست های انصراف',
+          suggestiontab:'انتقاد و پیشنهادات',
+          deleteproductname:'نام دوره',
+          deletehour:'ساعت برگزاری',
+          deletedate:'تاریخ درخواست',
+          deletestate:'وضعیت',
+          sugproductname:'نام دوره',
+          sughour:'ساعت برگزاری',
+          sugdate:'تاریخ درخواست',
+          sugtype:'نوع درخواست',
+          sugtext:'متن درخواست',
+          sugcomment:'جواب درخواست',
+          empty:'درخواستی ثبت نکرده اید'
+        },
       },
       survey:{
         subtitle:'جهت بهبود عملکرد بخش های متفاوت لطفا فرم نظرسنجی را کامل بفرمایین.',
@@ -187,20 +203,7 @@ const messages = {
         notcomplete:'شما به همه سوالات جواب نداده اید',
         send:' به زودی به صفحه کاربری خود باز خواهید گشت'
       },
-      requests:{
-        deletereqtab:'درخواست های انصراف',
-        suggestiontab:'انتقاد و پیشنهادات',
-        deleteproductname:'نام دوره',
-        deletehour:'ساعت برگزاری',
-        deletedate:'تاریخ درخواست',
-        deletestate:'وضعیت',
-        sugproductname:'نام دوره',
-        sughour:'ساعت برگزاری',
-        sugdate:'تاریخ درخواست',
-        sugtype:'نوع درخواست',
-        sugtext:'متن درخواست',
-        sugcomment:'جواب درخواست'
-      },
+    
       login:{
         login_login_header:'ورود به سامانه کاروساز',
         login_login_username:'نام کاربری',
@@ -230,13 +233,7 @@ const messages = {
         unit:'ریال',
         classes:'کلاس ها',
         detail:'مشاهده دوره',
-       
-      
         contact:'تماس با ما',
-       
-       
-       
-       
         section2_title:'چه سازی دوست داری؟!',
         site_report_1:'آموزشگاه ها',
        

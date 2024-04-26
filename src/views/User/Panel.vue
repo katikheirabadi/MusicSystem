@@ -48,7 +48,7 @@
       </v-app-bar>
       <v-main style="min-height: 100vh;background-color: #ee8f8f3b;margin-inline-start: 0%;padding-inline-end: 0%;">
         <classes v-if="classescomp" />
-        <credit v-if="Credit" />
+        <credit v-if="credit" />
         <certificate v-if="certificate" />
         <editProfile v-if="editProfile" />
         <dashboard v-if="dashbord" />

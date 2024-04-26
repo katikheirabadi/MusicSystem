@@ -1,4 +1,4 @@
 {
-    "backuploadurl" : "https://www.karosaz.com/",
-    "apihost": "http://localhost:5015/"
+    "backuploadurl" : "https://up.karosaz.com/",
+    "apihost": "https://api.karosaz.com/"
 }

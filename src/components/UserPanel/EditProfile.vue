@@ -187,7 +187,7 @@ export default{
         },
         afterupload(param){
            this.imgaddress = param.replace('Temp/','')
-           this.img = 'http://www.sina.local'+param
+           this.img =config.backuploadurl+param
         }
        
     },
