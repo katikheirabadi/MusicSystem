@@ -14,7 +14,7 @@
           <v-list-item class="panellist" prepend-icon="fa fa-calendar" title="کلاس های من" value="1"
             @click="gotoclasses"></v-list-item>
           <v-list-item class="panellist" prepend-icon="fa fa-certificate" title="گواهینامه ها" value="2"
-            @click=""></v-list-item>
+            @click="gototcertificates"></v-list-item>
           <v-list-item class="panellist" prepend-icon="fa fa-calculator" title="مدیریت اعتبار" value="3"
             @click="gotocredit"></v-list-item>
           <v-list-item class="panellist" prepend-icon="fa fa-edit" title="ویرایش مشخصات" value="4"
@@ -49,7 +49,7 @@
       <v-main style="min-height: 100vh;background-color: #ee8f8f3b;margin-inline-start: 0%;padding-inline-end: 0%;">
         <classes v-if="classescomp" />
         <credit v-if="credit" />
-        <certificate v-if="certificate" />
+        <certificate v-if="certificate" @calleditprofile="gotoeditprofile"/>
         <editProfile v-if="editProfile" />
         <dashboard v-if="dashbord" />
         <Request v-if="requestscomp"/>
@@ -133,6 +133,14 @@ export default {
       this.editProfile =false
       this.classescomp = false
       this.requestscomp = true
+    },
+    gototcertificates(){
+      this.credit =false
+      this.dashboard = false
+      this.editProfile =false
+      this.classescomp = false
+      this.requestscomp = false
+      this.certificate = true
     }
 
   }
