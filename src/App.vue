@@ -11,14 +11,18 @@ export default{
   components:{
     loader
 },
-  mounted(){
-    var lang = 'fa';
+mounted() {
+  
+    var lang = localStorage.getItem('lang')
     this.$vuetify.locale.current = lang;
-    this.$i18n.locale = lang;
+       this.$i18n.locale = lang;
+ 
+      
+
   },
-  updated(){
-    if(window.location.href.split('/')[3] == 'en'){
-      localStorage.setItem('lang',window.location.href.split('/')[3]);
+  updated() {
+    if (window.location.href.split('/')[3] == 'en') {
+      localStorage.setItem('lang', window.location.href.split('/')[3]);
       var lang = window.location.href.split('/')[3]
       this.$vuetify.locale.current = lang;
       this.$i18n.locale = lang;

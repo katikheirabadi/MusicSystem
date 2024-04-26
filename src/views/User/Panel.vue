@@ -6,12 +6,17 @@
           <img :src="Img" alt="Hello" class="profile-img">
           <h4 class="text-center" style="color: #912909;">{{ Name }}
           </h4>
-
+          <v-btn v-if="Profile.RoleId ==2 || Profile.RoleId ==1" class="mt-2 bg-red-darken-4" block :href="admin">پنل مدیریت</v-btn>
+          <v-btn v-if="Profile.RoleId ==10" class="mt-2 bg-red-darken-4" block :href="admin">پنل کارشناس آموزش</v-btn>
+          <v-btn v-if="Profile.RoleId ==4" class="mt-2 bg-red-darken-4" block :href="admin">پنل استاد</v-btn>
+          <v-btn v-if="Profile.RoleId ==12" class="mt-2 bg-red-darken-4" block :href="admin">پنل مالی</v-btn>
         </v-list-item>
         <v-list nav>
-          <v-list-item class="panellist" prepend-icon="fa fa-calendar" title="داشبورد" value="0"
-            @click=""></v-list-item>
-          <v-list-item class="panellist" prepend-icon="fa fa-calendar" title="کلاس های من" value="1"
+           <v-list-item class="panellist" prepend-icon="fa fa-calendar" title="داشبورد" value="0"
+            @click="gotoDashboard"></v-list-item>
+          <v-list-item class="panellist" prepend-icon="fa fa-home" title="خانه" value="1"
+            @click="gotohome"></v-list-item>
+            <v-list-item class="panellist" prepend-icon="fa fa-calendar" title="کلاس های من" value="1"
             @click="gotoclasses"></v-list-item>
           <v-list-item class="panellist" prepend-icon="fa fa-certificate" title="گواهینامه ها" value="2"
             @click="gototcertificates"></v-list-item>
@@ -51,7 +56,7 @@
         <credit v-if="credit" />
         <certificate v-if="certificate" @calleditprofile="gotoeditprofile"/>
         <editProfile v-if="editProfile" />
-        <dashboard v-if="dashbord" />
+        <dashboard v-if="dashboard" @openclasses="gotoclasses" @opencerts="gototcertificates" @opencredit="gotocredit" />
         <Request v-if="requestscomp"/>
       </v-main>
     </v-layout>
@@ -68,7 +73,6 @@ import Request from '@/components/UserPanel/Requests'
 
 import Store from '@/store/Store';
 import config from '../../../public/config.json'
-import { Callaxios } from '@/assets/composable/CallAxus';
 export default {
   data() {
     return {
@@ -82,7 +86,8 @@ export default {
       drawer: false,
       Name: '',
       Img: '',
-      Profile: {}
+      Profile: {},
+      admin:''
     }
   },
   components: {
@@ -91,9 +96,13 @@ export default {
   mounted() {
     this.Name = Store.state.profile.FName + ' ' + Store.state.profile.LName
     this.Profile = Store.state.profile;
+    this.admin = config.admin
     this.Img = Store.state.profile.Image == "" ? window.location.origin + '/src/assets/img/profile.png' : config.backuploadurl + Store.state.profile.Image
   },
   methods:{
+    gotohome(){
+      this.$router.push({ name: 'Home',params:{lang:localStorage.getItem('lang')}})
+    },
     gotoDashboard(){
       this.classescomp = false
       this.requestscomp = false

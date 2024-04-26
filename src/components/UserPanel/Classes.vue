@@ -92,16 +92,16 @@
     <v-card class="d-none d-md-block" style="background-color: #ffffff;" title="جلسات دوره شما">
       <v-sheet class="mt-5  mb-5 ">
 
-        <v-row class="d-sm-none d-md-flex">
-          <v-col cols="12" md="1" class="text-center bg-yellow-darken-2 column">*</v-col>
-          <v-col cols="12" md="1" class="text-center bg-yellow-darken-2 column">حضور شما</v-col>
+        <v-row class="d-sm-none d-md-flex justify-center">
+          <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">*</v-col>
+          <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">حضور شما</v-col>
           <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">تاریخ جلسه</v-col>
           <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">کلاس آنلاین </v-col>
-          <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">محتوای جلسه</v-col>
+          <!-- <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">محتوای جلسه</v-col> -->
           <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">تکالیف </v-col>
           <v-col cols="12" md="2" class="text-center bg-yellow-darken-2 column">نمره شما در جلسه</v-col>
         </v-row>
-        <v-row v-for="(session, index) in sessions" :key="session.Id" class="sessions" :class="{ 'sessionrow': index % 2 != 0 },
+        <v-row v-for="(session, index) in sessions" :key="session.Id" class="sessions justify-center" :class="{ 'sessionrow': index % 2 != 0 },
       { 'bg-red-lighten-1': session.isactive != 1 }
       , { 'bg-purple-lighten-2': session.isactive == 5 }">
           <v-tooltip location="top" activator="parent" class="text-center" v-if="session.isactive != 1">
@@ -111,8 +111,8 @@
             <br>
             ({{ session.desc }})
           </v-tooltip>
-          <v-col cols="12" md="1" class="text-center column">{{ index + 1 }}</v-col>
-          <v-col cols="12" md="1" class="text-center column">
+          <v-col cols="12" md="2" class="text-center column">{{ index + 1 }}</v-col>
+          <v-col cols="12" md="2" class="text-center column">
             <v-tooltip v-if="session.status == 1 && session.isactive == 1" activator="parent" location="top">حضور خورده
               اید</v-tooltip>
             <v-icon v-if="session.status == 1 && session.isactive == 1" class="text-success"
@@ -135,10 +135,10 @@
             <v-btn v-else class="bg-deep-purple-lighten-1"
               @click="gotoonlineclass(session.Id, session.msco, session.platform)">ورود به کلاس آنلاین</v-btn>
           </v-col>
-          <v-col cols="12" md="2" class="text-center column">
+          <!-- <v-col cols="12" md="2" class="text-center column">
             <v-btn v-if="session.isactive == 1" @click="console.log(session.Id)" class="bg-green-darken-1">محتواهای
               جلسه</v-btn>
-          </v-col>
+          </v-col> -->
           <v-col cols="12" md="2" class="text-center column">
             <p v-if="session.practice != 1" class="negetive" :class="{ 'text-white': session.isactive != 1 }">-----
             </p>
@@ -184,10 +184,10 @@
                 <v-btn v-else class="bg-deep-purple-lighten-1"
                   @click="gotoonlineclass(session.Id, session.msco, session.platform)">ورود به کلاس آنلاین</v-btn>
               </v-col>
-              <v-col cols="6" class="text-center column">
+              <!-- <v-col cols="6" class="text-center column">
                 <h3 class="sessions mb-1">محتوای جلسه</h3>
                 <v-btn v-if="session.isactive == 1" class="bg-green-darken-1">محتواهای جلسه</v-btn>
-              </v-col>
+              </v-col> -->
               <v-col cols="6" class="text-center column">
                 <h3 class="sessions mb-1"> تکالیف</h3>
                 <p v-if="session.HavePractice != 1" class="negetive" :class="{ 'text-white': session.isactive != 1 }">
@@ -195,8 +195,8 @@
                 </p>
                 <v-btn v-else class="bg-teal-darken-1">مشاهده تکالیف</v-btn>
               </v-col>
-              <v-col cols="12" class="text-center column">
-                <h3 class="sessions">نمره شما در جلسه</h3>
+              <v-col cols="6" class="text-center column">
+                <h3 class="sessions">نمره شما </h3>
                 <p>{{ session.mark }}</p>
               </v-col>
             </v-row>

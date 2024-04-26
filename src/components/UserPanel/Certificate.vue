@@ -1,14 +1,14 @@
 <template>
   <v-container>
   <v-row class="mt-1">
-    <v-col cols="12" md="3" v-for="cert in certs" :key="cert.UserProductId">
+    <v-col cols="12" md="4" xl="3" v-for="cert in certs" :key="cert.UserProductId">
       <v-sheet class="text-center certcard" :class="{'redcertcard':cert.Result==0}">
         <div class="mt-2">
           <img v-if="cert.Result==0" src="../../assets/img/dontseecert.png" alt="">
           <img v-if="cert.Result==1" src="../../assets/img/canseecert.png" alt="">
         </div>
-      <h3 class="mb-2 mt-2">{{ cert.ProductName }}</h3>
-      <h4 class="mb-4">{{ cert.TeacherFullName }}</h4>
+      <h4 class="mb-2 mt-2 px-2">{{ cert.ProductName }}</h4>
+      <h5 class="mb-4">{{ cert.TeacherFullName }}</h5>
       <v-btn class="mb-5" v-if="cert.Result==1" color="green" @click="getcertdetail(cert.UserProductId)">نمایش گواهینامه</v-btn>
       <v-btn class="mb-5" v-if="cert.Result==0" color="red" @click="message= cert.Message,seeerror=true"> غیرمجاز</v-btn>
     </v-sheet>

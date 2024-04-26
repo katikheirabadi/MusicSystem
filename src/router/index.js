@@ -117,12 +117,14 @@ router.beforeEach((to, from, next) => {
             }
             window.scrollTo(0, 0);
             next()
+            return
           })
           .catch(error => {
             localStorage.removeItem('token');
             store.state.profile = {};
             to.path = '/';
             next()
+            return
           
           })
       } catch (error) {
@@ -130,10 +132,12 @@ router.beforeEach((to, from, next) => {
         store.state.profile = {};
         to.path = '/';
         next()
+        return
       }
 
     } else {
       next()
+      return
     }
 
   } else {

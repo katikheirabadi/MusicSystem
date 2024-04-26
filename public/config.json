@@ -1,4 +1,5 @@
 {
     "backuploadurl" : "https://up.karosaz.com/",
-    "apihost": "https://api.karosaz.com/"
+    "apihost": "https://api.karosaz.com/",
+    "admin":"https://admin.karosaz.com/"
 }
