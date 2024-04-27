@@ -56,7 +56,7 @@
         <credit v-if="credit" />
         <certificate v-if="certificate" @calleditprofile="gotoeditprofile"/>
         <editProfile v-if="editProfile" />
-        <dashboard v-if="dashboard" @openclasses="gotoclasses" @opencerts="gototcertificates" @opencredit="gotocredit" />
+        <dashboard v-if="dashboardcom" @openclasses="gotoclasses" @opencerts="gototcertificates" @opencredit="gotocredit" />
         <Request v-if="requestscomp"/>
       </v-main>
     </v-layout>
@@ -77,8 +77,8 @@ export default {
   data() {
     return {
       requestscomp:false,
-      classescomp: true,
-      dashbord: false,
+      classescomp: false,
+      dashboardcom: true,
       credit: false,
       certificate: false,
       editProfile: false,
@@ -109,13 +109,13 @@ export default {
       this.credit =false
       this.certificate = false
       this.editProfile =false
-      this.dashboard = true
+      this.dashboardcom = true
     },
     gotocredit(){
       this.classescomp = false
       this.requestscomp = false
       this.certificate = false
-      this.dashboard = false
+      this.dashboardcom = false
       this.editProfile =false
       this.credit =true
     },
@@ -123,7 +123,7 @@ export default {
       this.requestscomp = false
       this.credit =false
       this.certificate = false
-      this.dashboard = false
+      this.dashboardcom = false
       this.editProfile =false
       this.classescomp = true
     },
@@ -131,21 +131,21 @@ export default {
       this.requestscomp = false
       this.credit =false
       this.certificate = false
-      this.dashboard = false
+      this.dashboardcom = false
       this.classescomp = false
       this.editProfile =true
     },
     gotorequests(){
       this.credit =false
       this.certificate = false
-      this.dashboard = false
+      this.dashboardcom = false
       this.editProfile =false
       this.classescomp = false
       this.requestscomp = true
     },
     gototcertificates(){
       this.credit =false
-      this.dashboard = false
+      this.dashboardcom = false
       this.editProfile =false
       this.classescomp = false
       this.requestscomp = false
