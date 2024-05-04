@@ -87,7 +87,8 @@
   .product-image:hover .title{display: none;}
   .info ul li{
     transition: 0.3s ease;
-    margin-bottom: calc(0.6vw + 1vh);
+    font-size: 80%;
+    margin-bottom: calc(0.9vw + 1vh);
   }
   .info ul li:hover{transform: translateX(20px) scale(1.3);}
   
@@ -139,13 +140,14 @@
       font-weight: bold;
   }
   .info h2 {text-align: center;font-size: 120%;margin-bottom: 3.5%;}
-  .info ul li{font-size: 100%;}
   .title{
       margin-top: 35% !important;
       font-size: 150%;
   }
   .info li{
-      font-size: 50%;
+      font-size: 105% !important;
+      margin-bottom: calc(1vw + 2vh) !important;
+
   }
   }
   

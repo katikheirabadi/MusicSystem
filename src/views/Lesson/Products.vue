@@ -17,7 +17,7 @@
             </v-col>
             <v-col cols="12" sm="12" md="7" class="more">
                 <v-container class="detail_desc " style="padding-inline-start: 5% !important;">
-                    <h1 class="text-center">{{ data.name }}</h1>
+                    <h2 class="text-center">{{ data.name }}</h2>
                    
                     <p class="text-center" v-html="data.desc"></p>
                    
@@ -66,15 +66,15 @@
            <h1 class="text-center mt-5" v-if="data.products.length !=0">{{ $t('lesson.home_products') }}</h1>
            <v-container  v-if="data.products">
            <v-row class="center-class">
-            <v-col cols="12" sm="6" md="4"  v-for="product in data.products">
+            <v-col cols="12" sm="6" md="6" lg="4" v-for="product in data.products">
                 <v-sheet class="product-image text-center">
                   <div class="title-posision">
-                    <h2 class="title text-center">
+                    <h3 class="title text-center">
                       {{ product.Product.name }}
                       <br>
                       <h4>{{ product.Product.TeacherName }}</h4>
                       <h6 class="start">{{ $t('lesson.home_startdate') }}: {{ product.Product.stringstartdate }}</h6>
-                    </h2>
+                    </h3>
                   </div>
                     
                     <img class="img" :src="data.img" alt="">
@@ -86,7 +86,6 @@
 		                          <li><strong>{{ $t('lesson.home_price') }}: </strong>{{ product.Product.price }} {{ $t('lesson.home_priceunit') }}</li>
 		                          <li><strong>{{ $t('lesson.home_discount') }}: </strong>%{{ product.Product.Discount }}</li>
 		                          <li><strong>{{ $t('lesson.home_days') }} : </strong>{{ product.Product.stringday }}</li>
-                              <!-- <li><strong>{{ $t('lesson.home_hour') }} :</strong>{{ product.Product.ProductAvailableSessions[0].Hour }}</li> -->
                               <li><strong>{{ $t('lesson.home_sessioncount') }} : </strong>{{ product.Product.SessionsNumber }}</li>
                               <li><strong>{{ $t('lesson.home_sessionsumHours') }} : </strong>{{ product.Product.ClassHour }}</li>
 		                          <li><strong>{{ $t('lesson.home_endprice') }} : </strong>{{ product.Product.payable }} {{ $t('lesson.home_priceunit') }}</li>
@@ -297,7 +296,6 @@ export default{
       this.data.tags.push(param.Data.Tag)
       this.data.concepts = JSON.parse(param.Data.Concepts)
       param.Data.LessonProducts.filter((i)=> this.data.products.push(i))
-           
     },
     registrationmodal(productId){
       if(Object.entries(Store.state.profile).length != 0)
