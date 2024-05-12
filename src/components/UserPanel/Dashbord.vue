@@ -127,7 +127,7 @@
                 <v-row class="mt-2 mb-5 text-center"
                   style="border-radius: 5px;background-color:  rgb(2, 83, 90);;color: aliceblue;">
                   <v-col cols="1"><strong>* </strong></v-col>
-                  <v-col cols="3"><strong>نام دوره</strong></v-col>
+                  <v-col cols="3"><strong>نام کلاس</strong></v-col>
                   <v-col cols="3"><strong>نام استاد</strong></v-col>
                   <v-col cols="2"><strong>ساعت شروع</strong></v-col>
                   <v-col cols="3"><strong>کلاس آنلاین</strong></v-col>

@@ -3,15 +3,15 @@
     <myheader 
     img="src/assets/img/options.jpeg" 
     :header='"شناسه سبد خرید شما " +bagid'
-    text="اضافه کردن دوره/کالا به سبد خرید به منزله رزرو نمی باشد .(درصورتی که ظرفیت کلاس پر شود دوره به طور اتوماتیک از سبد خرید حذف میگردد)" 
+    text="اضافه کردن کلاس/کالا به سبد خرید به منزله رزرو نمی باشد .(درصورتی که ظرفیت کلاس پر شود کلاس به طور اتوماتیک از سبد خرید حذف میگردد)" 
     :btns="[{text:'بازگشت به صفحه کاربری',link:'/Hello!'}]"/>
      <v-container class="mt-10 mb-10" v-if="bagproducts.length !=0">
         <section style="width: 100%;margin: auto;">
-            <h1>لیست دوره ها</h1>
+            <h1>لیست کلاس ها</h1>
             
             <v-sheet class="d-none d-md-block" >
               <v-row  class="mt-5 text-center content d-flex justify-center">
-                  <v-col class="d-flex justify-center contentheader align-center" cols="2"><strong>نام دوره</strong></v-col>
+                  <v-col class="d-flex justify-center contentheader align-center" cols="2"><strong>نام کلاس</strong></v-col>
                   <v-col class="d-flex justify-center contentheader align-center" cols="1"><strong>نوع</strong></v-col>
                   <v-col class="d-flex justify-center contentheader align-center"  cols="1"><strong>جلسات باقی مانده</strong></v-col>
                   <v-col class="d-flex justify-center contentheader align-center"  cols="1"><strong>جلسه</strong></v-col>
@@ -43,7 +43,7 @@
               <v-row class="me-2 ms-2" v-for="bagproduct in bagproducts">
                 <v-row  class="mt-5 text-center mobilecontent d-flex justify-center">
                   <v-col class="d-flex justify-center align-center" cols="12">
-                    <h3>نام دوره</h3>
+                    <h3>نام کلاس</h3>
                   </v-col>
                   <v-col cols="12"><h3>{{ bagproduct.name }}</h3></v-col>
                   <v-col class="d-flex justify-center align-center" cols="6">
@@ -109,7 +109,7 @@
               <h3 class="mb-5 text-center">فاکتور شما</h3>
               <v-sheet class="">
                 <v-row class="factorrow d-flex justify-center">
-                  <v-col cols="8"><strong>تعداد کل دوره/کالا های شما</strong></v-col>
+                  <v-col cols="8"><strong>تعداد کل کلاس/کالا های شما</strong></v-col>
                   <v-col cols="4"><strong>{{ bagcount }}</strong></v-col>
                 </v-row>
                 <v-row class="factorrow">
@@ -143,7 +143,7 @@
       <div class="d-flex justify-center mb-2">
         <img  src="../../assets/img/icons8-shopping-cart-100.png" alt="">
       </div>
-      <h2 style="color: #B2550A;" class="text-center">دوره ای در سبد خرید شما نیست</h2>
+      <h2 style="color: #B2550A;" class="text-center">کلاس ای در سبد خرید شما نیست</h2>
      </v-container>
     <myfooter style="margin-top: -6px;"/>
 
@@ -190,9 +190,9 @@ export default{
         if(param.Data[i].type ==3 && param.Data[i].ProType !=1){
           type='پیش ثبت نام'
         }else if(param.Data[i].type ==1 && param.Data[i].ProType !=1){
-          type='دوره'
+          type='کلاس'
         }else if(param.Data[i].type ==2 && param.Data[i].ProType !=1){
-          type='دوره با تخفیف'
+          type='کلاس با تخفیف'
         }else if(aram.Data[i].ProType ==1){
           type='کالا'
         }

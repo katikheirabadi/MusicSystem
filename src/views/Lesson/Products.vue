@@ -86,7 +86,8 @@
 		                          <li><strong>{{ $t('lesson.home_price') }}: </strong>{{ product.Product.price }} {{ $t('lesson.home_priceunit') }}</li>
 		                          <li><strong>{{ $t('lesson.home_discount') }}: </strong>%{{ product.Product.Discount }}</li>
 		                          <li><strong>{{ $t('lesson.home_days') }} : </strong>{{ product.Product.stringday }}</li>
-                              <li><strong>{{ $t('lesson.home_sessioncount') }} : </strong>{{ product.Product.SessionsNumber }}</li>
+		                          <li><strong>{{ $t('lesson.home_remainSession') }} : </strong>{{ product.Product.RemainSession }}</li>
+                              <!-- <li><strong>{{ $t('lesson.home_sessioncount') }} : </strong>{{ product.Product.SessionsNumber }}</li> -->
                               <li><strong>{{ $t('lesson.home_sessionsumHours') }} : </strong>{{ product.Product.ClassHour }}</li>
 		                          <li><strong>{{ $t('lesson.home_endprice') }} : </strong>{{ product.Product.payable }} {{ $t('lesson.home_priceunit') }}</li>
 	                        </ul>
@@ -296,6 +297,7 @@ export default{
       this.data.tags.push(param.Data.Tag)
       this.data.concepts = JSON.parse(param.Data.Concepts)
       param.Data.LessonProducts.filter((i)=> this.data.products.push(i))
+      console.log(this.data.products)
     },
     registrationmodal(productId){
       if(Object.entries(Store.state.profile).length != 0)
@@ -304,7 +306,7 @@ export default{
         Callaxios('ProductAvailableSession/GetHours/'+productId,'get',undefined,this.aftergethours )
       }else{
         Store.commit('backurl',{name:'lessondetail',params:{lessonid:this.$route.params.lessonid}})
-        this.$router.replace({name:'welcome'})
+        this.$router.push({name:'welcome'})
       }
      
     },
@@ -325,7 +327,7 @@ export default{
         Callaxios('CourseAdvice/GetAppointments','get',undefined,this.aftercourseadvise )
       }else{
         Store.commit('backurl',{name:'lessondetail',params:{lessonid:this.$route.params.lessonid,academyId:this.$route.params.academyId}})
-        this.$router.replace({name:'welcome'})
+        this.$router.push({name:'welcome'})
       }
     },
     aftercourseadvise(param){

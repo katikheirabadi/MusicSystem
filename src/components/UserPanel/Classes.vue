@@ -24,7 +24,7 @@
                   <v-list-item
                     @click="upselected = myclass.userProductId; deleteproductname = myclass.ProductName; selectedpas = myclass.ProductAvailableId; showdeletemodal = true">
                     <p class="d-flex justify-space-between">
-                      انصراف از دوره
+                      انصراف از کلاس
                       <v-icon icon="fa fa-caret-square-left"></v-icon>
                     </p>
                   </v-list-item>
@@ -67,7 +67,7 @@
   </v-row>
   <!-- surveys -->
   <v-dialog responsive="true" width="auto" v-model="showserveymodal">
-    <v-card :subtitle="'نظرسنجی های دوره ی' + productname">
+    <v-card :subtitle="'نظرسنجی های کلاس ی' + productname">
       <v-sheet class="mt-5 mb-5" style="font-family: 'IRANSANS';">
         <v-row v-for="(survey, index) in surveis" :key="survey.PackageId" :class="{ 'surveyrow': index % 2 != 0 }">
           <v-col cols="6" class="text-center">
@@ -89,7 +89,7 @@
 
   <!-- sessions -->
   <v-dialog transition="dialog-bottom-transition" v-model="showsessions">
-    <v-card class="d-none d-md-block" style="background-color: #ffffff;" title="جلسات دوره شما">
+    <v-card class="d-none d-md-block" style="background-color: #ffffff;" title="جلسات کلاس شما">
       <v-sheet class="mt-5  mb-5 ">
 
         <v-row class="d-sm-none d-md-flex justify-center">
@@ -154,7 +154,7 @@
         <v-btn text="بستن" @click="showsessions = false"></v-btn>
       </v-card-actions>
     </v-card>
-    <v-card class="d-block d-md-none" style="background-color: #ffffff;" title="جلسات دوره شما">
+    <v-card class="d-block d-md-none" style="background-color: #ffffff;" title="جلسات کلاس شما">
       <v-sheet class="mt-5  mb-5 ">
         <v-slide-group show-arrows="">
           <v-slide-group-item v-for="(session, index) in sessions" :key="session.Id">
@@ -236,11 +236,11 @@
   <!-- add deleteuprequest -->
   <v-dialog transition="dialog-top-transition" v-model="showdeletemodal" width="auto" responsive="true">
     <v-card>
-      <v-toolbar color="blue-darken-1" title="درخواست انصراف از دوره"></v-toolbar>
+      <v-toolbar color="blue-darken-1" title="درخواست انصراف از کلاس"></v-toolbar>
       <v-card-text>
         <h3>شرایط انصراف</h3>
         <br>
-        <p>شما درخواست حذف دوره &nbsp<strong class="text-info">{{ deleteproductname }} </strong>&nbspرا دارید. در صورت
+        <p>شما درخواست حذف کلاس &nbsp<strong class="text-info">{{ deleteproductname }} </strong>&nbspرا دارید. در صورت
           اطمینان متن در خواست خود را به همراه شماره کارت به همراه نام صاحب کارت نوشته و دکمه ثبت را بزنید</p>
         <br>
         <v-textarea v-model="deletetext" label="متن درخواست شما ...." variant="solo-filled"></v-textarea>
@@ -517,7 +517,7 @@ export default {
         this.snackbar = true
       } else if (param.Data == -1) {
         this.snackbartype = 'error'
-        this.snackbarmessage = 'شما تا قبل از پایان دوره اجازه شرکت ندارید'
+        this.snackbarmessage = 'شما تا قبل از پایان کلاس اجازه شرکت ندارید'
         this.snackbar = true
       } else {
         this.$router.push({ name: 'survey', params: { pack: this.package, Up: this.upselected, type: this.packagetype } })

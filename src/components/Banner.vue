@@ -52,13 +52,13 @@
     <v-row class="d-md-none row2" style="">
       <v-layout>
         <v-navigation-drawer v-model="drawer" temporary>
-          <v-list-item :prepend-avatar="logo" :title="$t('home.sitename')"></v-list-item>
+          <v-list-item :title="$t('home.sitename')"></v-list-item>
 
           <v-divider></v-divider>
 
           <v-list density="compact" nav>
             <v-list-item prepend-icon="fa fa-home" :title="$t('banner.home')"
-              @click="this.$router.push({ name: 'Home' })">
+              @click="gotoHome">
             </v-list-item>
 
             <v-list-item prepend-icon="fa fa-institution" :title="$t('banner.academies')"
@@ -135,6 +135,11 @@ export default {
     }
   },
   methods: {
+    gotoHome(){
+      this.$router.push({ name: 'Home',params:{lang:localStorage.getItem('lang')}})
+
+    },
+
     Logout() {
       Callaxios('Auth/Logout', 'post', undefined, this.afterlogout)
     },

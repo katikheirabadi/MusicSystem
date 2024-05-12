@@ -1,7 +1,7 @@
 <template>
     <banner/>
     <myheader :img="lessonimg"
-    :header="$t('lesson.list_title')+this.company.name"
+    :header="$t('lesson.list_title')+ ' '+this.company.name"
     :text="$t('lesson.list_subtitle')"
     :btns="[{text:'بازگشت به خانه',link:'/'}]"
     :logo="company.logo"

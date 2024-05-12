@@ -1,6 +1,6 @@
 .detail{
     height: 100%;
-    font-size: 25px;
+    font-size: 20px;
     padding-top: 5%;
     padding-bottom: 6%;
     min-width: 80%;
@@ -21,6 +21,6 @@
   .detail p{
       font-family: 'IRANSANS' !important;
       font-weight: bold;
-      font-size: 20px !important;
+      font-size: 15px !important;
       color: #5b1505;
   }

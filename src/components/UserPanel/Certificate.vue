@@ -19,7 +19,7 @@
 <v-card 
 class="text-center"
 title="غیر مجاز" 
-subtitle="شما به دلایل زیر نمیتوانید گواهینامه این دوره را مشاهده کنید" >
+subtitle="شما به دلایل زیر نمیتوانید گواهینامه این کلاس را مشاهده کنید" >
 <div class="font" v-html="message"></div>
 <v-card-actions>
 <v-spacer></v-spacer>
@@ -32,7 +32,7 @@ subtitle="شما به دلایل زیر نمیتوانید گواهینامه ا
   <v-sheet>
     <v-container>
     <h2 class="text-center font certtitle">فایل گواهینامه</h2>
-    <h3 class="text-center font mt-3 mb-6 certsubtitle">دوره {{ certdetail.ProductName }}</h3>
+    <h3 class="text-center font mt-3 mb-6 certsubtitle">کلاس {{ certdetail.ProductName }}</h3>
     <v-row>
       <v-col md="3"></v-col>
       <v-col cols="12" md="3">

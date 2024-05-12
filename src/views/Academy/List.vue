@@ -68,7 +68,7 @@ export default{
       param.Data.filter((i)=> this.academies.push({
           id : i.Id,
           name : i.Name,
-          addres : shorttext(i.Location,60),
+          addres : shorttext(i.Location,50),
           showAddress : i.Location,
           phone : i.Phone,
           count : i.CourseCount,

@@ -2,11 +2,13 @@
      <banner/>
      <myheader
      :img="img" 
-     :header="$t('category.headertitle')+this.description.title" 
+     :header="$t('category.headertitle')+' '+this.description.title" 
      :text="$t('category.headertext')" :btns="[]"
      :logo="description.logo"
      />
-     <detail :header=" $t('category.resume') +this.description.title" :cards="details"/>
+     <v-container>
+       <detail :header=" $t('category.resume') +this.description.title" :cards="details"/>
+     </v-container>
      <description :title="description.title" :text="description.desc"/>
      <v-container>
       <!-- categories -->

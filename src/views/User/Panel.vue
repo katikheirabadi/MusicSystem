@@ -34,7 +34,7 @@
           style="margin-inline-start: 1%;"></v-icon>
         <v-spacer></v-spacer>
         <div>
-          <v-btn variant="text" @click="this.$router.replace({ name: 'bag' })">
+          <v-btn variant="text" @click="this.$router.push({ name: 'bag' })">
             <v-badge :content="Profile.BagsCount" color="green">
               <v-icon icon="fa fa-shopping-bag">
               </v-icon>
@@ -43,7 +43,7 @@
             </v-tooltip>
           </v-btn>
 
-          <v-btn variant="text" @click="this.$router.replace({ name: 'welcome' })">
+          <v-btn variant="text" @click="this.$router.push({ name: 'welcome' })">
             <v-icon icon="fa fa-sign-out">
             </v-icon>
             <v-tooltip style="font-family: 'IRANSANS';" activator="parent" location="bottom">خروج

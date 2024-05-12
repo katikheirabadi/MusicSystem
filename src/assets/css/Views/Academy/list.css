@@ -2,7 +2,7 @@
     box-shadow: 5px 10px 20px #564e4e;
     border-radius: 5% !important;
     width: 100% !important;
-    height: max-content;
+    height: max-content !important;
     background-color: #ebc18d8f;
   }
   .academy img {

@@ -239,7 +239,7 @@ export default {
     },
     afterlogin(param) {
       localStorage.setItem('token', param.Data.Token)
-      this.$router.replace(Store.state.backurl)
+      this.$router.push(Store.state.backurl)
     }
   }
 } 
