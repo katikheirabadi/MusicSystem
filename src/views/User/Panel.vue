@@ -2,9 +2,9 @@
   <v-card>
     <v-layout>
       <v-navigation-drawer v-model="drawer" temporary @click="rail = false">
-        <v-list-item nav class="center-class" style="display: flex;">
+        <v-list-item nav class="d-flex justify-center">
           <img :src="Img" alt="Hello" class="profile-img">
-          <h4 class="text-center" style="color: #912909;">{{ Name }}
+          <h4 class="text-center brown-color" >{{ Name }}
           </h4>
           <v-btn v-if="Profile.RoleId ==2 || Profile.RoleId ==1" class="mt-2 bg-red-darken-4" block :href="admin">پنل مدیریت</v-btn>
           <v-btn v-if="Profile.RoleId ==10" class="mt-2 bg-red-darken-4" block :href="admin">پنل کارشناس آموزش</v-btn>
@@ -12,26 +12,25 @@
           <v-btn v-if="Profile.RoleId ==12" class="mt-2 bg-red-darken-4" block :href="admin">پنل مالی</v-btn>
         </v-list-item>
         <v-list nav>
-           <v-list-item class="panellist" prepend-icon="fa fa-calendar" title="داشبورد" value="0"
+           <v-list-item class="brown-color" prepend-icon="fa fa-calendar" title="داشبورد" value="0"
             @click="gotoDashboard"></v-list-item>
-          <v-list-item class="panellist" prepend-icon="fa fa-home" title="خانه" value="1"
+          <v-list-item class="brown-color" prepend-icon="fa fa-home" title="خانه" value="6"
             @click="gotohome"></v-list-item>
-            <v-list-item class="panellist" prepend-icon="fa fa-calendar" title="کلاس های من" value="1"
+            <v-list-item class="brown-color" prepend-icon="fa fa-calendar" title="کلاس های من" value="1"
             @click="gotoclasses"></v-list-item>
-          <v-list-item class="panellist" prepend-icon="fa fa-certificate" title="گواهینامه ها" value="2"
+          <v-list-item class="brown-color" prepend-icon="fa fa-certificate" title="گواهینامه ها" value="2"
             @click="gototcertificates"></v-list-item>
-          <v-list-item class="panellist" prepend-icon="fa fa-calculator" title="مدیریت اعتبار" value="3"
+          <v-list-item class="brown-color" prepend-icon="fa fa-calculator" title="مدیریت اعتبار" value="3"
             @click="gotocredit"></v-list-item>
-          <v-list-item class="panellist" prepend-icon="fa fa-edit" title="ویرایش مشخصات" value="4"
+          <v-list-item class="brown-color" prepend-icon="fa fa-edit" title="ویرایش مشخصات" value="4"
             @click="gotoeditprofile"></v-list-item>
-          <v-list-item class="panellist" prepend-icon="fa fa-book" title="مدیریت درخواست ها" value="5"
+          <v-list-item class="brown-color" prepend-icon="fa fa-book" title="مدیریت درخواست ها" value="5"
             @click="gotorequests"></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-app-bar color="#5b1505" style="display: flex;
-        justify-content: space-between !important;">
-        <v-icon v-if="!drawer" @click.stop="drawer = !drawer" icon="fa fa-bars"
-          style="margin-inline-start: 1%;"></v-icon>
+      <v-app-bar class="d-flex justify-space-between brown-bg">
+        <v-icon v-if="!drawer" @click.stop="drawer = !drawer" icon="fa fa-bars" class="ms-5"
+         ></v-icon>
         <v-spacer></v-spacer>
         <div>
           <v-btn variant="text" @click="this.$router.push({ name: 'bag' })">
@@ -39,19 +38,19 @@
               <v-icon icon="fa fa-shopping-bag">
               </v-icon>
             </v-badge>
-            <v-tooltip style="font-family: 'IRANSANS';" activator="parent" location="bottom">سبد خرید شما
+            <v-tooltip activator="parent" location="bottom">سبد خرید شما
             </v-tooltip>
           </v-btn>
 
           <v-btn variant="text" @click="this.$router.push({ name: 'welcome' })">
             <v-icon icon="fa fa-sign-out">
             </v-icon>
-            <v-tooltip style="font-family: 'IRANSANS';" activator="parent" location="bottom">خروج
+            <v-tooltip activator="parent" location="bottom">خروج
             </v-tooltip>
           </v-btn>
         </div>
       </v-app-bar>
-      <v-main style="min-height: 100vh;background-color: #ee8f8f3b;margin-inline-start: 0%;padding-inline-end: 0%;">
+      <v-main style="min-height: 100vh;" class="">
         <classes v-if="classescomp" />
         <credit v-if="credit" />
         <certificate v-if="certificate" @calleditprofile="gotoeditprofile"/>
@@ -161,15 +160,10 @@ export default {
   list-style: none;
   outline: none;
 }
-
-.panellist {
-  color: #9c280e;
-}
-
 .profile-img {
   border-radius: 50%;
-  width: 150px !important;
+  width: 100px !important;
   margin-top: 10%;
-  height: 150px;
+  height: 100px;
 }
 </style>

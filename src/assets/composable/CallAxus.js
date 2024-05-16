@@ -37,10 +37,11 @@ async function Callaxios(url,method,input,callbackfunc){
 }
 catch (error) {
   document.getElementById('loader').style.display = 'none';
+  var message = error.responce.data == undefined?error:(error.response.data.Message ==  undefined? error.message:error.response.data.Message)
   Swal.fire({
     icon: "error",
     title: 'خطا',
-    text: error.response.data.Message ==  undefined? error.message:error.response.data.Message,
+    text: message,
     confirmButtonColor:'red'
   });
    }

@@ -78,3 +78,13 @@
 .text-danger{
 color: red;
 }
+.brown-color{
+  color:#912909 !important ;
+}
+.brown-bg{
+  background-color:#5b1505 !important ;
+  color: white !important;
+}
+.white-bg{
+  background-color: rgb(255 255 255 / 9%);
+}

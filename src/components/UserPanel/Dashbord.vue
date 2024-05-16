@@ -156,6 +156,7 @@
   </v-container>
 </template>
 <script>
+import { Callaxios } from '@/assets/composable/CallAxus';
 export default {
   data() {
     return {
@@ -164,19 +165,25 @@ export default {
       days: null,
       form: null,
       input: null,
-      buttons: null
+      buttons: null,
+      calenderhtml:''
     }
   },
   mounted() {
-    this.container = document.getElementsByClassName('calendar')[0];
+Callaxios('Front/GetThisMonthCalender','get',undefined,)
+  
+  },
+  methods: {
+    aftergetcalender(param){
+this.calenderhtml = param.Data
+      this.container = document.getElementsByClassName('calendar')[0];
     this.calendar = document.getElementsByClassName('front')[0];
     this.days = document.querySelectorAll('.weeks span');
     this.form = document.getElementsByClassName('back')[0];
     this.input = document.querySelectorAll('.back input');
     this.buttons = document.querySelectorAll('.back button');
     this.bindUIActions();
-  },
-  methods: {
+    },
     swap(currentSide, desiredSide) {
       this.container.classList.toggle('flip');
       currentSide.style.display = 'none';

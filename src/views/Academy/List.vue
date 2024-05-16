@@ -60,7 +60,7 @@ export default{
       header : window.location.origin+'/src/assets/img/academydefult.png'
     }
   },mounted(){
-    Callaxios('Frant/GetAllCompanies','get',undefined,this.aftergtallacademies)
+    Callaxios('Front/GetAllCompanies','get',undefined,this.aftergtallacademies)
   },
   methods:{
     aftergtallacademies(param){

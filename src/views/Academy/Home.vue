@@ -71,7 +71,7 @@ export default{
     },
     mounted(){
      
-       Callaxios('Frant/GetCompany/'+this.$route.params.academy,'get',undefined,this.adtergetdetail)
+       Callaxios('Front/GetCompany/'+this.$route.params.academy,'get',undefined,this.adtergetdetail)
         
     }
    ,methods:{

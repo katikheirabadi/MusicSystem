@@ -96,7 +96,7 @@ mounted(){
   "CompanyId": parseInt( this.$route.params.academyId)
 }
   Callaxios('Lesson/GetList','post',input,this.aftergetlessons)
-  Callaxios('Frant/GetCompany/'+this.$route.params.academyId,'get',undefined,this.adtergetdetail)
+  Callaxios('Front/GetCompany/'+this.$route.params.academyId,'get',undefined,this.adtergetdetail)
 },
 methods:{
   aftergetlessons(params){

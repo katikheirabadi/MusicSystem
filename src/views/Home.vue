@@ -136,8 +136,8 @@
     VSheet,detail,Descripti9ontextRow
     },
     mounted(){
-      Callaxios('Frant/SiteStatics','get',undefined,this.aftergetstatics);
-      Callaxios('Frant/GetAllCompanies','get',undefined,this.aftergtallacademies)
+      Callaxios('Front/SiteStatics','get',undefined,this.aftergetstatics);
+      Callaxios('Front/GetAllCompanies','get',undefined,this.aftergtallacademies)
     },
     methods: {
       aftergetstatics(param){
