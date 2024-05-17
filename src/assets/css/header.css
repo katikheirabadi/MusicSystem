@@ -1,6 +1,5 @@
 .banner{
-    /* background-image: url('../img/123.jpg'); */
-    filter: brightness(50%);
+    filter: brightness(60%);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,25 +7,9 @@
     margin: auto;
 }
 .banner-text {
-  color: white;
-  font-weight: bold;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  width: 90%;
-  text-align: center;
-}
-.banner-text h1{
-    padding-bottom: 1%;
-}
-.bannerbtn{
-  background-color: #ff673d;
-  text-decoration: none;
-  border-radius: 20px;
-  color: white !important;
-  font-weight: bold;
-  padding-inline: 20px;
-  padding-block: 10px;
 }

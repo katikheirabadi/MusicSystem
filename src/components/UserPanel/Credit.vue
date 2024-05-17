@@ -7,7 +7,7 @@
           class="selectclass"></v-select>
       </v-col>
       <v-col cols="12" md="2">
-        <v-btn class="creditcardbtn text-white" style="height: 70%;" @click="changeactiveCompany">{{ $t('panel.credit.changeActivcompany') }}</v-btn>
+        <v-btn class="creditcardbtn py-3 pb-3 text-white" style="height: 70%;" @click="changeactiveCompany">{{ $t('panel.credit.changeActivcompany') }}</v-btn>
       </v-col>
 
     </v-row>
@@ -58,7 +58,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" md="6">
+      <v-col cols="12" md="12">
         <!-- credits -->
         <v-row class="d-flex justify-center pb-5  mt-5">
           <h2 class="text-center creditreprttitle">{{ $t('panel.credit.creditreprttitle') }}</h2>
@@ -128,7 +128,7 @@
         </v-row>
 
       </v-col>
-      <v-col cols="12" md="6">
+      <v-col cols="12" md="12">
         <!-- charges -->
         <v-row class="d-flex justify-center pb-5 mt-6">
           <h2 class="text-center creditreprttitle">{{  $t('panel.credit.chargereporttitle') }}</h2>
@@ -229,8 +229,8 @@ export default {
       Callaxios('Company/GetActiveCompany', 'get', undefined, this.aftergetactivecompany)
     },
     aftergetactivecompany(param) {
-      if (param.Data.companyId == 0) {
-        this.selectcompany = undefined
+      if ( param.Data == null || param.Data.companyId == 0) {
+        this.selectcompany = -1
       } else {
         this.selectcompany = param.Data.companyId
       }
@@ -260,7 +260,7 @@ export default {
       param.Data.filter((i) => this.credits.push({
         date: new Date(i.CreationDate).toLocaleDateString('fa-IR', this.options),
         desc: i.Description,
-        shortdesc: shorttext(i.Description, 10),
+        shortdesc: shorttext(i.Description??'', 10),
         product: i.productname == '' ? '--------' : i.productname,
         amount: ToRial(i.TransactionAmount) + i18n.global.t('message.unit'),
         nouaount: ToRial(i.TotalAmount) + i18n.global.t('message.unit'),
@@ -286,7 +286,7 @@ export default {
       param.Data.filter((i) => this.charges.push({
         date: new Date(i.CreationDate).toLocaleDateString('fa-IR', this.options),
         desc: i.Description,
-        shortdesc: shorttext(i.Description, 10),
+        shortdesc: shorttext(i.Description??'', 10),
         product: i.productname == '' ? '--------' : i.productname,
         amount: ToRial(i.TransactionAmount) +i18n.global.t('message.unit'),
         nouaount: ToRial(i.TotalAmount) + i18n.global.t('message.unit'),

@@ -70,22 +70,18 @@
                     </v-row>
                 </v-col>
                 <v-col cols="12" md="4">
-                    <v-row class="text-white center-class mb-3">
+                    <div class="text-white center-class mb-3 text-center">
                         <h3 class="text-center">{{ $t('footer.etemad') }}</h3>
-                    </v-row>
-                    <v-row class="etemad">
-                       
-                            <a referrerpolicy='origin' target='_blank'
-                                href='https://trustseal.enamad.ir/?id=473538&Code=FZS3ERUqcxyIWBrmfWsj6iBc3e66t77E'><img
-                                    referrerpolicy='origin'
-                                   
-                                    src='https://trustseal.enamad.ir/logo.aspx?id=473538&Code=FZS3ERUqcxyIWBrmfWsj6iBc3e66t77E'
-                                    alt='' style='cursor:pointer;width: 100% !important;' Code='FZS3ERUqcxyIWBrmfWsj6iBc3e66t77E'></a>
-                            <!-- <script src="https://cdn.zarinpal.com/trustlogo/v1/trustlogo.js" type="text/javascript"></script> -->
-
-                     
-
-                    </v-row>
+                    </div>
+                    <div class="etemad">
+                        <a referrerpolicy='origin' target='_blank'
+                            href='https://trustseal.enamad.ir/?id=473538&Code=FZS3ERUqcxyIWBrmfWsj6iBc3e66t77E'><img
+                                referrerpolicy='origin'
+                                src='https://trustseal.enamad.ir/logo.aspx?id=473538&Code=FZS3ERUqcxyIWBrmfWsj6iBc3e66t77E'
+                                alt='' style='cursor:pointer;width: 100% !important;'
+                                Code='FZS3ERUqcxyIWBrmfWsj6iBc3e66t77E'></a>
+                        <!-- <script src="https://cdn.zarinpal.com/trustlogo/v1/trustlogo.js" type="text/javascript"></script> -->
+                    </div>
                 </v-col>
 
             </v-row>

@@ -1,5 +1,5 @@
 <template>
- <div class="main" style="position: relative;" :class="{'FARSI':this.$i18n.locale == 'fa'}">
+ <div class="main bg" style="position: relative;" :class="{'FARSI':this.$i18n.locale == 'fa'}">
   <loader id="loader" style="display: none;"/>
   <router-view />
 </div>

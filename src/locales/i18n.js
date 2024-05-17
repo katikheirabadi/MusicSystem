@@ -44,27 +44,27 @@ const messages = {
         optionheader:'چرا کار و ساز انتخاب کنم؟؟',
         optionone:` <img
         src="../src/assets/img/1.png"
-        style="width: 80%;"
+        style="width: 50%;"
        />
-       <h3 class="text-center pb-5">مدیریت کلیه امور داخلی آموزشگاه<br/>هرزمان و هرمکان</h3>
+       <h5 class="text-center pb-5">مدیریت کلیه امور داخلی آموزشگاه<br/>هرزمان و هرمکان</h5>
       `,
       optiontwo:` <img
       src="../src/assets/img/4.jpg"
-      style="width: 80%;"
+      style="width: 50%;"
      />
-     <h3 class="text-center pb-5">امکان برگزاری کلاس<br> آنلاین و غیرحضوری</h3>
+     <h5 class="text-center pb-5">امکان برگزاری کلاس<br> آنلاین و غیرحضوری</h5>
     `,
     optionthree:` <img
       src="../src/assets/img/2.png"
-      style="width: 80%;"
+      style="width: 50%;"
      />
-     <h3 class="text-center pb-5">برگزاری آزمون و <br>اراثه گواهینامه با QRCode</h3>
+     <h5 class="text-center pb-5">برگزاری آزمون و <br>اراثه گواهینامه با QRCode</h5>
     `,
     optionfour:` <img
       src="../src/assets/img/3.png"
-      style="width: 80%;"
+      style="width: 50%;"
      />
-     <h3 class="text-center pb-5">ارزیابی استاد و آموزشگاه<br> توسط شما</h3>
+     <h5 class="text-center pb-5">ارزیابی استاد و آموزشگاه<br> توسط شما</h5>
     `
       
       },

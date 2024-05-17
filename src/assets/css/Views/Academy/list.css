@@ -1,28 +1,15 @@
-.academy{
-    box-shadow: 5px 10px 20px #564e4e;
-    border-radius: 5% !important;
-    width: 100% !important;
-    height: max-content !important;
-    background-color: #ebc18d8f;
-  }
-  .academy img {
-    width: 100% !important;
-    max-height: 30% !important;
-  }
-  .academy:hover{
-    box-shadow: 10px 15px 15px hsl(0, 6%, 16%);
-  }
-  .action{
-    display: flex;
-    justify-content: end;
-  }
-  .mybtn{
-      background-color: #5b3405 !important;
-      width: 100%;
-      text-decoration: none;
-      text-align: center;
-      padding: 3% !important;
-      color: aliceblue;
-      border-radius: 15px;
-      margin-top: auto;
-    }
+.bgimage{
+  height: 150px;
+  background-repeat: round;
+  filter: blur(1px);
+  filter: brightness(80%);
+  position: relative;
+}
+
+.academy:hover{
+  box-shadow: 3px 3px 3px  #9129096c;
+}
+
+.action {
+  bottom: 0;
+}

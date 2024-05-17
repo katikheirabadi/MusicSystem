@@ -1,90 +1,106 @@
 @font-face {
-    font-family: 'IRANSANS';
-    src: url(../fonts/farsi/num.ttf);
-   }
+  font-family: 'IRANSANS';
+  src: url(../fonts/farsi/num.ttf);
+}
 
-   .center-class{
-    display: flex;
-    justify-content: center;
-   }
-   .v-card-subtitle{
-    font-family: 'IRANSANS' !important;
-  }
-.v-btn__content{
-  font-family:  'IRANSANS';
+.center-class {
+  display: flex;
+  justify-content: center;
 }
-.v-tooltip,.v-menu__content{
+
+.v-card-subtitle {
   font-family: 'IRANSANS' !important;
 }
-.v-select{
-  font-family: 'IRANSANS' !important;
-}.v-list-item-title,.v-list,.v-card-title,.v-toolbar,.v-label,.v-field__input,.v-card-text{
+
+.v-btn__content {
+  font-family: 'IRANSANS';
+}
+
+.v-tooltip,
+.v-menu__content {
   font-family: 'IRANSANS' !important;
 }
-   .swal2-html-container,.swal2-styled,.swal2-title{
-    font-family: 'IRANSANS' ;
-    direction: rtl;
-   }
-   @keyframes bounceIn {
-    0% {
-      transform: scale(0.5);
-      opacity: 0;
-    }
-    60% {
-      transform: scale(1.02);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);
-    }
+
+.v-select {
+  font-family: 'IRANSANS' !important;
+}
+
+.v-list-item-title,
+.v-list,
+.v-card-title,
+.v-toolbar,
+.v-label,
+.v-field__input,
+.v-card-text {
+  font-family: 'IRANSANS' !important;
+}
+
+.swal2-html-container,
+.swal2-styled,
+.swal2-title {
+  font-family: 'IRANSANS';
+  direction: rtl;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
   }
 
-  @keyframes bounceroghttoleft {
-    0% {
-      transform: scale(.6);
-      left: 350px;
-      opacity: 0;
-    }
-    50% {
-      transform: scale(1);
-      left: 50px;
-      opacity: 1;
-    }
-    100% {
-      left: 0px;
-      transform: scale(1);
-    }
+  60% {
+    transform: scale(1.02);
+    opacity: 1;
   }
-  
-  @keyframes bouncerleft {
-    0% {
-      transform: scale(.6);
-      right : 150px;
-      opacity: 0;
-    }
-    50% {
-      transform: scale(.9);
-      right: 50px;
-      opacity: 1;
-    }
-    100% {
-        transform: scale(1);
-        right: 0px;
-    }
+
+  100% {
+    transform: scale(1);
   }
-  .v-btn {
-    letter-spacing:0 !important
 }
-.text-danger{
-color: red;
+
+@keyframes bounceroghttoleft {
+  0% {
+    transform: scale(.6);
+    left: 350px;
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1);
+    left: 50px;
+    opacity: 1;
+  }
+
+  100% {
+    left: 0px;
+    transform: scale(1);
+  }
 }
-.brown-color{
-  color:#912909 !important ;
+
+@keyframes bouncerleft {
+  0% {
+    transform: scale(.6);
+    right: 150px;
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(.9);
+    right: 50px;
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    right: 0px;
+  }
 }
-.brown-bg{
-  background-color:#5b1505 !important ;
-  color: white !important;
+
+.v-btn {
+  letter-spacing: 0 !important;
+  text-decoration: none;
 }
-.white-bg{
-  background-color: rgb(255 255 255 / 9%);
+a {
+  letter-spacing: 0 !important;
+  text-decoration: none;
 }

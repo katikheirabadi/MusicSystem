@@ -1,0 +1,38 @@
+.text-danger {
+    color: red;
+}
+.brown-color-dark {
+    color: #3c0f01 !important;
+}
+
+.brown-color {
+    color: #912909 !important;
+}
+
+.brown-color-light {
+    color: #b43711 !important;
+}
+
+.brown-bg {
+    background-color: #5b1505 !important;
+    color: white !important;
+}
+
+.brown-bg-light {
+    background-color: #ee8a7434 !important;
+    color: #912909 !important;
+}
+
+.white-bg {
+    background-color: rgb(255 255 255 / 9%);
+}
+
+.br-brown {
+    border: 3px solid #9129094b !important;
+}
+.br-brown-sm {
+    border: 2px solid #9129094b !important;
+}
+.bg{
+    background-color: #f3c39307;
+}

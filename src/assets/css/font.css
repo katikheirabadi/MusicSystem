@@ -1,0 +1,29 @@
+.f-x-small {
+  font-size: x-small;
+}
+
+.f-small {
+  font-size: small;
+}
+
+.f-medium {
+  font-size: medium;
+}
+.f-large {
+  font-size: large !important;
+}
+.f-xlarge {
+  font-size: x-large !important;
+}
+
+.f-blod{
+  font-weight:bold !important;
+}
+
+.lh-sm{
+  line-height: 2;
+}
+
+.lh-md{
+  line-height: 2.5;
+}

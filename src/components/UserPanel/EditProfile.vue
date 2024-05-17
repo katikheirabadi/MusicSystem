@@ -29,9 +29,9 @@
         </v-col>
             </v-row>
             <v-row >
-        <v-col cols="12" md="2"></v-col>
-        <v-col cols="12" md="4">
-            <v-radio-group inline  v-model="gender" >
+        <!-- <v-col cols="12" md="2"></v-col> -->
+        <v-col cols="12" md="6">
+            <v-radio-group inline  v-model="gender" class="d-flex align-center justify-center" >
                 <v-radio
                 :label="$t('panel.editprofile.female')"
                 color="rgb(109, 5, 5)"
@@ -45,7 +45,7 @@
               ></v-radio>
             </v-radio-group>
         </v-col>
-        <v-col class="d-flex align-center" cols="12" md="4" >
+        <v-col class="d-flex align-center" cols="12" md="6" >
             <v-btn class="editbtn" @click="updateInfo" block>{{ $t('panel.editprofile.updateinfobtn') }}  </v-btn>
         </v-col> <v-col cols="12" md="1"></v-col>
             </v-row>

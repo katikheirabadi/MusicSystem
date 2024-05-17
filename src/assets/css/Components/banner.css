@@ -10,9 +10,9 @@
  
 }
 .menuitemparent :hover{
-  background-color: rgba(228, 128, 98, 0.685);
+  background-color: rgba(242, 161, 136, 0.309);
   border-radius: 5px;
-  padding: 10%;
+  padding: 5%;
   transition: all .2s ease-in-out;
 }
 .menuitem{

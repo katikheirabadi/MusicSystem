@@ -1,29 +1,27 @@
 <template>
- <div style="position: relative;">
-<v-row class="banner">
-  <v-img
-  :src="img"
-  cover=""
-  >
-  </v-img>
-</v-row>
-<div class="banner-text">
-  <img :src="logo" alt="" style="width: 20%;">
-  <h1 style="font-size:30px">{{ header }}</h1>
-  <h1 class="mt-1 mb-8" style="font-size:20px;">{{ text }}</h1>
-  <router-link  class="bannerbtn" v-for="btn in btns" style="font-weight: bold;color: aliceblue;" :to="btn.link">{{ btn.text }}</router-link>
+  <div style="position: relative;">
+    <v-row class="banner">
+      <v-img :src="img" cover="">
+      </v-img>
+    </v-row>
+    <div class="banner-text px-2 f-bold text-white text-center w-100">
+      <img :src="logo" alt="" style="width: 20%;">
+      <h2 class="py-5">{{ header }}</h2>
+      <h4 class="mb-10">{{ text }}</h4>
+      <router-link class="text-white rounded rounded-xl px-5 py-3 brown-bg f-small" v-for="btn in btns" :to="btn.link">{{
+        btn.text }}</router-link>
 
-</div>
-</div>
+    </div>
+  </div>
 
 </template>
 <script setup>
- const props = defineProps({
+const props = defineProps({
   header: String,
-  text:String,
-  btns:Array,
-  img:String,
-  logo:String
+  text: String,
+  btns: Array,
+  img: String,
+  logo: String
 })
 </script>
 <style scoped>

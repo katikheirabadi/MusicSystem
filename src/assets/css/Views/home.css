@@ -1,74 +1,11 @@
-.s1img{
-  padding-inline-end: 30%;
-  width: 60% !important;
-  height: fit-content;
-}
-.academy{
-  box-shadow: 5px 10px 20px #1e1e1e73;
-  border-radius: 2% !important;
-  width: 100%;
-  border: rgb(148, 4, 4) 3px solid;
-}
+
 .academy:hover{
-  box-shadow: 10px 15px 15px hsla(0, 0%, 0%, 0.795);
+  box-shadow: 3px 3px 3px  #9129096c;
 }
-.academy img{
-  margin-inline-start: 30%;
-  width: 40% !important;
-  max-height: 30% !important;
+.bgimage{
+  height: 100px;
+  background-repeat: round;
+  filter: blur(1px);
+  filter: brightness(80%);
+  position: relative;
 }
-  .mybtn{
-    background-color: #5b1505 !important;
-    width: 100%;
-    text-decoration: none;
-    text-align: center;
-    padding: 3% !important;
-    color: aliceblue;
-    border-radius: 10px;
-  }
-  .detail{
-    height: 100%;
-    font-size: 25px;
-    padding-top: 5%;
-    padding-bottom: 6%;
-    min-width: 80%;
-    font-weight: bold;
-    font-family: 'IRANSANS';
-    color: #a03e23;
-    border: 3px solid #da3e14;
-    box-shadow: 2px 2px 9px #a03e23;
-  }
- 
-  .sectionheader{
-    font-size:30px;
-    margin-top: 3%;
-    margin-bottom: 1%;
-    padding-bottom: 1%;
-    color: #5b1505;
-  }
-  .detail p{
-      font-family: 'IRANSANS' !important;
-      font-weight: bold;
-      font-size: 20px !important;
-      color: #5b1505;
-  }
-  
-
-    .s3{
-      margin-top: 5%;
-    }
-
-    .s4{
-      min-height: 10vh;
-      background-color: #5b1505;
-    }
-    .s4 .v-row{
-      padding: 3%;
-    }
-    .optionheader{
-      margin-top: 3%;
-      color: #5b1505;
-    }
-
-
-
