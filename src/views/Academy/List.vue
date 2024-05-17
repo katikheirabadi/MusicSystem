@@ -5,16 +5,15 @@
   <v-container class="mt-5">
     <v-row>
       <v-col cols="12" md="4" xl="3" v-for="academy in academies" :key="academy.id">
+
         <v-card class="academy rounded rounded-xl position-relative">
-          <div>
+         
             <div class="d-flex justify-center bgimage" :style="{ backgroundImage: `url(${academy.logo})` }">
             </div>
-
-            <div class="mb-10 rounded rounded-lg"
-              style="position: absolute;transform: translate(-140%,-50%);">
+            <div class="mb-10 rounded rounded-lg d-flex justify-center" style="position: absolute;left: 50%;transform: translate(-50%,-50%);">
               <img class="rounded rounded-xl w-75" src="/src/assets/img/academylogo2.png" alt="">
             </div>
-          </div>
+      
           <div class="pt-10 mt-4">
             <h3 class="f-mediom brown-color-dark text-center mb-3">{{ academy.name }}</h3>
             <div class="mb-3 brown-color f-small text-center"><span>{{ academy.addres }}</span></div>
@@ -22,10 +21,10 @@
                 }}</span></div>
 
           </div>
-        
+         
         </v-card>
-        <div  style="transform: translate(-40%,-50%);">
-          <router-link class="brown-bg text-center w-100 py-3 px-2 action rounded rounded-lg f-small"
+        <div class="d-flex justify-center" style="transform: translate(0%,-50%);">
+          <router-link class="brown-bg text-center py-3 px-2 action rounded rounded-lg f-small"
             :to="{ name: 'Academy', params: { academy: academy.id } }" scroll-behavior="auto">
             {{ $t('academy.btn') }}
           </router-link>
