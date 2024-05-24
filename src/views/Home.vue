@@ -18,35 +18,20 @@
       <h1 class="text-center brown-color mt-7 mb-7">{{ $t('home.Accademiessection_title') }}</h1>
       <v-row>
         <v-col cols="12" md="4" lg="3" v-for="academy in showacademies" :key="academy.id">
-          <v-card class="academy rounded rounded-xl position-relative">
+          <v-card class="academy rounded rounded-xl position-relative" @click="this.$router.push({ name: 'Academy', params: { academy: academy.id } })">
             <div>
               <div class="d-flex justify-center bgimage" :style="{ backgroundImage: `url(${academy.logo})` }">
               </div>
               <div class="mb-10 rounded rounded-lg d-flex justify-center" style="position: absolute;left: 50%;transform: translate(-50%,-50%);">
-              <img class="rounded rounded-xl w-66" src="/src/assets/img/academylogo2.png" alt="">
+              <img class="rounded w-33" src="/src/assets/img/academylogo2.png" alt="">
             </div>
             
             </div>
-            <div class="pt-10 mt-3">
-              <h3 class="f-mediom brown-color-dark text-center mb-4">{{ academy.name }}</h3>
-              <div class="mb-3 brown-color f-small text-center"><span>{{ academy.addres }}</span> <v-tooltip
-                  activator="parent" location="bottom" >{{
-                    academy.showAddress
-                  }}
-                </v-tooltip></div>
-              <div class="mb-8 brown-color f-small text-center"><span>{{ $t('academy.list_phone') }} : {{ academy.phone
-                  }}</span></div>
-
+            <div class="pt-6 pb-1">
+              <h4 class="brown-color-dark text-center mb-4">{{ academy.name }}</h4>
             </div>
 
           </v-card>
-          <div class="d-flex justify-center" style="transform: translate(0%,-50%);">
-          <router-link class="brown-bg text-center py-3 px-2 action rounded rounded-lg f-small"
-            :to="{ name: 'Academy', params: { academy: academy.id } }" scroll-behavior="auto">
-            {{ $t('academy.btn') }}
-          </router-link>
-
-        </div>
           
         </v-col>
       </v-row>
