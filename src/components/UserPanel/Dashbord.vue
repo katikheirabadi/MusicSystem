@@ -170,12 +170,8 @@ export default {
     }
   },
   mounted() {
-Callaxios('Front/GetThisMonthCalender','get',undefined,)
-  
-  },
-  methods: {
-    aftergetcalender(param){
-this.calenderhtml = param.Data
+//Callaxios('Front/GetThisMonthCalender','get',undefined,)
+
       this.container = document.getElementsByClassName('calendar')[0];
     this.calendar = document.getElementsByClassName('front')[0];
     this.days = document.querySelectorAll('.weeks span');
@@ -183,6 +179,10 @@ this.calenderhtml = param.Data
     this.input = document.querySelectorAll('.back input');
     this.buttons = document.querySelectorAll('.back button');
     this.bindUIActions();
+  },
+  methods: {
+    aftergetcalender(param){
+
     },
     swap(currentSide, desiredSide) {
       this.container.classList.toggle('flip');

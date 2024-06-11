@@ -16,14 +16,14 @@
     <!-- Academies Cards -->
     <section>
       <h1 class="text-center brown-color mt-7 mb-7">{{ $t('home.Accademiessection_title') }}</h1>
-      <v-row>
-        <v-col cols="12" md="4" lg="3" v-for="academy in showacademies" :key="academy.id">
-          <v-card class="academy rounded rounded-xl position-relative" @click="this.$router.push({ name: 'Academy', params: { academy: academy.id } })">
+      <v-row class="d-flex justify-center">
+        <v-col cols="9" md="4" lg="3" v-for="academy in showacademies" :key="academy.id">
+          <v-card class="rounded rounded-xl position-relative mx-3" @click="this.$router.push({ name: 'Academy', params: { academy: academy.id } })">
             <div>
               <div class="d-flex justify-center bgimage" :style="{ backgroundImage: `url(${academy.logo})` }">
               </div>
               <div class="mb-10 rounded rounded-lg d-flex justify-center" style="position: absolute;left: 50%;transform: translate(-50%,-50%);">
-              <img class="rounded w-33" src="/src/assets/img/academylogo2.png" alt="">
+              <!-- <img class="rounded w-33" src="/src/assets/img/academylogo2.png" alt=""> -->
             </div>
             
             </div>

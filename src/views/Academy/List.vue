@@ -2,11 +2,24 @@
   <banner />
   <myheader :img="header" :header="$t('home.sitename')" :text="$t('academy.list_header_subtitle')"
     :btns="[{ text: $t('academy.list_back'), link: '/' }]" />
-  <v-container class="mt-5">
-    <v-row>
-      <v-col cols="12" md="4" xl="3" v-for="academy in academies" :key="academy.id">
+  <v-container class="mt-5 px-6">
+    <v-row class="d-flex justify-center">
+      <v-col cols="10" md="3" v-for="academy in academies" :key="academy.id">
+        <v-card class="rounded rounded-xl position-relative mx-5" @click="this.$router.push({ name: 'Academy', params: { academy: academy.id } })">
+            <div>
+              <div class="d-flex justify-center bgimage" :style="{ backgroundImage: `url(${academy.logo})` }">
+              </div>
+              <div class="mb-10 rounded rounded-lg d-flex justify-center" style="position: absolute;left: 50%;transform: translate(-50%,-50%);">
+              <!-- <img class="rounded w-33" src="/src/assets/img/academylogo2.png" alt=""> -->
+            </div>
+            
+            </div>
+            <div class="pt-6 pb-1">
+              <h4 class="brown-color-dark text-center mb-4">{{ academy.name }}</h4>
+            </div>
 
-        <v-card class="academy rounded rounded-xl position-relative">
+          </v-card>
+        <!-- <v-card class="academy rounded rounded-xl position-relative">
          
             <div class="d-flex justify-center bgimage" :style="{ backgroundImage: `url(${academy.logo})` }">
             </div>
@@ -29,7 +42,7 @@
             {{ $t('academy.btn') }}
           </router-link>
 
-        </div>
+        </div> -->
       </v-col>
     </v-row>
   </v-container>
