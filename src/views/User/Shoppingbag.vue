@@ -95,9 +95,6 @@
       <v-sheet class="d-md-none">
         <v-row class="me-2 ms-2" v-for="bagproduct in bagproducts">
           <v-row class="mt-5 text-center mobilecontent d-flex justify-center">
-            <!-- <v-col class="d-flex justify-center align-center" cols="12">
-              <h3>نام کلاس</h3>
-            </v-col> -->
             <v-col cols="12">
               <h3>{{ bagproduct.name }}</h3>
             </v-col>
@@ -125,6 +122,12 @@
             <v-col cols="6">
               <h5>{{ bagproduct.MainPrice }} ریال</h5>
             </v-col>
+            <v-col class="d-flex justify-center align-center" cols="6">
+              <h5>قیمت با تخفیف باشگاه</h5>
+            </v-col>
+            <v-col cols="6">
+              <h5>{{ bagproduct.Price }} ریال</h5>
+            </v-col>
             <!-- <v-col class="d-flex justify-center align-center" cols="6">
               <h5>{{ endprice }}</h5>
             </v-col>
@@ -138,12 +141,12 @@
               <h5>{{ bagproduct.credit }} ریال</h5>
             </v-col> -->
 
-            <v-col class="d-flex justify-center align-center" cols="6">
+            <!-- <v-col class="d-flex justify-center align-center" cols="6">
               <h5>تخفیف باشگاه</h5>
             </v-col>
             <v-col cols="6">
               <h5>{{ bagproduct.TakhfifeCloop }} ریال</h5>
-            </v-col>
+            </v-col> -->
 
             <v-col class="d-flex justify-center align-center" cols="6" v-if="takhfif != ''">
               <h5>{{ takhfif }}</h5>
@@ -153,6 +156,12 @@
             </v-col>
             <v-col v-if="0 == 1" class="d-flex justify-center align-center" cols="6">
               <h5>بن آموزشگاه</h5>
+            </v-col>
+            <v-col class="d-flex justify-center align-center" cols="6">
+              <h5>قیمت نهایی</h5>
+            </v-col>
+            <v-col cols="6">
+              <h5>{{ bagproduct.EndRecordPrice }} ریال</h5>
             </v-col>
             <v-col cols="12"><v-btn @click="remove(bagproduct.productId, bagproduct.bagId)" icon="fa fa-trash"
                 color="red"></v-btn></v-col>
@@ -344,8 +353,8 @@ export default {
           this.creditplace = 'بخش اعتباری'
         }
 
-        if (param.Data[i].TakhfifNaghdi > 0 && this.takhfif == '') {
-          this.takhfif = 'هدیه خرید نقدی(اعتبار)'
+        if (param.Data[i].TakhfifNaghdi + param.Data[i].TakhfifSabteNam  > 0 && this.takhfif == '') {
+          this.takhfif = 'هدیه خرید نقدی و ثبت نام(اعتبار)'
         }
         console.log(param.Data)
         this.bagproducts.push({
@@ -356,14 +365,14 @@ export default {
           price: ToRial(price),
           TakhfifeCloop: ToRial(param.Data[i].TakhfifeCloop),
           credit: param.Data[i].SystemShare,
-          takhfif: ToRial(param.Data[i].TakhfifNaghdi),
+          takhfif: ToRial(param.Data[i].TakhfifNaghdi + param.Data[i].TakhfifSabteNam ),
           charge: param.Data[i].UserCharge ?? 0,
           productId: param.Data[i].ProductId,
           bagId: param.Data[i].id,
           SessionsCount: param.Data[i].SessionsCount,
           MainPrice: ToRial(param.Data[i].MainPrice),
           Price :ToRial( param.Data[i].price),
-          EndRecordPrice :ToRial(param.Data[i].price - param.Data[i].TakhfifNaghdi)
+          EndRecordPrice :ToRial(param.Data[i].price - param.Data[i].TakhfifNaghdi -param.Data[i].TakhfifSabteNam)
         })
         this.bagcount = this.bagcount + 1
       }

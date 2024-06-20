@@ -27,7 +27,7 @@ const messages = {
         etemad :"نماد اعتماد",
         address:'البرز ،فردیس ،فلکه سوم <br>،خیابان ٢٣ ،پلاک ٢٩',
         email:'info@karosaz.com',
-        phone:'09122883802 <br> 026-6503521'
+        phone:'09122883802 <br> 026-36503521'
       },    
       home:{
         sitename:'سامانه کار و ساز',
