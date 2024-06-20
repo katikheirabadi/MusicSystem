@@ -1,10 +1,14 @@
 <template>
   <v-container>
     <!-- cards -->
+     <!-- b3dee2
+          efcfe3
+          eaf2d7
+          e27396 -->
     <v-row>
-      <v-col class="center-class" cols="12" md="4" @click="this.$emit('openclasses')">
+      <v-col class="center-class" cols="12" md="3" @click="this.$emit('openclasses')">
         <v-sheet class="px-4 py-3 center-class"
-          style="width:100% !important;height: fit-content;border-radius: 10px;border: #113e99 4px solid;background-color:#113e99;">
+          style="width:100% !important;height: fit-content;border-radius: 10px;border: rgb(103 194 203) 4px solid;background-color:rgb(103 194 203);">
           <v-row>
             <v-col cols="6" style="padding-inline-end: 0px !important;">
               <img src="../../assets/img/icons8-course-100.png" alt="">
@@ -17,9 +21,11 @@
 
         </v-sheet>
       </v-col>
-      <v-col class="center-class" cols="12" md="4" @click="this.$emit('opencerts')">
+      <v-col class="center-class" cols="12" md="3" @click="this.$emit('opencerts')">
         <v-sheet class="px-4 py-3 center-class"
-          style="width:100% !important;height:fit-content !important;border-radius: 10px;border: rgb(0, 128, 100) 4px solid;background-color :rgb(0, 128, 100)">
+          style="width:100% !important;height:fit-content !important;border-radius: 10px;border: rgb(224 218 122)
+ 4px solid;background-color :rgb(224 218 122);
+">
           <v-row>
             <v-col cols="6" style="padding-inline-end: 0px !important;">
               <img src="../../assets/img/icons8-certificate-100.png" alt="">
@@ -31,15 +37,30 @@
 
         </v-sheet>
       </v-col>
-      <v-col class="center-class" cols="12" md="4" @click="this.$emit('opencredit')">
+      <v-col class="center-class" cols="12" md="3" @click="this.$emit('opencredit')">
         <v-sheet class="px-4 py-3 center-class"
-          style="width:100% !important;height:fit-content!important;border-radius: 10px;border: #b50606 4px solid;background-color:#b50606;">
+          style="width:100% !important;height:fit-content!important;border-radius: 10px;border: rgb(5 183 144) 4px solid;background-color:rgb(5 183 144);">
           <v-row>
             <v-col cols="5" style="padding-inline-end: 0px !important;">
               <img src="../../assets/img/icons8-credit-100.png" alt="">
             </v-col>
             <v-col cols="7" class="my-auto text-center text-white">
               <h3>اعتبار من</h3>
+            </v-col>
+          </v-row>
+
+        </v-sheet>
+      </v-col>
+      <v-col class="center-class" cols="12" md="3" @click="GotoAcademy">
+        <v-sheet class="px-4 py-3 center-class"
+          style="width:100% !important;height:fit-content!important;border-radius: 10px;border: #e27396 4px solid;background-color:#e27396;"
+          >
+          <v-row>
+            <v-col cols="5" style="padding-inline-end: 0px !important;">
+              <img src="../../assets/img/buycourse.png" alt="">
+            </v-col>
+            <v-col cols="7" class="my-auto text-center text-white">
+              <h3> ثبت نام کلاس</h3>
             </v-col>
           </v-row>
 
@@ -157,6 +178,7 @@
 </template>
 <script>
 import { Callaxios } from '@/assets/composable/CallAxus';
+import Store from '@/store/Store';
 export default {
   data() {
     return {
@@ -166,12 +188,14 @@ export default {
       form: null,
       input: null,
       buttons: null,
-      calenderhtml:''
+      calenderhtml:'',
+      activecompany:0
     }
   },
   mounted() {
 //Callaxios('Front/GetThisMonthCalender','get',undefined,)
-
+    //this.info = Store.state.profile.
+    Callaxios('Company/GetActiveCompany', 'get', undefined, this.aftergetactivecompany)
       this.container = document.getElementsByClassName('calendar')[0];
     this.calendar = document.getElementsByClassName('front')[0];
     this.days = document.querySelectorAll('.weeks span');
@@ -183,6 +207,16 @@ export default {
   methods: {
     aftergetcalender(param){
 
+    },
+    aftergetactivecompany(param) {
+      if ( param.Data == null || param.Data.companyId == 0) {
+        this.activecompany = -1
+      } else {
+        this.activecompany = param.Data.companyId
+      }
+    },
+    GotoAcademy(){
+      this.$router.push({name:'Academy',params:{academy:this.activecompany}})
     },
     swap(currentSide, desiredSide) {
       this.container.classList.toggle('flip');
@@ -217,7 +251,7 @@ export default {
 }
 
 .calendar {
-  background: rgb(14, 93, 101);
+  background: #f3cbc2;
   ;
   border-radius: 4px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
@@ -238,10 +272,11 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 30px 40px;
+
 }
 
 .current-date h1 {
-  color: #dfebed;
+  color: black !important;
   font-size: 1.4em;
   font-weight: 300;
 }
@@ -282,6 +317,7 @@ export default {
 
 .weeks span {
   padding: 10px;
+  color: black;
 }
 
 .weeks span.active {
@@ -408,6 +444,9 @@ a {
 
 .panellist {
   color: #9c280e;
+}
+li{
+  color: black;
 }
 
 .joinbtn {

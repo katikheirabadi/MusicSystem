@@ -27,7 +27,7 @@
             </div>
             <div class="d-flex align-center mb-3">
                 <img src="../assets/img/email.png" class="ertebat">
-                <h5 class="text-white ms-9" v-html="$t('footer.email')"></h5>
+                <h5 class="text-white ms-9" >info@karosaz.com</h5>
             </div>
             <div class="d-flex align-center mb-3">
                 <img src="../assets/img/address.png" class="ertebat">

@@ -297,7 +297,7 @@ export default{
       this.data.tags.push(param.Data.Tag)
       this.data.concepts = JSON.parse(param.Data.Concepts)
       param.Data.LessonProducts.filter((i)=> this.data.products.push(i))
-      console.log(this.data.products)
+    //  console.log(this.data.products)
     },
     registrationmodal(productId){
       if(Object.entries(Store.state.profile).length != 0)
