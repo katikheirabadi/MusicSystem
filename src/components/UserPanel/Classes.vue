@@ -313,7 +313,7 @@
               بارگذاری  
             </v-btn>
           </v-col>
-          <v-col cols="2"class="text-center d-flex align-center justify-center">
+          <v-col cols="2" class="text-center d-flex align-center justify-center">
             <v-btn color="green-darken-1" height="50%"  
             v-if="practice.AddAnswer !=''" :href="back + practice.AddAnswer" 
             target="_blank" 

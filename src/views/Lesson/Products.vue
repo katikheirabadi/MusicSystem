@@ -305,7 +305,7 @@ export default{
         this.selectproduct = productId
         Callaxios('ProductAvailableSession/GetHours/'+productId,'get',undefined,this.aftergethours )
       }else{
-        Store.commit('backurl',{name:'lessondetail',params:{lessonid:this.$route.params.lessonid}})
+        Store.commit('backurl',{name:'lessondetail',params:{lessonid:this.$route.params.lessonid,academyId:this.$route.params.academyId}})
         this.$router.push({name:'welcome'})
       }
      

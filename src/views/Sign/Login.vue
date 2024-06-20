@@ -20,7 +20,8 @@
             </div>
           </div>
           <v-form class="sign-up">
-            <h2>{{ $t('login.login_signup_header') }}</h2>
+            <img width="300" class="mt-16 mb-10" src="../../assets/img/logo.png"/>
+            <h2 class="mt-2">{{ $t('login.login_signup_header') }}</h2>
             <v-row class="signup_row">
               <v-col cols="12">
                 <v-select class="field1" 
@@ -31,35 +32,35 @@
                 v-model="selectcompany"
                 no-transition></v-select>
               </v-col>
-              <v-col cols="12">
+              <v-col cols="6">
                 <v-text-field block 
-                class="field1"
+                class="field1 mt-n15"
                 :label="$t('login.login_signup_name')"
                 v-model="name"
                 required></v-text-field>
               </v-col>
-              <v-col cols="12">
+              <v-col cols="6">
                 <v-text-field
-                class="field1"
+                class="field1 mt-n15"
                 :label="$t('login.login_signup_lastname')"
                 v-model="lastname"
                 required></v-text-field>
               </v-col>
-              <v-col cols="12" >
+              <v-col cols="6" >
                 <v-text-field
-                class="field1"
+                class="field1 mt-n15"
                 :label="$t('login.login_signup_natinalcode')"
                 v-model="natinalcode"
                 required></v-text-field>
               </v-col>
-              <v-col cols="12">
+              <v-col cols="6">
                 <v-text-field
-                class="field1"
+                class="field1 mt-n15"
                 :label="$t('login.login_signup_PhoneNumber')"
                 v-model="phonenumber"
                 required></v-text-field>
               </v-col>
-              <v-col class="d-flex justify-center mt-5" cols="12">
+              <v-col class="d-flex justify-center" cols="12">
                 <v-btn @click="register" class="form-btn2">{{ $t('login.login_login_signupbtn') }}</v-btn>
               </v-col>
             </v-row>
